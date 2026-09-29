@@ -1,0 +1,870 @@
+[
+  {
+    "id": 1,
+    "lesson_id": 1,
+    "topic_id": 1,
+    "kind": "single",
+    "question": "物价上涨、收入不变时，购买力如何变化？",
+    "options": [
+      "下降",
+      "必然上升",
+      "保持不变"
+    ],
+    "correct_answer": 0,
+    "explanation": "同样的钱能买到的商品更少，实际购买力下降。"
+  },
+  {
+    "id": 2,
+    "lesson_id": 1,
+    "topic_id": 1,
+    "kind": "boolean",
+    "question": "名义金额不变，购买力就一定不变。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "比较不同年份的钱，要区分名义金额与实际购买力。涨工资也需要与生活成本一起看。 把账户余额上涨当成购买力一定上涨。"
+  },
+  {
+    "id": 3,
+    "lesson_id": 2,
+    "topic_id": 2,
+    "kind": "single",
+    "question": "固定3%通胀下，今天100元对应的一篮子商品十年后大约多少钱？",
+    "options": [
+      "100元",
+      "134元",
+      "103元"
+    ],
+    "correct_answer": 1,
+    "explanation": "按100×1.03的10次方计算，约134.39元。"
+  },
+  {
+    "id": 4,
+    "lesson_id": 2,
+    "topic_id": 2,
+    "kind": "boolean",
+    "question": "单个商品涨价足以证明普遍通胀。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "长期目标应考虑购买力；个人实际感受与统计平均值可能不同。 用一杯奶茶涨价来判断整个经济的通胀率。"
+  },
+  {
+    "id": 5,
+    "lesson_id": 3,
+    "topic_id": 3,
+    "kind": "single",
+    "question": "1000元以假设年5%复利增长两年，结果是多少？",
+    "options": [
+      "1100元",
+      "1102.50元",
+      "1050元"
+    ],
+    "correct_answer": 1,
+    "explanation": "第二年应以1050为基数，1050×1.05=1102.50。"
+  },
+  {
+    "id": 6,
+    "lesson_id": 3,
+    "topic_id": 3,
+    "kind": "boolean",
+    "question": "复利计算图意味着未来能保证获得同样收益。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "时间、费用和收益路径都会影响累积结果。现实收益会波动，固定收益率只是教学假设。 把固定复利曲线当成现实投资的收益承诺。"
+  },
+  {
+    "id": 7,
+    "lesson_id": 4,
+    "topic_id": 4,
+    "kind": "single",
+    "question": "选择应急资金存放方式时优先考虑什么？",
+    "options": [
+      "最高短期收益",
+      "流动性与稳定性",
+      "社交平台热度"
+    ],
+    "correct_answer": 1,
+    "explanation": "应急资金需要在必要时能够及时使用，金额应结合个人情况。"
+  },
+  {
+    "id": 8,
+    "lesson_id": 4,
+    "topic_id": 4,
+    "kind": "boolean",
+    "question": "应急资金的规模需要结合必要开支与收入稳定性。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "临时支出可能迫使人卖出波动资产，提前准备有助于降低这种压力。 每个人都必须储备完全相同的金额，或将应急资金放入难变现的资产。"
+  },
+  {
+    "id": 9,
+    "lesson_id": 5,
+    "topic_id": 5,
+    "kind": "single",
+    "question": "持有股票更接近以下哪一种关系？",
+    "options": [
+      "向公司存入保本存款",
+      "持有公司的部分所有权",
+      "获得固定利息承诺"
+    ],
+    "correct_answer": 1,
+    "explanation": "股票是权益，不等于存款或固定息票债权。"
+  },
+  {
+    "id": 10,
+    "lesson_id": 5,
+    "topic_id": 5,
+    "kind": "boolean",
+    "question": "低股价一定代表低估值。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "理解所有权、盈利和估值，能避免只盯着价格曲线。 股价便宜就意味着公司估值便宜；忽略股数与经营情况。"
+  },
+  {
+    "id": 11,
+    "lesson_id": 6,
+    "topic_id": 6,
+    "kind": "single",
+    "question": "市场收益率上升时，其他条件不变的固定息票债券价格通常怎样？",
+    "options": [
+      "下降",
+      "上升",
+      "必然不变"
+    ],
+    "correct_answer": 0,
+    "explanation": "未来固定现金流用更高的折现率折现，现值通常降低。"
+  },
+  {
+    "id": 12,
+    "lesson_id": 6,
+    "topic_id": 6,
+    "kind": "boolean",
+    "question": "债券在到期前卖出一定不会发生损失。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "债券需要同时考虑信用、利率、期限和流动性风险。 债券有约定本金，所以任何时点卖出都不会亏。"
+  },
+  {
+    "id": 13,
+    "lesson_id": 7,
+    "topic_id": 7,
+    "kind": "single",
+    "question": "了解一只ETF时，应先看什么？",
+    "options": [
+      "名称是否热门",
+      "跟踪标的与产品文件",
+      "今天涨幅排名"
+    ],
+    "correct_answer": 1,
+    "explanation": "持仓与跟踪标的决定主要风险来源，产品文件说明其机制。"
+  },
+  {
+    "id": 14,
+    "lesson_id": 7,
+    "topic_id": 7,
+    "kind": "boolean",
+    "question": "任何ETF都能保证本金安全。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "理解跟踪标的、费用、跟踪误差与流动性，比只看近期涨幅更有用。 把所有ETF都视为分散、低风险、保本产品。"
+  },
+  {
+    "id": 15,
+    "lesson_id": 8,
+    "topic_id": 8,
+    "kind": "single",
+    "question": "哪种情况仍可能高度集中？",
+    "options": [
+      "五家同一行业公司",
+      "不同风险来源组合",
+      "同时了解多类资产"
+    ],
+    "correct_answer": 0,
+    "explanation": "同一行业公司可能受到共同冲击。分散需要关注风险来源，而非只看数量。"
+  },
+  {
+    "id": 16,
+    "lesson_id": 8,
+    "topic_id": 8,
+    "kind": "boolean",
+    "question": "分散配置可以彻底消除市场风险。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "相关性决定资产是否容易同时涨跌，市场冲击下相关性也可能变化。 资产越多就必然越安全，或分散以后不可能亏损。"
+  },
+  {
+    "id": 17,
+    "lesson_id": 9,
+    "topic_id": 9,
+    "kind": "single",
+    "question": "其他条件不变，折现率上升会怎样影响未来现金流现值？",
+    "options": [
+      "降低现值",
+      "提高现值",
+      "没有影响"
+    ],
+    "correct_answer": 0,
+    "explanation": "现值=未来金额÷(1+折现率)，折现率越高，现值越低。"
+  },
+  {
+    "id": 18,
+    "lesson_id": 9,
+    "topic_id": 9,
+    "kind": "boolean",
+    "question": "降息一定会使股票价格立刻上涨。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "利率可能影响融资成本、储蓄选择与资产估值，但并非唯一驱动因素。 看到降息就断言所有股票马上上涨，忽略预期和经济背景。"
+  },
+  {
+    "id": 19,
+    "lesson_id": 10,
+    "topic_id": 10,
+    "kind": "single",
+    "question": "政策变化对经济的影响通常如何传导？",
+    "options": [
+      "瞬间且完全一致",
+      "可能存在时滞与差异",
+      "只影响股票"
+    ],
+    "correct_answer": 1,
+    "explanation": "政策通过多条渠道传导，不同主体的响应速度与幅度不同。"
+  },
+  {
+    "id": 20,
+    "lesson_id": 10,
+    "topic_id": 10,
+    "kind": "boolean",
+    "question": "央行的政策调整等同于承诺股市上涨。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "解读政策时要区分决策本身、市场预期和政策传导。 把政策调整理解为对某类资产未来价格的保证。"
+  },
+  {
+    "id": 21,
+    "lesson_id": 11,
+    "topic_id": 11,
+    "kind": "single",
+    "question": "1美元由7元变7.2元，购买100美元商品所需人民币如何变化？",
+    "options": [
+      "减少20元",
+      "增加20元",
+      "不变"
+    ],
+    "correct_answer": 1,
+    "explanation": "由700元变为720元；这里忽略交易费用。"
+  },
+  {
+    "id": 22,
+    "lesson_id": 11,
+    "topic_id": 11,
+    "kind": "boolean",
+    "question": "汇率变化对每个人的影响完全相同。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "留学、旅行、跨境消费和外币资产都会受汇率变化影响。 认为本币贬值对所有行业、所有人都一样有利或不利。"
+  },
+  {
+    "id": 23,
+    "lesson_id": 12,
+    "topic_id": 12,
+    "kind": "single",
+    "question": "比较市盈率时，还应关注什么？",
+    "options": [
+      "盈利质量与行业背景",
+      "股票简称长度",
+      "社交媒体点赞量"
+    ],
+    "correct_answer": 0,
+    "explanation": "盈利质量、周期和增长假设会影响估值比较。"
+  },
+  {
+    "id": 24,
+    "lesson_id": 12,
+    "topic_id": 12,
+    "kind": "boolean",
+    "question": "一个估值指标就能保证找到赚钱机会。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "估值是带假设的判断，应该检查假设与不确定性，而非追求唯一精确数字。 只凭一个市盈率数字就判断贵便宜，不看行业、盈利质量与周期。"
+  },
+  {
+    "id": 25,
+    "lesson_id": 13,
+    "topic_id": 13,
+    "kind": "single",
+    "question": "发现自己因别人赚钱而焦虑时，哪种做法更有助于独立判断？",
+    "options": [
+      "立刻照做",
+      "先核查风险与自己的目标",
+      "只看盈利截图"
+    ],
+    "correct_answer": 1,
+    "explanation": "暂停、核查信息和明确资金用途有助于避免冲动，这不是具体买卖建议。"
+  },
+  {
+    "id": 26,
+    "lesson_id": 13,
+    "topic_id": 13,
+    "kind": "boolean",
+    "question": "FOMO只会发生在金融新手身上。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "在压力下留出思考时间、核查信息与风险，有助于保持决策独立。 把别人展示的成功结果当成普遍可复制的收益。"
+  },
+  {
+    "id": 27,
+    "lesson_id": 14,
+    "topic_id": 14,
+    "kind": "single",
+    "question": "亏损后只想加倍冒险追回损失，首先值得反思什么？",
+    "options": [
+      "是否被回本情绪驱动",
+      "是否马上借钱",
+      "是否隐瞒所有损失"
+    ],
+    "correct_answer": 0,
+    "explanation": "应检查情绪、风险约束与新信息，过去的损失无法决定未来回报。"
+  },
+  {
+    "id": 28,
+    "lesson_id": 14,
+    "topic_id": 14,
+    "kind": "boolean",
+    "question": "一次情景选择就足以诊断一个人的稳定心理特征。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "识别这种倾向有助于区分情绪与事实，不等同于心理诊断。 为了回本不断增加风险，或把过去买入价当作唯一决策依据。"
+  },
+  {
+    "id": 29,
+    "lesson_id": 15,
+    "topic_id": 15,
+    "kind": "single",
+    "question": "哪个例子更体现锚定？",
+    "options": [
+      "只因曾经卖100元就认定现在值100元",
+      "核对现金流",
+      "比较多个情景"
+    ],
+    "correct_answer": 0,
+    "explanation": "先前价格可能成为认知锚，但未必反映当前价值。"
+  },
+  {
+    "id": 30,
+    "lesson_id": 15,
+    "topic_id": 15,
+    "kind": "boolean",
+    "question": "曾经的最高价格就是当前合理价值。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "主动寻找独立证据和不同参考点，有助于减轻单一锚点的影响。 历史最高价或买入价天然就是当前合理价格。"
+  },
+  {
+    "id": 31,
+    "lesson_id": 16,
+    "topic_id": 16,
+    "kind": "single",
+    "question": "哪种习惯有助于减轻确认偏差？",
+    "options": [
+      "只读支持观点的文章",
+      "主动寻找可信反证",
+      "屏蔽所有不同意见"
+    ],
+    "correct_answer": 1,
+    "explanation": "可信反证能检验原有假设；这不意味着所有反对意见都正确。"
+  },
+  {
+    "id": 32,
+    "lesson_id": 16,
+    "topic_id": 16,
+    "kind": "boolean",
+    "question": "认真核查反对证据可能帮助修正判断。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "主动写下什么证据会让自己改变判断，有助于检验观点。 把反对意见的人简单归为不懂，而不检查其证据。"
+  },
+  {
+    "id": 33,
+    "lesson_id": 17,
+    "topic_id": 21,
+    "kind": "single",
+    "question": "半年后必须支付的学费投入可能大幅波动的资产，首先要检查什么？",
+    "options": [
+      "半年时资金是否仍够用",
+      "一年后最乐观的收益",
+      "朋友是否也投入"
+    ],
+    "correct_answer": 0,
+    "explanation": "用钱日期是硬约束；以后可能恢复不能解决付款时的缺口。"
+  },
+  {
+    "id": 34,
+    "lesson_id": 17,
+    "topic_id": 21,
+    "kind": "boolean",
+    "question": "没有频繁公开报价的资产，就不存在本金损失风险。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "风险还包括信用、流动性和购买力变化，缺少报价不等于风险消失。"
+  },
+  {
+    "id": 35,
+    "lesson_id": 18,
+    "topic_id": 21,
+    "kind": "single",
+    "question": "已买的不可退款电影票遇到身体不适，接下来的比较重点是什么？",
+    "options": [
+      "为了不浪费必须看完",
+      "休息与观影未来各自的成本和收益",
+      "电影票过去的原价"
+    ],
+    "correct_answer": 1,
+    "explanation": "不可收回的票款无法因今天的选择改变，应该比较仍可改变的结果。"
+  },
+  {
+    "id": 36,
+    "lesson_id": 18,
+    "topic_id": 21,
+    "kind": "boolean",
+    "question": "机会成本通常指所有被放弃选项的价值总和。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "通常比较的是最好且实际可行的替代方案，而不是把互斥选项全部相加。"
+  },
+  {
+    "id": 37,
+    "lesson_id": 19,
+    "topic_id": 17,
+    "kind": "single",
+    "question": "每学期600元书费，六个月积累，月预算应怎样处理？",
+    "options": [
+      "只在付款月才考虑",
+      "每月为此预留100元",
+      "算作每月600元固定消费"
+    ],
+    "correct_answer": 1,
+    "explanation": "把可预见的不定期支出分摊，可以避免把暂时余额误认为自由结余。"
+  },
+  {
+    "id": 38,
+    "lesson_id": 19,
+    "topic_id": 17,
+    "kind": "boolean",
+    "question": "连续几个月超出预算，应先核查预算是否遗漏必要支出。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "预算是可以调整的安排，持续偏差可能说明初始假设不符合实际。"
+  },
+  {
+    "id": 39,
+    "lesson_id": 20,
+    "topic_id": 18,
+    "kind": "single",
+    "question": "看到银行渠道销售的基金，能否按存款理解？",
+    "options": [
+      "可以，因为渠道相同",
+      "不可以，需要核对产品合同性质",
+      "只要历史波动小就可以"
+    ],
+    "correct_answer": 1,
+    "explanation": "渠道不决定产品类型；基金净值风险与存款合同不是同一机制。"
+  },
+  {
+    "id": 40,
+    "lesson_id": 20,
+    "topic_id": 18,
+    "kind": "boolean",
+    "question": "有结余之后，还应根据资金用途与期限检查使用方式。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "形成储蓄和选择持有方式是两个层次，需要分别考虑流动性与风险。"
+  },
+  {
+    "id": 41,
+    "lesson_id": 21,
+    "topic_id": 9,
+    "kind": "single",
+    "question": "借1200元、半年后一次还本并付60元利息，该期间成本占本金多少？",
+    "options": [
+      "5%，但不能直接当成年利率",
+      "0.5%年利率",
+      "60%"
+    ],
+    "correct_answer": 0,
+    "explanation": "60÷1200=5%，对应半年使用期，年化需要统一时间和现金流口径。"
+  },
+  {
+    "id": 42,
+    "lesson_id": 21,
+    "topic_id": 9,
+    "kind": "boolean",
+    "question": "两份分期合同总费用相同，就说明实际资金使用成本一定相同。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "还本节奏和实际到账额不同，会改变资金占用及年化成本。"
+  },
+  {
+    "id": 43,
+    "lesson_id": 22,
+    "topic_id": 17,
+    "kind": "single",
+    "question": "十个月后需要3000元，已有1000元，不假设收益，每月需积累多少？",
+    "options": [
+      "100元",
+      "200元",
+      "300元"
+    ],
+    "correct_answer": 1,
+    "explanation": "缺口2000元除以10个月，得到每月200元；先检查可控制的投入。"
+  },
+  {
+    "id": 44,
+    "lesson_id": 22,
+    "topic_id": 17,
+    "kind": "boolean",
+    "question": "把计算器预期收益率调高，就相当于解决了目标资金缺口。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "更乐观的输入不产生真实资金，应检查目标、期限和可持续投入。"
+  },
+  {
+    "id": 45,
+    "lesson_id": 23,
+    "topic_id": 19,
+    "kind": "single",
+    "question": "100份基金持有800元股票和200元现金，股票跌10%，不计费用时每份约多少？",
+    "options": [
+      "10元",
+      "8元",
+      "9.2元"
+    ],
+    "correct_answer": 2,
+    "explanation": "股票变720元，加现金后920元，除以100份等于9.2元。"
+  },
+  {
+    "id": 46,
+    "lesson_id": 23,
+    "topic_id": 19,
+    "kind": "boolean",
+    "question": "三只名称不同的基金，底层持仓仍可能高度重合。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "名称不同不代表风险来源不同，需要查看持仓和策略。"
+  },
+  {
+    "id": 47,
+    "lesson_id": 24,
+    "topic_id": 20,
+    "kind": "single",
+    "question": "两只股票权重80%和20%，分别上涨5%与下跌10%，简化指数变化约为多少？",
+    "options": [
+      "上涨2%",
+      "下跌5%",
+      "上涨5%"
+    ],
+    "correct_answer": 0,
+    "explanation": "80%×5%+20%×(-10%)=2%，指数上涨并不要求所有成分上涨。"
+  },
+  {
+    "id": 48,
+    "lesson_id": 24,
+    "topic_id": 20,
+    "kind": "boolean",
+    "question": "比较指数与基金收益时，应检查是否采用相同的分红和币种口径。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "价格指数、全收益指数和不同币种口径可能导致不可直接比较。"
+  },
+  {
+    "id": 49,
+    "lesson_id": 25,
+    "topic_id": 22,
+    "kind": "single",
+    "question": "股票50%、债券30%、现金20%，情景收益分别-20%、2%、0%，组合约变化多少？",
+    "options": [
+      "-20%",
+      "-9.4%",
+      "-18%"
+    ],
+    "correct_answer": 1,
+    "explanation": "按权重计算为-10%+0.6%+0%=-9.4%；只适用于给定假设。"
+  },
+  {
+    "id": 50,
+    "lesson_id": 25,
+    "topic_id": 22,
+    "kind": "boolean",
+    "question": "再平衡的必要前提是准确预测下一类上涨的资产。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "再平衡围绕预定比例与约束，不以预测短期赢家为必要前提。"
+  },
+  {
+    "id": 51,
+    "lesson_id": 26,
+    "topic_id": 19,
+    "kind": "single",
+    "question": "相同费用前路径下，每年费用为何可能形成长期金额差异？",
+    "options": [
+      "只影响第一年",
+      "改变以后参与累积的资金基数",
+      "因为低费率能保证更高市场收益"
+    ],
+    "correct_answer": 1,
+    "explanation": "费用会减少当前资产及后续计算基数，但不保证市场收益。"
+  },
+  {
+    "id": 52,
+    "lesson_id": 26,
+    "topic_id": 19,
+    "kind": "boolean",
+    "question": "费率最低的产品不需要再检查策略与风险。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "费用只是一项条件，必须同时理解持仓、机制、期限和其他成本。"
+  },
+  {
+    "id": 53,
+    "lesson_id": 27,
+    "topic_id": 23,
+    "kind": "single",
+    "question": "产出从100到110再到115.5，第二年的变化应如何描述？",
+    "options": [
+      "规模下降5%",
+      "增速放缓，但规模继续增加",
+      "完全没有变化"
+    ],
+    "correct_answer": 1,
+    "explanation": "增长率从10%降至5%，水平仍从110升至115.5，速度和水平需区分。"
+  },
+  {
+    "id": 54,
+    "lesson_id": 27,
+    "topic_id": 23,
+    "kind": "boolean",
+    "question": "知道过去几轮经济周期的长度，就能精确预测下一次市场拐点。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "阶段长度和驱动原因会变化，实体经济与市场预期也不完全同步。"
+  },
+  {
+    "id": 55,
+    "lesson_id": 28,
+    "topic_id": 24,
+    "kind": "single",
+    "question": "五位同学转发同一个视频支持某观点，意味着什么？",
+    "options": [
+      "已经有五份独立验证",
+      "还需要核查同一个原始来源",
+      "人数足够多就无需核查"
+    ],
+    "correct_answer": 1,
+    "explanation": "重复转发不是独立证据，信息源可能只有一个。"
+  },
+  {
+    "id": 56,
+    "lesson_id": 28,
+    "topic_id": 24,
+    "kind": "boolean",
+    "question": "独立思考意味着结论必须与大多数人相反。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "correct_answer": 1,
+    "explanation": "独立性取决于理由和证据；刻意唱反调仍可能被群体牵引。"
+  },
+  {
+    "id": 57,
+    "lesson_id": 3,
+    "topic_id": 3,
+    "kind": "single",
+    "question": "1000元先上涨20%再下跌20%，结果是多少？",
+    "options": [
+      "1000元",
+      "960元",
+      "1040元"
+    ],
+    "correct_answer": 1,
+    "explanation": "1000×1.2×0.8=960，两个百分比的基数不同。"
+  },
+  {
+    "id": 58,
+    "lesson_id": 6,
+    "topic_id": 6,
+    "kind": "single",
+    "question": "哪项不能从单只债券直接套用到债券基金？",
+    "options": [
+      "底层债券会受利率影响",
+      "基金份额必然在某张债券到期时按面值还本",
+      "基金需要关注信用风险"
+    ],
+    "correct_answer": 1,
+    "explanation": "基金是持续运作的组合，份额通常没有与单张债券相同的到期偿付安排。"
+  },
+  {
+    "id": 59,
+    "lesson_id": 7,
+    "topic_id": 7,
+    "kind": "single",
+    "question": "ETF估算净值10元、成交价10.10元，这说明什么？",
+    "options": [
+      "存在约1%的溢价情形",
+      "基金已经保证赚1%",
+      "净值肯定计算错误"
+    ],
+    "correct_answer": 0,
+    "explanation": "成交价格可偏离净值；差异本身不是收益承诺。"
+  },
+  {
+    "id": 60,
+    "lesson_id": 9,
+    "topic_id": 9,
+    "kind": "single",
+    "question": "为什么降息后不能只凭折现率变化判断股票价格？",
+    "options": [
+      "现金流预期和事前定价也会变化",
+      "折现率永远没影响",
+      "股票完全不受信息影响"
+    ],
+    "correct_answer": 0,
+    "explanation": "价格涉及多个变量，降息背景与已反映的预期可能同时作用。"
+  },
+  {
+    "id": 61,
+    "lesson_id": 19,
+    "topic_id": 17,
+    "kind": "single",
+    "question": "月初账单要付款，但兼职收入月底到账，主要是什么问题？",
+    "options": [
+      "只看月总额就足够",
+      "收支时间错配",
+      "证明收入一定太低"
+    ],
+    "correct_answer": 1,
+    "explanation": "即使整月收入足够，付款日仍可能缺少现金。"
+  },
+  {
+    "id": 62,
+    "lesson_id": 21,
+    "topic_id": 9,
+    "kind": "single",
+    "question": "借款先扣必要手续费，比较成本时应重点看什么？",
+    "options": [
+      "名义借款额即可",
+      "实际到账额与全部还款现金流",
+      "只看广告中的日费用"
+    ],
+    "correct_answer": 1,
+    "explanation": "提前扣费减少实际使用资金，不能忽略支付时间和附加费用。"
+  },
+  {
+    "id": 63,
+    "lesson_id": 25,
+    "topic_id": 22,
+    "kind": "single",
+    "question": "实验中股票下跌、债券上涨的情景说明什么？",
+    "options": [
+      "现实中二者永远反向",
+      "只是设定下的一种结果，应改变假设再看",
+      "组合不可能亏损"
+    ],
+    "correct_answer": 1,
+    "explanation": "固定情景用于理解权重，不是对相关性或未来表现的承诺。"
+  },
+  {
+    "id": 64,
+    "lesson_id": 26,
+    "topic_id": 19,
+    "kind": "single",
+    "question": "净值公布的收益已扣管理费，分析时又扣一次，会怎样？",
+    "options": [
+      "重复扣费，低估该口径结果",
+      "更准确",
+      "自动得到税后收益"
+    ],
+    "correct_answer": 0,
+    "explanation": "必须先核对口径；已包含的费用不应重复计算。"
+  }
+]

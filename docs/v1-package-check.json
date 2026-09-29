@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "archive": "D:\\finpilot开发\\v1.zip",
+  "bytes": 5848895,
+  "sha256": "1db27e2b0e519088da13e5dcd7be52e3f45208c82c0cc817c07b15a5b4db6362",
+  "file_count": 140,
+  "clean_database_counts": {
+    "users": 9,
+    "topics": 24,
+    "topic_relations": 32,
+    "articles": 28,
+    "learning_paths": 5,
+    "lessons": 28,
+    "quiz_questions": 64,
+    "labs": 8,
+    "posts": 20,
+    "comments": 20,
+    "likes": 41,
+    "quiz_records": 0,
+    "user_progress": 0,
+    "chat_sessions": 0,
+    "lab_records": 0
+  },
+  "crc_and_manifest": "passed",
+  "extracted_content_and_demo_login": "passed",
+  "forbidden_files": "none"
+}

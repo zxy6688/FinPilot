@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "production_counts": {
+    "topics": 24,
+    "topic_relations": 32,
+    "articles": 28,
+    "learning_paths": 5,
+    "lessons": 28,
+    "quiz_questions": 64,
+    "labs": 8,
+    "posts": 20,
+    "comments": 20
+  },
+  "api_routes": [
+    "/topics",
+    "/topics/7",
+    "/topics/9",
+    "/articles?content_type=REAL_WORLD",
+    "/articles?content_type=EXPLAINER",
+    "/learning-paths",
+    "/learning-paths/5",
+    "/lessons/28",
+    "/labs",
+    "/labs/4",
+    "/posts/1",
+    "/search?q=%E5%88%A9%E7%8E%87"
+  ],
+  "foreign_key_errors": 0,
+  "lab_formula_unchanged": true,
+  "placeholder_scan": "passed"
+}

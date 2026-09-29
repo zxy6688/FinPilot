@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "preserved_records": {
+    "users": 9,
+    "quiz_records": 0,
+    "user_progress": 0,
+    "lab_records": 0,
+    "favorites": 0,
+    "user_badges": 0,
+    "chat_sessions": 0,
+    "chat_messages": 0,
+    "topic_views": 0,
+    "reports": 0
+  },
+  "foreign_key_errors": 0,
+  "unchanged_files": {
+    "frontend/package.json": true,
+    "frontend/package-lock.json": true,
+    "backend/app/services/labs.py": true
+  }
+}

@@ -1,0 +1,372 @@
+{
+  "version": "content-product-2026-09-29",
+  "topics": [
+    {
+      "id": 1,
+      "title": "钱与购买力",
+      "english": "Money & Purchasing Power",
+      "domain": "基础金融",
+      "summary": "钱的实际价值取决于它能换到多少商品和服务。"
+    },
+    {
+      "id": 2,
+      "title": "通胀",
+      "english": "Inflation",
+      "domain": "宏观经济",
+      "summary": "通胀描述一般物价水平的变化；个人消费篮子可能与统计平均不同。"
+    },
+    {
+      "id": 3,
+      "title": "复利",
+      "english": "Compound Interest",
+      "domain": "基础金融",
+      "summary": "前期收益也参与后续计算，时间与费用都会改变累积结果。"
+    },
+    {
+      "id": 4,
+      "title": "应急资金",
+      "english": "Emergency Fund",
+      "domain": "个人金融",
+      "summary": "为不可预期的必要支出预留可及时动用的资金。"
+    },
+    {
+      "id": 5,
+      "title": "股票",
+      "english": "Stocks",
+      "domain": "投资产品",
+      "summary": "股票代表公司的一部分所有权，回报和本金都存在不确定性。"
+    },
+    {
+      "id": 6,
+      "title": "债券",
+      "english": "Bonds",
+      "domain": "投资产品",
+      "summary": "债券约定未来现金流，其履约风险和市场价格需要分别理解。"
+    },
+    {
+      "id": 7,
+      "title": "ETF",
+      "english": "Exchange-traded Fund",
+      "domain": "投资产品",
+      "summary": "ETF是在交易所交易的基金份额，风险来自持仓与产品机制。"
+    },
+    {
+      "id": 8,
+      "title": "分散化",
+      "english": "Diversification",
+      "domain": "投资产品",
+      "summary": "分散不同风险来源可降低集中风险，但不能消除市场风险。"
+    },
+    {
+      "id": 9,
+      "title": "利率",
+      "english": "Interest Rates",
+      "domain": "宏观经济",
+      "summary": "利率是使用资金的价格，也是计算未来现金流现值的参数。"
+    },
+    {
+      "id": 10,
+      "title": "央行",
+      "english": "Central Bank",
+      "domain": "宏观经济",
+      "summary": "央行通过政策工具影响金融条件，传导效果受经济环境制约。"
+    },
+    {
+      "id": 11,
+      "title": "汇率",
+      "english": "Exchange Rate",
+      "domain": "市场机制",
+      "summary": "汇率是一种货币用另一种货币表示的价格。"
+    },
+    {
+      "id": 12,
+      "title": "估值",
+      "english": "Valuation",
+      "domain": "市场机制",
+      "summary": "估值把现金流、增长和风险假设转化为价值判断，而非精确预言。"
+    },
+    {
+      "id": 13,
+      "title": "FOMO",
+      "english": "Fear of Missing Out",
+      "domain": "行为金融",
+      "summary": "害怕错过机会可能让紧迫感替代信息核查。"
+    },
+    {
+      "id": 14,
+      "title": "损失厌恶",
+      "english": "Loss Aversion",
+      "domain": "行为金融",
+      "summary": "人们对损失的感受可能强于同等收益，影响风险判断。"
+    },
+    {
+      "id": 15,
+      "title": "锚定效应",
+      "english": "Anchoring",
+      "domain": "行为金融",
+      "summary": "最初接触的数字可能持续牵引判断，即使它与当前问题关系不大。"
+    },
+    {
+      "id": 16,
+      "title": "确认偏差",
+      "english": "Confirmation Bias",
+      "domain": "行为金融",
+      "summary": "我们可能更容易寻找和接受支持原有观点的证据。"
+    },
+    {
+      "id": 17,
+      "title": "预算",
+      "english": "Budgeting",
+      "domain": "个人金融",
+      "summary": "预算是对收入、必要支出和目标之间关系的可调整安排。"
+    },
+    {
+      "id": 18,
+      "title": "储蓄",
+      "english": "Saving",
+      "domain": "个人金融",
+      "summary": "储蓄是把当期收入留给未来使用，不等同于某一种金融产品。"
+    },
+    {
+      "id": 19,
+      "title": "基金",
+      "english": "Funds",
+      "domain": "投资产品",
+      "summary": "基金把多人的资金集合起来，按约定策略投资并分担结果。"
+    },
+    {
+      "id": 20,
+      "title": "指数",
+      "english": "Index",
+      "domain": "投资产品",
+      "summary": "指数用明确规则汇总一组资产的表现，本身不是可直接购买的资产。"
+    },
+    {
+      "id": 21,
+      "title": "风险与收益",
+      "english": "Risk & Return",
+      "domain": "基础金融",
+      "summary": "更高潜在收益往往伴随更多不确定性，承担风险不保证获得补偿。"
+    },
+    {
+      "id": 22,
+      "title": "资产配置",
+      "english": "Asset Allocation",
+      "domain": "投资产品",
+      "summary": "资产配置是结合期限和约束，在不同风险来源之间安排比例。"
+    },
+    {
+      "id": 23,
+      "title": "经济周期",
+      "english": "Business Cycle",
+      "domain": "市场机制",
+      "summary": "经济活动会经历不同增长阶段，阶段划分不等于可交易的时间表。"
+    },
+    {
+      "id": 24,
+      "title": "从众效应",
+      "english": "Herding",
+      "domain": "行为金融",
+      "summary": "他人的选择可能影响自己的判断，但人数不能代替独立证据。"
+    }
+  ],
+  "relations": [
+    {
+      "from_topic_id": 10,
+      "to_topic_id": 9,
+      "relation_label": "通过货币政策影响"
+    },
+    {
+      "from_topic_id": 2,
+      "to_topic_id": 9,
+      "relation_label": "影响政策预期"
+    },
+    {
+      "from_topic_id": 9,
+      "to_topic_id": 6,
+      "relation_label": "通过折现影响固定现金流价格"
+    },
+    {
+      "from_topic_id": 9,
+      "to_topic_id": 12,
+      "relation_label": "影响折现率假设"
+    },
+    {
+      "from_topic_id": 9,
+      "to_topic_id": 11,
+      "relation_label": "利差变化可能影响资金流动"
+    },
+    {
+      "from_topic_id": 23,
+      "to_topic_id": 10,
+      "relation_label": "为政策判断提供背景"
+    },
+    {
+      "from_topic_id": 23,
+      "to_topic_id": 12,
+      "relation_label": "影响盈利预期"
+    },
+    {
+      "from_topic_id": 20,
+      "to_topic_id": 7,
+      "relation_label": "可作为跟踪标的"
+    },
+    {
+      "from_topic_id": 19,
+      "to_topic_id": 7,
+      "relation_label": "包含这种交易形式"
+    },
+    {
+      "from_topic_id": 5,
+      "to_topic_id": 20,
+      "relation_label": "可作为指数成分"
+    },
+    {
+      "from_topic_id": 6,
+      "to_topic_id": 19,
+      "relation_label": "可成为基金持仓"
+    },
+    {
+      "from_topic_id": 8,
+      "to_topic_id": 22,
+      "relation_label": "是配置原则之一"
+    },
+    {
+      "from_topic_id": 21,
+      "to_topic_id": 22,
+      "relation_label": "约束配置选择"
+    },
+    {
+      "from_topic_id": 4,
+      "to_topic_id": 22,
+      "relation_label": "提出流动性约束"
+    },
+    {
+      "from_topic_id": 17,
+      "to_topic_id": 18,
+      "relation_label": "帮助形成可持续结余"
+    },
+    {
+      "from_topic_id": 18,
+      "to_topic_id": 4,
+      "relation_label": "为备用金提供来源"
+    },
+    {
+      "from_topic_id": 2,
+      "to_topic_id": 1,
+      "relation_label": "改变实际购买力"
+    },
+    {
+      "from_topic_id": 3,
+      "to_topic_id": 18,
+      "relation_label": "解释假设利息的累积"
+    },
+    {
+      "from_topic_id": 3,
+      "to_topic_id": 21,
+      "relation_label": "结果取决于收益路径"
+    },
+    {
+      "from_topic_id": 13,
+      "to_topic_id": 24,
+      "relation_label": "可能共同放大紧迫感"
+    },
+    {
+      "from_topic_id": 14,
+      "to_topic_id": 15,
+      "relation_label": "可能共同强化回本执念"
+    },
+    {
+      "from_topic_id": 16,
+      "to_topic_id": 24,
+      "relation_label": "可能强化群体一致观点"
+    },
+    {
+      "from_topic_id": 16,
+      "to_topic_id": 12,
+      "relation_label": "可能扭曲估值假设"
+    },
+    {
+      "from_topic_id": 15,
+      "to_topic_id": 12,
+      "relation_label": "可能让旧价格替代价值判断"
+    },
+    {
+      "from_topic_id": 19,
+      "to_topic_id": 8,
+      "relation_label": "是否分散取决于持仓"
+    },
+    {
+      "from_topic_id": 7,
+      "to_topic_id": 21,
+      "relation_label": "风险取决于标的和机制"
+    },
+    {
+      "from_topic_id": 11,
+      "to_topic_id": 1,
+      "relation_label": "影响跨境购买成本"
+    },
+    {
+      "from_topic_id": 10,
+      "to_topic_id": 2,
+      "relation_label": "试图影响总体金融与价格条件"
+    },
+    {
+      "from_topic_id": 5,
+      "to_topic_id": 12,
+      "relation_label": "需要结合经营信息理解价格"
+    },
+    {
+      "from_topic_id": 6,
+      "to_topic_id": 21,
+      "relation_label": "存在信用与利率等风险"
+    },
+    {
+      "from_topic_id": 17,
+      "to_topic_id": 4,
+      "relation_label": "区分日常与突发开支"
+    },
+    {
+      "from_topic_id": 13,
+      "to_topic_id": 21,
+      "relation_label": "可能让人忽略损失情景"
+    }
+  ],
+  "paths": [
+    {
+      "id": 1,
+      "title": "第一次理解钱与金融",
+      "english": "Money Basics",
+      "summary": "从购买力到机会成本，先理解生活中每个选择的代价。",
+      "color": "mint"
+    },
+    {
+      "id": 5,
+      "title": "管理好自己的钱",
+      "english": "Personal Finance",
+      "summary": "用预算、备用金、债务和时间期限，把生活目标变成可检查的安排。",
+      "color": "mint"
+    },
+    {
+      "id": 2,
+      "title": "投资到底是什么",
+      "english": "Investment Basics",
+      "summary": "辨认股票、债券与基金的机制，再理解分散、配置和费用。",
+      "color": "blue"
+    },
+    {
+      "id": 3,
+      "title": "理解市场如何运行",
+      "english": "Understand Markets",
+      "summary": "连起央行、利率、汇率与经济周期，区分事实和市场预期。",
+      "color": "peach"
+    },
+    {
+      "id": 4,
+      "title": "为什么我们会做出非理性决策",
+      "english": "Behavioral Finance",
+      "summary": "从群体影响到确认偏差，练习检查情绪、证据和判断过程。",
+      "color": "lavender"
+    }
+  ]
+}

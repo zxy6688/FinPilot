@@ -1,0 +1,119 @@
+{
+  "verified_on": "2026-09-29",
+  "sources": [
+    {
+      "article_id": 101,
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm",
+      "published_at": "2025-09-17",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方决议"
+    },
+    {
+      "article_id": 102,
+      "url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.mp250605~3b5f67d007.en.html",
+      "published_at": "2025-06-05",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方决议"
+    },
+    {
+      "article_id": 103,
+      "url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k250124a.htm",
+      "published_at": "2025-01-24",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方决议"
+    },
+    {
+      "article_id": 104,
+      "url": "https://www.stats.gov.cn/sj/sjjd/202602/t20260228_1962663.html",
+      "published_at": "2026-02-28",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "统计解读"
+    },
+    {
+      "article_id": 105,
+      "url": "https://www.worldbank.org/en/news/press-release/2025/07/16/mobile-phone-technology-powers-saving-surge-in-developing-economies",
+      "published_at": "2025-07-16",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "研究发布"
+    },
+    {
+      "article_id": 106,
+      "url": "https://etf.sse.com.cn/fund/learning/knowledge/c/5704301.shtml",
+      "published_at": "2022-06-23",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    },
+    {
+      "article_id": 107,
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "published_at": null,
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    },
+    {
+      "article_id": 108,
+      "url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+      "published_at": null,
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    },
+    {
+      "article_id": 109,
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated",
+      "published_at": "2025-07-23",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    },
+    {
+      "article_id": 110,
+      "url": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_inflation.en.html",
+      "published_at": null,
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    },
+    {
+      "article_id": 111,
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-26",
+      "published_at": "2018-08-06",
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    },
+    {
+      "article_id": 112,
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds",
+      "published_at": null,
+      "verified_on": "2026-09-29",
+      "verification": "已打开对应官方页面，核对页面主题与正文；无明确发布日期者留空",
+      "scope": "官方投教"
+    }
+  ],
+  "not_added": [
+    {
+      "candidate": "中国人民银行2025年5月政策新闻",
+      "reason": "本轮未取得可可靠打开并核对的具体官方页面，未添加数值或编造URL。"
+    },
+    {
+      "candidate": "2025年统计公报正文页面",
+      "reason": "正文直连工具返回错误，改收录可以打开的国家统计局官方评读，并明确标为统计解读。"
+    },
+    {
+      "candidate": "上交所2019年ETF修炼手册",
+      "reason": "该候选页直接打开失败，改用已成功核验的2022年具体知识页。"
+    },
+    {
+      "candidate": "IMF基础知识档案页",
+      "reason": "档案页打开失败，且不是需要的具体内容页，未收录。"
+    }
+  ]
+}

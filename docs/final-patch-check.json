@@ -1,0 +1,9 @@
+{
+  "backend_tests": 29,
+  "compile_import": "passed",
+  "fresh_import_without_logs": "passed",
+  "typecheck": "passed",
+  "production_build": "passed",
+  "api_routes": 14,
+  "product_ui_content_seed": "unchanged"
+}

@@ -1,0 +1,550 @@
+[
+  {
+    "id": 101,
+    "title": "美联储2025年9月决议：理解政策动作与风险判断",
+    "source": "Federal Reserve",
+    "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm",
+    "published_at": "2025-09-17",
+    "category": "Macro",
+    "difficulty": "Intermediate",
+    "summary": "该次声明将联邦基金利率目标区间下调25个基点，并说明了对就业与通胀风险的判断。这是一则历史政策材料，不代表当前政策水平。",
+    "why_it_matters": "阅读时将本次动作、决策理由和未来条件分开，避免从“降息”直接推导资产价格方向。",
+    "topic_id": 9,
+    "topic_ids": [
+      9,
+      10,
+      23
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方决议"
+  },
+  {
+    "id": 102,
+    "title": "欧洲央行2025年6月决议：政策判断还看哪些条件？",
+    "source": "European Central Bank",
+    "source_url": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.mp250605~3b5f67d007.en.html",
+    "published_at": "2025-06-05",
+    "category": "Macro",
+    "difficulty": "Intermediate",
+    "summary": "该次决议下调关键利率，并将判断与通胀前景、基础通胀变化和政策传导联系起来。页面保留了当时的决策背景。",
+    "why_it_matters": "政策并非只响应一个数字。可以对照课程理解为什么后续数据会改变政策判断。",
+    "topic_id": 10,
+    "topic_ids": [
+      10,
+      9,
+      2
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方决议"
+  },
+  {
+    "id": 103,
+    "title": "日本银行2025年1月决议：货币市场操作目标是什么？",
+    "source": "Bank of Japan",
+    "source_url": "https://www.boj.or.jp/en/mopo/mpmdeci/state_2025/k250124a.htm",
+    "published_at": "2025-01-24",
+    "category": "Macro",
+    "difficulty": "Intermediate",
+    "summary": "日本银行在这次历史决议中，将无担保隔夜拆借利率引导目标设在约0.5%，并说明工资、价格和经济活动背景。",
+    "why_it_matters": "先辨认政策所针对的具体利率，再理解它与其他融资条件的联系；不能将一个地区的路径直接套用到另一个地区。",
+    "topic_id": 10,
+    "topic_ids": [
+      10,
+      9,
+      11
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方决议"
+  },
+  {
+    "id": 104,
+    "title": "国家统计局解读2025年统计公报：总量、结构与人均指标",
+    "source": "国家统计局",
+    "source_url": "https://www.stats.gov.cn/sj/sjjd/202602/t20260228_1962663.html",
+    "published_at": "2026-02-28",
+    "category": "Macro",
+    "difficulty": "Intermediate",
+    "summary": "这篇官方评读围绕2025年经济与社会发展，讨论经济总量、产业结构、居民生活等不同维度。它对应已发布的年度统计材料。",
+    "why_it_matters": "阅读总量增长时，也要分清增速、结构和人均口径；宏观平均不能代表每个行业或家庭的同等变化。",
+    "topic_id": 23,
+    "topic_ids": [
+      23,
+      1,
+      12
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "统计解读"
+  },
+  {
+    "id": 105,
+    "title": "世界银行Global Findex 2025：金融服务与储蓄行为",
+    "source": "World Bank",
+    "source_url": "https://www.worldbank.org/en/news/press-release/2025/07/16/mobile-phone-technology-powers-saving-surge-in-developing-economies",
+    "published_at": "2025-07-16",
+    "category": "FinTech",
+    "difficulty": "Beginner",
+    "summary": "世界银行介绍Global Findex 2025报告，关注成年人如何使用账户、数字支付和储蓄服务，以及数字技术与金融可及性的联系。",
+    "why_it_matters": "拥有账户与形成财务缓冲不是同一个问题。可以把宏观调查与自己的预算、备用金学习联系起来，不把调查相关性当成个人收益承诺。",
+    "topic_id": 18,
+    "topic_ids": [
+      18,
+      4,
+      17
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "研究发布"
+  },
+  {
+    "id": 106,
+    "title": "上交所ETF知识：从交易、指数和基金三个角度理解",
+    "source": "上海证券交易所",
+    "source_url": "https://etf.sse.com.cn/fund/learning/knowledge/c/5704301.shtml",
+    "published_at": "2022-06-23",
+    "category": "Funds & ETF",
+    "difficulty": "Beginner",
+    "summary": "这篇上交所基金知识页从交易、指数和基金三个角度解释指数型ETF，帮助读者区分产品形式与跟踪目标。",
+    "why_it_matters": "先明确文章描述的市场和产品范围，再看具体产品文件；不能把某一类ETF的特点扩大为全球所有产品的共同属性。",
+    "topic_id": 7,
+    "topic_ids": [
+      7,
+      20,
+      19
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 107,
+    "title": "Investor.gov ETF指南：交易价格、净值与风险",
+    "source": "SEC / Investor.gov",
+    "source_url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+    "published_at": null,
+    "category": "Funds & ETF",
+    "difficulty": "Beginner",
+    "summary": "这份美国监管机构投教资料说明其覆盖的ETF类型、组合份额、交易价格与净值的关系，并提醒读者留意风险和费用。",
+    "why_it_matters": "ETF是理解产品的起点，实际风险还要看持仓和机制。资料适用范围有限，不应当作所有市场的统一交易规则。",
+    "topic_id": 7,
+    "topic_ids": [
+      7,
+      19,
+      21
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 108,
+    "title": "Investor.gov资产配置指南：分散不只是增加数量",
+    "source": "SEC / Investor.gov",
+    "source_url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+    "published_at": null,
+    "category": "Personal Finance",
+    "difficulty": "Beginner",
+    "summary": "这份指南把资金期限、风险承受与资产配置联系起来，并提示狭窄持仓的基金未必提供充分分散。",
+    "why_it_matters": "比较多个产品前，可以先检查它们是否依赖相同风险来源，以及目标日期是否容许承受波动。",
+    "topic_id": 22,
+    "topic_ids": [
+      22,
+      8,
+      21
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 109,
+    "title": "SEC费用说明：长期成本如何影响剩余金额",
+    "source": "SEC / Investor.gov",
+    "source_url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated",
+    "published_at": "2025-07-23",
+    "category": "Funds & ETF",
+    "difficulty": "Intermediate",
+    "summary": "该投教公告用假设组合说明持续费用可能累积影响最终金额，并建议读者检查产品和服务的费用披露。",
+    "why_it_matters": "费用不仅影响当期净额，也影响后续累积基数。比较时需要先统一策略、风险和收益口径。",
+    "topic_id": 19,
+    "topic_ids": [
+      19,
+      3,
+      7
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 110,
+    "title": "欧洲央行解释通胀：为什么要看消费篮子？",
+    "source": "European Central Bank",
+    "source_url": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_inflation.en.html",
+    "published_at": null,
+    "category": "Macro",
+    "difficulty": "Beginner",
+    "summary": "这份官方解释用商品与服务的消费篮子说明通胀，并讨论不同家庭消费结构为何导致不同物价感受。",
+    "why_it_matters": "遇到物价报道时，先核对权重、比较期间与指标范围，避免把单一商品变化等同于整体通胀。",
+    "topic_id": 2,
+    "topic_ids": [
+      2,
+      1
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 111,
+    "title": "SEC指数基金公告：跟踪目标为何不等于相同结果？",
+    "source": "SEC / Investor.gov",
+    "source_url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-26",
+    "published_at": "2018-08-06",
+    "category": "Funds & ETF",
+    "difficulty": "Beginner",
+    "summary": "该公告解释传统指数基金的跟踪目标、复制方式与常见风险，并提示费用和跟踪误差可能造成与指数表现的差异。",
+    "why_it_matters": "先读指数规则，再看基金如何执行。规则化策略仍有风险，不能因为“被动”二字就忽略持仓和成本。",
+    "topic_id": 20,
+    "topic_ids": [
+      20,
+      19,
+      7
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 112,
+    "title": "Investor.gov债券问答：风险不止违约一种",
+    "source": "SEC / Investor.gov",
+    "source_url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds",
+    "published_at": null,
+    "category": "Bonds",
+    "difficulty": "Beginner",
+    "summary": "这份问答将债券风险分为信用、利率、通胀、流动性和提前赎回等维度，帮助读者建立分类理解。",
+    "why_it_matters": "看到债券价格变化时，应分辨是哪种因素在起作用；约定现金流不代表任意时点都能按原价退出。",
+    "topic_id": 6,
+    "topic_ids": [
+      6,
+      9,
+      21
+    ],
+    "is_demo": false,
+    "content_type": "REAL_WORLD",
+    "source_kind": "官方投教"
+  },
+  {
+    "id": 1,
+    "title": "生活费上涨，购买力就一定提高了吗？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Personal Finance",
+    "difficulty": "Beginner",
+    "summary": "同样一笔钱能买多少，需要把名义金额与商品价格一起比较。假设午餐涨价10%、预算只涨5%，预算增加仍可能买到更少午餐。",
+    "why_it_matters": "这能帮助区分收入变化、消费数量变化和单价变化，避免只看账户数字。",
+    "topic_id": 1,
+    "topic_ids": [
+      1,
+      2
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 2,
+    "title": "通胀下降，为什么东西还没有变便宜？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Macro",
+    "difficulty": "Beginner",
+    "summary": "通胀率是价格变化的速度。涨幅从10%降到2%，通常表示涨得更慢，而不是此前上涨的价格已经回落。",
+    "why_it_matters": "先分清水平与变化率，再判断财经标题，才能避免把放缓和下降混为一谈。",
+    "topic_id": 2,
+    "topic_ids": [
+      2,
+      1
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 3,
+    "title": "长期收益率为什么不能简单外推？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Personal Finance",
+    "difficulty": "Beginner",
+    "summary": "复利曲线把输入假设连续展开。现实收益、费用和投入时间都会变化，过去的年化数字并不代表以后每年同样增长。",
+    "why_it_matters": "观察模型对不同输入有多敏感，比把一条漂亮曲线当成未来路线更有帮助。",
+    "topic_id": 3,
+    "topic_ids": [
+      3,
+      21
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 4,
+    "title": "应急资金为什么先问“什么时候能用”？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Personal Finance",
+    "difficulty": "Beginner",
+    "summary": "突发必要支出往往带有紧迫的付款日期。账面价值较高但难以及时变现的资产，不一定能解决明天的现金缺口。",
+    "why_it_matters": "把备用金、计划支出和长期目标分开，有助于看清流动性约束。",
+    "topic_id": 4,
+    "topic_ids": [
+      4,
+      17
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 5,
+    "title": "好消息为什么不一定推高股票价格？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Stocks",
+    "difficulty": "Beginner",
+    "summary": "交易价格可能已经包含部分预期。实际结果虽然比过去好，却可能低于事先预期；其他影响因素也可能同时变化。",
+    "why_it_matters": "阅读新闻时，区分结果本身与预期差异，不从单条消息直接推导涨跌。",
+    "topic_id": 5,
+    "topic_ids": [
+      5,
+      12
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 6,
+    "title": "债券价格与收益率为什么通常反向变化？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Bonds",
+    "difficulty": "Intermediate",
+    "summary": "未来固定现金流不变时，用更高的市场要求收益率折现，会得到更低的当前价格。这一比较必须保持其他条件不变。",
+    "why_it_matters": "它解释一种基本机制，但不能忽略真实债券的信用、期限和流动性风险。",
+    "topic_id": 6,
+    "topic_ids": [
+      6,
+      9
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 7,
+    "title": "ETF为什么也会下跌？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Funds & ETF",
+    "difficulty": "Beginner",
+    "summary": "ETF份额的价值来自底层资产和产品机制。指数下跌、集中持仓承压或折溢价变化，都可能影响投资者看到的交易价格。",
+    "why_it_matters": "先看跟踪目标与持仓，再看名称。交易便利不意味着本金安全。",
+    "topic_id": 7,
+    "topic_ids": [
+      7,
+      20,
+      21
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 8,
+    "title": "分散投资为什么不等于不会亏损？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Markets",
+    "difficulty": "Beginner",
+    "summary": "持仓分散可减少对单一对象的依赖，但多个资产仍可能受到相同冲击。多个基金也可能重仓相同公司或行业。",
+    "why_it_matters": "分散的重点是风险来源，而不是账户里显示的产品个数。",
+    "topic_id": 8,
+    "topic_ids": [
+      8,
+      22
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 9,
+    "title": "为什么市场总在讨论降息？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Macro",
+    "difficulty": "Intermediate",
+    "summary": "利率连接融资成本、现金流折现与资金选择。政策变化会影响这些条件，但作用还取决于经济背景与事前预期。",
+    "why_it_matters": "看懂传导过程能帮助理解讨论，不必把政策词语当成即时价格信号。",
+    "topic_id": 9,
+    "topic_ids": [
+      9,
+      10,
+      12
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 10,
+    "title": "央行调整政策，为什么效果需要时间？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Macro",
+    "difficulty": "Beginner",
+    "summary": "金融机构、企业和家庭的反应并不同时发生。政策工具先影响部分金融条件，再经过借贷、支出等渠道逐步传导。",
+    "why_it_matters": "政策决定、实施安排和实际经济结果是三个层次，阅读时应分别核查。",
+    "topic_id": 10,
+    "topic_ids": [
+      10,
+      9,
+      23
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 11,
+    "title": "汇率变化如何影响跨境预算？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Markets",
+    "difficulty": "Beginner",
+    "summary": "以本币表示的外币价格变化，会改变同样外币支出的本币成本；实际支付还要考虑点差和手续费。",
+    "why_it_matters": "固定一笔外币支出，用几个假设汇率计算预算范围，可以识别敏感性而无需预测方向。",
+    "topic_id": 11,
+    "topic_ids": [
+      11,
+      1
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 12,
+    "title": "低市盈率为什么未必意味着便宜？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Stocks",
+    "difficulty": "Intermediate",
+    "summary": "盈利质量、行业周期和未来风险不同，即便市盈率相同，所代表的条件也可能差异很大。一次性盈利尤其会干扰比较。",
+    "why_it_matters": "把指标还原到经营和假设中，避免把简单排名当成价值结论。",
+    "topic_id": 12,
+    "topic_ids": [
+      12,
+      5
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 13,
+    "title": "市场上涨时，为什么更容易害怕踏空？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Markets",
+    "difficulty": "Beginner",
+    "summary": "收益截图和一致讨论会放大紧迫感，却往往省略失败、成本与不同资金用途。别人的过去结果不能直接复制为自己的未来结果。",
+    "why_it_matters": "先区分观察和感受，再检查信息来源、风险和用钱日期。",
+    "topic_id": 13,
+    "topic_ids": [
+      13,
+      24
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 14,
+    "title": "为什么亏损之后更想快点“赚回来”？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Markets",
+    "difficulty": "Beginner",
+    "summary": "损失带来的感受和对买入价的依赖，可能让回本成为唯一目标。但旧损失并不能说明新风险会获得补偿。",
+    "why_it_matters": "把未来证据与过去成本分开，是检查决策过程的一种方法，不是买卖指令。",
+    "topic_id": 14,
+    "topic_ids": [
+      14,
+      15
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 15,
+    "title": "“大家都在买”为什么不是充分理由？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Markets",
+    "difficulty": "Beginner",
+    "summary": "许多人可能转述同一来源，也可能拥有不同期限和财务约束。数量与热度不能代替证据质量和适用性。",
+    "why_it_matters": "独立思考不是故意反对多数，而是能够说明自己的依据。",
+    "topic_id": 24,
+    "topic_ids": [
+      24,
+      13,
+      16
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  },
+  {
+    "id": 16,
+    "title": "为什么低风险仍不等于没有风险？",
+    "source": "FinPilot 原创",
+    "source_url": null,
+    "published_at": null,
+    "category": "Personal Finance",
+    "difficulty": "Beginner",
+    "summary": "价格波动小不代表信用、流动性或购买力风险不存在。有些风险只在急需退出或环境改变时显现。",
+    "why_it_matters": "把“可能亏多少、何时能用、由谁履约”拆开询问，比只看风险标签更清楚。",
+    "topic_id": 21,
+    "topic_ids": [
+      21,
+      4,
+      18
+    ],
+    "is_demo": false,
+    "content_type": "EXPLAINER",
+    "source_kind": "原创解释"
+  }
+]

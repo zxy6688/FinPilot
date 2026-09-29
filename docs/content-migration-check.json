@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "runs": 2,
+  "preserved_tables": [
+    "users",
+    "user_progress",
+    "quiz_records",
+    "favorites",
+    "posts",
+    "comments",
+    "lab_records",
+    "chat_sessions",
+    "chat_messages"
+  ],
+  "legacy_questions_preserved": 32,
+  "user_post_id_collision_preserved": 13,
+  "foreign_key_errors": 0,
+  "seed_posts": 20,
+  "seed_replies": 20
+}

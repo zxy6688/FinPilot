@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "managed stop releases 8000 and 5173",
+    "stale PID file does not stop unrelated process",
+    "occupied port fails clearly and leaves unrelated server alive",
+    "Windows PowerShell demo reset with SQLite backup",
+    "Windows PowerShell cold start and idempotent repeat start"
+  ],
+  "status": "passed",
+  "date": "2026-09-29T08:41:36.6998702Z"
+}

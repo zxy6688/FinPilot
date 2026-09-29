@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "slug": "compound",
+    "title": "复利的时间力量",
+    "english": "Compound Interest",
+    "question": "如果每月多留下一点，十年后会有什么变化？",
+    "summary": "在固定假设下比较累计投入与复利结果。",
+    "topic_id": 3,
+    "lesson_id": 3,
+    "educational_notes": {
+      "exploring": "固定投入和复利假设如何共同影响余额。",
+      "observe": "比较累计投入线与假设余额线，改变期限后再看差距。",
+      "why": "利息继续参与后续计算，时间和持续投入共同作用。",
+      "not_means": "不代表稳定实际收益；未建模波动、税费或中断投入。"
+    }
+  },
+  {
+    "id": 2,
+    "slug": "inflation",
+    "title": "看不见的购买力",
+    "english": "Inflation",
+    "question": "十年后的同一笔钱，还能买到多少东西？",
+    "summary": "用固定通胀假设观察实际购买力。",
+    "topic_id": 2,
+    "lesson_id": 2,
+    "educational_notes": {
+      "exploring": "相同名义金额在不同通胀假设下的购买力。",
+      "observe": "固定金额时，观察期限延长后实际购买力的变化。",
+      "why": "实际金额通过价格水平折算；累计变化不是简单相加。",
+      "not_means": "不是未来通胀预测，也不等于每个人实际生活成本。"
+    }
+  },
+  {
+    "id": 3,
+    "slug": "risk",
+    "title": "波动与收益",
+    "english": "Risk & Return",
+    "question": "你能接受怎样的起伏？",
+    "summary": "比较三条固定教学路径；高风险不保证高收益。",
+    "topic_id": 21,
+    "lesson_id": 17,
+    "educational_notes": {
+      "exploring": "不同教学价格路径的波动与最终结果。",
+      "observe": "比较中途回撤与期末金额，二者衡量的事情不同。",
+      "why": "较大波动意味着结果不确定性，不保证更高最终收益。",
+      "not_means": "三条固定路径不是概率分布或产品历史业绩。"
+    }
+  },
+  {
+    "id": 4,
+    "slug": "allocation",
+    "title": "你的资产拼图",
+    "english": "Asset Allocation",
+    "question": "不同资产的比例如何改变情景结果？",
+    "summary": "对股票、债券和现金进行简化配置。",
+    "topic_id": 22,
+    "lesson_id": 25,
+    "educational_notes": {
+      "exploring": "配置权重如何改变固定情景下的组合结果。",
+      "observe": "一次只改一项权重，同时检查各项之和。",
+      "why": "组合回报由权重与假设回报共同决定。",
+      "not_means": "不是个人配置建议；未模拟动态相关性、再平衡与全部成本。"
+    }
+  },
+  {
+    "id": 5,
+    "slug": "interest",
+    "title": "利率与债券",
+    "english": "Interest Rate",
+    "question": "收益率上升时，固定现金流的价格会怎样变化？",
+    "summary": "用一张五年期固定息票债券理解折现。",
+    "topic_id": 9,
+    "lesson_id": 6,
+    "educational_notes": {
+      "exploring": "市场要求收益率与固定债券现金流价格的关系。",
+      "observe": "保持票息和期限不变，观察收益率调高后的价格。",
+      "why": "更高折现率降低未来固定现金流的现值。",
+      "not_means": "不代表所有债券都按此幅度变化；未模拟违约、浮息和提前赎回。"
+    }
+  },
+  {
+    "id": 6,
+    "slug": "fomo",
+    "title": "错过的焦虑",
+    "english": "FOMO Challenge",
+    "question": "朋友都在晒收益，你会如何回应？",
+    "summary": "识别信息压力，练习核查与暂停。",
+    "topic_id": 13,
+    "lesson_id": 13,
+    "educational_notes": {
+      "exploring": "收益展示与时间压力怎样影响判断。",
+      "observe": "比较不同回答背后依赖的信息和遗漏的约束。",
+      "why": "展示样本和紧迫感可能让人跳过核查。",
+      "not_means": "不是心理诊断，也不存在适合所有人的具体交易答案。"
+    }
+  },
+  {
+    "id": 7,
+    "slug": "loss",
+    "title": "面对损失",
+    "english": "Loss Aversion",
+    "question": "出现亏损后，你最想做什么？",
+    "summary": "反思情绪，不做心理诊断或买卖建议。",
+    "topic_id": 14,
+    "lesson_id": 14,
+    "educational_notes": {
+      "exploring": "亏损后的反应如何受回本目标影响。",
+      "observe": "留意自己的理由来自新证据还是不愿承认损失。",
+      "why": "损失带来的不适可能改变原来的风险选择。",
+      "not_means": "不能据此判定人格或给出应当持有、卖出的建议。"
+    }
+  },
+  {
+    "id": 8,
+    "slug": "crash",
+    "title": "如果市场下跌20%",
+    "english": "Market Crash",
+    "question": "面对一次突然下跌，如何重新检查决策？",
+    "summary": "固定情景下观察跌幅与回本所需涨幅。",
+    "topic_id": 14,
+    "lesson_id": 14,
+    "educational_notes": {
+      "exploring": "跌幅与回到起点所需涨幅为什么不对称。",
+      "observe": "下跌20%后，从80回到100需要上涨25%。",
+      "why": "下跌后的百分比计算基数更小。",
+      "not_means": "不预测市场恢复时间，也不说明价格必然回到起点。"
+    }
+  }
+]

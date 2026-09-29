@@ -1,0 +1,28 @@
+{
+  "passed": 14,
+  "checks": [
+    "demo credentials fill without automatic login",
+    "discover filters and safe official deep links",
+    "knowledge graph keyboard edge and lesson navigation",
+    "quizzes, completion, outline and persistent progress",
+    "AI explanation connects topic, course and lab",
+    "all eight labs, touchable controls and saved activity",
+    "community post, comment, like and favorite",
+    "profile, logout and relogin preserve actions",
+    "global search keyboard navigation and focus return",
+    "desktop final screenshots and branded states",
+    "375 / 390 / 430 / 768 mobile routes and controls",
+    "mobile final screenshots and collapsible knowledge",
+    "friendly offline state, retry and inert raw HTML",
+    "registration validation and independent learner account"
+  ],
+  "errors": [],
+  "viewports": [
+    1440,
+    375,
+    390,
+    430,
+    768
+  ],
+  "date": "2026-09-29T08:44:07.704Z"
+}

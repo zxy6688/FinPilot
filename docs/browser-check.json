@@ -1,0 +1,18 @@
+{
+  "passed": 11,
+  "checks": [
+    "home desktop screenshot",
+    "register through UI",
+    "discover filtering",
+    "topic relationships",
+    "quiz and progress persisted",
+    "AI mock chat and links",
+    "all lab routes and save",
+    "create post, reply, like, favorite and summary",
+    "search and profile",
+    "all core routes and unknown route",
+    "mobile routes have no overflow"
+  ],
+  "errors": [],
+  "date": "2026-09-29T07:36:52.034Z"
+}

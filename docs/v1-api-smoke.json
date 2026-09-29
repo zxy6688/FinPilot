@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "routes": {
+    "/health": 200,
+    "/topics": 200,
+    "/topics/9": 200,
+    "/articles": 200,
+    "/learning-paths": 200,
+    "/learning-paths/1": 200,
+    "/lessons/1": 200,
+    "/labs": 200,
+    "/labs/5": 200,
+    "/posts": 200,
+    "/posts/1": 200,
+    "/badges": 200,
+    "/recommendations": 200,
+    "/search?q=ETF": 200
+  },
+  "topics": 24,
+  "articles": 28,
+  "paths": 5,
+  "labs": 8
+}

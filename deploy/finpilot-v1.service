@@ -1,0 +1,26 @@
+[Unit]
+Description=FinPilot V1 Parallel Preview FastAPI
+After=network.target
+
+[Service]
+Type=simple
+User=finpilot-v1
+Group=finpilot-v1
+WorkingDirectory=/www/finpilot-v1
+EnvironmentFile=/www/finpilot-v1/.env
+Environment=PYTHONPATH=/www/finpilot-v1/backend
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/www/finpilot-v1/.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8001 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/www/finpilot-v1/data /www/finpilot-v1/logs
+
+[Install]
+WantedBy=multi-user.target

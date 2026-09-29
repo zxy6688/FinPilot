@@ -117,3 +117,5 @@ FinPilot 提供金融教育与信息辅助，不构成投资建议。投资决�
 ## GitHub 与服务器发布准备
 
 最终小修与服务器部署文件见 [Final Patch 报告](docs/FINAL_RELEASE.md) 和 [部署说明](deploy/DEPLOYMENT.md)。GitHub 源码仓库为 [zxy6688/FinPilot](https://github.com/zxy6688/FinPilot)。本地成品包的既有验收记录属于上一阶段；本次仅修复日志初始化、清理导入并准备发布，不修改 UI、内容或业务。
+
+当前服务器方案为独立并行预览：`http://43.143.241.109:8088/`，源码 `/www/finpilot-v1`。旧版 4173 和原站点目录保持不变，执行命令以 [并行预览说明](deploy/DEPLOYMENT.md) 为准。

@@ -1,5 +1,7 @@
 # FinPilot V1 · Final Patch / GitHub / Server Preparation
 
+> 本文记录上一轮发布准备。服务器方案已被 [并行预览部署](../deploy/DEPLOYMENT.md) 替代；当前仅部署 8088 / 8001 与 finpilot-v1 独立目录，旧站不得改动。
+
 ## Final Patch
 
 `backend/app/main.py` 在构造 FileHandler 前自行创建 logs 目录。main、AI provider、security 的逗号合并 import 已拆成独立行；seed、routes、learning、recommendations、reset_demo 的 models/schema 星号导入改为实际使用的显式名称。未改动函数业务、UI、课程、Seed、API 定义或依赖清单。

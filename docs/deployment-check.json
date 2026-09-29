@@ -1,9 +1,12 @@
 {
-  "bash_syntax": "passed: deploy-server.sh, update-server.sh",
-  "static_backup_build_publish_order": "passed",
-  "nginx_template_review": "passed",
-  "systemd_template_review": "passed",
-  "destructive_process_commands": "none",
-  "remote_execution": "not performed",
-  "linux_nginx_and_systemd_runtime": "not tested locally"
+  "bash_syntax": "passed",
+  "isolation_boundaries": "passed",
+  "embedded_python": "passed",
+  "actual_shell_recovery_cases": [
+    "first-install",
+    "update",
+    "between-renames",
+    "config-before-publish"
+  ],
+  "remote_execution": "not performed"
 }

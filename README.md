@@ -113,3 +113,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\Check.ps1
 本轮未进行 Git 初始化、GitHub 发布、服务器、域名、Nginx 或 HTTPS 配置。
 
 FinPilot 提供金融教育与信息辅助，不构成投资建议。投资决策应由用户基于自身情况独立作出。
+
+## GitHub 与服务器发布准备
+
+最终小修与服务器部署文件见 [Final Patch 报告](docs/FINAL_RELEASE.md) 和 [部署说明](deploy/DEPLOYMENT.md)。GitHub 源码仓库为 [zxy6688/FinPilot](https://github.com/zxy6688/FinPilot)。本地成品包的既有验收记录属于上一阶段；本次仅修复日志初始化、清理导入并准备发布，不修改 UI、内容或业务。

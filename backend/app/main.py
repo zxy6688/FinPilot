@@ -7,6 +7,7 @@ from fastapi.responses import JSONResponse
 from .db import ROOT
 from .seed import seed
 from .api.routes import router
+from .api.v2 import router as v2_router
 
 LOG_DIR = ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -36,6 +37,7 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type"],
 )
 app.include_router(router)
+app.include_router(v2_router)
 
 
 @app.get("/api/health")

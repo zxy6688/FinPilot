@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-02",
+  "command": "scripts/Check.ps1",
+  "backend_tests": {
+    "passed": 42,
+    "v1": 29,
+    "v2": 13,
+    "warnings": [
+      "Existing Starlette/httpx deprecation"
+    ]
+  },
+  "python_compile": "passed",
+  "python_import": "passed",
+  "typecheck": "passed",
+  "production_build": "passed",
+  "lint": "No standalone lint command configured",
+  "deployment": "NOT DEPLOYED"
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-02T06:11:42.768492+00:00",
+  "passed": true,
+  "method": "SQLite read-only source backup; V2 seed and evidence/route/home on copy",
+  "tables_preserved": 23,
+  "rows_preserved": 289,
+  "users_checked": 9,
+  "source_modified": false,
+  "new_tables": 0
+}

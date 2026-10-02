@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-02T06:24:11.842857+00:00",
+  "passed": 29,
+  "database": "isolated tmp/v2-smoke-*.db",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/topics/9",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/articles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/learning-paths",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/learning-paths/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/lessons/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/labs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/labs/5",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/posts",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/posts/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/users/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/favorites",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/badges",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/recommendations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/search?q=bonds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/home",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/understanding-map",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/learning-routes/6",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/topics/9/connections",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/discover/relevant",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v2/labs/recommended",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "context": "lesson",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "context": "topic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "context": "article",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "context": "lab",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "context": "relation",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "context": "route",
+      "status": 200
+    }
+  ]
+}

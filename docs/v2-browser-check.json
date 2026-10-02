@@ -1,0 +1,26 @@
+{
+  "passed": 12,
+  "checks": [
+    "demo home: continuation, review, graph reasons, material and lab",
+    "understanding evidence: domains, topic states and details",
+    "route from Topic: known, next, target and real edge",
+    "lesson contextual actions, selected section, follow-up and focus return",
+    "relation keyboard and contextual why",
+    "Discover personalized reasons, filters and contextual material",
+    "all eight scenarios and preserved labs; recomputed explanation",
+    "saved contextual session retains lab parameters in Copilot",
+    "search routes and topic-linked discussion",
+    "new-user UI journey updates home and understanding; no demo leakage",
+    "375 / 390 / 430 / 768 responsive workspace, route, map and dialogs",
+    "mobile final screenshots and context"
+  ],
+  "errors": [],
+  "viewports": [
+    1440,
+    375,
+    390,
+    430,
+    768
+  ],
+  "date": "2026-10-02T06:18:22.218Z"
+}

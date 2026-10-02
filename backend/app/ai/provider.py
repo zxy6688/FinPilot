@@ -97,7 +97,13 @@ async def remote(messages):
         return None, "demo-fallback"
 
 
-async def answer(db, mode, message, history):
+async def answer(db, mode, message, history, context_data=None, user=None):
+    if context_data is not None:
+        from .contextual import contextual_answer
+
+        return await contextual_answer(
+            db, user, context_data, message, history, remote, SYSTEM + MODES[mode]
+        )
     topic, lesson, lab = context(db, message)
     if topic is None:
         return {

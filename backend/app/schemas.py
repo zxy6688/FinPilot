@@ -62,10 +62,52 @@ class NewComment(BaseModel):
         return value.strip()
 
 
+class LabInput(BaseModel):
+    principal: float = Field(default=10000, ge=0, le=10000000)
+    monthly: float = Field(default=500, ge=0, le=100000)
+    rate: float = Field(default=5, ge=-10, le=20)
+    years: int = Field(default=10, ge=1, le=50)
+    stocks: int = Field(default=50, ge=0, le=100)
+    bonds: int = Field(default=30, ge=0, le=100)
+    choice: int = Field(default=0, ge=0, le=2)
+
+
+class AIContext(BaseModel):
+    source_type: Literal["topic", "lesson", "article", "lab", "relation", "route"]
+    source_id: int = Field(gt=0)
+    action: Literal[
+        "explain",
+        "example",
+        "connect",
+        "quiz",
+        "why",
+        "next",
+        "result",
+        "changed",
+        "limits",
+    ] = "explain"
+    selected_text: str = Field(default="", max_length=1200)
+    inputs: LabInput | None = None
+
+    @field_validator("selected_text")
+    @classmethod
+    def clean_text(cls, value):
+        return re.sub(
+            r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", re.sub(r"<[^>]*>", "", value)
+        ).strip()
+
+    @model_validator(mode="after")
+    def scoped_inputs(self):
+        if self.inputs is not None and self.source_type != "lab":
+            raise ValueError("实验参数仅可用于 Lab 上下文")
+        return self
+
+
 class ChatInput(BaseModel):
     mode: Literal["tutor", "explain", "guide", "coach"] = "tutor"
     message: str = Field(min_length=1, max_length=6000)
     session_id: int | None = None
+    context: AIContext | None = None
 
     @model_validator(mode="after")
     def message_boundary(self):
@@ -75,16 +117,6 @@ class ChatInput(BaseModel):
         if self.mode != "explain" and len(self.message) > 2000:
             raise ValueError("当前模式最多输入 2000 个字符；长段文字请使用帮我看懂")
         return self
-
-
-class LabInput(BaseModel):
-    principal: float = Field(default=10000, ge=0, le=10000000)
-    monthly: float = Field(default=500, ge=0, le=100000)
-    rate: float = Field(default=5, ge=-10, le=20)
-    years: int = Field(default=10, ge=1, le=50)
-    stocks: int = Field(default=50, ge=0, le=100)
-    bonds: int = Field(default=30, ge=0, le=100)
-    choice: int = Field(default=0, ge=0, le=2)
 
 
 class ReportInput(BaseModel):

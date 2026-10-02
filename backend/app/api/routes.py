@@ -526,6 +526,10 @@ def search(q: str = Query("", max_length=100), db: Session = Depends(get_db)):
             )
             .limit(30)
         ]
+    result["routes"] = [
+        {"id": t["id"], "title": "建立学习路线：" + t["title"]}
+        for t in result.get("topics", [])
+    ]
     return result
 
 
@@ -577,7 +581,9 @@ async def chat(
         ]
     else:
         s = ChatSession(user_id=user.id, mode=data.mode, title=data.message[:40])
-    result = await answer(db, data.mode, data.message, history)
+    result = await answer(
+        db, data.mode, data.message, history, context_data=data.context, user=user
+    )
     if not data.session_id:
         db.add(s)
         db.flush()
@@ -590,6 +596,7 @@ async def chat(
             metadata_json={
                 "actions": result["actions"],
                 "provider": result["provider"],
+                **({"context": result["context"]} if "context" in result else {}),
             },
         )
     )

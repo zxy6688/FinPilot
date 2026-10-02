@@ -9,6 +9,7 @@ interface Result {
   topic_id?: number;
 }
 const sections: Record<string, { label: string; path: string }> = {
+  routes: { label: "Learning Routes · 建立知识路线", path: "/learn/routes/" },
   topics: { label: "Topics · 知识主题", path: "/topics/" },
   articles: { label: "Discover · 信息导航", path: "/topics/" },
   lessons: { label: "Learn · 课程", path: "/lessons/" },
@@ -47,7 +48,21 @@ export default function SearchPage() {
         <button>搜索</button>
       </form>
       {!q ? (
-        <div className="card search-suggestions"><p>试试这些常见问题，也可以按 Ctrl K 随时搜索。</p>{["利率","ETF","预算","FOMO"].map(q=><button className="secondary" key={q} onClick={()=>{setText(q);setParams({q});}}>{q}</button>)}</div>
+        <div className="card search-suggestions">
+          <p>试试这些常见问题，也可以按 Ctrl K 随时搜索。</p>
+          {["利率", "ETF", "预算", "FOMO"].map((q) => (
+            <button
+              className="secondary"
+              key={q}
+              onClick={() => {
+                setText(q);
+                setParams({ q });
+              }}
+            >
+              {q}
+            </button>
+          ))}
+        </div>
       ) : (
         <State loading={r.loading} error={r.error} retry={r.reload}>
           {r.data && Object.values(r.data).every((x) => !x.length) ? (

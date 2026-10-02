@@ -1,3 +1,4 @@
+import ContextAI from "./ContextAI";
 import { useState, useEffect, ReactNode, Component, ErrorInfo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -295,6 +296,12 @@ export function ArticleCard({ article: a }: { article: Article }) {
           {error}
         </small>
       )}
+      <ContextAI
+        compact
+        context={{ source_type: "article", source_id: a.id }}
+        title={a.title}
+        actions={["explain", "connect"]}
+      />
     </article>
   );
 }

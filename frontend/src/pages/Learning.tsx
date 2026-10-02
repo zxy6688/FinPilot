@@ -1,3 +1,6 @@
+import ContextAI from "../components/ContextAI";
+import RelevantDiscover from "../components/RelevantDiscover";
+import { RouteBuilder } from "./LearningRoute";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -53,6 +56,7 @@ export function Discover() {
         真实来源包含历史事件和官方投教资料，日期以原始页面为准；原创解释为
         FinPilot 编写。这里不是实时新闻流。
       </div>
+      <RelevantDiscover />
       <div className="filters">
         <div className="content-tabs" role="group" aria-label="内容类型筛选">
           {[
@@ -154,6 +158,19 @@ export function TopicHub() {
               }{" "}
               / {r.data.lessons.length} 节相关课程已完成
             </span>
+          </div>
+          <div className="row wrap topic-v2-actions">
+            <Link
+              className="button secondary"
+              to={"/learn/routes/" + r.data.id}
+            >
+              Build route to this topic →
+            </Link>
+            <ContextAI
+              context={{ source_type: "topic", source_id: r.data.id }}
+              title={r.data.title}
+              actions={["explain", "next"]}
+            />
           </div>
           <KnowledgeMap key={r.data.id} topic={r.data} />
           <Section title="先理解这些问题" en="UNDERSTAND">
@@ -260,6 +277,7 @@ export function Learn() {
         title="把零散的知识，连成自己的地图。"
         description="五条路径，从日常的钱，到市场与决策。每次约 6 分钟，把一个概念真正弄懂。"
       />
+      <RouteBuilder />
       <State loading={r.loading} error={r.error} retry={r.reload}>
         <div className="grid two">
           {r.data?.map((p, i) => (
@@ -384,6 +402,10 @@ export function LessonPage() {
     auth = useAuth();
   const r = useLoad<Lesson>("/lessons/" + id);
   const paths = useLoad<LearningPath[]>("/learning-paths");
+  useEffect(() => {
+    if (auth.user && r.data)
+      api("/topics/" + r.data.topic_id + "/view", "POST").catch(() => {});
+  }, [r.data?.id, auth.user?.id]);
   const currentPath = paths.data?.find((p) => p.id === r.data?.path_id);
   const [results, setResults] = useState<Record<number, AnswerResult>>({}),
     [error, setError] = useState(""),
@@ -456,6 +478,18 @@ export function LessonPage() {
             <div className="card reading-card">
               <ReadingBlocks
                 markdown={r.data.markdown}
+                contextual={(text, title) => (
+                  <ContextAI
+                    compact
+                    context={{
+                      source_type: "lesson",
+                      source_id: r.data!.id,
+                      selected_text: text.slice(0, 1200),
+                    }}
+                    title={title}
+                    actions={["explain", "example", "connect", "quiz"]}
+                  />
+                )}
                 next={
                   <Link
                     className="next-lesson-card"

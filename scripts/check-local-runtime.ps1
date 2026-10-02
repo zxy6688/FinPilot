@@ -1,9 +1,9 @@
-$ErrorActionPreference='Stop'
+﻿$ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Local-Runtime.ps1')
 $checks=[System.Collections.Generic.List[string]]::new()
 & (Join-Path $PSScriptRoot 'Stop-FinPilot.ps1')
-if((Test-FinPilotPort 8000) -or (Test-FinPilotPort 5173)){throw 'Managed stop did not release both ports.'}
-$checks.Add('managed stop releases 8000 and 5173')
+if((Test-FinPilotPort 8002) -or (Test-FinPilotPort 5174)){throw 'Managed stop did not release both ports.'}
+$checks.Add('managed stop releases 8002 and 5174')
 $node=(Get-Command node).Source
 $guardPath=Join-Path $FinPilotRoot 'tmp/polish/guard.cjs'
 "setInterval(()=>{},1000)" | Set-Content -LiteralPath $guardPath -Encoding UTF8
@@ -17,7 +17,7 @@ try {
     $checks.Add('stale PID file does not stop unrelated process')
 } finally {if(Test-FinPilotProcess $guardRecord){Stop-Process -Id $guard.Id}}
 $serverPath=Join-Path $FinPilotRoot 'tmp/polish/occupied.cjs'
-"require('node:http').createServer((q,r)=>r.end('unrelated')).listen(5173,'127.0.0.1')" | Set-Content -LiteralPath $serverPath -Encoding UTF8
+"require('node:http').createServer((q,r)=>r.end('unrelated')).listen(5174,'127.0.0.1')" | Set-Content -LiteralPath $serverPath -Encoding UTF8
 $server=Start-Process -FilePath $node -ArgumentList ('"'+$serverPath+'"') -WindowStyle Hidden -PassThru
 $serverRecord=Get-FinPilotProcessRecord $server.Id 'guard-server'
 try {

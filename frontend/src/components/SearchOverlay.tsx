@@ -6,6 +6,7 @@ import { api } from "../services/api";
 import { State, Empty } from "./ui";
 type Item = { id: number; title: string; topic_id?: number };
 const groups = [
+  { key: "routes", label: "学习路线", path: "/learn/routes/" },
   { key: "topics", label: "知识主题", path: "/topics/" },
   { key: "lessons", label: "课程", path: "/lessons/" },
   { key: "articles", label: "Discover", path: "/topics/" },
@@ -54,13 +55,11 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
     };
   }, [query, tick]);
   const results = groups.flatMap((g) =>
-    (data[g.key] || [])
-      .slice(0, 5)
-      .map((item) => ({
-        ...item,
-        group: g.label,
-        url: g.path + (g.key === "articles" ? item.topic_id : item.id),
-      })),
+    (data[g.key] || []).slice(0, 5).map((item) => ({
+      ...item,
+      group: g.label,
+      url: g.path + (g.key === "articles" ? item.topic_id : item.id),
+    })),
   );
   function open(url: string) {
     onClose();

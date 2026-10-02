@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./services/auth";
 import { ErrorBoundary } from "./components/ui";
 import Layout from "./components/Layout";
+const LearningRoutePage = lazy(() => import("./pages/LearningRoute"));
 const Home = lazy(() => import("./pages/Home"));
 const Discover = lazy(() =>
   import("./pages/Learning").then((m) => ({ default: m.Discover })),
@@ -42,6 +43,7 @@ const ProfilePage = lazy(() =>
 const SearchPage = lazy(() => import("./pages/Search"));
 import "./styles.css";
 import "./polish.css";
+import "./v2.css";
 import { BrandMark } from "./components/Brand";
 createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>
@@ -54,6 +56,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="discover" element={<Discover />} />
               <Route path="topics/:id" element={<TopicHub />} />
               <Route path="learn" element={<Learn />} />
+              <Route path="learn/routes/:id" element={<LearningRoutePage />} />
               <Route path="learn/:id" element={<PathPage />} />
               <Route path="lessons/:id" element={<LessonPage />} />
               <Route path="copilot" element={<Copilot />} />

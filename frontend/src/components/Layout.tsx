@@ -73,7 +73,7 @@ export default function Layout() {
       <header className="site-header">
         <Link className="brand" to="/" aria-label="FinPilot 首页">
           <BrandMark />
-          FinPilot<span className="version">V1</span>
+          FinPilot<span className="version">V2</span>
         </Link>
         <nav
           id="main-navigation"

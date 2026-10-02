@@ -170,7 +170,18 @@ export interface Action {
 export interface Message {
   role: string;
   content: string;
-  metadata_json?: { actions?: Action[]; provider?: string };
+  metadata_json?: {
+    actions?: Action[];
+    provider?: string;
+    context?: {
+      source_type: string;
+      title: string;
+      source_id: number;
+      action?: string;
+      selected_text?: string;
+      inputs?: Record<string, number>;
+    };
+  };
 }
 export interface ChatSession {
   id: number;

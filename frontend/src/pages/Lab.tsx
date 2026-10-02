@@ -1,3 +1,4 @@
+import { ScenarioIntro, ScenarioReflection } from "../components/ScenarioLab";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -187,6 +188,7 @@ export function LabPage() {
             <h2>你正在探索什么？</h2>
             <p>{r.data.educational_notes.exploring}</p>
           </section>
+          <ScenarioIntro lab={r.data} />
           <div className="lab-workspace">
             <div className="card lab-controls">
               <div className="eyebrow">01 / 改变一个条件</div>
@@ -365,6 +367,9 @@ export function LabPage() {
               )}
             </div>
           </div>
+          {result && !busy && (
+            <ScenarioReflection lab={r.data} inputs={inputs} />
+          )}
           <section className="card lab-notes">
             <h3>观察提示</h3>
             <p>{r.data.educational_notes.observe}</p>

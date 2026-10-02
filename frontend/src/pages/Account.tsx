@@ -1,3 +1,4 @@
+import UnderstandingMap from "../components/UnderstandingMap";
 import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -11,23 +12,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { useAuth } from "../services/auth";
-import {
-  Heading,
-  Section,
-  State,
-  Empty,
-  useLoad,
-  Progress,
-} from "../components/ui";
-import {
-  RadarChart,
-  Radar,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import { Heading, Section, State, Empty, useLoad } from "../components/ui";
 import { BrandMark, KnowledgeCompass } from "../components/Brand";
 import { formatDate } from "../components/ui";
 import type { Profile, Badge, Favorite, LearningPath } from "../types";
@@ -206,8 +191,8 @@ function ProfileContent() {
       {p.data && (
         <>
           <Heading
-            eyebrow="YOUR LEARNING FOOTPRINT"
-            title={p.data.name + "的学习足迹"}
+            eyebrow="MY UNDERSTANDING / LEARNING EVIDENCE"
+            title={p.data.name + "的理解地图"}
             description="这里记录你学会了什么，以及下一步值得探索的方向。"
           >
             <button
@@ -225,6 +210,7 @@ function ProfileContent() {
             </button>
           </Heading>
           {error && <p className="error">{error}</p>}
+          <UnderstandingMap />
           <div className="stats-grid">
             {[
               [BookOpen, p.data.completed_lessons, "完成课程"],
@@ -241,93 +227,6 @@ function ProfileContent() {
                 </div>
               );
             })}
-          </div>
-          <div className="grid two">
-            <Section title="我的学习足迹" en="LEARNING FOOTPRINT">
-              <p className="notice">
-                这里只记录站内学习活动与自测表现，不评估投资能力、风险承受能力或专业资格。
-              </p>
-              <div className="card knowledge-progress">
-                <div
-                  className="footprint-chart"
-                  role="img"
-                  aria-label={p.data.domains
-                    .map((d) => d.title + " " + d.value + "%")
-                    .join("，")}
-                >
-                  <ResponsiveContainer width="100%" height={310}>
-                    <RadarChart data={p.data.domains} outerRadius="68%">
-                      <PolarGrid stroke="#D6DFD7" />
-                      <PolarAngleAxis
-                        dataKey="title"
-                        tick={{ fill: "#40594D", fontSize: 13 }}
-                      />
-                      <PolarRadiusAxis
-                        domain={[0, 100]}
-                        tick={false}
-                        axisLine={false}
-                      />
-                      <Radar
-                        name="站内学习足迹"
-                        dataKey="value"
-                        stroke="#1F725D"
-                        fill="#1F725D"
-                        fillOpacity={0.17}
-                        isAnimationActive={false}
-                      />
-                      <Tooltip
-                        formatter={(value: number) => [`${value}%`, "学习足迹"]}
-                      />
-                    </RadarChart>
-                  </ResponsiveContainer>
-                </div>
-                <div className="domain-values">
-                  {p.data.domains.map((d) => (
-                    <span key={d.title}>
-                      {d.title} <b>{d.value}%</b>
-                    </span>
-                  ))}
-                </div>
-                <p className="muted small">
-                  课程完成度占60%，各题最近一次作答正确率占40%。未学习领域从0开始。
-                </p>
-              </div>
-            </Section>
-            <Section title="值得再想一遍" en="REVIEW & INTERESTS">
-              <div className="card">
-                {p.data.review.length ? (
-                  p.data.review.map((r) => (
-                    <Link
-                      className="review-row"
-                      key={r.topic_id}
-                      to={"/lessons/" + r.lesson_id}
-                    >
-                      <div>
-                        <b>{r.title}</b>
-                        <p>最近作答有 {r.count} 道错题</p>
-                      </div>
-                      <ArrowRight size={18} />
-                    </Link>
-                  ))
-                ) : (
-                  <Empty text="暂时没有待复习的错题。完成自测，检查你的理解。" />
-                )}
-                <h3>最近关注</h3>
-                <div className="row wrap">
-                  {p.data.interests.length ? (
-                    p.data.interests.map((t) => (
-                      <Link className="tag" key={t.id} to={"/topics/" + t.id}>
-                        {t.title}
-                      </Link>
-                    ))
-                  ) : (
-                    <span className="muted small">
-                      浏览或收藏主题后，在这里发现你的兴趣。
-                    </span>
-                  )}
-                </div>
-              </div>
-            </Section>
           </div>
           <Section title="接着上次，继续学习">
             <State

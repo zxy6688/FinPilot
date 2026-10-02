@@ -1,3 +1,4 @@
+import RelationDetail from "./RelationDetail";
 import { useId, useState } from "react";
 import { Link } from "react-router-dom";
 import type { TopicDetail } from "../types";
@@ -5,6 +6,7 @@ export default function KnowledgeMap({ topic }: { topic: TopicDetail }) {
   const [selected, setSelected] = useState<string>(
     "点击关系线查看说明；点击节点继续探索。",
   );
+  const [relationId, setRelationId] = useState<number | null>(null);
   const marker = useId().replace(/:/g, "");
   const incoming = topic.relations.filter((e) => e.to_topic_id === topic.id),
     outgoing = topic.relations.filter((e) => e.from_topic_id === topic.id);
@@ -66,14 +68,16 @@ export default function KnowledgeMap({ topic }: { topic: TopicDetail }) {
               tabIndex={0}
               aria-label={`${e.from_title}，${label}，${e.to_title}`}
               className="relation-edge"
-              onClick={() =>
+              onClick={() => {
+                setRelationId(e.id);
                 setSelected(
                   `${e.from_title} → ${e.to_title}：${label}。具体影响取决于条件，不表示单一因素决定结果。`,
-                )
-              }
+                );
+              }}
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();
+                  setRelationId(e.id);
                   setSelected(
                     `${e.from_title} → ${e.to_title}：${label}。具体影响取决于条件。`,
                   );
@@ -190,11 +194,12 @@ export default function KnowledgeMap({ topic }: { topic: TopicDetail }) {
             </div>
             <button
               className="quiet"
-              onClick={() =>
+              onClick={() => {
+                setRelationId(e.id);
                 setSelected(
                   `${e.from_title} → ${e.to_title}：${e.relation_label}。具体影响取决于条件。`,
-                )
-              }
+                );
+              }}
             >
               {e.relation_label}
             </button>
@@ -204,6 +209,9 @@ export default function KnowledgeMap({ topic }: { topic: TopicDetail }) {
       <p className="map-explanation" aria-live="polite">
         {selected}
       </p>
+      {relationId !== null && (
+        <RelationDetail topicId={topic.id} relationId={relationId} />
+      )}
     </section>
   );
 }

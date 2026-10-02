@@ -91,14 +91,24 @@ export default function Copilot() {
         provider: string;
         actions: Action[];
         session_id: number;
-      }>("/chat", "POST", { message: prompt, mode, session_id: session });
+        context?: NonNullable<Message["metadata_json"]>["context"];
+      }>("/chat", "POST", {
+        message: prompt,
+        mode,
+        session_id: session,
+        context: lastContext,
+      });
       setMessages((old) => [
         ...old,
         { role: "user", content: prompt },
         {
           role: "assistant",
           content: r.content,
-          metadata_json: { actions: r.actions, provider: r.provider },
+          metadata_json: {
+            actions: r.actions,
+            provider: r.provider,
+            context: r.context,
+          },
         },
       ]);
       setSession(r.session_id);
@@ -113,6 +123,9 @@ export default function Copilot() {
   const related =
     [...messages].reverse().find((m) => m.metadata_json?.actions)?.metadata_json
       ?.actions || [];
+  const lastContext = [...messages]
+    .reverse()
+    .find((m) => m.metadata_json?.context)?.metadata_json?.context;
   const lastProvider = [...messages]
     .reverse()
     .find((m) => m.role === "assistant")?.metadata_json?.provider;
@@ -137,6 +150,12 @@ export default function Copilot() {
             : "FinPilot Demo AI"}
         </span>
       </Heading>
+      {lastContext && (
+        <p className="notice">
+          Context · {lastContext.source_type} / {lastContext.title}
+          （来自已保存的上下文会话）
+        </p>
+      )}
       <div className="copilot-layout">
         <aside className="card chat-sidebar">
           <div className="mode-grid">

@@ -6,11 +6,13 @@ export default function ReadingBlocks({
   quiz,
   next,
   compact = false,
+  contextual,
 }: {
   markdown: string;
   quiz?: ReactNode;
   next?: ReactNode;
   compact?: boolean;
+  contextual?: (text: string, title: string) => ReactNode;
 }) {
   const pieces = markdown.replace(/^# [^\n]*\n/, "").split(/^## /m);
   return (
@@ -88,6 +90,7 @@ export default function ReadingBlocks({
             ) : (
               <Markdown skipHtml>{body}</Markdown>
             )}
+            {contextual?.(body, title)}
           </section>
         );
       })}

@@ -281,7 +281,7 @@ export function PostPage() {
                 <Sparkles size={16} /> {busy ? "处理中…" : "AI 总结讨论"}
               </button>
               <Link className="text-link" to={"/topics/" + r.data.topic_id}>
-                相关 Topic →
+                Related Topics · {r.data.topic_title} →
               </Link>
               <button
                 className="quiet"

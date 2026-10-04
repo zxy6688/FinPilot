@@ -28,7 +28,7 @@ async def lifespan(app):
     yield
 
 
-app = FastAPI(title="FinPilot API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="FinPilot API", version="3.0.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.getenv(
@@ -48,7 +48,7 @@ def health():
         "status": "ok",
         "process_id": os.getpid(),
         "local_run_id": os.getenv("FINPILOT_RUN_ID", ""),
-        "version": "1.0.0",
+        "version": "3.0.0",
         "ai_mode": (
             "live" if os.getenv("LLM_API_KEY") and os.getenv("LLM_MODEL") else "demo"
         ),

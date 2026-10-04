@@ -15,9 +15,18 @@ export type ContextAction =
   | "next"
   | "result"
   | "changed"
-  | "limits";
+  | "limits"
+  | "expand";
 export interface AIContext {
-  source_type: "topic" | "lesson" | "article" | "lab" | "relation" | "route";
+  source_type:
+    | "topic"
+    | "lesson"
+    | "article"
+    | "lab"
+    | "relation"
+    | "route"
+    | "compare"
+    | "review";
   source_id: number;
   selected_text?: string;
   inputs?: LabInputs;
@@ -32,6 +41,7 @@ const labels: Record<ContextAction, string> = {
   result: "解释实验结果",
   changed: "改变了什么",
   limits: "模型忽略了什么",
+  expand: "深入解释",
 };
 const kinds = {
   topic: "Topic",
@@ -40,6 +50,8 @@ const kinds = {
   lab: "Lab",
   relation: "Relation",
   route: "Learning Route",
+  compare: "Compare",
+  review: "Review",
 };
 export default function ContextAI({
   context,
@@ -97,7 +109,7 @@ function Conversation({
     [error, setError] = useState(""),
     [text, setText] = useState(""),
     [session, setSession] = useState<number | null>(null);
-  async function send(message: string) {
+  async function send(message: string, requestAction: ContextAction = action) {
     setBusy(true);
     setError("");
     try {
@@ -113,7 +125,8 @@ function Conversation({
         context: {
           ...context,
           selected_text: context.selected_text?.slice(0, 1200),
-          action,
+          action: requestAction,
+          brief: requestAction !== "expand",
         },
       });
       setAnswer(r.content);
@@ -166,6 +179,20 @@ function Conversation({
           {answer && (
             <div className="context-answer">
               <ReadingBlocks markdown={answer} compact />
+              <div className="context-refine">
+                {(
+                  ["expand", "example", "connect", "quiz"] as ContextAction[]
+                ).map((a) => (
+                  <button
+                    className="text-link"
+                    disabled={busy}
+                    key={a}
+                    onClick={() => void send(labels[a] + "：" + title, a)}
+                  >
+                    {labels[a]}
+                  </button>
+                ))}
+              </div>
               <div className="row wrap">
                 {actions.map((a) => (
                   <Link className="tag" key={a.url} to={a.url}>
@@ -194,7 +221,10 @@ function Conversation({
               <Send size={15} /> 发送追问
             </button>
           </form>
-          <Link className="text-link" to="/copilot">
+          <Link
+            className="text-link"
+            to={session ? "/copilot?session=" + session : "/copilot"}
+          >
             打开完整 AI Copilot（会话已保存） →
           </Link>
         </>

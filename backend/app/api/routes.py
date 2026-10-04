@@ -289,9 +289,29 @@ def quiz(
         QuizRecord(user_id=user.id, question_id=id, answer=data.answer, correct=correct)
     )
     from ..services.v3.review import quiz_event
+
     quiz_event(db, user.id, q, data.answer)
+    from ..services.v3.comparisons import OPTION_TAGS, COMPARISONS
+    from ..models_v3 import MisconceptionState
+
+    tag = OPTION_TAGS.get((q.id, data.answer))
+    misconception = (
+        db.query(MisconceptionState).filter_by(user_id=user.id, tag=tag).first()
+        if tag
+        else None
+    )
+    compare = (
+        {
+            "slug": tag,
+            "title": COMPARISONS[tag]["title"],
+            "status": misconception.status,
+        }
+        if misconception and misconception.status == "observed"
+        else None
+    )
     db.commit()
     return {
+        "compare": compare,
         "correct": correct,
         "answer": data.answer,
         "correct_answer": q.correct_answer,
@@ -314,6 +334,7 @@ def complete(id: int, user=Depends(require_user), db: Session = Depends(get_db))
             db.rollback()
     award_badges(db, user)
     from ..services.v3.moments import sync
+
     sync(db, user)
     db.commit()
     return {"ok": True}
@@ -534,6 +555,13 @@ def search(q: str = Query("", max_length=100), db: Session = Depends(get_db)):
     result["routes"] = [
         {"id": t["id"], "title": "建立学习路线：" + t["title"]}
         for t in result.get("topics", [])
+    ]
+    from ..services.v3.comparisons import COMPARISONS
+
+    result["comparisons"] = [
+        {"id": c["id"], "title": c["title"], "summary": c["boundary"]}
+        for c in COMPARISONS.values()
+        if q.casefold() in (c["title"] + c["english"] + c["boundary"]).casefold()
     ]
     return result
 

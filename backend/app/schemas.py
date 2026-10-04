@@ -73,7 +73,7 @@ class LabInput(BaseModel):
 
 
 class AIContext(BaseModel):
-    source_type: Literal["topic", "lesson", "article", "lab", "relation", "route"]
+    source_type: Literal["topic", "lesson", "article", "lab", "relation", "route", "compare", "review"]
     source_id: int = Field(gt=0)
     action: Literal[
         "explain",
@@ -85,7 +85,9 @@ class AIContext(BaseModel):
         "result",
         "changed",
         "limits",
+        "expand",
     ] = "explain"
+    brief: bool = False
     selected_text: str = Field(default="", max_length=1200)
     inputs: LabInput | None = None
 

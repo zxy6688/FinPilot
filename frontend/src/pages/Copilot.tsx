@@ -76,6 +76,25 @@ export default function Copilot() {
       setSession(null);
     }
   }, [user?.id]);
+  useEffect(() => {
+    const requested = params.get("session");
+    if (!user || !requested) return;
+    let active = true;
+    api<ChatSession>("/chat/sessions/" + requested)
+      .then((r) => {
+        if (active) {
+          setSession(r.id);
+          setMessages(r.messages || []);
+          setMode(r.mode);
+        }
+      })
+      .catch((e) => {
+        if (active) setError(e.message);
+      });
+    return () => {
+      active = false;
+    };
+  }, [user?.id, params.get("session")]);
   async function send() {
     if (!text.trim() || busy) return;
     if (!user) {

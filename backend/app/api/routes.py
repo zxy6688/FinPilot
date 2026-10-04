@@ -288,6 +288,8 @@ def quiz(
     db.add(
         QuizRecord(user_id=user.id, question_id=id, answer=data.answer, correct=correct)
     )
+    from ..services.v3.review import quiz_event
+    quiz_event(db, user.id, q, data.answer)
     db.commit()
     return {
         "correct": correct,
@@ -311,6 +313,9 @@ def complete(id: int, user=Depends(require_user), db: Session = Depends(get_db))
         except IntegrityError:
             db.rollback()
     award_badges(db, user)
+    from ..services.v3.moments import sync
+    sync(db, user)
+    db.commit()
     return {"ok": True}
 
 

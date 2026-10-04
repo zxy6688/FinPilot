@@ -1,7 +1,9 @@
+import { useReading } from "../living/useReading";
+import { SelectionTools } from "../living/ReadingTools";
 import ContextAI from "../components/ContextAI";
 import RelevantDiscover from "../components/RelevantDiscover";
 import { RouteBuilder } from "./LearningRoute";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   BookOpen,
@@ -406,6 +408,8 @@ export function LessonPage() {
     if (auth.user && r.data)
       api("/topics/" + r.data.topic_id + "/view", "POST").catch(() => {});
   }, [r.data?.id, auth.user?.id]);
+  const readerRef = useRef<HTMLElement>(null);
+  const reading = useReading("lesson", Number(id), readerRef, !!r.data);
   const currentPath = paths.data?.find((p) => p.id === r.data?.path_id);
   const [results, setResults] = useState<Record<number, AnswerResult>>({}),
     [error, setError] = useState(""),
@@ -458,7 +462,7 @@ export function LessonPage() {
               </ol>
             </details>
           </aside>
-          <article>
+          <article ref={readerRef}>
             <Link className="breadcrumb" to={"/learn/" + r.data.path_id}>
               ← 返回学习路径
             </Link>
@@ -475,21 +479,11 @@ export function LessonPage() {
             >
               <SaveButton kind="lesson" id={r.data.id} />
             </Heading>
+            <p className="small muted" role="status">{reading.status}</p>
+            <SelectionTools container={readerRef} context={{source_type:"lesson", source_id:Number(id)}} />
             <div className="card reading-card">
               <ReadingBlocks
                 markdown={r.data.markdown}
-                contextual={(text, title) => (
-                  <ContextAI
-                    compact
-                    context={{
-                      source_type: "lesson",
-                      source_id: r.data!.id,
-                      selected_text: text.slice(0, 1200),
-                    }}
-                    title={title}
-                    actions={["explain", "example", "connect", "quiz"]}
-                  />
-                )}
                 next={
                   <Link
                     className="next-lesson-card"
@@ -573,6 +567,7 @@ export function LessonPage() {
                           setBusy(-1);
                           try {
                             await api("/progress/" + id, "POST");
+                            await reading.finish();
                             setComplete(true);
                             await auth.refresh();
                             paths.reload();

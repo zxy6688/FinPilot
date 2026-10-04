@@ -16,3 +16,5 @@ Gate B: durable reading and Article Reader; glossary/selection AI; compare/revie
 Gate C: persisted actionable routes; prediction/reflection notebook; same-session AI.
 Gate D: My World, connections, rate-limited deterministic moments and companion growth.
 Gate E: Discover/Learn/FinTalk/Search consistency, complete regression and screenshots, docs and origin/v3 push.
+
+Gate B: original article reading, persisted reading positions, four comparisons, spaced review and misconception lifecycle implemented. Existing 42 API tests passed; 6 new state/privacy tests passed. Browser checks cover Article/Lesson/Compare/Review at desktop and 375/390/430/768 widths. Actual article screenshot reviewed: quiet reading column and contextual rail, no card wall. Gate C/D/E remain in progress.

@@ -65,6 +65,7 @@ export default function Layout() {
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
   }, []);
+  if (location.pathname === "/review") return <main id="main-content" className="main-container"><Outlet /></main>;
   return (
     <>
       <a className="skip-link" href="#main-content">

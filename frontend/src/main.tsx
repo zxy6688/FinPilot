@@ -5,6 +5,9 @@ import { AuthProvider } from "./services/auth";
 import { ErrorBoundary } from "./components/ui";
 import Layout from "./components/Layout";
 const LearningRoutePage = lazy(() => import("./pages/LearningRoute"));
+const ArticleReader = lazy(() => import("./living/ArticleReader"));
+const Review = lazy(() => import("./living/Review"));
+const Compare = lazy(() => import("./living/Compare"));
 const Home = lazy(() => import("./pages/Home"));
 const Discover = lazy(() =>
   import("./pages/Learning").then((m) => ({ default: m.Discover })),
@@ -54,6 +57,10 @@ createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="articles/:id" element={<ArticleReader />} />
+              <Route path="review" element={<Review />} />
+              <Route path="compare" element={<Compare />} />
+              <Route path="compare/:slug" element={<Compare />} />
               <Route path="discover" element={<Discover />} />
               <Route path="topics/:id" element={<TopicHub />} />
               <Route path="learn" element={<Learn />} />

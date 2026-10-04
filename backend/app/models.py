@@ -247,3 +247,6 @@ class Report(Base):
     post_id = Column(Integer, ForeignKey("posts.id"))
     reason = Column(Text)
     created_at = Column(String, default=now)
+
+# Register additive V3 tables for both application startup and the seed CLI.
+from . import models_v3  # noqa: E402,F401

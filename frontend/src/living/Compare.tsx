@@ -1,11 +1,177 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { State, useLoad } from '../components/ui';
-import { useAuth } from '../services/auth';
-import { api } from '../services/api';
-import ContextAI from '../components/ContextAI';
-interface Side {title:string;definition:string;question:string}
-interface CompareData {id:string;title:string;english:string;left:Side;right:Side;example:string;boundary:string;question:string;options:string[];source:string;url:string;extra_source?:string;topic_id:number}
-export default function Compare(){const {slug}=useParams();return slug?<CompareDetail key={slug} slug={slug}/>:<CompareIndex/>}
-function CompareIndex(){const r=useLoad<CompareData[]>('/v3/compare');return <><header className="living-heading"><span className="eyebrow">MAKE THE DISTINCTION</span><h1>相近的词，<br/>不同的问题。</h1><p>把容易混淆的两个概念并排放好，看清各自回答什么。</p></header><State loading={r.loading} error={r.error} retry={r.reload}><div className="compare-index">{r.data?.map((c,i)=><Link key={c.id} to={'/compare/'+c.id}><span>0{i+1}</span><div><small>{c.english}</small><h2>{c.title}</h2></div><span>↗</span></Link>)}</div></State></>}
-function CompareDetail({slug}:{slug:string}){const r=useLoad<CompareData>('/v3/compare/'+slug);const{user}=useAuth();const[result,setResult]=useState<{correct:boolean;explanation:string}|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);async function answer(answer:number){setBusy(true);try{setResult(await api('/v3/compare/'+slug+'/check','POST',{answer}));window.dispatchEvent(new Event('living-updated'))}catch(e){setError((e as Error).message)}finally{setBusy(false)}}return <State loading={r.loading} error={r.error} retry={r.reload}>{r.data&&<div className="compare-detail"><Link to="/compare" className="breadcrumb">← Compare</Link><header className="living-heading"><span className="eyebrow">{r.data.english}</span><h1>{r.data.title}</h1><p>先分清问题，再比较答案。</p></header><div className="compare-sides">{[r.data.left,r.data.right].map((s,i)=><section key={i}><span className="eyebrow">{i?'02 / THE OTHER LENS':'01 / ONE LENS'}</span><h2>{s.title}</h2><p>{s.definition}</p><blockquote>{s.question}</blockquote></section>)}</div><section className="compare-example"><span className="eyebrow">ONE EVERYDAY EXAMPLE</span><h2>放进同一个例子</h2><p>{r.data.example}</p><p className="muted">{r.data.boundary}</p></section><section className="compare-check"><span className="eyebrow">A QUICK CHECK</span><h2>{r.data.question}</h2>{user?<div className="review-options">{r.data.options.map((o,i)=><button key={i} className="secondary" disabled={busy||!!result} onClick={()=>void answer(i)}>{o}</button>)}</div>:<Link to="/login">登录后保存这次辨认 →</Link>}{result&&<div role="status"><b>{result.correct?'分清了这条边界':'再看一下差别'}</b><p>{result.explanation}</p><Link to="/review">在短复习中再确认 →</Link></div>}{error&&<p role="alert">{error}</p>}</section><ContextAI compact context={{source_type:'topic',source_id:r.data.topic_id}} title={r.data.title} actions={['example','connect']}/><p className="source-note">参考：<a href={r.data.url} target="_blank" rel="noreferrer">{r.data.source} ↗</a>{r.data.extra_source&&<> · <a href={r.data.extra_source} target="_blank" rel="noreferrer">APY 披露定义 ↗</a></>}</p></div>}</State>}
+import { RouteReturn } from "./RouteExperience";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { State, useLoad } from "../components/ui";
+import { useAuth } from "../services/auth";
+import { api } from "../services/api";
+import ContextAI from "../components/ContextAI";
+interface Side {
+  title: string;
+  definition: string;
+  question: string;
+}
+interface CompareData {
+  id: string;
+  title: string;
+  english: string;
+  left: Side;
+  right: Side;
+  example: string;
+  boundary: string;
+  question: string;
+  options: string[];
+  source: string;
+  url: string;
+  extra_source?: string;
+  topic_id: number;
+}
+export default function Compare() {
+  const { slug } = useParams();
+  return slug ? <CompareDetail key={slug} slug={slug} /> : <CompareIndex />;
+}
+function CompareIndex() {
+  const r = useLoad<CompareData[]>("/v3/compare");
+  return (
+    <>
+      <header className="living-heading">
+        <span className="eyebrow">MAKE THE DISTINCTION</span>
+        <h1>
+          相近的词，
+          <br />
+          不同的问题。
+        </h1>
+        <p>把容易混淆的两个概念并排放好，看清各自回答什么。</p>
+      </header>
+      <State loading={r.loading} error={r.error} retry={r.reload}>
+        <div className="compare-index">
+          {r.data?.map((c, i) => (
+            <Link key={c.id} to={"/compare/" + c.id}>
+              <span>0{i + 1}</span>
+              <div>
+                <small>{c.english}</small>
+                <h2>{c.title}</h2>
+              </div>
+              <span>↗</span>
+            </Link>
+          ))}
+        </div>
+      </State>
+    </>
+  );
+}
+function CompareDetail({ slug }: { slug: string }) {
+  const r = useLoad<CompareData>("/v3/compare/" + slug);
+  const { user } = useAuth();
+  const [result, setResult] = useState<{
+      correct: boolean;
+      explanation: string;
+    } | null>(null),
+    [error, setError] = useState(""),
+    [busy, setBusy] = useState(false);
+  async function answer(answer: number) {
+    setBusy(true);
+    try {
+      setResult(
+        await api("/v3/compare/" + slug + "/check", "POST", { answer }),
+      );
+      window.dispatchEvent(new Event("living-updated"));
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <State loading={r.loading} error={r.error} retry={r.reload}>
+      {r.data && (
+        <div className="compare-detail">
+          <Link to="/compare" className="breadcrumb">
+            ← Compare
+          </Link>
+          <header className="living-heading">
+            <span className="eyebrow">{r.data.english}</span>
+            <h1>{r.data.title}</h1>
+            <p>先分清问题，再比较答案。</p>
+          </header>
+          <div className="compare-sides">
+            {[r.data.left, r.data.right].map((s, i) => (
+              <section key={i}>
+                <span className="eyebrow">
+                  {i ? "02 / THE OTHER LENS" : "01 / ONE LENS"}
+                </span>
+                <h2>{s.title}</h2>
+                <p>{s.definition}</p>
+                <blockquote>{s.question}</blockquote>
+              </section>
+            ))}
+          </div>
+          <section className="compare-example">
+            <span className="eyebrow">ONE EVERYDAY EXAMPLE</span>
+            <h2>放进同一个例子</h2>
+            <p>{r.data.example}</p>
+            <p className="muted">{r.data.boundary}</p>
+          </section>
+          <section className="compare-check">
+            <span className="eyebrow">A QUICK CHECK</span>
+            <h2>{r.data.question}</h2>
+            {user ? (
+              <div className="review-options">
+                {r.data.options.map((o, i) => (
+                  <button
+                    key={i}
+                    className="secondary"
+                    disabled={busy || !!result}
+                    onClick={() => void answer(i)}
+                  >
+                    {o}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <Link to="/login">登录后保存这次辨认 →</Link>
+            )}
+            {result && (
+              <div role="status">
+                <b>{result.correct ? "分清了这条边界" : "再看一下差别"}</b>
+                <p>{result.explanation}</p>
+                <Link to="/review">在短复习中再确认 →</Link>
+              </div>
+            )}
+            {error && <p role="alert">{error}</p>}
+          </section>
+          <ContextAI
+            compact
+            context={{
+              source_type: "compare",
+              source_id:
+                [
+                  "nominal-real",
+                  "apr-apy",
+                  "volatility-risk",
+                  "etf-index-fund",
+                ].indexOf(slug) + 1,
+            }}
+            title={r.data.title}
+            actions={["example", "connect"]}
+          />
+          <RouteReturn />
+          <p className="source-note">
+            参考：
+            <a href={r.data.url} target="_blank" rel="noreferrer">
+              {r.data.source} ↗
+            </a>
+            {r.data.extra_source && (
+              <>
+                {" "}
+                ·{" "}
+                <a href={r.data.extra_source} target="_blank" rel="noreferrer">
+                  APY 披露定义 ↗
+                </a>
+              </>
+            )}
+          </p>
+        </div>
+      )}
+    </State>
+  );
+}

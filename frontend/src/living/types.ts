@@ -43,6 +43,7 @@ export interface Task {
   duration: string;
 }
 export interface HomeData {
+  capsule?: { completed: boolean; url: string } | null;
   name: string | null;
   has_evidence: boolean;
   today: Task;

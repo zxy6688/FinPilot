@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { Glossary } from "../living/ReadingTools";
+import { ReactNode, Children } from "react";
 import Markdown from "react-markdown";
 import { Lightbulb, FlaskConical, ScanLine } from "lucide-react";
 export default function ReadingBlocks({
@@ -67,7 +68,12 @@ export default function ReadingBlocks({
               .map((line) => line.match(/^- [“\"](.+?)[”\"]：(.+)$/))
           : [];
         return (
-          <section key={i} className={`reading-section ${kind}`}>
+          <section
+            key={i}
+            id={"reading-section-" + i}
+            data-section={String(i)}
+            className={`reading-section ${kind}`}
+          >
             <h2>
               {kind !== "plain" && <Icon size={20} />}
               <span>{label}</span>
@@ -88,7 +94,28 @@ export default function ReadingBlocks({
                 ))}
               </div>
             ) : (
-              <Markdown skipHtml>{body}</Markdown>
+              <Markdown
+                skipHtml
+                components={
+                  compact
+                    ? undefined
+                    : {
+                        p: ({ children }) => (
+                          <p>
+                            {Children.map(children, (c) =>
+                              typeof c === "string" ? (
+                                <Glossary>{c}</Glossary>
+                              ) : (
+                                c
+                              ),
+                            )}
+                          </p>
+                        ),
+                      }
+                }
+              >
+                {body}
+              </Markdown>
             )}
             {contextual?.(body, title)}
           </section>

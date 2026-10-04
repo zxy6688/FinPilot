@@ -7,6 +7,7 @@ export interface Topic {
   related_ids: number[];
 }
 export interface Article {
+  topic_ids: number[];
   id: number;
   title: string;
   source: string;
@@ -23,6 +24,7 @@ export interface Article {
   is_demo: boolean;
 }
 export interface AnswerResult {
+  compare?: { slug: string; title: string; status: string } | null;
   answer: number;
   correct: boolean;
   correct_answer: number;

@@ -1,3 +1,4 @@
+import { RouteReturn } from "../living/RouteExperience";
 import { useReading } from "../living/useReading";
 import { SelectionTools } from "../living/ReadingTools";
 import ContextAI from "../components/ContextAI";
@@ -479,8 +480,14 @@ export function LessonPage() {
             >
               <SaveButton kind="lesson" id={r.data.id} />
             </Heading>
-            <p className="small muted" role="status">{reading.status}</p>
-            <SelectionTools container={readerRef} context={{source_type:"lesson", source_id:Number(id)}} />
+            <RouteReturn />
+            <p className="small muted" role="status">
+              {reading.status}
+            </p>
+            <SelectionTools
+              container={readerRef}
+              context={{ source_type: "lesson", source_id: Number(id) }}
+            />
             <div className="card reading-card">
               <ReadingBlocks
                 markdown={r.data.markdown}
@@ -545,6 +552,14 @@ export function LessonPage() {
                             >
                               <b>{result.correct ? "回答正确" : "再想一想"}</b>
                               <p>{result.explanation}</p>
+                              {result.compare && (
+                                <Link
+                                  className="text-link"
+                                  to={"/compare/" + result.compare.slug}
+                                >
+                                  Don’t mix these up · {result.compare.title} →
+                                </Link>
+                              )}
                             </div>
                           )}
                         </div>

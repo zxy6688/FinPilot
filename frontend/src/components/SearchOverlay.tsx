@@ -9,7 +9,8 @@ const groups = [
   { key: "routes", label: "学习路线", path: "/learn/routes/" },
   { key: "topics", label: "知识主题", path: "/topics/" },
   { key: "lessons", label: "课程", path: "/lessons/" },
-  { key: "articles", label: "Discover", path: "/topics/" },
+  { key: "articles", label: "Discover", path: "/articles/" },
+  { key: "comparisons", label: "Compare", path: "/compare/" },
   { key: "labs", label: "实验", path: "/lab/" },
   { key: "posts", label: "FinTalk", path: "/fintalk/" },
 ];
@@ -58,7 +59,7 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
     (data[g.key] || []).slice(0, 5).map((item) => ({
       ...item,
       group: g.label,
-      url: g.path + (g.key === "articles" ? item.topic_id : item.id),
+      url: g.path + item.id,
     })),
   );
   function open(url: string) {

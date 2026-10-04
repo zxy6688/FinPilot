@@ -1,3 +1,4 @@
+import ContextAI from "../components/ContextAI";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, X } from "lucide-react";
@@ -31,8 +32,8 @@ export default function Constellation({
     compact
       ? positions[i % 7]
       : [
-          260 + Math.cos(i * 2.399) * Math.sqrt(i + 1) * 46,
-          225 + Math.sin(i * 2.399) * Math.sqrt(i + 1) * 39,
+          [90, 230, 380, 520, 670, 810][i % 6] + Math.sin(i * 1.7) * 14,
+          [70, 210, 420, 560][Math.floor(i / 6)] + Math.cos(i * 1.7) * 17,
         ];
   const nodes = world.topics.map((t, i) => ({ ...t, point: point(i) })),
     current = nodes.find((t) => t.id === selected);
@@ -52,7 +53,7 @@ export default function Constellation({
       }}
     >
       <svg
-        viewBox="0 0 530 455"
+        viewBox={compact ? "0 0 530 455" : "0 0 900 650"}
         className="constellation-svg"
         role="group"
         aria-label={
@@ -174,6 +175,13 @@ export default function Constellation({
               }
             </p>
           )}
+          <details>
+            <summary>查看学习依据</summary>
+            <p>
+              已完成 {current.completed_lessons} 节相关课程 · 学习证据{" "}
+              {current.evidence}/100。不是金融能力评估。
+            </p>
+          </details>
           <div className="row wrap">
             {current.lesson_id && (
               <Link to={"/lessons/" + current.lesson_id}>阅读课程</Link>
@@ -181,10 +189,19 @@ export default function Constellation({
             {current.lab_id && (
               <Link to={"/lab/" + current.lab_id}>尝试实验</Link>
             )}
+            {current.signal_id && (
+              <Link to={"/articles/" + current.signal_id}>相关真实资料</Link>
+            )}
             <Link to={"/topics/" + current.id}>
               Open full topic <ArrowUpRight size={13} />
             </Link>
           </div>
+          <ContextAI
+            compact
+            context={{ source_type: "topic", source_id: current.id }}
+            title={current.title}
+            actions={["explain"]}
+          />
         </aside>
       )}
     </div>

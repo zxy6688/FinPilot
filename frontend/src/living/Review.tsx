@@ -1,17 +1,195 @@
-import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { api } from '../services/api';
-import { useAuth } from '../services/auth';
-import Fin from './Fin';
-import ContextAI from '../components/ContextAI';
-interface Item {key:string;type:string;title:string;options:string[];topic_id:number;compare_id?:string}
-interface Session {id:number;kind:string;cursor:number;total:number;completed_at:string|null;item:Item|null}
-interface Feedback {correct:boolean;answer:number;correct_answer:number;explanation:string;key:string}
-export default function Review(){
- const {user}=useAuth();const[params,setParams]=useSearchParams();const[data,setData]=useState<Session|null>(null),[feedback,setFeedback]=useState<Feedback|null>(null),[last,setLast]=useState<Item|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false),[revealed,setRevealed]=useState(false);
- const kind=params.get('kind')==='capsule'?'capsule':'review';
- async function start(){setBusy(true);setError('');try{const r=params.get('id')?await api<Session>('/v3/review/'+params.get('id')):await api<Session>('/v3/review/start','POST',{kind});setData(r);setParams({id:String(r.id),kind:r.kind},{replace:true});}catch(e){setError((e as Error).message)}finally{setBusy(false)}}
- useEffect(()=>{if(user)void start()},[user?.id]);
- async function answer(answer:number){if(!data?.item||busy)return;setBusy(true);setError('');try{const r=await api<{feedback:Feedback;session:Session}>(`/v3/review/${data.id}/answer`,'POST',{cursor:data.cursor,answer});setLast(data.item);setFeedback(r.feedback);setData(r.session);window.dispatchEvent(new Event('living-updated'))}catch(e){setError((e as Error).message)}finally{setBusy(false)}}
- return <div className="review-focus"><div className="review-top"><Link to="/">← 暂停，回到 Home</Link><span>{kind==='capsule'?'DAILY CAPSULE':'A LITTLE RECALL'}</span></div><div className="review-fin"><Fin mood={busy?'thinking':feedback?.correct?'bright':'calm'} size={54}/></div>{!user?<><h1>给理解一点时间</h1><p>登录后开始 2–3 分钟的复习，进度会自动保存。</p><Link to="/login" className="button">登录</Link></>:error?<div role="alert"><p>{error}</p><button onClick={start}>重试</button></div>:!data?<p role="status">正在准备一次短复习…</p>:feedback?<div className="review-question"><span className="eyebrow">{feedback.correct?'THAT CONNECTION HELD':'ONE MORE WAY TO SEE IT'}</span><h1>{feedback.correct?'这一次，想清楚了。':'这条边界，可以再看清一点。'}</h1><p>{feedback.explanation}</p><p className="muted small">{feedback.correct?'下次会稍晚再见到它。':'明天再用一个短问题回想它。'}</p>{last&&<ContextAI compact context={{source_type:'topic',source_id:last.topic_id}} title={last.title} actions={['example']}/>}<button onClick={()=>{setFeedback(null);setRevealed(false)}}>{data.completed_at?'收好这次理解':'继续下一题'} →</button></div>:data.completed_at?<div className="review-question"><span className="eyebrow">ENOUGH FOR TODAY</span><h1>今天的理解，留下来了。</h1><p>{data.kind==='capsule'?'今天的胶囊已经完成，不需要重复打卡。':'这次短复习已经完成。下次出现的时间，按每一道题的理解情况安排。'}</p><Link className="button" to="/profile">回到 My World →</Link></div>:data.item&&<div className="review-question"><div className="review-position"><span>{data.item.type}</span><span>{data.cursor+1} / {data.total}</span></div><h1>{data.item.title}</h1>{data.item.type==='Recall'&&!revealed?<><p>先在心里说出你的解释，再展开选项核对。这里不会给未提交的想法打分。</p><button className="secondary" onClick={()=>setRevealed(true)}>我想过了，展开选项</button></>:<div className="review-options">{data.item.options.map((o,i)=><button className="secondary" key={i} disabled={busy} onClick={()=>void answer(i)}><span>{String.fromCharCode(65+i)}</span>{o}</button>)}</div>}<small className="muted">不计总分。每次只照顾一个还不牢固的连接。</small></div>}</div>
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { api } from "../services/api";
+import { useAuth } from "../services/auth";
+import Fin from "./Fin";
+import ContextAI from "../components/ContextAI";
+interface Item {
+  key: string;
+  type: string;
+  title: string;
+  options: string[];
+  topic_id: number;
+  compare_id?: string;
+}
+interface Session {
+  id: number;
+  kind: string;
+  cursor: number;
+  total: number;
+  completed_at: string | null;
+  item: Item | null;
+}
+interface Feedback {
+  correct: boolean;
+  answer: number;
+  correct_answer: number;
+  explanation: string;
+  key: string;
+}
+export default function Review() {
+  const { user } = useAuth();
+  const [params, setParams] = useSearchParams();
+  const [data, setData] = useState<Session | null>(null),
+    [feedback, setFeedback] = useState<Feedback | null>(null),
+    [last, setLast] = useState<Item | null>(null),
+    [error, setError] = useState(""),
+    [busy, setBusy] = useState(false),
+    [revealed, setRevealed] = useState(false);
+  const kind = params.get("kind") === "capsule" ? "capsule" : "review";
+  async function start() {
+    setBusy(true);
+    setError("");
+    try {
+      const r = params.get("id")
+        ? await api<Session>("/v3/review/" + params.get("id"))
+        : await api<Session>("/v3/review/start", "POST", { kind });
+      setData(r);
+      setParams({ id: String(r.id), kind: r.kind }, { replace: true });
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  useEffect(() => {
+    if (user) void start();
+  }, [user?.id]);
+  async function answer(answer: number) {
+    if (!data?.item || busy) return;
+    setBusy(true);
+    setError("");
+    try {
+      const r = await api<{ feedback: Feedback; session: Session }>(
+        `/v3/review/${data.id}/answer`,
+        "POST",
+        { cursor: data.cursor, answer },
+      );
+      setLast(data.item);
+      setFeedback(r.feedback);
+      setData(r.session);
+      window.dispatchEvent(new Event("living-updated"));
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <div className="review-focus">
+      <div className="review-top">
+        <Link to="/">← 暂停，回到 Home</Link>
+        <span>{kind === "capsule" ? "DAILY CAPSULE" : "A LITTLE RECALL"}</span>
+      </div>
+      <div className="review-fin">
+        <Fin
+          mood={busy ? "thinking" : feedback?.correct ? "bright" : "calm"}
+          size={54}
+        />
+      </div>
+      {!user ? (
+        <>
+          <h1>给理解一点时间</h1>
+          <p>登录后开始 2–3 分钟的复习，进度会自动保存。</p>
+          <Link to="/login" className="button">
+            登录
+          </Link>
+        </>
+      ) : error ? (
+        <div role="alert">
+          <p>{error}</p>
+          <button onClick={start}>重试</button>
+        </div>
+      ) : !data ? (
+        <p role="status">正在准备一次短复习…</p>
+      ) : feedback ? (
+        <div className="review-question">
+          <span className="eyebrow">
+            {feedback.correct
+              ? "THAT CONNECTION HELD"
+              : "ONE MORE WAY TO SEE IT"}
+          </span>
+          <h1>
+            {feedback.correct
+              ? "这一次，想清楚了。"
+              : "这条边界，可以再看清一点。"}
+          </h1>
+          <p>{feedback.explanation}</p>
+          <p className="muted small">
+            {feedback.correct
+              ? "下次会稍晚再见到它。"
+              : "明天再用一个短问题回想它。"}
+          </p>
+          {last && (
+            <ContextAI
+              compact
+              context={{ source_type: "review", source_id: data.id }}
+              title={last.title}
+              actions={["example"]}
+            />
+          )}
+          <button
+            onClick={() => {
+              setFeedback(null);
+              setRevealed(false);
+            }}
+          >
+            {data.completed_at ? "收好这次理解" : "继续下一题"} →
+          </button>
+        </div>
+      ) : data.completed_at ? (
+        <div className="review-question">
+          <span className="eyebrow">ENOUGH FOR TODAY</span>
+          <h1>今天的理解，留下来了。</h1>
+          <p>
+            {data.kind === "capsule"
+              ? "今天的胶囊已经完成，不需要重复打卡。"
+              : "这次短复习已经完成。下次出现的时间，按每一道题的理解情况安排。"}
+          </p>
+          <Link className="button" to="/profile">
+            回到 My World →
+          </Link>
+        </div>
+      ) : (
+        data.item && (
+          <div className="review-question">
+            <div className="review-position">
+              <span>{data.item.type}</span>
+              <span>
+                {data.cursor + 1} / {data.total}
+              </span>
+            </div>
+            <h1>{data.item.title}</h1>
+            {data.item.type === "Recall" && !revealed ? (
+              <>
+                <p>
+                  先在心里说出你的解释，再展开选项核对。这里不会给未提交的想法打分。
+                </p>
+                <button className="secondary" onClick={() => setRevealed(true)}>
+                  我想过了，展开选项
+                </button>
+              </>
+            ) : (
+              <div className="review-options">
+                {data.item.options.map((o, i) => (
+                  <button
+                    className="secondary"
+                    key={i}
+                    disabled={busy}
+                    onClick={() => void answer(i)}
+                  >
+                    <span>{String.fromCharCode(65 + i)}</span>
+                    {o}
+                  </button>
+                ))}
+              </div>
+            )}
+            <small className="muted">
+              不计总分。每次只照顾一个还不牢固的连接。
+            </small>
+          </div>
+        )
+      )}
+    </div>
+  );
 }

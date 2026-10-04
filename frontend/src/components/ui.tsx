@@ -251,7 +251,7 @@ export function ArticleCard({ article: a }: { article: Article }) {
         )}
       </div>
       <h3>
-        <Link to={`/topics/${a.topic_id}`} onClick={record}>
+        <Link to={`/articles/${a.id}`} onClick={record}>
           {a.title}
         </Link>
       </h3>

@@ -147,7 +147,7 @@ export default function Home() {
                 {data.signal && (
                   <Link
                     className="signal-story"
-                    to={"/topics/" + data.signal.topic_id}
+                    to={"/articles/" + data.signal.id}
                   >
                     <div className="signal-source">
                       <Radio size={14} />
@@ -172,7 +172,7 @@ export default function Home() {
               <div className="explore-links">
                 {[
                   [BookOpen, "Paths", "系统地学一点", "/learn"],
-                  [Compass, "Topics", "顺着联系去发现", "/topics/9"],
+                  [Compass, "Topics", "顺着联系去发现", "/knowledge"],
                   [FlaskConical, "Labs", "改变假设，看看结果", "/lab"],
                   [Radio, "Discover", "从真实世界出发", "/discover"],
                 ].map(([Icon, title, note, url]) => {

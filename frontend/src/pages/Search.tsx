@@ -11,7 +11,8 @@ interface Result {
 const sections: Record<string, { label: string; path: string }> = {
   routes: { label: "Learning Routes · 建立知识路线", path: "/learn/routes/" },
   topics: { label: "Topics · 知识主题", path: "/topics/" },
-  articles: { label: "Discover · 信息导航", path: "/topics/" },
+  articles: { label: "Discover · 阅读", path: "/articles/" },
+  comparisons: { label: "Compare · 概念比较", path: "/compare/" },
   lessons: { label: "Learn · 课程", path: "/lessons/" },
   labs: { label: "Lab · 实验", path: "/lab/" },
   posts: { label: "FinTalk · 讨论", path: "/fintalk/" },
@@ -77,10 +78,7 @@ export default function SearchPage() {
                         <Link
                           className="card search-result"
                           key={x.id}
-                          to={
-                            sections[key].path +
-                            (key === "articles" ? x.topic_id : x.id)
-                          }
+                          to={sections[key].path + x.id}
                         >
                           <h3>{x.title}</h3>
                           {x.summary && <p>{x.summary}</p>}

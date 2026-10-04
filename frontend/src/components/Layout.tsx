@@ -1,3 +1,4 @@
+import MomentHost from "../living/MomentHost";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { Search, ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -65,7 +66,13 @@ export default function Layout() {
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
   }, []);
-  if (location.pathname === "/review") return <main id="main-content" className="main-container"><Outlet /></main>;
+  if (location.pathname === "/review")
+    return (
+      <main id="main-content" className="main-container">
+        <Outlet />
+        <MomentHost />
+      </main>
+    );
   return (
     <>
       <a className="skip-link" href="#main-content">
@@ -124,6 +131,7 @@ export default function Layout() {
       </header>
       <main className="main" id="main-content" tabIndex={-1}>
         <Outlet />
+        <MomentHost />
       </main>
       <footer className="site-footer">
         <div className="footer-brand">

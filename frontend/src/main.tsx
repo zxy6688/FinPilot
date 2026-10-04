@@ -4,14 +4,13 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./services/auth";
 import { ErrorBoundary } from "./components/ui";
 import Layout from "./components/Layout";
-const LearningRoutePage = lazy(() => import("./pages/LearningRoute"));
+const LearningRoutePage = lazy(() => import("./living/RouteExperience"));
+const Knowledge = lazy(() => import("./living/Knowledge"));
 const ArticleReader = lazy(() => import("./living/ArticleReader"));
 const Review = lazy(() => import("./living/Review"));
 const Compare = lazy(() => import("./living/Compare"));
 const Home = lazy(() => import("./pages/Home"));
-const Discover = lazy(() =>
-  import("./pages/Learning").then((m) => ({ default: m.Discover })),
-);
+const Discover = lazy(() => import("./living/Discover"));
 const TopicHub = lazy(() =>
   import("./pages/Learning").then((m) => ({ default: m.TopicHub })),
 );
@@ -27,9 +26,7 @@ const LessonPage = lazy(() =>
 const Labs = lazy(() =>
   import("./pages/Lab").then((m) => ({ default: m.Labs })),
 );
-const LabPage = lazy(() =>
-  import("./pages/Lab").then((m) => ({ default: m.LabPage })),
-);
+const LabPage = lazy(() => import("./living/LabExperience"));
 const Community = lazy(() =>
   import("./pages/Community").then((m) => ({ default: m.Community })),
 );
@@ -40,9 +37,7 @@ const Copilot = lazy(() => import("./pages/Copilot"));
 const LoginPage = lazy(() =>
   import("./pages/Account").then((m) => ({ default: m.LoginPage })),
 );
-const ProfilePage = lazy(() =>
-  import("./pages/Account").then((m) => ({ default: m.ProfilePage })),
-);
+const ProfilePage = lazy(() => import("./living/MyWorld"));
 const SearchPage = lazy(() => import("./pages/Search"));
 import "./styles.css";
 import "./polish.css";
@@ -57,6 +52,7 @@ createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="knowledge" element={<Knowledge />} />
               <Route path="articles/:id" element={<ArticleReader />} />
               <Route path="review" element={<Review />} />
               <Route path="compare" element={<Compare />} />

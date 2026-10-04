@@ -8,6 +8,7 @@ from .db import ROOT
 from .seed import seed
 from .api.routes import router
 from .api.v2 import router as v2_router
+from .api.v3 import router as v3_router
 
 LOG_DIR = ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -31,13 +32,14 @@ app = FastAPI(title="FinPilot API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.getenv(
-        "CORS_ORIGINS", "http://localhost:5174,http://127.0.0.1:5174"
+        "CORS_ORIGINS", "http://localhost:5176,http://127.0.0.1:5176"
     ).split(","),
     allow_methods=["GET", "POST"],
     allow_headers=["Authorization", "Content-Type"],
 )
 app.include_router(router)
 app.include_router(v2_router)
+app.include_router(v3_router)
 
 
 @app.get("/api/health")

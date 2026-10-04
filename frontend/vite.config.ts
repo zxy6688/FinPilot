@@ -20,8 +20,8 @@ export default defineConfig({
     },
   ],
   server: {
-    port: 5174,
+    port: 5176,
     strictPort: true,
-    proxy: { "/api": "http://127.0.0.1:8002" },
+    proxy: { "/api": "http://127.0.0.1:8004" },
   },
 });

@@ -12,7 +12,7 @@ const links = [
   ["/copilot", "AI Copilot"],
   ["/lab", "Lab"],
   ["/fintalk", "FinTalk"],
-  ["/profile", "Profile"],
+  ["/profile", "My World"],
 ];
 const info = {
   about: {
@@ -73,7 +73,7 @@ export default function Layout() {
       <header className="site-header">
         <Link className="brand" to="/" aria-label="FinPilot 首页">
           <BrandMark />
-          FinPilot<span className="version">V2</span>
+          FinPilot<span className="version">V3</span>
         </Link>
         <nav
           id="main-navigation"
@@ -131,7 +131,7 @@ export default function Layout() {
             FinPilot
           </Link>
           <p>看懂金融，形成自己的判断。</p>
-          <small>Financial Learning & Navigation</small>
+          <small>Navigate money. Build understanding.</small>
         </div>
         <div className="footer-links">
           <b>探索</b>

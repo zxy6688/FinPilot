@@ -44,6 +44,7 @@ const SearchPage = lazy(() => import("./pages/Search"));
 import "./styles.css";
 import "./polish.css";
 import "./v2.css";
+import "./living/living.css";
 import { BrandMark } from "./components/Brand";
 createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>

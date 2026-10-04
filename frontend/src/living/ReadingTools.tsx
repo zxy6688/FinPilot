@@ -122,6 +122,7 @@ export function SelectionTools({
   const [text, setText] = useState("");
   useEffect(() => {
     const update = () => {
+      if (document.querySelector("dialog[open]")) return;
       const s = window.getSelection();
       if (
         s &&
@@ -132,7 +133,10 @@ export function SelectionTools({
         container.current?.contains(s.focusNode)
       )
         setText(s.toString().trim().slice(0, 1200));
-      else if (!document.activeElement?.closest(".selection-tools, dialog"))
+      else if (
+        !document.querySelector("dialog[open]") &&
+        !document.activeElement?.closest(".selection-tools, dialog")
+      )
         setText("");
     };
     const key = (e: KeyboardEvent) => {

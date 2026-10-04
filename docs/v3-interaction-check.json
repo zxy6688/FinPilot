@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Real text selection opens contextual AI",
+    "Native dialog contains keyboard focus",
+    "Escape closes dialog and selection",
+    "Ctrl-K search and Escape",
+    "Reduced-motion disables Fin animation",
+    "API failure offers retry and recovers"
+  ],
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-04T23:21:24.786Z",
+  "checks": [
+    "New user completes lesson; actual node lights and Fin awakens",
+    "Article scroll position survives reload",
+    "Glossary opens and closes by Escape",
+    "Repeated misconception offers Compare; successful check records addressed",
+    "Short focused review completes; later correct recall resolves misconception",
+    "Saved route completes through actual recall/read/connect/compare/experiment/check records",
+    "Two learned endpoints unlock a real relation; accessible in-place topic details",
+    "Real-world reader connects known and missing concepts",
+    "Discover, Learn, Explore, FinTalk, Search, Copilot and Lab fit 375/390/430/768"
+  ],
+  "errors": []
+}

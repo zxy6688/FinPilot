@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Prediction persisted before simulation",
+    "Backend result and reflection saved",
+    "Saved route survives reload",
+    "Comparison AI keeps Copilot session",
+    "Notebook shows real reflection",
+    "24 true constellation nodes"
+  ],
+  "errors": []
+}

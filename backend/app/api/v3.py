@@ -14,6 +14,13 @@ from ..services.v3.misconceptions import observe
 router = APIRouter(prefix="/api/v3", tags=["Living Knowledge"])
 
 
+def write_db(db: Session = Depends(get_db)):
+    from ..services.v3.transactions import begin_write
+
+    begin_write(db)
+    return db
+
+
 def owned(db, cls, key, user):
     row = db.get(cls, key)
     if not row or row.user_id != user.id:
@@ -53,7 +60,7 @@ def save_reading(
     id: int,
     data: ReadingInput,
     user=Depends(require_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     if kind not in ("article", "lesson"):
         raise HTTPException(422, "无效阅读类型")
@@ -77,7 +84,7 @@ def compare_check(
     slug: str,
     data: Selection,
     user=Depends(require_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     if slug not in COMPARISONS:
         raise HTTPException(404, "比较不存在")
@@ -97,7 +104,7 @@ def compare_check(
 
 @router.post("/review/start")
 def review_start(
-    data: ReviewStart, user=Depends(require_user), db: Session = Depends(get_db)
+    data: ReviewStart, user=Depends(require_user), db: Session = Depends(write_db)
 ):
     return review.public_session(review.start(db, user, data.kind))
 
@@ -112,7 +119,7 @@ def review_answer(
     id: int,
     data: ReviewAnswer,
     user=Depends(require_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     return review.answer(
         db, user, owned(db, ReviewSession, id, user), data.cursor, data.answer
@@ -149,7 +156,7 @@ def moment_list(user=Depends(require_user), db: Session = Depends(get_db)):
 def moment_claim(
     user=Depends(require_user),
     credentials=Depends(bearer),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     row = moments.claim(db, user.id, claims_for(credentials, db)["jti"])
     return brief(row) if row else None
@@ -164,7 +171,7 @@ from ..services.v3 import route_progress, reflections
 
 @router.post("/routes")
 def route_create(
-    data: RouteStart, user=Depends(require_user), db: Session = Depends(get_db)
+    data: RouteStart, user=Depends(require_user), db: Session = Depends(write_db)
 ):
     return route_progress.public(route_progress.create(db, user, data.target_topic_id))
 
@@ -191,7 +198,7 @@ def route_answer(
     id: int,
     data: RouteAnswer,
     user=Depends(require_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     return route_progress.answer(
         db, user, owned(db, SavedRoute, id, user), data.index, data.answer
@@ -216,7 +223,7 @@ def prediction_create(
     id: int,
     data: PredictionInput,
     user=Depends(require_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     if len(data.reason.strip()) < 4:
         raise HTTPException(422, "请写下一个具体的预测理由")
@@ -225,7 +232,7 @@ def prediction_create(
 
 @router.post("/reflections/{id}/experiment")
 def experiment(
-    id: int, data: LabInput, user=Depends(require_user), db: Session = Depends(get_db)
+    id: int, data: LabInput, user=Depends(require_user), db: Session = Depends(write_db)
 ):
     return brief(
         reflections.experiment(db, user, owned(db, Reflection, id, user), data)
@@ -237,7 +244,7 @@ def reflection_complete(
     id: int,
     data: ReflectionInput,
     user=Depends(require_user),
-    db: Session = Depends(get_db),
+    db: Session = Depends(write_db),
 ):
     if len(data.reflection.strip()) < 8:
         raise HTTPException(422, "请写下这次观察带来的具体理解")

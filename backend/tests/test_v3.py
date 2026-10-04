@@ -603,3 +603,53 @@ def test_due_review_prioritized_after_real_unfinished_work(client, auth):
         json={"progress": 0.3, "position": 0.3},
     )
     assert client.get("/api/v3/home", headers=auth).json()["today"]["kind"] == "article"
+
+
+def test_parallel_moment_claims_keep_display_quota(client, auth):
+    from concurrent.futures import ThreadPoolExecutor
+    from app.services.v3.moments import emit
+
+    uid = client.get("/api/users/me", headers=auth).json()["id"]
+    with SessionLocal() as db:
+        for kind in (
+            "FIRST_LESSON",
+            "FIRST_CONNECTION",
+            "FIRST_ROUTE_COMPLETE",
+            "DOMAIN_AWAKENED",
+            "MISCONCEPTION_FOUND",
+            "MISCONCEPTION_RESOLVED",
+        ):
+            emit(db, uid, kind)
+        db.commit()
+
+    def claim(_):
+        r = client.post("/api/v3/moments/claim", headers=auth)
+        assert r.status_code == 200, r.text
+        return r.json()
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        rows = [r for r in pool.map(claim, range(8)) if r]
+    assert len(rows) == 3
+    assert sum(r["severity"] == "major" for r in rows) == 1
+    assert len({r["id"] for r in rows}) == 3
+
+
+def test_parallel_review_answer_is_one_attempt(client, auth):
+    from concurrent.futures import ThreadPoolExecutor
+
+    session = client.post("/api/v3/review/start", headers=auth, json={}).json()
+
+    def submit(_):
+        r = client.post(
+            f"/api/v3/review/{session['id']}/answer",
+            headers=auth,
+            json={"cursor": 0, "answer": 0},
+        )
+        assert r.status_code == 200, r.text
+        return r.json()
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        rows = list(pool.map(submit, range(2)))
+    assert rows[0] == rows[1]
+    memory = client.get("/api/v3/memory", headers=auth).json()
+    assert memory["reviews"][0]["attempts"] == 1

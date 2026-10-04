@@ -81,6 +81,9 @@ def emit(db, uid, kind, key="first", detail=None):
 def sync(db, user):
     if not user:
         return
+    from .transactions import begin_write
+
+    begin_write(db)
     e = Evidence(db, user)
     domains = sorted({l.path_id for l in e.lessons.values() if l.id in e.done})
     state = db.get(CompanionState, user.id)

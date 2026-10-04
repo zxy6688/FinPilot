@@ -29,6 +29,31 @@ export default function Modal({
       ref={ref}
       className={"modal " + className}
       aria-label={title}
+      onKeyDown={(e) => {
+        if (e.key !== "Tab") return;
+        const controls = Array.from(
+          ref.current?.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex="0"]',
+          ) || [],
+        ).filter((el) => el.getClientRects().length > 0);
+        const first = controls[0],
+          last = controls.at(-1);
+        if (!first || !last) {
+          e.preventDefault();
+          return;
+        }
+        if (
+          e.shiftKey &&
+          (document.activeElement === first ||
+            !ref.current?.contains(document.activeElement))
+        ) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }}
       onCancel={(e) => {
         e.preventDefault();
         onClose();

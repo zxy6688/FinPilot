@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-04T23:30:19.738412+00:00",
+  "branch": "v3",
+  "base_commit": "a3fa070a55a4d4efd0fa47e8e835e0da6e0581c2",
+  "pytest": {
+    "passed": 62,
+    "legacy_tests": 42,
+    "v3_tests": 20,
+    "warnings": [
+      "Starlette TestClient httpx deprecation; non-failing"
+    ]
+  },
+  "api_smoke": {
+    "passed": 42,
+    "artifact": "v3-api-check.json"
+  },
+  "typescript": "passed",
+  "production_build": "passed",
+  "browser_artifacts": [
+    "v3-gate-a-check.json",
+    "v3-gate-b-check.json",
+    "v3-gate-c-check.json",
+    "v3-journey-check.json",
+    "v3-mobile-check.json",
+    "v3-interaction-check.json"
+  ],
+  "compatibility": {
+    "v1_old_tables": 23,
+    "v1_rows": 289,
+    "v2_old_tables": 23,
+    "v2_rows": 497,
+    "new_tables": 9,
+    "source_databases_modified": false
+  },
+  "screenshots": 48,
+  "publishable_file_scan": {
+    "files": 301,
+    "forbidden_files": [],
+    "credential_pattern_findings": [],
+    "note": "Pattern and path checks; not a formal security audit."
+  },
+  "deployment": "NOT DEPLOYED",
+  "external_llm_live_call": "not configured; demo and existing mocked fallback tests only"
+}

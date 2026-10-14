@@ -95,6 +95,24 @@ export default function Copilot() {
       active = false;
     };
   }, [user?.id, params.get("session")]);
+  const [carriedContext, setCarriedContext] =
+    useState<NonNullable<Message["metadata_json"]>["context"]>();
+  useEffect(() => {
+    try {
+      const carried = JSON.parse(
+        sessionStorage.getItem("fin-chat:" + String(user?.id ?? "guest")) ||
+          "null",
+      );
+      setCarriedContext(undefined);
+      if (
+        carried &&
+        String(carried.session ?? "") === String(params.get("session") ?? "")
+      ) {
+        setCarriedContext(carried.context);
+        if (!params.get("q") && carried.prompt) setText(carried.prompt);
+      }
+    } catch {}
+  }, [user?.id]);
   async function send() {
     if (!text.trim() || busy) return;
     if (!user) {
@@ -115,7 +133,7 @@ export default function Copilot() {
         message: prompt,
         mode,
         session_id: session,
-        context: lastContext,
+        context: carriedContext || lastContext,
       });
       setMessages((old) => [
         ...old,
@@ -150,6 +168,12 @@ export default function Copilot() {
     .find((m) => m.role === "assistant")?.metadata_json?.provider;
   return (
     <>
+      {carriedContext && (
+        <div className="rd-notice">
+          接着探索：{carriedContext.title}
+          。已携带当前页面上下文；数值由后端模型核对。
+        </div>
+      )}
       <Heading
         eyebrow="AI COPILOT / 你的学习搭子"
         title="把“看不懂”，变成“原来如此”。"
@@ -186,6 +210,7 @@ export default function Copilot() {
                 onClick={() => {
                   setMode(m.id);
                   setSession(null);
+                  setCarriedContext(undefined);
                   setMessages([]);
                   setError("");
                 }}
@@ -206,6 +231,7 @@ export default function Copilot() {
             disabled={busy}
             onClick={() => {
               setSession(null);
+              setCarriedContext(undefined);
               setMessages([]);
               setText("");
             }}
@@ -226,6 +252,7 @@ export default function Copilot() {
                   try {
                     const r = await api<ChatSession>("/chat/sessions/" + s.id);
                     setMode(r.mode);
+                    setCarriedContext(undefined);
                     setSession(r.id);
                     setMessages(r.messages || []);
                   } catch (e) {

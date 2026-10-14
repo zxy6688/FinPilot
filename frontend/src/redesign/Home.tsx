@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -22,6 +22,14 @@ import { ConceptPlay } from "./ConceptStudio";
 import { PurchasingArt } from "./Decoder";
 import { topics, useNotebook } from "./state";
 export function StoryArt({ kind = "budget" }: { kind?: string }) {
+  if (["budget", "loan", "bonds"].includes(kind))
+    return (
+      <img
+        className="gb-home-story-art"
+        src={"/redesign/gate-b/" + kind + "-studio.png"}
+        alt="原创教学情景插画"
+      />
+    );
   return (
     <svg viewBox="0 0 260 170" aria-hidden="true">
       {kind === "budget" ? (
@@ -130,7 +138,7 @@ export function StoryGrid() {
               </span>
               <h3>{t.title}</h3>
               <p>{t.summary}</p>
-              <span className="rd-text-link">打开专题导读 ↗</span>
+              <span className="rd-text-link">阅读与动手探索 ↗</span>
             </div>
             <StoryArt kind={t.id} />
           </Link>
@@ -388,7 +396,7 @@ export default function Home() {
         </div>
         <MiniLab />
         <div className="rd-tool-shortcuts">
-          <Link to="/lab/1">
+          <Link to="/money-lab/compound">
             <span>01 / 复利与时间</span>
             <b>早开始一年，会有什么不同？</b>
             <ArrowUpRight size={20} />
@@ -438,17 +446,19 @@ export default function Home() {
                 <ChevronRight size={20} />
               </Link>
             ))}
-            {history?.continue.slice(0, 2).map((t) => (
-              <Link to={t.url} key={t.url}>
-                <Clock size={22} />
-                <div>
-                  <b>{t.title}</b>
-                  <p>{t.detail}</p>
-                  <small>来自现有账户的真实记录</small>
-                </div>
-                <ChevronRight size={20} />
-              </Link>
-            ))}
+            {history?.continue
+              .slice(0, Math.max(0, 2 - notebook.entries.length))
+              .map((t) => (
+                <Link to={t.url} key={t.url}>
+                  <Clock size={22} />
+                  <div>
+                    <b>{t.title}</b>
+                    <p>{t.detail}</p>
+                    <small>来自现有账户的真实记录</small>
+                  </div>
+                  <ChevronRight size={20} />
+                </Link>
+              ))}
           </div>
         ) : (
           <div className="rd-start-strip">
@@ -479,9 +489,15 @@ export default function Home() {
           </h2>
           <p>
             {notebook.entries.length
-              ? `这本浏览器手册里，已经有 ${notebook.entries.length} 张你亲手保存的记录。`
+              ? `这本发现手册里，已经有 ${notebook.entries.length} 张你亲手保存的记录。`
               : "一段解读、一张计算小票、一个分清的概念。从第一张开始，慢慢积累。"}
           </p>
+          {notebook.entries.slice(0, 2).map((e) => (
+            <Link key={e.id} className="gb-home-discovery" to={e.url}>
+              <b>{e.title}</b>
+              <span>{e.detail}</span>
+            </Link>
+          ))}
           <Link className="rd-button" to="/profile">
             打开我的发现手册 <ArrowRight size={17} />
           </Link>
@@ -546,10 +562,25 @@ export function Notebook() {
         <FinButton size={122} />
       </div>
       <div className="rd-notice">
-        Gate A 原型记录保存在本浏览器，按访客 /
-        当前账户分开；不跨设备同步，不替代已有账户记录。
+        {user
+          ? "已登录：新记录保存到当前账户，可在同一服务的其他浏览器登录恢复。历史浏览器原型记录仍保留在本机，不自动合并。"
+          : "访客记录仅保存在此浏览器，不跨设备。登录后新保存的记录归属当前账户；访客记录不自动上传。"}
         <Link to="/profile/history">查看原有学习记录 →</Link>
       </div>
+      {n.error && <p role="alert">{n.error}</p>}
+      {n.entries[0] && (
+        <section className="gb-recent-discovery">
+          <FinArt action="notebook" size={112} />
+          <div>
+            <span className="rd-kicker">最近留下的一张发现</span>
+            <h2>{n.entries[0].title}</h2>
+            <p>{n.entries[0].detail}</p>
+            <Link className="rd-text-link" to={n.entries[0].url}>
+              接着这次探索 →
+            </Link>
+          </div>
+        </section>
+      )}
       <div className="rd-filter" role="group" aria-label="记录类型">
         {[
           ["all", "全部发现"],
@@ -582,8 +613,16 @@ export function Notebook() {
               </div>
               <h2>{e.title}</h2>
               <p>{e.detail}</p>
+              {e.kind === "receipt" &&
+                typeof (e.payload as { note?: unknown })?.note === "string" &&
+                (e.payload as { note: string }).note && (
+                  <p className="gb-help">
+                    我的发现：{(e.payload as { note: string }).note}
+                  </p>
+                )}
               <small>
-                {new Date(e.at).toLocaleString("zh-CN")} · 本浏览器保存
+                {new Date(e.at).toLocaleString("zh-CN")} ·{" "}
+                {e.storage === "account" ? "账户保存" : "仅此浏览器"}
               </small>
               <Link className="rd-text-link" to={e.url}>
                 {e.kind === "receipt" ? "恢复参数并重新计算" : "回到这次探索"}{" "}
@@ -646,110 +685,12 @@ export function Notebook() {
 export function StoryPreview() {
   const { slug } = useParams();
   const t = topics.find((t) => t.id === slug);
-  const content: Record<
-    string,
-    { lead: string; sections: [string, string][]; url: string; button: string }
-  > = {
-    budget: {
-      lead: "预算不是把每一笔钱都关起来，而是先看见：哪些承诺已经作出，哪些选择还握在手里。",
-      sections: [
-        [
-          "先分清“必须支付”与“可以调整”",
-          "用一个教学例子开始：每月可用 2,500 元，先列住宿、基础餐饮、交通与通信，再单独记录娱乐和可推迟的购买。不要把每一笔娱乐支出都当作错误；真正要检查的是总额是否超过可靠收入，以及意外支出从哪里来。",
-        ],
-        [
-          "给意外留一个位置",
-          "预算中的应急储备是用途安排，不是消费项目。先确定你需要承担的风险、获得支持的方式与资金取用条件，再设储备目标。没有一个比例适合所有大学生。",
-        ],
-        [
-          "现在可以做的练习",
-          "先把一个真实储备目标带进储蓄规划器，计算按月存入的结果。完整的固定/弹性支出录入、预算情景变化与预算小票将在 Gate B 经批准后实现。",
-        ],
-      ],
-      url: "/money-lab",
-      button: "先算一个储备目标",
-    },
-    bonds: {
-      lead: "新闻里的“降息”，首先是一个政策动作。债券的价格，还要回答市场要求多少回报，以及这个动作是否早已被预期。",
-      sections: [
-        [
-          "先问“哪一个利率”",
-          "政策利率、银行报价、债券市场收益率不是同一个数字。一条政策消息可能影响预期，但不能把政策调整幅度直接填进所有债券的折现率。此处是机制教学，不引用虚构的当期降息事件。",
-        ],
-        [
-          "保持现金流不变，再改变折现率",
-          "已有实验使用面值 1,000 元、每年付息 50 元、剩余 5 年的纯教学债券。把市场要求收益率调高，同一笔未来现金流折回今天会更少；调低则相反。前提是其他条件不变。",
-        ],
-        [
-          "为什么现实里未必上涨",
-          "市场可能已经预先计价，也可能同时出现信用、流动性或风险偏好的变化。Gate B 将补齐有日期的政策案例、证据链与事件脉络；现在先通过保留的真实定价实验理解一个变量。",
-        ],
-      ],
-      url: "/lab/5",
-      button: "操作已有债券定价实验",
-    },
-    loan: {
-      lead: "每月还得起，和总成本低，是两个问题。先把到账、每次还款与附加费用放到同一条时间线上。",
-      sections: [
-        [
-          "利率口径需要一起看",
-          "同样写着一个百分比，年名义利率、有效年率和包含某些费用的 APR 未必可直接互换。APR 的具体法定口径因地区与产品不同；本导读不把它们混成一个万能数字。",
-        ],
-        [
-          "延长期限不等于减少总成本",
-          "在相同本金与正利率的标准等额本息模型下，延长期限通常降低月供，却增加累计利息。若存在服务费、提前还款费用或不同现金流时点，要把这些条件单独说明。不能只看一个“日息很低”的展示值。",
-        ],
-        [
-          "本轮能力边界",
-          "Gate A 尚未实现贷款成本计算器，所以这里不输出伪造的月供或“最优方案”。可以先查看已有 APR/APY 概念对照；真实还款模型、费用对比与贷款 Receipt 需要 Gate B 批准后开发并测试。",
-        ],
-      ],
-      url: "/compare/apr-apy",
-      button: "先分清 APR 与 APY",
-    },
-  };
-  const c = content[slug || ""];
-  if (!t || !c)
-    return (
-      <div className="rd-page">
-        <h1>这条专题入口不存在。</h1>
-        <Link to="/discover">返回发现</Link>
-      </div>
-    );
-  return (
-    <div className="rd-page rd-preview">
-      <div className="rd-breadcrumb">
-        <Link to="/discover">发现</Link> / 专题导读
-      </div>
-      <div className="rd-preview-hero">
-        <div>
-          <span className="rd-kicker">{t.tag} · 原创教学导读</span>
-          <h1>{t.title}</h1>
-          <p>{c.lead}</p>
-        </div>
-        <StoryArt kind={t.id} />
-      </div>
-      <div className="rd-notice">
-        Gate A 范围说明：这是有实质内容的导读和已有能力入口；完整专题与新工具在
-        Gate B 人工批准后深化。
-      </div>
-      <article className="rd-reader">
-        {c.sections.map(([h, p], i) => (
-          <section key={h}>
-            <span className="rd-kicker">0{i + 1}</span>
-            <h2>{h}</h2>
-            <p>{p}</p>
-          </section>
-        ))}
-        <Link className="rd-button" to={c.url}>
-          {c.button}
-          <ArrowUpRight size={17} />
-        </Link>
-        <p className="rd-source">
-          此页为教学解释，不是新闻、贷款报价或投资建议。所连接的原实验 /
-          对照页有具体假设与来源说明。
-        </p>
-      </article>
+  return t && t.path !== "/stories/" + slug ? (
+    <Navigate replace to={t.path} />
+  ) : (
+    <div className="rd-page">
+      <h1>这份专题还不存在。</h1>
+      <Link to="/discover">返回五个精选专题 →</Link>
     </div>
   );
 }
@@ -766,17 +707,18 @@ export function Methods() {
         </p>
       </section>
       <section>
-        <h2>Gate A 的保存范围</h2>
+        <h2>账户与访客的保存范围</h2>
         <p>
-          新发现、Money Receipt 与概念卡存于浏览器 localStorage，按当前账户 ID
-          或访客分区。清除浏览器数据会丢失这些原型记录；没有跨设备同步、数据库迁移或完整权限隔离承诺。请只用于本地审查，不输入敏感财务信息。原服务器学习数据仍由已有登录及归属检查保护。
+          登录后的新发现、实验小票与概念卡保存到当前账户，访问同一个服务并登录可跨浏览器恢复。访客与
+          A1
+          历史本机记录仍在浏览器中，明确标注“仅此浏览器”，不自动上传或合并。清除浏览器数据会丢失本机记录。网络保存失败时不会显示成功，可保留输入重试。
         </p>
       </section>
       <section>
         <h2>可以复核的计算</h2>
         <p>
-          储蓄模型按年名义收益率除以 12 逐月复利，支持月初 /
-          月末投入、零利率与反推目标月存；展示到分，过程不逐月舍入。通胀实验复用原后端公式。完整公式和输入边界见各工具。贷款和预算的新计算器尚未实现。
+          储蓄区分月初/月末与年名义/年有效口径；复利明确计息频率；通胀按物价折算实际购买力；贷款按净到账与逐月付款计算有效成本，不标作监管
+          APR；预算分开实际支出与计划储备。每套工具都公开假设、限制及历史结果，数值由确定性后端计算。
         </p>
       </section>
       <section>

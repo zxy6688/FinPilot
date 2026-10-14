@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Search as SearchIcon, ArrowUpRight } from "lucide-react";
 import { Heading, State, Empty, useLoad, Section } from "../components/ui";
+import { searchCatalog } from "../redesign/Catalog";
 interface Result {
   id: number;
   title: string;
@@ -65,32 +66,49 @@ export default function SearchPage() {
           ))}
         </div>
       ) : (
-        <State loading={r.loading} error={r.error} retry={r.reload}>
-          {r.data && Object.values(r.data).every((x) => !x.length) ? (
-            <Empty text="没有找到相关内容，试试更简短的关键词。" />
-          ) : (
-            Object.entries(r.data || {}).map(
-              ([key, items]) =>
-                items.length > 0 && (
-                  <Section key={key} title={sections[key].label}>
-                    <div className="grid three">
-                      {items.map((x) => (
-                        <Link
-                          className="card search-result"
-                          key={x.id}
-                          to={sections[key].path + x.id}
-                        >
-                          <h3>{x.title}</h3>
-                          {x.summary && <p>{x.summary}</p>}
-                          <ArrowUpRight size={18} />
-                        </Link>
-                      ))}
-                    </div>
-                  </Section>
-                ),
-            )
+        <>
+          {" "}
+          {searchCatalog(q).length > 0 && (
+            <section className="gb-search-results">
+              <h2>专题、工具与概念</h2>
+              {searchCatalog(q).map((x) => (
+                <Link key={x.id} to={x.url}>
+                  <small>{x.group}</small>
+                  <h3>{x.title}</h3>
+                  <p>{x.summary}</p>
+                </Link>
+              ))}
+            </section>
           )}
-        </State>
+          <State loading={r.loading} error={r.error} retry={r.reload}>
+            {r.data &&
+            !searchCatalog(q).length &&
+            Object.values(r.data).every((x) => !x.length) ? (
+              <Empty text="没有找到相关内容，试试更简短的关键词。" />
+            ) : (
+              Object.entries(r.data || {}).map(
+                ([key, items]) =>
+                  items.length > 0 && (
+                    <Section key={key} title={sections[key].label}>
+                      <div className="grid three">
+                        {items.map((x) => (
+                          <Link
+                            className="card search-result"
+                            key={x.id}
+                            to={sections[key].path + x.id}
+                          >
+                            <h3>{x.title}</h3>
+                            {x.summary && <p>{x.summary}</p>}
+                            <ArrowUpRight size={18} />
+                          </Link>
+                        ))}
+                      </div>
+                    </Section>
+                  ),
+              )
+            )}
+          </State>
+        </>
       )}
     </>
   );

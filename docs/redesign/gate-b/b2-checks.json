@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": [
+    "A/B restore",
+    "guest save/reopen",
+    "four mobile widths",
+    "topic→tool parameters→return"
+  ],
+  "errors": []
+}

@@ -15,6 +15,16 @@ from .db import Base
 from .models import now
 
 
+class LearningArtifact(Base):
+    __tablename__ = "learning_artifacts"
+    __table_args__ = (UniqueConstraint("user_id", "client_key"),)
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    client_key = Column(String(100), nullable=False)
+    snapshot = Column(JSON, nullable=False)
+    created_at = Column(String, default=now)
+
+
 class ReadingState(Base):
     __tablename__ = "reading_states"
     __table_args__ = (UniqueConstraint("user_id", "content_type", "content_id"),)

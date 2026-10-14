@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "checks": [
+    "savings: actual UI save → new 390px browser → parameters and notes restored",
+    "compound: actual UI save → new 390px browser → parameters and notes restored",
+    "inflation: actual UI save → new 390px browser → parameters and notes restored",
+    "loan: actual UI save → new 390px browser → parameters and notes restored",
+    "budget: actual UI save → new 390px browser → parameters and notes restored",
+    "budget: story notes and specific quiz answer restored in fresh browser",
+    "bonds: story notes and specific quiz answer restored in fresh browser",
+    "etf: story notes and specific quiz answer restored in fresh browser",
+    "new Copilot conversation clears unrelated carried context",
+    "missing receipt does not falsely claim restored parameters"
+  ],
+  "errors": []
+}

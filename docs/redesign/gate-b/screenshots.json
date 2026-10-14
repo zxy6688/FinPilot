@@ -1,0 +1,1100 @@
+[
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-375.png",
+    "width": 375,
+    "height": 2860,
+    "sha256": "aa441ed2782995b04645f094f205de5ae9f8a6ed8ff9ca33d057a82290b6bf0d"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-390.png",
+    "width": 390,
+    "height": 2860,
+    "sha256": "66fe65b100c7a16438e60b4cdb2c38aba7ac65cb8ad434c6591863a2d318f3a4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-430.png",
+    "width": 430,
+    "height": 2815,
+    "sha256": "d724a467ef7957083786aa61b4ba182f751e250c877219a74c408183a86fb1ec"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-768.png",
+    "width": 768,
+    "height": 1978,
+    "sha256": "85bbd89281791c757468c7122533eecb25d20eb805a9db8558240adacf8b6048"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-after.png",
+    "width": 1440,
+    "height": 2063,
+    "sha256": "72e78f0614add14f91e5f5d9fccfc552b3e37b8bf7fddc62b0743f4291e1e16f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-before.png",
+    "width": 1440,
+    "height": 1978,
+    "sha256": "0e3bec558537b7f6674c85b826e2f9d2e00abd8d8b5c4857fae80d9ecc566bb4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-saved.png",
+    "width": 1440,
+    "height": 1978,
+    "sha256": "82a4af9d6b3e0a149d2136a3d53f8e1f236c2a22b44039da7a0bead1186d08ee"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-budget-story-desktop.png",
+    "width": 1440,
+    "height": 5213,
+    "sha256": "7d1c078f09adeb0aac23de214989d2eccd6cfcfaddd752569352a3af07f874aa"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-new-session-restored.png",
+    "width": 1440,
+    "height": 1596,
+    "sha256": "0b70e03f596b5823507a313b41845cd856fb869e1ff4eed9f2e329b608d4828c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-story-375.png",
+    "width": 375,
+    "height": 7011,
+    "sha256": "d0441ab78fd2e4a5111436f7a900adde7253557381480c4e753fc2b921653d75"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-story-390.png",
+    "width": 390,
+    "height": 6834,
+    "sha256": "63926f757152dd213a8bbe3cf9af79bb79894fd72e24964e116b05a4a40ed4c5"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-story-430.png",
+    "width": 430,
+    "height": 6719,
+    "sha256": "d0e7a36f13a693080202eb472ad6656c0eae70534996301b5a6ad1f95fc98064"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b1-story-768.png",
+    "width": 768,
+    "height": 5707,
+    "sha256": "3858b530a6d4836ef8765f0be23502d6212981ee4c99c284ae30275122bddf6f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-compound-375.png",
+    "width": 375,
+    "height": 3028,
+    "sha256": "816e4a0c3f372edfb439f42480e877e020459f88d16041098b6a638d46205d9f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-compound-390.png",
+    "width": 390,
+    "height": 3035,
+    "sha256": "778ecbc4d4525aed7181f9f331c9170e5bf15dc0d856c2fc72bc6df4b3a4fcd1"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-compound-430.png",
+    "width": 430,
+    "height": 2960,
+    "sha256": "246dd7dc7e88f6d555a0b8c915fef55ceca76fe68d626908dde77148e7e59e70"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-compound-768.png",
+    "width": 768,
+    "height": 2187,
+    "sha256": "c10363b30659b06078d00083d89744fbe46f6f92d97e11d213b010cd2df67446"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-compound-desktop.png",
+    "width": 1440,
+    "height": 2188,
+    "sha256": "0e6db985c242c5e62a42bad3058ae046a5c451bfda8475ccbbc5dafaf9ac5aae"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-inflation-375.png",
+    "width": 375,
+    "height": 2964,
+    "sha256": "2df93d32f22def1f151311917be3f6a6e96be626aba0f333828446712c391b6e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-inflation-390.png",
+    "width": 390,
+    "height": 2971,
+    "sha256": "92971d1b8f9303690b594b24f67ad3e745e44902ad237b4f8fabead61bd5194c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-inflation-430.png",
+    "width": 430,
+    "height": 2944,
+    "sha256": "eb6d6648ab2c62b1353e1d483cfe08c6c8dfbe50dfd0317d006116a36ee22b60"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-inflation-768.png",
+    "width": 768,
+    "height": 2123,
+    "sha256": "10b4bdcb6d25435af7ec1ea6124c1952d5825284e2bd34afbfa230fad375a969"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-inflation-desktop.png",
+    "width": 1440,
+    "height": 2147,
+    "sha256": "f11f103e638b81dabdf29e39988e0ab270a8f6c12c9680d66f3481fee588bc40"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b2-purchasing-desktop.png",
+    "width": 1440,
+    "height": 6026,
+    "sha256": "fe868da11501134959fcc3b41f3874b4c34809eb8a2337154473b4e291e03c50"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-loan-desktop.png",
+    "width": 1440,
+    "height": 2343,
+    "sha256": "787cebbcae03c1804ce815dfaf54a09c55605e209bbd06e7ad25c9784be3344e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-story-375.png",
+    "width": 375,
+    "height": 7103,
+    "sha256": "4e68e83c3d21e45a46893ced07deff98f7e283759e97659f0b07b3a8b75ae7f1"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-story-390.png",
+    "width": 390,
+    "height": 6986,
+    "sha256": "23757fd6ed88d488d74eee6a3d08877844191237c4efaa2ab8c2f72575f9e15c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-story-430.png",
+    "width": 430,
+    "height": 6801,
+    "sha256": "12b3416d88034684d08b9794fc91b31c47802f7b0f0b615d89f61807aad4b222"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-story-768.png",
+    "width": 768,
+    "height": 5929,
+    "sha256": "8b8ee98b8f3bfa692ff2cb802c94377917ea446d87d22918ca16955a5ed06d18"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-story-desktop.png",
+    "width": 1440,
+    "height": 4819,
+    "sha256": "dd2ba5a244578a5f7905d60ef200b04b544a0a54abac8b7bcaf194b557d327b8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-tool-375.png",
+    "width": 375,
+    "height": 3418,
+    "sha256": "c68126b8ee60219540e559f47fcbcddde4ddd8484f6fec4e318f8752b7aa2c6c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-tool-390.png",
+    "width": 390,
+    "height": 3360,
+    "sha256": "375a2839a7dc692949427a619489a0706844966ffabd3bdea9ec6efa52794b4b"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-tool-430.png",
+    "width": 430,
+    "height": 3353,
+    "sha256": "e7e9ae674ef207e0f36e2774902ff224ffb2ad4e9b5ea21194c83bfb9604fd5f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-tool-768.png",
+    "width": 768,
+    "height": 2238,
+    "sha256": "67d7cf88739d68178eb2fda8318a7dc71a4d953a19556043b0d801bdb8adaeda"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b3-zero-interest-with-fees.png",
+    "width": 1440,
+    "height": 2343,
+    "sha256": "37ba1cfcba895eb8ddc93de1f714d39680f19d398b4d16642c75926185b4c7c3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-bonds-375.png",
+    "width": 375,
+    "height": 5929,
+    "sha256": "b2d1192c547462b8d7840c595dd4370ed8e260e6aed3bc0d590033fc48035da0"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-bonds-390.png",
+    "width": 390,
+    "height": 5872,
+    "sha256": "ea40161b089cea66fad191376b8bca0e8ff0da114661fa12d164fd9c9322715e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-bonds-430.png",
+    "width": 430,
+    "height": 5672,
+    "sha256": "9a05db6d438fee6b118c38775e0d317036110c5bb36ba3ba5dbe2a11a285e783"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-bonds-768.png",
+    "width": 768,
+    "height": 4992,
+    "sha256": "4c8690b5cfcf097ab6ea2eec1ea8af8533c810ac8d14260913f6e080b7880fd2"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-bonds-desktop.png",
+    "width": 1440,
+    "height": 4258,
+    "sha256": "f976245e044d2c6870e1f0b472d533f65824c536540ae486c35028128fce88a9"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-concept-restored.png",
+    "width": 1440,
+    "height": 2283,
+    "sha256": "f2d5de60be4655b8811c2dd5d9a47b23139be196367fe25d27dcd8d03bb4debf"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-concept-wrong.png",
+    "width": 1440,
+    "height": 2308,
+    "sha256": "c86a8d421c0fa3bc08f6d386532bcfb1056e44039609b6dfb2e092997c5975c3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-etf-375.png",
+    "width": 375,
+    "height": 5764,
+    "sha256": "f484434f695992af4bb1471765a88d5ad9b7f909fccd2c4d8686e9ac2afcd308"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-etf-390.png",
+    "width": 390,
+    "height": 5576,
+    "sha256": "3cfec0421d517f7e4974d6114eea3566f25a835bb0bcc77f427c688e88ef2fb3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-etf-430.png",
+    "width": 430,
+    "height": 5389,
+    "sha256": "cbdbc25b5a18daea66711b8e80606d41bf65331113621a9dcea3bae36aa09813"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-etf-768.png",
+    "width": 768,
+    "height": 4465,
+    "sha256": "0dcacdac6a7104f61b3c2de1eb60f86349e9f2e728ccb2068d3bbbfbc06b1517"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b4-etf-desktop.png",
+    "width": 1440,
+    "height": 4270,
+    "sha256": "9ffe94f2686105b62add1f20870602d0e7bc38bb16582aef19ed1eebf4589c73"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-bonds-375.png",
+    "width": 375,
+    "height": 5778,
+    "sha256": "14f83c1b5cfc1d329e6f1b8d56fe1c3d2afeeca52a163b6a314260bc67f422e4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-bonds-390.png",
+    "width": 390,
+    "height": 5689,
+    "sha256": "c8c0279eeac8009a9d0400caf0c0db53be06fe78ca2d4eec0ec905f0de3bb020"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-bonds-430.png",
+    "width": 430,
+    "height": 5489,
+    "sha256": "6e31f1a771e71e27ea74824d8467fa19f23bd936043b098beb0808eb2f9bf2af"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-bonds-768.png",
+    "width": 768,
+    "height": 4832,
+    "sha256": "9731d3656702bae2da760889135fa4b77045e978b5bc21700cf07607ac1dcaa4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-bonds-desktop.png",
+    "width": 1440,
+    "height": 4098,
+    "sha256": "f017c019b9659d475848caa94015e5befeb0fb24f22f0172e0ee550e31c183e7"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-bonds-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "557fc33673ab664fba709cc368b9d36d5606b8dbba24afffe736c009556b3ca5"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-375.png",
+    "width": 375,
+    "height": 2860,
+    "sha256": "aa441ed2782995b04645f094f205de5ae9f8a6ed8ff9ca33d057a82290b6bf0d"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-390.png",
+    "width": 390,
+    "height": 2860,
+    "sha256": "66fe65b100c7a16438e60b4cdb2c38aba7ac65cb8ad434c6591863a2d318f3a4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-430.png",
+    "width": 430,
+    "height": 2815,
+    "sha256": "d724a467ef7957083786aa61b4ba182f751e250c877219a74c408183a86fb1ec"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-768.png",
+    "width": 768,
+    "height": 1978,
+    "sha256": "44b58c95342cdf62a2c7bf3af7437c06ed1b7fe9e6734cbd42d3cf722f77ddf3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-desktop.png",
+    "width": 1440,
+    "height": 1978,
+    "sha256": "6493537a865e263ff20f4855a45d023c37468282ddb520d5ec6ea92a459e2a01"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "3fcc5d91a71d7b49703028b4e0ea47fd710f295c110102e049e25ce4c34d1d90"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-story-375.png",
+    "width": 375,
+    "height": 7011,
+    "sha256": "267153378a2150a14327a954cb08b688971a2b58182d680a76ae764254c0ea08"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-story-390.png",
+    "width": 390,
+    "height": 6834,
+    "sha256": "2d1e9a2be5016a7494b14cb17b71a3faafcf7a5a323ef3b104fb939aa677b823"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-story-430.png",
+    "width": 430,
+    "height": 6719,
+    "sha256": "4686cfa85a67e5570f8324070fe45c4d440f01439464f5cc0bcea08436eafba6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-story-768.png",
+    "width": 768,
+    "height": 5707,
+    "sha256": "5de356353071afe8d2cf4d04389eb9c906652583dd75be531e2f4fc1e6047cd9"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-story-desktop.png",
+    "width": 1440,
+    "height": 5213,
+    "sha256": "8c089ad54d2b4e9557a74ba3d36d17e6481d07ecfe0cfc92c7781e685be735e3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-budget-story-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "110d298ba47cc968ed45aab1a7b87db3175c2a56fcf1963d30707495416cd7d8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-compound-375.png",
+    "width": 375,
+    "height": 3028,
+    "sha256": "497e568bc89474fa608f75ee6fb1eb10635d81aa35c6f666c996edf42553851f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-compound-390.png",
+    "width": 390,
+    "height": 3035,
+    "sha256": "925554fe90c8a91e03609ca5d2c85a9c9ab86853ff8fc288f47a080de1b85efb"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-compound-430.png",
+    "width": 430,
+    "height": 2960,
+    "sha256": "0fe20d74de91b199afd7cb1a02a4e59355b5661aa9f5ddbc812d6d2fea63bd38"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-compound-768.png",
+    "width": 768,
+    "height": 2187,
+    "sha256": "b63f81e97df7a51e1d0e5e142e82b81830026831751925dea323f0c6fe01488d"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-compound-desktop.png",
+    "width": 1440,
+    "height": 2188,
+    "sha256": "a1841959ff8fd7bd6c62a9ea649b056c678d07560bbe4ab3b4aca618a2b740c8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-compound-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "f801b3fd7eac7cc17a24f3b8c84de0d2013497f95eb7700184a05e1a5c0a3a6f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-concept-375.png",
+    "width": 375,
+    "height": 2965,
+    "sha256": "164c431111bf64f732f561085e2dbd00641490a1bf9210edecc08a8369997912"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-concept-390.png",
+    "width": 390,
+    "height": 2866,
+    "sha256": "14a10ad1d606927897dc6ca9e967a3f58c6900b7f123fdf2bdee18cf5d6ffbfc"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-concept-430.png",
+    "width": 430,
+    "height": 2791,
+    "sha256": "04d45bf5d832f82eac9ead56a9fc5ed9c8a94343f15c93c32c5d8de7560db7f7"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-concept-768.png",
+    "width": 768,
+    "height": 2361,
+    "sha256": "c695b2b570c5321b488419272a3b45b7ad4aa03508689953144a0cda3a059673"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-concept-desktop.png",
+    "width": 1440,
+    "height": 2212,
+    "sha256": "ff17fc40fba6dec9736cddc8931d0af9510ea5d924ed79bb8f020772f873581b"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-concept-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "d01222a2dc1cf0042bfa302086781942bd80c38f743dd9d9b7df0f5b5b50902e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-copilot-same-session.png",
+    "width": 1440,
+    "height": 1544,
+    "sha256": "e6e9992d03d19cb5879fb1ce8c5296b599af2d0206b5ca26a33970e4abc95f7b"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-directory-375.png",
+    "width": 375,
+    "height": 2814,
+    "sha256": "5dae302deae9f2dd2c6219cbdb033403131809cbd7e98b5cf06d8c6d62cb4978"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-directory-390.png",
+    "width": 390,
+    "height": 2821,
+    "sha256": "97ee33ac9621da10fc431f55ce708993ace914a54fe5982b2069551437c26b12"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-directory-430.png",
+    "width": 430,
+    "height": 2640,
+    "sha256": "3a2f32d9cf4d26ce743c138bb929c558ed6a3537ecaea1ede0e558d7c1521020"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-directory-768.png",
+    "width": 768,
+    "height": 1900,
+    "sha256": "fce89dab97a75375c87c5d44757d5b3ae10b0eb8792b91224e855c2ba9292ad8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-directory-desktop.png",
+    "width": 1440,
+    "height": 1962,
+    "sha256": "2c74e60fcb807b1b9f104c02dd0f0c91a08de55138507d64a75872604641b566"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-directory-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "5dca1e49d3b084da782c1f4911b5295629c55d5fb7afed90a8d239f81c62e851"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-discover-375.png",
+    "width": 375,
+    "height": 4689,
+    "sha256": "6bdf35d285f00501ced0065b05c28b99cf367e90c48599101af97c1c0049c396"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-discover-390.png",
+    "width": 390,
+    "height": 4656,
+    "sha256": "289732fe708c08c970bd8cd54c9c42feec444252ed033b2a7572e62fe93d332a"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-discover-430.png",
+    "width": 430,
+    "height": 4526,
+    "sha256": "bceb1f676864caf2ad6ec782f637032d18292d2d9cb1f7958008e3210d167b3e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-discover-768.png",
+    "width": 768,
+    "height": 2906,
+    "sha256": "407017d1e88b9469060e2256842057c1e73d8d0c44daf0c63f53ae67dba1f6d5"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-discover-desktop.png",
+    "width": 1440,
+    "height": 2885,
+    "sha256": "f5efbb7a8f805993a6197a1f76e0e7fbc13002b690a906d22afaef0c4504523a"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-discover-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "8b401eec28c6bbf3c3b1818736b9d3bb8ae362a692992f7bfaf46a324b0a1549"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-etf-375.png",
+    "width": 375,
+    "height": 5816,
+    "sha256": "2ba35236b356331f872ee08d306f01610b479caae75efd7331a30308e06d228e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-etf-390.png",
+    "width": 390,
+    "height": 5596,
+    "sha256": "8b16ce2b8d182694848fb6036610c9d857f3e458fae6d86ac5290f79bee35514"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-etf-430.png",
+    "width": 430,
+    "height": 5409,
+    "sha256": "809007ebb930b50cfa8f8670c2f59deb0839acf24bc3272f8698e9690f07d2ab"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-etf-768.png",
+    "width": 768,
+    "height": 4382,
+    "sha256": "0c25a911ac998b4d747493ad4c5857f4530cc8d60baab8cdc0ff46e9fdaf6f15"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-etf-desktop.png",
+    "width": 1440,
+    "height": 4294,
+    "sha256": "a996e3e3710498509484a90b6c678a20618bfde970a8e30467f8826495e7e747"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-etf-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "6d68c0d5c823315be67a238b9c370118a81bc1b9fa683c2db9b80cfc0245882c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-fin-context-drawer.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "3592eb0699cef79870bcf64e0ce7cb4f6ee903fad86c2129987a5efba161b1f6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-home-375.png",
+    "width": 375,
+    "height": 5220,
+    "sha256": "2af5250633014a3a681cdc397e5c3cf9c4c7704c0495d57660c69d758661c316"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-home-390.png",
+    "width": 390,
+    "height": 5164,
+    "sha256": "bc833774660e164966a3ff1b75f112c42ee821b76b2193bcf64a8227f3baf92b"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-home-430.png",
+    "width": 430,
+    "height": 5035,
+    "sha256": "128ea72bfd637eff4be60858d681df21980d10db48366ed5f164a9f5969bd5b0"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-home-768.png",
+    "width": 768,
+    "height": 4278,
+    "sha256": "3d4c2186b68d20ee5ab8e103c58f32c816e27edc93bbead123ccfe7d9f4ddc03"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-home-desktop.png",
+    "width": 1440,
+    "height": 4274,
+    "sha256": "91ca41cf56731d2ca9553883a3fbc1ba0bd6f2f0c63b977c8a3210da397fbf45"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-home-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "3cda142107e5064fd960d196993c789d2ba02994cba75e220de4bb045475cc73"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-inflation-375.png",
+    "width": 375,
+    "height": 2964,
+    "sha256": "9b6518642180c290601f7e0978a1bf821a876495cd0fd47e52b3a141ae774a9e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-inflation-390.png",
+    "width": 390,
+    "height": 2971,
+    "sha256": "4e4e36192bdf8ae2e7c9d42ee3d7efc3f53f44305aee525d70bdfa739d1508e8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-inflation-430.png",
+    "width": 430,
+    "height": 2944,
+    "sha256": "b75020e997c771d625d0a7fd84285d6e7d5f4748cf0832cf7f8c42afe77b8757"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-inflation-768.png",
+    "width": 768,
+    "height": 2123,
+    "sha256": "df3a305f033da2ff8ed300ea5591fe4d510012f7ef4b16bfbdde22d596a0c4f9"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-inflation-desktop.png",
+    "width": 1440,
+    "height": 2147,
+    "sha256": "ad439ac5934a8312b90704d2a955c281f42c50456b398c7a6bda71cabd26e353"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-inflation-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "22e70f612c31f092466d4c0bdeed667874e26e3c9bf17c38daec3ff64e5e506a"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-375.png",
+    "width": 375,
+    "height": 3418,
+    "sha256": "9be19ef1dfc25eccf96ad881e846e3791381323b8be4fde6d659d09b41c3e504"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-390.png",
+    "width": 390,
+    "height": 3360,
+    "sha256": "e64ccaa1f714328556cbbd81d454b173ff566d8893b21f96c3252bcfeefd0b0a"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-430.png",
+    "width": 430,
+    "height": 3353,
+    "sha256": "2d2b53af7e67f3bbab13993381ba1df3aa059b3ac8c39e1add45e5099ce74fb3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-768.png",
+    "width": 768,
+    "height": 2238,
+    "sha256": "bb70cb9bf7c151b3bebd5b819cd9009b63fb69084f4bd7b72945699988f7ec48"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-desktop.png",
+    "width": 1440,
+    "height": 2343,
+    "sha256": "0aa3b3a8a026c06c5425c64becb4d83c234a9fc90daa9506ce61bb184b8e14ac"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "c02af784638dff2e22c08fa2e38267dd89cec2d43fdd574e2ccec04d2f6bc3c4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-story-375.png",
+    "width": 375,
+    "height": 7011,
+    "sha256": "7d9875fd28bb2cc24ac875b5067b80b7bed9beda4e63b16a3c3e7cdf1b1839d8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-story-390.png",
+    "width": 390,
+    "height": 6890,
+    "sha256": "495b3dc49d532970d3df2b4b79311058abb2f3a41ede7ae34cd1036de98df0a3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-story-430.png",
+    "width": 430,
+    "height": 6705,
+    "sha256": "cb47a427bc07dcfdb359f80131eb482d95ed8c14fd2277b698d04a75f2cfe258"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-story-768.png",
+    "width": 768,
+    "height": 5858,
+    "sha256": "1e772b49d76c9c9058cd148d6cc8ee708e50d3d693f7177aeb1d5dc507c10123"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-story-desktop.png",
+    "width": 1440,
+    "height": 4748,
+    "sha256": "d5ff207597d636a7bba0ef51b5213339e9ded7ad617ac81cedf9024a0db90fc3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-loan-story-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "bc43b40f645568b012ba41341095003d0aa1db58feebdffe6251b158a4e90c34"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-notebook-375.png",
+    "width": 375,
+    "height": 5174,
+    "sha256": "bb0a4602fe0032d1e97da320fb4cd70c3eab7f3d1f495b8d7ee280118fd86fa8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-notebook-390.png",
+    "width": 390,
+    "height": 5174,
+    "sha256": "cd02516b4e6016a0eeb8abf5832c27448d048d0167afbfdc89b1c8986fccc6d6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-notebook-430.png",
+    "width": 430,
+    "height": 5100,
+    "sha256": "017365aba0920d4f68f09fd7157e1e9b177aacdf270a786c7708d5c8ba33f605"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-notebook-768.png",
+    "width": 768,
+    "height": 3357,
+    "sha256": "1869a5e0eb7c55363c7a7d5671791c1d50e769fb84afdb7fcce03fd1e20dfbf2"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-notebook-desktop.png",
+    "width": 1440,
+    "height": 2698,
+    "sha256": "2ee7bf7e0ea6e45845bde806a68b78c5e15b4005582936fb8a3bcd8d96843e97"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-notebook-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "7fdc0c0da8095952f859ef79939e0290781512a74d974c085d1b72f721281bb5"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-purchasing-375.png",
+    "width": 375,
+    "height": 7820,
+    "sha256": "09b294fb895575d8b6d0d59689bc6bb4b65e53c64f8e2fef5c7ac9b95340b79a"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-purchasing-390.png",
+    "width": 390,
+    "height": 7692,
+    "sha256": "a4572558b15d6a0b3ade8d4c5feac1bc299f1f8c7ca7e1a496d0dd8e89de1df2"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-purchasing-430.png",
+    "width": 430,
+    "height": 7392,
+    "sha256": "eca0da6dcf71994e66f83d51c085101e4247d56a983c7cbfc63cfe997fa471f6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-purchasing-768.png",
+    "width": 768,
+    "height": 6828,
+    "sha256": "19cffe6c8c491a08cf947c8edac607a94d772e8944ba9e7893ee2b0c295f83c4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-purchasing-desktop.png",
+    "width": 1440,
+    "height": 6026,
+    "sha256": "f44c3b24fe5850fcc586ac51cc4fa313680be740140a91701b7b336fbc1a8748"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-purchasing-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "fa2026af99802dcb818be48cfad33dae8434e0963f3948679142ab7fc8272f7c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-save-failed.png",
+    "width": 1440,
+    "height": 2015,
+    "sha256": "289a201a69a97379cbe47b3993fdb2629fe54ab15ff2b4e6cab0dfafa6350189"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-savings-375.png",
+    "width": 375,
+    "height": 2319,
+    "sha256": "ebb718891d33ac31cdc13479e3067eda25121460f9c08f0e30c12668c1d54e9c"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-savings-390.png",
+    "width": 390,
+    "height": 2325,
+    "sha256": "ac5aa1a9fe748fefd48961b1b83a7be0ec72054b9b727628b6f25e49db62ab7f"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-savings-430.png",
+    "width": 430,
+    "height": 2276,
+    "sha256": "9c0c8c4c9634186ea63521b7d9b5f2f6dd6672e971b47a58c64c654b9f625b5a"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-savings-768.png",
+    "width": 768,
+    "height": 1774,
+    "sha256": "ccee4fc3396635ce7114c14551819bc28c80094f375e037bc8324ac6da57eeb3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-savings-desktop.png",
+    "width": 1440,
+    "height": 1787,
+    "sha256": "d09b5b814403cd44e96d137c52984277dcb008010e0b22c20f55d9c0ce4fd75e"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/b5-savings-first-screen.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "599e83e4af817959ee7ab3cd6eb319dbb6d8b43b7f8a0c1aaeb098f750f19a21"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-bonds-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "7b8addeeb92e7e6849d51cad47eb6782d826f8c258f593a832a83da4325fc6c7"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-budget-account-restored-390.png",
+    "width": 390,
+    "height": 2950,
+    "sha256": "95dcb1eb10280193148b2b774225dc1585802b78d97e4ede6f4414a82010b0f0"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-budget-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "15a3073822f26f216515b4635a938a3ec746c4754f0c7cb0620c67bc09b10ffc"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-budget-story-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "d146172424c7f0af30440158fcabc61a96185790c4f3e5cfcdf842671de497c6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-compound-account-restored-390.png",
+    "width": 390,
+    "height": 3125,
+    "sha256": "e47eaf6a6b494238e0e8c67ca467e59fc87b7cf86c63d30f53a39c3aae1aeaa6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-compound-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "c4a798b6e718790ebcfd1184479312d96beaa84f19b0cc9a7c60052c6543aad3"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-concept-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "0e33dca2f488b01f38055841eeca6e6d02323adc70aa3bb18fdc901f6eebcb08"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-copilot-desktop.png",
+    "width": 1440,
+    "height": 1214,
+    "sha256": "1836d8e68d0a44d28d6946a0ef81aff6c8a13c74cb9d2be1e4ead2a91989c523"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-copilot-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "8f48de282256a69ac031690cb045f617215bacc097f371ba8847a79909118a87"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-directory-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "0baba59147e3b6e8ab2224812f27146866c1dbb8886d79802d213b564ecdb551"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-discover-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "803118b3465b7234e91153ddd7995daea88326321fe68db6747c5d8961966b28"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-etf-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "491d4064f14a8c65cc84ff853212b34caefe33d6d6467933b7b83229078b47b8"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-fin-desktop.png",
+    "width": 1440,
+    "height": 2258,
+    "sha256": "1e8ae2044794330d0a12308a0c1dc15db1e466b9c95fe252363961c8a48736d6"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-fin-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "df4d08cb7cc106e121ee62912ecc32b25e2cb885bc37aa6cfa329cd8462ec853"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-home-first-375.png",
+    "width": 375,
+    "height": 844,
+    "sha256": "478c19afdfe421de2bf4ef29ec19816adc11c0f400d6f7753a9a89503ccfd2ed"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-home-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "a16834044a3b9cf911cb5b00b698b4b7ad417c0cd7864b8b971124e206a29533"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-home-first-430.png",
+    "width": 430,
+    "height": 844,
+    "sha256": "167875f35a1f7d7298c06e5b132722ea2b9dd52c73e83c231b22899412e53eab"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-home-first-768.png",
+    "width": 768,
+    "height": 844,
+    "sha256": "f8c83d8e69cedd6263031c49af70764a39ae5ca408b4e10baae0a7055ad6e305"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-inflation-account-restored-390.png",
+    "width": 390,
+    "height": 3061,
+    "sha256": "735abc2ab3229b372de43e009b72f8a8b82fb504e9820c1e9d141f8aa710a882"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-inflation-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "61c4134f456ca380bc2d8091bee14ea6be32e1aca5b9d8a9a358a4597e8a33d4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-loan-account-restored-390.png",
+    "width": 390,
+    "height": 3450,
+    "sha256": "37a7cbbb6890a14e302512c6652f2e939a7302e617ee145b474d4e1bf93c0348"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-loan-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "96f8d1a55a6cb03643f7bd570cf476413aa1567a4241ec47912d07cf528c1224"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-loan-story-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "dd5a3e9fd1edd2fa02ab6a8b81f9a235bdb1d15bf90dd6f4ed6e671544202381"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-mobile-budget-saved.png",
+    "width": 390,
+    "height": 2897,
+    "sha256": "cc62f910b7a805deaa78491eed957b19e3d27302f6047cfcee970bd274572e71"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-mobile-loan-story-restored.png",
+    "width": 390,
+    "height": 6986,
+    "sha256": "f5b6d647da27683a3771f29a2420bd4bbf33c3ed66c3a9d766ef31667fe46ab4"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-mobile-purchasing-story-restored.png",
+    "width": 390,
+    "height": 7722,
+    "sha256": "fe2d91cb5f2727f87063713359ce4b3810a0f3377bdafcc5532d24d329dcbf68"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-notebook-desktop.png",
+    "width": 1440,
+    "height": 1275,
+    "sha256": "3125b418a8d0c7c9b77b4bdca101b92f7293df72daf0a1f3ffc4a1a5099b8410"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-notebook-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "b347cda69f38dd4b037ec10ba869ed6dc48d93cbfdaf0a57d30c581a4a133aea"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-purchasing-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "7507019aca0138d44a7f69f3ddd67d8ff3bd219a97ab9366319b64c0a1f99467"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-savings-account-restored-390.png",
+    "width": 390,
+    "height": 2394,
+    "sha256": "a30c9359d0c430a805d6c259b0c2e347acdba63fe565919ddd0cc28e62c400cf"
+  },
+  {
+    "path": "docs/redesign/screenshots/gate-b/final-savings-first-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "7eb32c5a989704dac108d2fab450c30ca47d878db4b89a252b8bfe8499ccc295"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/home-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "6836725f9704a0d1430312197a7567f18f12c2134a70f8a6bbac5fba53bd8cff"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/home-375.png",
+    "width": 375,
+    "height": 844,
+    "sha256": "478c19afdfe421de2bf4ef29ec19816adc11c0f400d6f7753a9a89503ccfd2ed"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/home-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "a16834044a3b9cf911cb5b00b698b4b7ad417c0cd7864b8b971124e206a29533"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/home-430.png",
+    "width": 430,
+    "height": 844,
+    "sha256": "167875f35a1f7d7298c06e5b132722ea2b9dd52c73e83c231b22899412e53eab"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/home-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "0844153c90354e7baabfcd7ddebb0cf9ec8579a26fdcb7ceafe35108b6cbc701"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-empty.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "db8f1f41288aaf0ca2054348da554b058d84a7db4807e70dbd7b868ad10f31f1"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-exact-match.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "fd52b93695a8f3465db1445cdd4b4d9a4206edb4939090914737c3ef05b8bd13"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-loan-not-savings.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "79c2fb4fc7e086d389f40ae0560c8911508989d7e41aa1d1013d818820070e8b"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-mixed.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "883f9c6bf23346839dd073552d0027cfe8f61c35843bd07c9b563d683b267464"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-preserved-in-copilot.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "3df0ff6cb6d6ef51b3593be0d1edddab2af6a2cae7ba14275ba98b86a4aa555b"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-related.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "e0670457c38777f276525d63b001528371218f922af59a10ef4f2264281893be"
+  },
+  {
+    "path": "docs/redesign/gate-b/routing/screenshots/question-unmatched.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "29ec2fdc05336ff09bd210460ec7d308b36a4980ccd6b263b97838e40b2c0bc6"
+  }
+]

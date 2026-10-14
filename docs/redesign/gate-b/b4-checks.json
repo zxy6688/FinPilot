@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "checks": [
+    "bond yield 3→2 price 1000→1047.13",
+    "bond wrong/correct feedback",
+    "ETF mechanism switch",
+    "concept wrong/correct/save/reopen",
+    "four mobile widths"
+  ],
+  "errors": []
+}

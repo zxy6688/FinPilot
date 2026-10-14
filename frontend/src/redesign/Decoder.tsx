@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowUpRight,
   Bookmark,
@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { api } from "../services/api";
 import { useNotebook, money } from "./state";
+import { snapshotId } from "./Experiments";
+import { TimeWorkbench } from "./TimeTools";
 import { FinArt } from "./Fin";
 export function PurchasingArt() {
   return (
@@ -75,113 +77,7 @@ export function PurchasingArt() {
   );
 }
 export function InflationLab() {
-  const [rate, setRate] = useState(3),
-    [years, setYears] = useState(3);
-  const [result, setResult] = useState<{
-      value: number;
-      explanation: string;
-    } | null>(null),
-    [error, setError] = useState(""),
-    [busy, setBusy] = useState(false);
-  useEffect(() => {
-    let live = true;
-    setBusy(true);
-    const t = setTimeout(() => {
-      api<{ value: number; explanation: string }>("/labs/2/simulate", "POST", {
-        principal: 10000,
-        rate,
-        years,
-      })
-        .then((r) => {
-          if (live) {
-            setResult(r);
-            setError("");
-          }
-        })
-        .catch((e) => {
-          if (live) setError(e.message);
-        })
-        .finally(() => {
-          if (live) setBusy(false);
-        });
-    }, 150);
-    return () => {
-      live = false;
-      clearTimeout(t);
-    };
-  }, [rate, years]);
-  return (
-    <div className="rd-inflation">
-      <div>
-        <span className="rd-kicker">把假设交给你</span>
-        <h3>
-          同样的一万元，
-          <br />
-          还能买到多少？
-        </h3>
-        <label>
-          假设每年通胀率 <b>{rate}%</b>
-          <input
-            aria-label="假设每年通胀率"
-            type="range"
-            min="-2"
-            max="10"
-            step=".5"
-            value={rate}
-            onChange={(e) => setRate(+e.target.value)}
-          />
-        </label>
-        <label>
-          时间 <b>{years} 年</b>
-          <input
-            aria-label="时间年数"
-            type="range"
-            min="1"
-            max="10"
-            value={years}
-            onChange={(e) => setYears(+e.target.value)}
-          />
-        </label>
-        <small>假设名义金额不变，不计存款利息。允许负通胀情景。</small>
-      </div>
-      <div className="rd-purchasing-result" aria-live="polite">
-        <span>以今天价格衡量的购买力</span>
-        <strong>
-          {busy ? "计算中…" : result ? "¥ " + money(result.value) : "等待计算"}
-        </strong>
-        <div className="rd-bar-label">
-          <span>今天</span>
-          <b>¥10,000</b>
-        </div>
-        <div className="rd-power-bar">
-          <i style={{ width: "100%" }} />
-        </div>
-        <div className="rd-bar-label">
-          <span>{years} 年后</span>
-          <b>{result ? money(result.value) : "—"}</b>
-        </div>
-        <div className="rd-power-bar">
-          <i
-            style={{
-              width: Math.min(100, (result?.value || 10000) / 100) + "%",
-              background: "#d6b15b",
-            }}
-          />
-        </div>
-        <small>
-          {result && result.value > 10000
-            ? "通缩情景下实际购买力高于今天，条形以今天为上限；精确值见数字。"
-            : "绿色是今天，黄色是未来的实际购买力。"}
-        </small>
-        {error && <p role="alert">{error}</p>}
-        <p>
-          实际购买力 = 10,000 ÷ (1 + 通胀率)<sup>{years}</sup>
-          <br />
-          复用已有 FastAPI 通胀计算内核。
-        </p>
-      </div>
-    </div>
-  );
+  return <TimeWorkbench tool="inflation" embedded />;
 }
 export default function Decoder() {
   const notebook = useNotebook();
@@ -189,6 +85,15 @@ export default function Decoder() {
     [answer, setAnswer] = useState<number | null>(null),
     [saved, setSaved] = useState(false);
   const [note, setNote] = useState("");
+  const [params] = useSearchParams();
+  useEffect(() => {
+    const entry = notebook.entries.find((e) => e.id === params.get("reading"));
+    if (entry) {
+      const p = entry.payload as { note?: string; answer?: number };
+      setNote(p.note || "");
+      if (p.answer === 0 || p.answer === 1) setAnswer(p.answer);
+    }
+  }, [notebook.entries, params]);
   return (
     <div className="rd-page rd-decoder">
       <div className="rd-breadcrumb">
@@ -366,7 +271,9 @@ export default function Decoder() {
             </p>
             <InflationLab />
             <div className="rd-reader-check">
-              <b>小判断：实验里三年后的“¥9,151.42”，代表什么？</b>
+              <b>
+                小判断：默认教学情景（1万元、3年、通胀3%、名义增长0%）中的“¥9,151.42”，代表什么？
+              </b>
               {[
                 "银行会把账户余额扣到这个数",
                 "以今天价格衡量的购买力约为这个数",
@@ -405,7 +312,7 @@ export default function Decoder() {
             <div className="rd-boundary">
               <b>这个实验没有包括</b>
               <p>
-                动态通胀、消费替代、税费、储蓄收益、投资损失及个人消费权重。它解释一个关系，不替你选择金融产品。
+                动态通胀、消费替代、税费及个人消费权重；名义增长仅为你设定的固定假设。它解释一个关系，不替你选择金融产品。
               </p>
             </div>
           </section>
@@ -420,28 +327,42 @@ export default function Decoder() {
             <label className="rd-note-field">
               我的一句发现（可选）
               <textarea
+                aria-label="我的一句发现（可选）"
                 maxLength={600}
                 value={note}
-                onChange={(e) => setNote(e.target.value)}
+                onChange={(e) => {
+                  setNote(e.target.value);
+                  setSaved(false);
+                }}
                 placeholder="例如：余额不变，不代表买到的东西也不变。"
               />
             </label>
             <button
               className="rd-button"
-              onClick={() => {
+              onClick={async () => {
+                const experiment = JSON.parse(
+                  sessionStorage.getItem("inflation-result") || "null",
+                );
+                const id = await snapshotId("purchasing", {
+                  note,
+                  experiment,
+                  answer,
+                });
                 if (
-                  notebook.save({
-                    id: "reading-purchasing-power",
+                  await notebook.save({
+                    id,
                     kind: "reading",
                     title: "存钱与购买力：别把两种数字混在一起",
-                    url: "/decoder/purchasing-power#takeaway",
+                    url: `/decoder/purchasing-power?reading=${id}&inputs=${encodeURIComponent(JSON.stringify(experiment?.inputs || {}))}#takeaway`,
                     detail:
                       note || "名义金额与实际购买力，需要不同的衡量尺度。",
                     payload: {
                       article_id: "purchasing-power",
                       source: "ECB · What is inflation?",
-                      editorial_version: "2026-10-gate-a",
+                      editorial_version: "gate-b-1",
+                      experiment,
                       note,
+                      answer,
                     },
                   })
                 )
@@ -453,7 +374,7 @@ export default function Decoder() {
             </button>
             {saved && (
               <p className="rd-success" role="status">
-                <Check size={17} /> 已保存在此浏览器。
+                <Check size={17} /> 已保存：{notebook.scope}。
                 <Link to="/profile">打开我的发现手册 →</Link>
               </p>
             )}

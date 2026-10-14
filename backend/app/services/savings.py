@@ -11,6 +11,7 @@ class SavingsInput(BaseModel):
     rate: float = Field(default=2, ge=0, le=30)
     target: float = Field(default=15000, ge=1, le=100000000)
     timing: Literal["end", "begin"] = "end"
+    basis: Literal["nominal", "effective"] = "nominal"
 
 def savings(p: SavingsInput):
     with localcontext() as ctx:
@@ -18,6 +19,8 @@ def savings(p: SavingsInput):
         d = lambda v: Decimal(str(v))
         money = lambda v: float(v.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
         balance, monthly, r = d(p.principal), d(p.monthly), d(p.rate) / 1200
+        if p.basis == "effective":
+            r = (1+d(p.rate)/100) ** (Decimal(1)/12) - 1
         points = [{"month": 0, "balance": money(balance), "contributions": money(balance)}]
         reached = 0 if balance >= d(p.target) else None
         for m in range(1, p.months + 1):
@@ -34,4 +37,4 @@ def savings(p: SavingsInput):
                 "contributions":money(contributions), "interest":money(balance-contributions),
                 "required_monthly":float(required.quantize(Decimal("0.01"), rounding=ROUND_CEILING)),
                 "gap":money(max(Decimal(0),d(p.target)-balance)), "reached_month":reached, "points":points,
-                "assumptions":"固定年名义收益率除以 12 逐月计息；按选择的月初或月末存入；不计税费、不考虑利率变化。教学情景不代表产品报价或收益承诺。"}
+                "assumptions":("固定年有效收益率换算为等效月利率" if p.basis == "effective" else "固定年名义收益率除以 12 逐月计息") + "；按选择的月初或月末存入；不计税费、不考虑利率变化。教学情景不代表产品报价或收益承诺。"}

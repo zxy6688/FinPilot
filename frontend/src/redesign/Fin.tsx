@@ -116,13 +116,15 @@ export default function FinButton({
           />
           <p>要不要把一个小问题，变成一张自己的发现？</p>
           <div className="rd-drawer-actions">
-            <Link
+            <button
               className="rd-button"
-              to="/copilot"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                window.dispatchEvent(new Event("fin-chat"));
+              }}
             >
               问 Fin 一个问题
-            </Link>
+            </button>
             <Link
               className="rd-secondary"
               to="/profile"
@@ -154,8 +156,8 @@ export function FinDesign() {
   return (
     <div className="rd-page rd-design">
       <div className="rd-heading">
-        <span className="rd-kicker">角色设计 · 待人工验收</span>
-        <h1>认识全新的 Fin。</h1>
+        <span className="rd-kicker">角色设计 · Gate A1 视觉基线</span>
+        <h1>认识陪你探索的 Fin。</h1>
         <p>
           一个温暖好奇的小导航员。统一轮廓、配色与动作，而不是随页面变化的装饰。
         </p>

@@ -4,13 +4,15 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./services/auth";
 import { ErrorBoundary } from "./components/ui";
 import Layout from "./redesign/Layout";
-import {
-  Discover as RedesignDiscover,
-  Notebook,
-  StoryPreview,
-  Methods,
-} from "./redesign/Home";
+import { Notebook, StoryPreview, Methods } from "./redesign/Home";
 import RedesignHome from "./redesign/Home";
+import { Magazine, ToolDirectory } from "./redesign/Catalog";
+import { BondsStory } from "./redesign/Bonds";
+import { EtfStory } from "./redesign/Etf";
+import { LoanWorkbench, LoanStory } from "./redesign/Loan";
+import { TimeWorkbench } from "./redesign/TimeTools";
+import { BudgetWorkbench } from "./redesign/Experiments";
+import { BudgetStory } from "./redesign/Stories";
 import MoneyLab from "./redesign/MoneyLab";
 import Decoder from "./redesign/Decoder";
 import ConceptStudio from "./redesign/ConceptStudio";
@@ -64,7 +66,22 @@ createRoot(document.getElementById("root")!).render(
             <Route element={<Layout />}>
               <Route index element={<RedesignHome />} />
               <Route path="decoder/purchasing-power" element={<Decoder />} />
-              <Route path="money-lab" element={<MoneyLab />} />
+              <Route path="stories/bonds" element={<BondsStory />} />
+              <Route path="stories/etf" element={<EtfStory />} />
+              <Route path="stories/loan" element={<LoanStory />} />
+              <Route path="money-lab/loan" element={<LoanWorkbench />} />
+              <Route path="stories/budget" element={<BudgetStory />} />
+              <Route
+                path="money-lab/compound"
+                element={<TimeWorkbench key="compound" tool="compound" />}
+              />
+              <Route
+                path="money-lab/inflation"
+                element={<TimeWorkbench key="inflation" tool="inflation" />}
+              />
+              <Route path="money-lab/savings" element={<MoneyLab />} />
+              <Route path="money-lab/budget" element={<BudgetWorkbench />} />
+              <Route path="money-lab" element={<ToolDirectory />} />
               <Route path="concept-studio" element={<ConceptStudio />} />
               <Route path="stories/:slug" element={<StoryPreview />} />
               <Route path="fin-design" element={<FinDesign />} />
@@ -76,7 +93,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="review" element={<Review />} />
               <Route path="compare" element={<Compare />} />
               <Route path="compare/:slug" element={<Compare />} />
-              <Route path="discover" element={<RedesignDiscover />} />
+              <Route path="discover" element={<Magazine />} />
               <Route path="topics/:id" element={<TopicHub />} />
               <Route path="learn" element={<Learn />} />
               <Route path="learn/routes/:id" element={<LearningRoutePage />} />
@@ -116,3 +133,5 @@ createRoot(document.getElementById("root")!).render(
 );
 
 import "./redesign/a1.css";
+
+import "./redesign/gate-b.css";

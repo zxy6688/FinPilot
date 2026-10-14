@@ -49,7 +49,7 @@ def article(id: int, user=Depends(optional_user), db: Session = Depends(get_db))
 def reading_state(
     kind: str, id: int, user=Depends(require_user), db: Session = Depends(get_db)
 ):
-    if kind not in ("article", "lesson"):
+    if kind not in ("article", "lesson", "story"):
         raise HTTPException(422, "无效阅读类型")
     return reading.state(db, user.id, kind, id)
 
@@ -62,7 +62,7 @@ def save_reading(
     user=Depends(require_user),
     db: Session = Depends(write_db),
 ):
-    if kind not in ("article", "lesson"):
+    if kind not in ("article", "lesson", "story"):
         raise HTTPException(422, "无效阅读类型")
     return reading.save(db, user, kind, id, data)
 
@@ -269,3 +269,34 @@ from ..services.savings import SavingsInput, savings
 @router.post("/tools/savings")
 def calculate_savings(data: SavingsInput):
     return savings(data)
+
+
+from ..services.finance import BudgetInput, budget
+from ..services.finance import CompoundInput, compound, InflationInput, inflation
+from ..services.finance import LoanInput, loan
+from ..services.finance import BondInput, bond
+
+
+@router.post("/tools/budget")
+def calculate_budget(data: BudgetInput):
+    return budget(data)
+
+
+@router.post("/tools/compound")
+def calculate_compound(data: CompoundInput):
+    return compound(data)
+
+
+@router.post("/tools/inflation")
+def calculate_inflation(data: InflationInput):
+    return inflation(data)
+
+
+@router.post("/tools/loan")
+def calculate_loan(data: LoanInput):
+    return loan(data)
+
+
+@router.post("/experiments/bond")
+def calculate_bond(data: BondInput):
+    return bond(data)

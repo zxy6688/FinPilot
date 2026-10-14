@@ -182,6 +182,7 @@ export interface Message {
       action?: string;
       selected_text?: string;
       inputs?: Record<string, number>;
+      tool_inputs?: Record<string, unknown>;
     };
   };
 }

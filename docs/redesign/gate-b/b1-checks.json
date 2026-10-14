@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": [
+    "budget 750 → 150 → restore 750",
+    "real authenticated save",
+    "fresh browser context restore",
+    "375/390/430/768 no overflow"
+  ],
+  "errors": []
+}

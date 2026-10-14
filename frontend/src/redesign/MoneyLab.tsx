@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { api } from "../services/api";
 import { money, useNotebook } from "./state";
+import { numericDisplay } from "./drafts";
+import { snapshotId } from "./Experiments";
 import { FinArt } from "./Fin";
 export type Inputs = {
   principal: number;
@@ -18,6 +20,7 @@ export type Inputs = {
   rate: number;
   target: number;
   timing: "begin" | "end";
+  basis?: "nominal" | "effective";
 };
 export type Result = {
   model_version: string;
@@ -203,7 +206,10 @@ export function MiniLab() {
           onChange={(e) => setMonthly(+e.target.value)}
         />
         <small>初始 ¥2,000 · 24 个月 · 假设年名义收益率 2% · 月末存入</small>
-        <Link className="rd-text-link" to={"/money-lab?monthly=" + monthly}>
+        <Link
+          className="rd-text-link"
+          to={"/money-lab/savings?monthly=" + monthly}
+        >
           调整全部参数 <ArrowUpRight size={17} />
         </Link>
       </div>
@@ -230,6 +236,9 @@ export default function MoneyLab() {
     ...defaults,
     monthly: Number(params.get("monthly") || 500),
   }));
+  useEffect(() => {
+    sessionStorage.setItem("savings-draft", JSON.stringify(input));
+  }, [input]);
   const { result, error, busy } = useSavings(input);
   const [compare, setCompare] = useState<Result | null>(null);
   const [saved, setSaved] = useState(false);
@@ -240,7 +249,12 @@ export default function MoneyLab() {
     if (id && restoreOnce.current !== id) {
       const entry = notebook.entries.find((e) => e.id === id);
       if (entry?.payload) {
-        const r = entry.payload as Result;
+        const raw = entry.payload as Result & {
+          current?: Result;
+          fixed?: Result;
+        };
+        const r = raw.current || raw;
+        setCompare(raw.fixed || null);
         setInput(r.inputs);
         setRestored(
           r.model_version === "savings-monthly-v1"
@@ -255,17 +269,23 @@ export default function MoneyLab() {
     setInput((p) => ({ ...p, [k]: v }));
     setSaved(false);
   }
-  function save() {
+  function updateFromCompare() {
+    if (compare) {
+      setInput({ ...compare.inputs });
+      setSaved(false);
+    }
+  }
+  async function save() {
     if (!result || busy) return;
-    const id = "receipt-" + Date.now();
+    const id = await snapshotId("savings", { current: result, fixed: compare });
     if (
-      notebook.save({
+      await notebook.save({
         id,
         kind: "receipt",
         title: "我的储蓄计划",
-        url: "/money-lab?receipt=" + id,
+        url: "/money-lab/savings?receipt=" + id,
         detail: `${input.months} 个月 · 每月 ¥${input.monthly} → ¥${money(result.balance)}`,
-        payload: result,
+        payload: { current: result, fixed: compare },
       })
     ) {
       setSaved(true);
@@ -290,10 +310,10 @@ export default function MoneyLab() {
       </div>
       <div className="rd-tool-tabs">
         <span className="selected">储蓄规划</span>
-        <Link to="/lab/1">复利与时间 ↗</Link>
-        <Link to="/decoder/purchasing-power#experiment">通胀购买力 ↗</Link>
-        <Link to="/stories/loan">贷款成本 · 导读</Link>
-        <Link to="/stories/budget">个人预算 · 导读</Link>
+        <Link to="/money-lab/compound">复利与时间 ↗</Link>
+        <Link to="/money-lab/inflation">通胀购买力 ↗</Link>
+        <Link to="/money-lab/loan">贷款实际成本</Link>
+        <Link to="/money-lab/budget">个人预算</Link>
       </div>
       {restored && (
         <p className="rd-notice" role="status">
@@ -324,7 +344,7 @@ export default function MoneyLab() {
               ["principal", "现在已有", "元", 0, 10000000, 100],
               ["monthly", "每月再存", "元", 0, 100000, 100],
               ["months", "坚持多久", "个月", 1, 600, 1],
-              ["rate", "假设年名义收益率", "%", 0, 30, 0.1],
+              ["rate", "假设年利率", "%", 0, 30, 0.1],
               ["target", "目标金额", "元", 1, 100000000, 100],
             ] as const
           ).map(([key, label, unit, min, max, step]) => (
@@ -337,13 +357,29 @@ export default function MoneyLab() {
                   min={min}
                   max={max}
                   step={step}
-                  value={input[key]}
-                  onChange={(e) => update(key, Number(e.target.value))}
+                  value={numericDisplay(input[key])}
+                  onChange={(e) =>
+                    update(
+                      key,
+                      e.target.value === "" ? NaN : Number(e.target.value),
+                    )
+                  }
                 />
                 <span>{unit}</span>
               </div>
             </label>
           ))}
+          <label className="rd-field">
+            <span>利率口径</span>
+            <select
+              value={input.basis || "nominal"}
+              onChange={(e) => update("basis", e.target.value)}
+              aria-label="利率口径"
+            >
+              <option value="nominal">年名义利率（除以 12）</option>
+              <option value="effective">年有效收益率（等效月利率）</option>
+            </select>
+          </label>
           <label className="rd-field">
             <span>存入时间</span>
             <select
@@ -407,7 +443,7 @@ export default function MoneyLab() {
               {compare && (
                 <div className="a1-scenario-cards">
                   <div>
-                    <span>A / 当前方案</span>
+                    <span>B / 当前方案</span>
                     <b>¥ {money(result.balance)}</b>
                     <small>
                       {result.inputs.months} 个月 · 每月 ¥
@@ -415,7 +451,7 @@ export default function MoneyLab() {
                     </small>
                   </div>
                   <div>
-                    <span>B / 已固定方案</span>
+                    <span>A / 已固定方案</span>
                     <b>¥ {money(compare.balance)}</b>
                     <small>
                       {compare.inputs.months} 个月 · 每月 ¥
@@ -443,6 +479,14 @@ export default function MoneyLab() {
             </>
           )}
           <div className="rd-actions">
+            {compare && (
+              <button
+                className="rd-secondary"
+                onClick={() => updateFromCompare()}
+              >
+                恢复 A 参数
+              </button>
+            )}
             <button
               disabled={busy || !result || !!error}
               onClick={() => {
@@ -451,10 +495,10 @@ export default function MoneyLab() {
               }}
               className="rd-secondary"
             >
-              <Plus size={16} /> 固定当前方案作对比
+              <Plus size={16} /> 固定当前为 A
             </button>
             <button
-              disabled={busy || !result || !!error || notebook.loading}
+              disabled={busy || !result || !!error || notebook.loading || saved}
               onClick={save}
               className="rd-button"
             >
@@ -470,8 +514,8 @@ export default function MoneyLab() {
           )}
           {notebook.error && <p role="alert">{notebook.error}</p>}
           <small>
-            原型保存：{notebook.scope}
-            。保留参数、结果、公式版本与时间；刷新可恢复，不跨设备同步。
+            保存范围：{notebook.scope}
+            。保留参数、结果、A/B、公式版本与时间。
           </small>
         </section>
       </div>
@@ -483,7 +527,7 @@ export default function MoneyLab() {
               取消对比
             </button>
           </div>
-          <p>已固定方案 B。继续调整左侧参数，当前方案 A 会实时更新。</p>
+          <p>已固定方案 A。继续调整左侧参数，当前方案 B 会实时更新。</p>
           <div className="rd-table-scroll">
             <table>
               <thead>
@@ -496,8 +540,8 @@ export default function MoneyLab() {
               </thead>
               <tbody>
                 {[
-                  [result, "A · 当前"],
-                  [compare, "B · 已固定"],
+                  [result, "B · 当前"],
+                  [compare, "A · 已固定"],
                 ].map(([r, label]) => {
                   const v = r as Result;
                   return (

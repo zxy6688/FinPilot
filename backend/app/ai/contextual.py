@@ -22,6 +22,9 @@ def section(lesson, heading, default):
 
 
 async def contextual_answer(db, user, ctx, message, history, remote, system):
+    if ctx.source_type == "redesign":
+        from .redesign import redesign_answer
+        return await redesign_answer(ctx, message, history, remote, system)
     if ctx.source_type in ("compare", "review"):
         from .living import special_answer
 

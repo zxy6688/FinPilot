@@ -21,26 +21,26 @@ const content: Exploration[] = [
   {
     id: "savings",
     title: "储蓄规划器",
-    path: "/money-lab",
+    path: "/money-lab/savings",
     scope: "需要你填写金额、期限和利率；不会从问题自动提取参数。",
   },
   {
     id: "bonds",
     title: "从一次降息，读懂债券",
     path: "/stories/bonds",
-    scope: "机制导读与已有实验入口；不判断具体债券涨跌。",
+    scope: "完整机制专题与债券定价实验；不判断具体债券涨跌。",
   },
   {
     id: "budget",
     title: "大学生的第一份预算",
     path: "/stories/budget",
-    scope: "预算导读；尚无完整预算录入工具。",
+    scope: "预算分类、录入与情景比较；保存并恢复个人实验。",
   },
   {
     id: "loan",
     title: "一笔贷款，到底要还多少钱？",
     path: "/stories/loan",
-    scope: "成本口径导读；尚无贷款还款计算器。",
+    scope: "完整贷款专题与真实还款计算；不推荐借贷产品。",
   },
 ];
 const normalize = (value: string) =>

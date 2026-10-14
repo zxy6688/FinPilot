@@ -9,6 +9,7 @@ from .seed import seed
 from .api.routes import router
 from .api.v2 import router as v2_router
 from .api.v3 import router as v3_router
+from .api.artifacts import router as artifacts_router
 
 LOG_DIR = ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -40,6 +41,7 @@ app.add_middleware(
 app.include_router(router)
 app.include_router(v2_router)
 app.include_router(v3_router)
+app.include_router(artifacts_router)
 
 
 @app.get("/api/health")

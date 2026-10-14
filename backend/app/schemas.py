@@ -73,7 +73,7 @@ class LabInput(BaseModel):
 
 
 class AIContext(BaseModel):
-    source_type: Literal["topic", "lesson", "article", "lab", "relation", "route", "compare", "review"]
+    source_type: Literal["topic", "lesson", "article", "lab", "relation", "route", "compare", "review", "redesign"]
     source_id: int = Field(gt=0)
     action: Literal[
         "explain",
@@ -90,6 +90,7 @@ class AIContext(BaseModel):
     brief: bool = False
     selected_text: str = Field(default="", max_length=1200)
     inputs: LabInput | None = None
+    tool_inputs: dict | None = None
 
     @field_validator("selected_text")
     @classmethod
@@ -100,6 +101,10 @@ class AIContext(BaseModel):
 
     @model_validator(mode="after")
     def scoped_inputs(self):
+        if self.tool_inputs is not None:
+            import json
+            if self.source_type != "redesign" or len(json.dumps(self.tool_inputs, allow_nan=False)) > 12000:
+                raise ValueError("工具上下文超出范围")
         if self.inputs is not None and self.source_type != "lab":
             raise ValueError("实验参数仅可用于 Lab 上下文")
         return self

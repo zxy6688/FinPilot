@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Check, Bookmark } from "lucide-react";
 import { useAuth } from "../services/auth";
 import { api } from "../services/api";
 import { useNotebook } from "./state";
+import { snapshotId } from "./Experiments";
 import { FinArt } from "./Fin";
 const cases = [
   {
@@ -27,9 +28,23 @@ const cases = [
   },
 ];
 export function ConceptPlay({ compact = false }: { compact?: boolean }) {
-  const [current, setCurrent] = useState(0),
-    [answer, setAnswer] = useState<number | null>(null);
-  const c = cases[current];
+  const [current, setCurrent] = useState(() =>
+      Number(sessionStorage.getItem("etf-case") || 0),
+    ),
+    [answer, setAnswer] = useState<number | null>(() => {
+      const a = sessionStorage.getItem("etf-mini");
+      return a === null ? null : Number(a);
+    });
+  useEffect(() => {
+    sessionStorage.setItem("etf-case", String(current));
+  }, [current]);
+  useEffect(() => {
+    const restore = () =>
+      setCurrent(Number(sessionStorage.getItem("etf-case") || 0));
+    window.addEventListener("etf-restore", restore);
+    return () => window.removeEventListener("etf-restore", restore);
+  }, []);
+  const c = cases[current] || cases[0];
   return (
     <div className={"rd-concept-play " + (compact ? "compact" : "")}>
       <div
@@ -114,14 +129,20 @@ export function ConceptPlay({ compact = false }: { compact?: boolean }) {
             <button
               className="rd-secondary"
               aria-pressed={answer === 0}
-              onClick={() => setAnswer(0)}
+              onClick={() => {
+                setAnswer(0);
+                sessionStorage.setItem("etf-mini", "0");
+              }}
             >
               是的
             </button>
             <button
               className="rd-secondary"
               aria-pressed={answer === 1}
-              onClick={() => setAnswer(1)}
+              onClick={() => {
+                setAnswer(1);
+                sessionStorage.setItem("etf-mini", "1");
+              }}
             >
               不一定
             </button>
@@ -146,6 +167,20 @@ export default function ConceptStudio() {
     [busy, setBusy] = useState(false),
     [correct, setCorrect] = useState(false),
     [saved, setSaved] = useState(false);
+  const [params] = useSearchParams();
+  useEffect(() => {
+    const entry = notebook.entries.find((e) => e.id === params.get("concept"));
+    if (entry) {
+      const p = entry.payload as { choice: number; case?: number };
+      setAnswer(p.choice);
+      setCorrect(p.choice === 2);
+      setFeedback("已恢复这张概念卡的判断：交易形式与投资策略是两个维度。");
+      if (p.case !== undefined) {
+        sessionStorage.setItem("etf-case", String(p.case));
+        window.dispatchEvent(new Event("etf-restore"));
+      }
+    }
+  }, [params, notebook.entries]);
   async function check(i: number) {
     setAnswer(i);
     setCorrect(false);
@@ -253,16 +288,22 @@ export default function ConceptStudio() {
           <p>指数策略不等于保本；可以交易，也不等于任何时候都容易成交。</p>
           <button
             className="rd-button"
-            disabled={!correct || notebook.loading}
-            onClick={() => {
+            disabled={!correct || notebook.loading || saved}
+            onClick={async () => {
+              const payload = {
+                comparison: "etf-index-fund",
+                choice: 2,
+                case: Number(sessionStorage.getItem("etf-case") || 0),
+              };
+              const id = await snapshotId("concept", payload);
               if (
-                notebook.save({
-                  id: "concept-etf",
+                await notebook.save({
+                  id,
                   kind: "concept",
                   title: "ETF × 指数基金：两条分类线",
-                  url: "/concept-studio",
+                  url: "/concept-studio?concept=" + id,
                   detail: "已正确判断：ETF 是交易形式，指数跟踪是策略。",
-                  payload: { comparison: "etf-index-fund", choice: 2 },
+                  payload,
                 })
               )
                 setSaved(true);
@@ -271,7 +312,7 @@ export default function ConceptStudio() {
             <Bookmark size={17} />
             {saved ? "概念卡已放进手册" : "答对后保存概念卡"}
           </button>
-          <small>本浏览器原型保存；不把一次答对当作完全掌握。</small>
+          <small>{notebook.scope}；不把一次答对当作完全掌握。</small>
           {notebook.error && <p role="alert">{notebook.error}</p>}
         </aside>
       </div>
@@ -283,8 +324,8 @@ export default function ConceptStudio() {
         <Link to="/learn" className="rd-secondary">
           进入学习路线 <ArrowRight size={16} />
         </Link>
-        <Link to="/compare/etf-index-fund" className="rd-text-link">
-          查看原概念对照
+        <Link to="/stories/etf" className="rd-text-link">
+          深入交易机制、费用与风险
         </Link>
       </section>
       <p className="rd-source">

@@ -22,6 +22,12 @@ def tasks(db, user):
         .order_by(ReadingState.last_read_at.desc())
         .limit(6)
     ):
+        if r.content_type == "story":
+            from ..redesign_catalog import STORIES
+            story = STORIES.get(r.content_id)
+            if story:
+                pending.append({"kind":"story", "eyebrow":"继续自己的专题", "title":story[1], "detail":f"上次停在 {r.last_section or '正文'} · 继续阅读", "url":story[2]+"#"+r.last_section, "duration":"继续探索", "_at":r.last_read_at})
+            continue
         if r.content_type == "lesson" and r.content_id in completed_lessons:
             continue
         material = db.get(

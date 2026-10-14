@@ -1,0 +1,360 @@
+{
+  "date": "2026-10-14",
+  "branch": "v3",
+  "a1_checkpoint": "26b9da5c739bd92372cff140acd91c41aaae0f2b",
+  "frozen_files_sha256_unchanged": true,
+  "backend_pytest": {
+    "passed": 113,
+    "duration_seconds": 57.99,
+    "warning": "Starlette TestClient/httpx deprecation"
+  },
+  "typescript": "passed",
+  "production_build": "passed",
+  "build_warning": "main JS chunk > 500 kB",
+  "browser_checks": {
+    "b1-checks.json": {
+      "status": "passed",
+      "checks": [
+        "budget 750 → 150 → restore 750",
+        "real authenticated save",
+        "fresh browser context restore",
+        "375/390/430/768 no overflow"
+      ],
+      "errors": []
+    },
+    "b2-checks.json": {
+      "status": "passed",
+      "checks": [
+        "A/B restore",
+        "guest save/reopen",
+        "four mobile widths",
+        "topic→tool parameters→return"
+      ],
+      "errors": []
+    },
+    "b3-checks.json": {
+      "status": "passed",
+      "checks": [
+        "zero rate with fees 200→440",
+        "save/reopen restores rate and fee",
+        "A/B restore",
+        "wrong/correct concept feedback",
+        "four mobile widths"
+      ],
+      "errors": []
+    },
+    "b4-checks.json": {
+      "status": "passed",
+      "checks": [
+        "bond yield 3→2 price 1000→1047.13",
+        "bond wrong/correct feedback",
+        "ETF mechanism switch",
+        "concept wrong/correct/save/reopen",
+        "four mobile widths"
+      ],
+      "errors": []
+    },
+    "b5-checks.json": {
+      "status": "passed",
+      "checks": [
+        "global search→actual loan tool",
+        "Discover filters/empty/reset",
+        "offline save no false success; retry preserves note and inputs",
+        "authenticated story position persisted",
+        "Fin contextual model→same authenticated Copilot session",
+        "all 15 core surfaces at desktop and 375/390/430/768",
+        "14 old learning/discussion/search routes retained"
+      ],
+      "routes": [
+        "/",
+        "/discover",
+        "/money-lab",
+        "/money-lab/savings",
+        "/money-lab/compound",
+        "/money-lab/inflation",
+        "/money-lab/budget",
+        "/money-lab/loan",
+        "/stories/budget",
+        "/decoder/purchasing-power",
+        "/stories/bonds",
+        "/stories/etf",
+        "/stories/loan",
+        "/concept-studio",
+        "/profile",
+        "/discover/library",
+        "/articles/1",
+        "/learn",
+        "/learn/1",
+        "/lessons/1",
+        "/learn/routes/1",
+        "/lab",
+        "/lab/1",
+        "/review",
+        "/compare/etf-index-fund",
+        "/fintalk",
+        "/profile/history",
+        "/knowledge",
+        "/search?q=ETF"
+      ],
+      "errors": []
+    },
+    "final-checks.json": {
+      "status": "passed",
+      "checks": [
+        "savings: actual UI save → new 390px browser → parameters and notes restored",
+        "compound: actual UI save → new 390px browser → parameters and notes restored",
+        "inflation: actual UI save → new 390px browser → parameters and notes restored",
+        "loan: actual UI save → new 390px browser → parameters and notes restored",
+        "budget: actual UI save → new 390px browser → parameters and notes restored",
+        "budget: story notes and specific quiz answer restored in fresh browser",
+        "bonds: story notes and specific quiz answer restored in fresh browser",
+        "etf: story notes and specific quiz answer restored in fresh browser",
+        "new Copilot conversation clears unrelated carried context",
+        "missing receipt does not falsely claim restored parameters"
+      ],
+      "errors": []
+    },
+    "mobile-journey.json": {
+      "status": "passed",
+      "checks": [
+        "390px Home exact question→budget story→edit→600 repair→full tool→save→Notebook→restore",
+        "贷款专题恢复验证: fresh mobile browser retains note and interaction",
+        "购买力专题恢复验证: fresh mobile browser retains note and interaction"
+      ],
+      "errors": []
+    },
+    "routing/checks.json": {
+      "checked_at": "2026-10-14T05:24:46.025Z",
+      "status": "passed",
+      "cases": [
+        {
+          "question": "存钱为什么不等于购买力不变？",
+          "kind": "exact",
+          "destination": "/decoder/purchasing-power",
+          "passed": true
+        },
+        {
+          "question": "  存钱，为什么不等于购买力不变?  ",
+          "kind": "exact",
+          "destination": "/decoder/purchasing-power",
+          "passed": true
+        },
+        {
+          "question": "ETF 和指数基金，是一回事吗？",
+          "kind": "exact",
+          "destination": "/concept-studio",
+          "passed": true
+        },
+        {
+          "question": "ｅｔｆ 和指数基金，是一回事吗？",
+          "kind": "exact",
+          "destination": "/concept-studio",
+          "passed": true
+        },
+        {
+          "question": "从一次降息，读懂债券",
+          "kind": "exact",
+          "destination": "/stories/bonds",
+          "passed": true
+        },
+        {
+          "question": "大学生的第一份预算",
+          "kind": "exact",
+          "destination": "/stories/budget",
+          "passed": true
+        },
+        {
+          "question": "一笔贷款，到底要还多少钱？",
+          "kind": "exact",
+          "destination": "/stories/loan",
+          "passed": true
+        },
+        {
+          "question": "",
+          "kind": "empty",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "   ",
+          "kind": "empty",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "明天适合出去旅行吗",
+          "kind": "unknown",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "每月花500元喝咖啡",
+          "kind": "unknown",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "我有3000元，存哪家银行最好",
+          "kind": "unknown",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "明年通胀率是多少",
+          "kind": "related",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "ETF怎么买，哪只最好",
+          "kind": "related",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "ETF和指数基金是一回事吗？哪个适合我",
+          "kind": "related",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "每月存1000元三年后有多少",
+          "kind": "related",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "复利怎么算",
+          "kind": "related",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "每月还款1000元",
+          "kind": "related",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "存钱为什么等于购买力不变",
+          "kind": "mixed",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "每月存钱还是买ETF",
+          "kind": "mixed",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "通胀与指数基金",
+          "kind": "mixed",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "通胀会影响我的储蓄吗",
+          "kind": "mixed",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "存钱为什么不等于购买力不变？还有贷款月供呢",
+          "kind": "mixed",
+          "destination": null,
+          "passed": true
+        },
+        {
+          "question": "降息后基金和债券都会涨吗",
+          "kind": "mixed",
+          "destination": null,
+          "passed": true
+        }
+      ],
+      "layouts": [
+        {
+          "width": 375,
+          "fontSize": 29,
+          "titleRight": 227,
+          "finHitLeft": 239.25,
+          "titleFinGap": 12.25,
+          "titleBottom": 201.125,
+          "heroBottom": 374,
+          "imageLoaded": true,
+          "overflow": false,
+          "tasksBottom": 764,
+          "bottomNavTop": 779
+        },
+        {
+          "width": 390,
+          "fontSize": 29,
+          "titleRight": 227,
+          "finHitLeft": 249,
+          "titleFinGap": 22,
+          "titleBottom": 201.125,
+          "heroBottom": 374,
+          "imageLoaded": true,
+          "overflow": false,
+          "tasksBottom": 764,
+          "bottomNavTop": 779
+        },
+        {
+          "width": 430,
+          "fontSize": 29,
+          "titleRight": 227,
+          "finHitLeft": 275,
+          "titleFinGap": 48,
+          "titleBottom": 201.125,
+          "heroBottom": 374,
+          "imageLoaded": true,
+          "overflow": false,
+          "tasksBottom": 764,
+          "bottomNavTop": 779
+        },
+        {
+          "width": 768,
+          "fontSize": 36,
+          "titleRight": 313.609375,
+          "finHitLeft": 450.953125,
+          "titleFinGap": 137.34375,
+          "titleBottom": 245.390625,
+          "heroBottom": 496,
+          "imageLoaded": true,
+          "overflow": false,
+          "tasksBottom": 848.5,
+          "bottomNavTop": null
+        },
+        {
+          "width": 1440,
+          "fontSize": 43,
+          "titleRight": 483.609375,
+          "finHitLeft": 828.71875,
+          "titleFinGap": 345.109375,
+          "titleBottom": 274.890625,
+          "heroBottom": 504,
+          "imageLoaded": true,
+          "overflow": false,
+          "tasksBottom": 849.71875,
+          "bottomNavTop": null
+        }
+      ],
+      "checks": [
+        "375/390/430/768/1440: title stays >=29px, Fin visible and clickable, no horizontal overflow; phone tasks above bottom nav",
+        "All 24 classifier cases exercised through real browser navigation; wrong keyword routes prevented",
+        "Exact navigation/back, chosen suggestion/back, reload, and Copilot prefill preserve raw question including whitespace; no automatic chat POST",
+        "Unknown shows generic entrances, empty clears draft, loan repayment suggests loan guide rather than savings calculator"
+      ],
+      "errors": [],
+      "failed": [],
+      "chatPosts": 0
+    }
+  },
+  "page_screenshots": 183,
+  "comparison_images": 2,
+  "visual_approval": "awaiting human review",
+  "data_scope": "local v3 backend account records; guests browser-only",
+  "gate_c_started": false,
+  "pushed": false,
+  "deployed": false
+}

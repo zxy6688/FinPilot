@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "checks": [
+    "zero rate with fees 200→440",
+    "save/reopen restores rate and fee",
+    "A/B restore",
+    "wrong/correct concept feedback",
+    "four mobile widths"
+  ],
+  "errors": []
+}

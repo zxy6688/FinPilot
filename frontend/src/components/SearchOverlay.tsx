@@ -4,6 +4,7 @@ import { Search, ArrowUpRight } from "lucide-react";
 import Modal from "./Modal";
 import { api } from "../services/api";
 import { State, Empty } from "./ui";
+import { searchCatalog } from "../redesign/Catalog";
 type Item = { id: number; title: string; topic_id?: number };
 const groups = [
   { key: "routes", label: "学习路线", path: "/learn/routes/" },
@@ -55,13 +56,16 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
       clearTimeout(timer);
     };
   }, [query, tick]);
-  const results = groups.flatMap((g) =>
-    (data[g.key] || []).slice(0, 5).map((item) => ({
-      ...item,
-      group: g.label,
-      url: g.path + item.id,
-    })),
-  );
+  const results = [
+    ...searchCatalog(query),
+    ...groups.flatMap((g) =>
+      (data[g.key] || []).slice(0, 5).map((item) => ({
+        ...item,
+        group: g.label,
+        url: g.path + item.id,
+      })),
+    ),
+  ];
   function open(url: string) {
     onClose();
     nav(url);

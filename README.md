@@ -1,6 +1,24 @@
-> **当前工作区：FinPilot V3 Redesign · Gate A1，等待人工复审。**
-> 用户已确认整体视觉基本达标；最新 [两项 P0 收尾结果](docs/redesign/a1-p0/REVIEW.md) 等待最终验收。[长期视觉标准](docs/redesign/VISUAL_ACCEPTANCE_STANDARD.md) 已纳入项目，视觉基线尚未正式冻结。
-> Gate A 视觉验收未通过，本轮定向返工见 [Gate A1 审查包](docs/redesign/GATE_A1_REVIEW.md) 与 [认可图 / Gate A / A1 对照](docs/redesign/a1/comparison.png)。尚未进入 Gate B/C/D，没有提交或部署。下方原 V3 文档作为基线功能说明保留。
+# FinPilot V3 Redesign · Gate B
+
+看懂金融，形成自己的判断。基于已认可的 Gate A1 主视觉与 Fin，完成五个互动专题、五套财务工具和账户发现手册。
+
+**本地待人工验收；没有部署、推送或进入 Gate C。**
+
+- [本轮验收与实际能力边界](docs/redesign/GATE_B_ACCEPTANCE.md)
+- [五专题、五工具及导航地图](docs/redesign/GATE_B_PRODUCT_MAP.md)
+- [真实用户旅程](docs/redesign/GATE_B_USER_JOURNEYS.md)
+- [截图索引](docs/redesign/gate-b/SCREENSHOTS.md) / [认可目标与 A1 对照](docs/redesign/gate-b/visual-comparison.html)
+- [数学口径](docs/redesign/GATE_B_TOOL_FORMULAS.md) / [内容来源](docs/redesign/GATE_B_CONTENT_MANIFEST.md)
+
+![Gate B 首页](docs/redesign/screenshots/gate-b/b5-home-first-screen.png)
+
+已有本地环境启动：`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/Start-FinPilot.ps1`。本轮地址 http://127.0.0.1:5176/，后端 http://127.0.0.1:8004/api/health 。Demo：`demo@finpilot.app` / `demo123456`。
+
+首次安装仍按下方 Run locally 的 Setup 步骤。当前账户保存进入本地V3后端SQLite；访客仅本浏览器。无外部Key时为Demo AI，不提供实时市场判断。
+
+---
+
+以下为重设计之前的V3功能与技术文档；课程、路线、复习、知识关系和FinTalk仍保留，其截图为历史界面，不代表Gate B当前首页。
 
 # FinPilot V3 — Living Knowledge System
 

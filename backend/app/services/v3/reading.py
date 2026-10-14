@@ -8,6 +8,12 @@ from .moments import emit
 
 
 def content(db, kind, cid):
+    if kind == "story":
+        from ..redesign_catalog import STORIES
+        from types import SimpleNamespace
+        if cid not in STORIES:
+            raise HTTPException(404, "专题不存在")
+        return SimpleNamespace(id=cid, title=STORIES[cid][1])
     row = db.get(Article if kind == "article" else Lesson, cid)
     if not row:
         raise HTTPException(404, "阅读内容不存在")

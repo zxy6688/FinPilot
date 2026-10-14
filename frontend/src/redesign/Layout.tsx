@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import { useAuth } from "../services/auth";
 import SearchOverlay from "../components/SearchOverlay";
+import { ReadingMemory } from "./ReadingMemory";
+import { FinChat } from "./FinChat";
+import { RestoreNotice } from "./RestoreNotice";
 import FinButton from "./Fin";
 export default function RedesignLayout() {
   const { user } = useAuth();
@@ -68,9 +71,12 @@ export default function RedesignLayout() {
           >
             <Search size={20} />
           </button>
-          <Link className="rd-ask" to="/copilot">
+          <button
+            className="rd-ask"
+            onClick={() => window.dispatchEvent(new Event("fin-chat"))}
+          >
             问 Fin <ArrowUpRight size={15} />
-          </Link>
+          </button>
           <Link
             className="rd-user"
             to={user ? "/profile" : "/login"}
@@ -89,7 +95,10 @@ export default function RedesignLayout() {
         </div>
       </header>
       <main id="main-content" className="rd-main" tabIndex={-1}>
+        <ReadingMemory />
+        <RestoreNotice />
         <Outlet />
+        <FinChat />
       </main>
       <footer className="rd-footer">
         <div>
@@ -107,7 +116,7 @@ export default function RedesignLayout() {
         <small>
           金融教育用途，不构成投资建议。计算基于明确的假设，不代表收益承诺。
           <br />
-          V3 重设计 · Gate A1 审查原型 · AI Demo · 保存仅在此浏览器
+          V3 · 金融探索工作室 · AI Demo 能力有限 · 账户保存 / 访客仅本机
         </small>
       </footer>
       <nav className="rd-bottom-nav" aria-label="手机导航">

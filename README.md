@@ -1,3 +1,7 @@
+> **当前工作区：FinPilot V3 Redesign · Gate A1，等待人工复审。**
+> 用户已确认整体视觉基本达标；最新 [两项 P0 收尾结果](docs/redesign/a1-p0/REVIEW.md) 等待最终验收。[长期视觉标准](docs/redesign/VISUAL_ACCEPTANCE_STANDARD.md) 已纳入项目，视觉基线尚未正式冻结。
+> Gate A 视觉验收未通过，本轮定向返工见 [Gate A1 审查包](docs/redesign/GATE_A1_REVIEW.md) 与 [认可图 / Gate A / A1 对照](docs/redesign/a1/comparison.png)。尚未进入 Gate B/C/D，没有提交或部署。下方原 V3 文档作为基线功能说明保留。
+
 # FinPilot V3 — Living Knowledge System
 
 Navigate money. Build understanding.

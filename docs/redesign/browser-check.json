@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-13T08:13:34.460Z",
+  "checks": [
+    "1440x900: three tasks visible",
+    "Decoder: layers, backend inflation, saved real interaction",
+    "Money Lab: 0% independent formula, live change, comparison, receipt",
+    "Unequal term comparison shares correct 24-month axis",
+    "Receipt restored after refresh",
+    "Concept: cases, targeted wrong feedback, correct saved card",
+    "Fin: Enter, focus containment, Escape",
+    "375/390/430/768 no page overflow",
+    "Demo login: guest notebook isolated from account",
+    "Authenticated concept uses existing review API",
+    "Existing capabilities and five topic entry points reachable"
+  ],
+  "errors": [],
+  "failed": [],
+  "status": "passed"
+}

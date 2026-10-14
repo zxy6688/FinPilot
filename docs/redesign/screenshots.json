@@ -1,0 +1,124 @@
+{
+  "count": 17,
+  "files": [
+    {
+      "file": "concept-desktop.png",
+      "width": 1440,
+      "height": 2186,
+      "bytes": 197871,
+      "sha256": "e4d172a0e6e56cfffb030dadfc3377ae73ec4c13fca0717257fd8badc1be9a9b"
+    },
+    {
+      "file": "concept-mobile.png",
+      "width": 390,
+      "height": 2846,
+      "bytes": 161759,
+      "sha256": "7a84970330b3d43a8746db6aae49b025a7c2dac0bed73665359cdbc3a375fda9"
+    },
+    {
+      "file": "decoder-desktop.png",
+      "width": 1440,
+      "height": 4978,
+      "bytes": 470179,
+      "sha256": "df86abaffbb334f31bc75a45eb82882c2e494aded067a6563d8160ec6888e72f"
+    },
+    {
+      "file": "decoder-mobile.png",
+      "width": 390,
+      "height": 6255,
+      "bytes": 380707,
+      "sha256": "ef042a0c5b839570cb6fbf222d672f462b46640791018fe72a677bbc2f282177"
+    },
+    {
+      "file": "discover-desktop.png",
+      "width": 1440,
+      "height": 1580,
+      "bytes": 176819,
+      "sha256": "436a46f4143f14f13f35a7e99fbbbea70f4facc0bd83f53a22b008e3d9c0b5dc"
+    },
+    {
+      "file": "fin-character-sheet.png",
+      "width": 1440,
+      "height": 2289,
+      "bytes": 211522,
+      "sha256": "a2c1ab8c6c3acf15210462bc7d0cb32b96acffbb4e58cdb1468d427ad4b30989"
+    },
+    {
+      "file": "home-first-screen.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 156111,
+      "sha256": "10285b535e8d40c209b940afbdbb2fb63e4cfb55d6f6aacdd2aeb190d2a6a61e"
+    },
+    {
+      "file": "home-mobile-first-screen.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 60216,
+      "sha256": "582238837af3b432e75281f773d946aba235816a2a45ef0487b69d4b918d00ef"
+    },
+    {
+      "file": "home-new-desktop.png",
+      "width": 1440,
+      "height": 3912,
+      "bytes": 455574,
+      "sha256": "901715c9314de5706161536d3aa9073927a725d47362335810fed5a5981b3899"
+    },
+    {
+      "file": "home-new-mobile.png",
+      "width": 390,
+      "height": 4967,
+      "bytes": 301897,
+      "sha256": "be14be0842fbfc2c440a8935b5eec50afee6073b32d93f900c081dbd6bd5e006"
+    },
+    {
+      "file": "home-return-desktop.png",
+      "width": 1440,
+      "height": 3927,
+      "bytes": 453414,
+      "sha256": "2600b088e32ad98d7bae1b9f18ddea3d1dc19a23898f566ff8e98b91ddf80dbe"
+    },
+    {
+      "file": "home-return-mobile.png",
+      "width": 390,
+      "height": 5017,
+      "bytes": 302930,
+      "sha256": "b8beece9ac382fd07e5d5299f1e4014bc6b3c5e4c88de0584fdf4b8414907c42"
+    },
+    {
+      "file": "money-lab-default-desktop.png",
+      "width": 1440,
+      "height": 1656,
+      "bytes": 138044,
+      "sha256": "546284367b7a9f67079df601ce131e29d66feae8e14df5226e8d4beed7ff6448"
+    },
+    {
+      "file": "money-lab-desktop.png",
+      "width": 1440,
+      "height": 2056,
+      "bytes": 172961,
+      "sha256": "b45e20939537abb4a609e5654c9fb9ccc2075942995dd97f20f5bb561553a9b5"
+    },
+    {
+      "file": "money-lab-mobile.png",
+      "width": 390,
+      "height": 2468,
+      "bytes": 132115,
+      "sha256": "e0ef0e84a0faec5c7a86d84559222b2e266034247586b0df6a50d1dc8d988938"
+    },
+    {
+      "file": "notebook-desktop.png",
+      "width": 1440,
+      "height": 1248,
+      "bytes": 130466,
+      "sha256": "ccbfe6d031c889875e72f024e9106997e374b7b22683d1fde2298a301a435601"
+    },
+    {
+      "file": "notebook-mobile.png",
+      "width": 390,
+      "height": 1984,
+      "bytes": 118043,
+      "sha256": "68f308df818284e2a6672dc93a536226628e2869c7a19e0313a312e6d868787f"
+    }
+  ]
+}

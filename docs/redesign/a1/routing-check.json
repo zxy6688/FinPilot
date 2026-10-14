@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-13T13:55:47.971Z",
+  "status": "passed",
+  "cases": [
+    {
+      "question": "存钱为什么不等于购买力不变？",
+      "expected": "/decoder/purchasing-power",
+      "passed": true
+    },
+    {
+      "question": "通胀会影响我的储蓄吗",
+      "expected": "/decoder/purchasing-power",
+      "passed": true
+    },
+    {
+      "question": "物价变高了怎么办",
+      "expected": "/decoder/purchasing-power",
+      "passed": true
+    },
+    {
+      "question": "每月存500，两年后多少钱",
+      "expected": "/money-lab",
+      "passed": true
+    },
+    {
+      "question": "复利怎么算",
+      "expected": "/money-lab",
+      "passed": true
+    },
+    {
+      "question": "ETF等于指数基金吗",
+      "expected": "/concept-studio",
+      "passed": true
+    },
+    {
+      "question": "etf是什么",
+      "expected": "/concept-studio",
+      "passed": true
+    },
+    {
+      "question": "每月存钱还是买ETF",
+      "expected": "explicit choice",
+      "passed": true
+    },
+    {
+      "question": "通胀与指数基金",
+      "expected": "explicit choice",
+      "passed": true
+    },
+    {
+      "question": "",
+      "expected": "explicit choice",
+      "passed": true
+    },
+    {
+      "question": "   ",
+      "expected": "explicit choice",
+      "passed": true
+    },
+    {
+      "question": "今天心情怎么样",
+      "expected": "explicit choice",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

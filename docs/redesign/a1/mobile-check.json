@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "checks": [
+    "Touch viewport: question routing, month-begin 2525 verified, receipt saved",
+    "Touch viewport: Notebook refresh and input restore",
+    "Touch viewport: direct section link, inflation slider, reading save",
+    "Touch viewport: conceptual counterexample and saved correct card",
+    "Touch viewport: real return state, Fin quiet toggle"
+  ],
+  "errors": []
+}

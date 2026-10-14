@@ -1,0 +1,176 @@
+[
+  {
+    "file": "concept-correct.png",
+    "width": 631,
+    "height": 576,
+    "sha256": "4757eb53add2ad22b5d64cc27e937a677c9e73d45a2d67f5a6d5279816116127"
+  },
+  {
+    "file": "concept-desktop.png",
+    "width": 1440,
+    "height": 2308,
+    "sha256": "7c8c05ed3686367fc4207616e5798e15eebc5ea20e5922fb1a34f6bba0101592"
+  },
+  {
+    "file": "concept-matrix-selected.png",
+    "width": 810,
+    "height": 367,
+    "sha256": "54926a77462474d23be21a600099c2e7763bc040aecf14f31f514998f90a2b85"
+  },
+  {
+    "file": "concept-mobile.png",
+    "width": 390,
+    "height": 2989,
+    "sha256": "6e7d6d7fae3b3fdfcc5354311e7d95d883413e0cf4941c7f0f92b12692eef27a"
+  },
+  {
+    "file": "concept-wrong.png",
+    "width": 631,
+    "height": 576,
+    "sha256": "eb3a3c5f27b873ff994597f984b9b466f2f1463801ec9dec7d53f58bec42cc8f"
+  },
+  {
+    "file": "decoder-desktop.png",
+    "width": 1440,
+    "height": 5161,
+    "sha256": "c1594a70162608b68f551a2e53c260453565bef37a4b70323dcb22bfb0493b1d"
+  },
+  {
+    "file": "decoder-experiment-after.png",
+    "width": 780,
+    "height": 409,
+    "sha256": "2e806f529e24b6b13b1e90b14527da47208540dd01e357baaaae78a2bcaa5a5d"
+  },
+  {
+    "file": "decoder-experiment-before.png",
+    "width": 780,
+    "height": 409,
+    "sha256": "0bd59e04fab491367f3b404f458cce04927cf37a48b40d37aca8f1bdf42d9044"
+  },
+  {
+    "file": "decoder-mobile.png",
+    "width": 390,
+    "height": 6434,
+    "sha256": "a3dc67c15c487af5c830017cc9908797e8a8f248956291f05a33d47ade485cd9"
+  },
+  {
+    "file": "discover-desktop.png",
+    "width": 1440,
+    "height": 1580,
+    "sha256": "84a2247f8f31ec0dcf6a8348fe9e1a0c64ca55819837e07e0758deee82030790"
+  },
+  {
+    "file": "fin-actions.png",
+    "width": 1184,
+    "height": 366,
+    "sha256": "af9fc24e5d6db88beacc09d0ed547ad1f715aa179a96efd94a16256deaac13ba"
+  },
+  {
+    "file": "fin-character-sheet.png",
+    "width": 1440,
+    "height": 2258,
+    "sha256": "9a9f435a1a6a02009e6d43f1d6b5cf70f4d84698f189ee0ea07bec879800ad4c"
+  },
+  {
+    "file": "fin-expressions.png",
+    "width": 1184,
+    "height": 327,
+    "sha256": "f942224dad62f1a2e6c9d49145b060b10617bbbf5a97ce852bbb23effd134d13"
+  },
+  {
+    "file": "fin-views.png",
+    "width": 1184,
+    "height": 469,
+    "sha256": "dd652f5a0166dbfc4640c1802ea74bdda37dfb7398e9d8dacf8e5b992ef84cd1"
+  },
+  {
+    "file": "home-first-screen.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "1bd5c8becd766e624b65abc3451c6f7c5afaf53a9be586e07ce44a6c15d55cc9"
+  },
+  {
+    "file": "home-mobile-first-screen.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "541868d11efffdb3435e468cfccde01bc3aac1e1bd4e6a7a188880e6ef80b591"
+  },
+  {
+    "file": "home-new-desktop.png",
+    "width": 1440,
+    "height": 4103,
+    "sha256": "2c5f0b20f44adeb7ef93c0cbb0a256008815a5a4481050b414910953110c23f0"
+  },
+  {
+    "file": "home-new-mobile.png",
+    "width": 390,
+    "height": 5002,
+    "sha256": "3707933257eaa8f2ecd2ecfbbecd670a228cb5b7843561d37b3578670ca5f63c"
+  },
+  {
+    "file": "home-return-desktop.png",
+    "width": 1440,
+    "height": 4118,
+    "sha256": "8b9c7eff85807900496668ad3270d6c6269e464dde086663d0dd7e5a944a8658"
+  },
+  {
+    "file": "home-return-mobile.png",
+    "width": 390,
+    "height": 4987,
+    "sha256": "ca8a54efd40baea0f5f6efbdea1d2104ac7e38c8ad07c525a6641a2bdafaa306"
+  },
+  {
+    "file": "mini-lab-after.png",
+    "width": 1184,
+    "height": 485,
+    "sha256": "60b5b2f370faec9f80da5fd302489df09be5a88d5e78aa283c7cb2ec96f56f43"
+  },
+  {
+    "file": "mini-lab-before.png",
+    "width": 1184,
+    "height": 485,
+    "sha256": "cb1be2f336cd9044cff47d3e22a77c5ecb6a4b67d9c5b4051b7c70a2311b5abc"
+  },
+  {
+    "file": "money-lab-default-desktop.png",
+    "width": 1440,
+    "height": 1787,
+    "sha256": "98d3dee210ed46c6b2b0ce2b844a78c0fc1f45c5d8cbf1df30b8903bd7aa16c8"
+  },
+  {
+    "file": "money-lab-desktop.png",
+    "width": 1440,
+    "height": 2293,
+    "sha256": "8e7092bdd94d6ed40f133b751272bbe576483fdb008e08b8af3e44379146e01b"
+  },
+  {
+    "file": "money-lab-mobile.png",
+    "width": 390,
+    "height": 2710,
+    "sha256": "2a6efb184be910287fffff7abf6a48e7aa06a9272980d1d0fc1c876aa2cc73d3"
+  },
+  {
+    "file": "notebook-desktop.png",
+    "width": 1440,
+    "height": 1248,
+    "sha256": "6beabee23c5ee045d2580be9a53d519819e8f2dc465a6e69b3c4dffa2fd1a34b"
+  },
+  {
+    "file": "notebook-mobile.png",
+    "width": 390,
+    "height": 1978,
+    "sha256": "2223c217e91e21545c7cc2067b2239b43d11c63a42f95756707ec947284b295f"
+  },
+  {
+    "file": "receipt-restored.png",
+    "width": 1440,
+    "height": 1862,
+    "sha256": "6ad162f74825a6ce8199fdf86c1483d5aeb8baacc208419fa0458ec3193f5a03"
+  },
+  {
+    "file": "receipt-saved.png",
+    "width": 802,
+    "height": 26,
+    "sha256": "9811fa45610880d7c4818679fc37c5def583a359d03242400f671a4055a78e8d"
+  }
+]

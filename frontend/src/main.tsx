@@ -3,13 +3,23 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./services/auth";
 import { ErrorBoundary } from "./components/ui";
-import Layout from "./components/Layout";
+import Layout from "./redesign/Layout";
+import {
+  Discover as RedesignDiscover,
+  Notebook,
+  StoryPreview,
+  Methods,
+} from "./redesign/Home";
+import RedesignHome from "./redesign/Home";
+import MoneyLab from "./redesign/MoneyLab";
+import Decoder from "./redesign/Decoder";
+import ConceptStudio from "./redesign/ConceptStudio";
+import { FinDesign } from "./redesign/Fin";
 const LearningRoutePage = lazy(() => import("./living/RouteExperience"));
 const Knowledge = lazy(() => import("./living/Knowledge"));
 const ArticleReader = lazy(() => import("./living/ArticleReader"));
 const Review = lazy(() => import("./living/Review"));
 const Compare = lazy(() => import("./living/Compare"));
-const Home = lazy(() => import("./pages/Home"));
 const Discover = lazy(() => import("./living/Discover"));
 const TopicHub = lazy(() =>
   import("./pages/Learning").then((m) => ({ default: m.TopicHub })),
@@ -43,6 +53,7 @@ import "./styles.css";
 import "./polish.css";
 import "./v2.css";
 import "./living/living.css";
+import "./redesign/redesign.css";
 import { BrandMark } from "./components/Brand";
 createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>
@@ -51,13 +62,21 @@ createRoot(document.getElementById("root")!).render(
         <Suspense fallback={<div className="state">正在打开学习空间…</div>}>
           <Routes>
             <Route element={<Layout />}>
-              <Route index element={<Home />} />
+              <Route index element={<RedesignHome />} />
+              <Route path="decoder/purchasing-power" element={<Decoder />} />
+              <Route path="money-lab" element={<MoneyLab />} />
+              <Route path="concept-studio" element={<ConceptStudio />} />
+              <Route path="stories/:slug" element={<StoryPreview />} />
+              <Route path="fin-design" element={<FinDesign />} />
+              <Route path="methods" element={<Methods />} />
+              <Route path="discover/library" element={<Discover />} />
+              <Route path="profile/history" element={<ProfilePage />} />
               <Route path="knowledge" element={<Knowledge />} />
               <Route path="articles/:id" element={<ArticleReader />} />
               <Route path="review" element={<Review />} />
               <Route path="compare" element={<Compare />} />
               <Route path="compare/:slug" element={<Compare />} />
-              <Route path="discover" element={<Discover />} />
+              <Route path="discover" element={<RedesignDiscover />} />
               <Route path="topics/:id" element={<TopicHub />} />
               <Route path="learn" element={<Learn />} />
               <Route path="learn/routes/:id" element={<LearningRoutePage />} />
@@ -68,7 +87,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="lab/:id" element={<LabPage />} />
               <Route path="fintalk" element={<Community />} />
               <Route path="fintalk/:id" element={<PostPage />} />
-              <Route path="profile" element={<ProfilePage />} />
+              <Route path="profile" element={<Notebook />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="search" element={<SearchPage />} />
               <Route
@@ -95,3 +114,5 @@ createRoot(document.getElementById("root")!).render(
     </BrowserRouter>
   </ErrorBoundary>,
 );
+
+import "./redesign/a1.css";

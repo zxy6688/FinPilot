@@ -1,0 +1,74 @@
+[
+  {
+    "file": "home-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "ad6467f26c47b171602234e48f04cdc46a3bfa1f5f2bbae61a1a3c11cf7b34fc"
+  },
+  {
+    "file": "home-375.png",
+    "width": 375,
+    "height": 844,
+    "sha256": "478c19afdfe421de2bf4ef29ec19816adc11c0f400d6f7753a9a89503ccfd2ed"
+  },
+  {
+    "file": "home-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "a16834044a3b9cf911cb5b00b698b4b7ad417c0cd7864b8b971124e206a29533"
+  },
+  {
+    "file": "home-430.png",
+    "width": 430,
+    "height": 844,
+    "sha256": "167875f35a1f7d7298c06e5b132722ea2b9dd52c73e83c231b22899412e53eab"
+  },
+  {
+    "file": "home-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "94e46cdbdead4801cc66ee7c5244ec896127bf38f4da59bfb28dd6ccc4215e24"
+  },
+  {
+    "file": "question-empty.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "db8f1f41288aaf0ca2054348da554b058d84a7db4807e70dbd7b868ad10f31f1"
+  },
+  {
+    "file": "question-exact-match.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "7507019aca0138d44a7f69f3ddd67d8ff3bd219a97ab9366319b64c0a1f99467"
+  },
+  {
+    "file": "question-loan-not-savings.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "15b87612e7d6fd39c55a4befc60c39b442c44e8d9baf76f612639631401579cd"
+  },
+  {
+    "file": "question-mixed.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "883f9c6bf23346839dd073552d0027cfe8f61c35843bd07c9b563d683b267464"
+  },
+  {
+    "file": "question-preserved-in-copilot.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "3df0ff6cb6d6ef51b3593be0d1edddab2af6a2cae7ba14275ba98b86a4aa555b"
+  },
+  {
+    "file": "question-related.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "e0670457c38777f276525d63b001528371218f922af59a10ef4f2264281893be"
+  },
+  {
+    "file": "question-unmatched.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "29ec2fdc05336ff09bd210460ec7d308b36a4980ccd6b263b97838e40b2c0bc6"
+  }
+]

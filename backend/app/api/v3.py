@@ -261,3 +261,11 @@ def notebook(user=Depends(require_user), db: Session = Depends(get_db)):
         .filter(Reflection.user_id == user.id, Reflection.completed_at.is_not(None))
         .order_by(Reflection.id.desc())
     ]
+
+
+# Public deterministic Gate A calculator; no account or database mutation.
+from ..services.savings import SavingsInput, savings
+
+@router.post("/tools/savings")
+def calculate_savings(data: SavingsInput):
+    return savings(data)

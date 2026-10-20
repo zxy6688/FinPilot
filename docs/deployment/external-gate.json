@@ -1,0 +1,101 @@
+{
+  "id": "23PYLfcbgDNBr9bHj00021Lod",
+  "type": "http",
+  "status": "finished",
+  "createdAt": "2026-10-20T10:23:26.124Z",
+  "updatedAt": "2026-10-20T10:23:27.643Z",
+  "target": "west-removal-entrance-yearly.trycloudflare.com",
+  "probesCount": 1,
+  "locations": [
+    {
+      "country": "SG"
+    }
+  ],
+  "measurementOptions": {
+    "request": {
+      "method": "GET"
+    }
+  },
+  "results": [
+    {
+      "probe": {
+        "continent": "AS",
+        "region": "South-eastern Asia",
+        "country": "SG",
+        "state": null,
+        "city": "Singapore",
+        "asn": 59253,
+        "longitude": 103.85,
+        "latitude": 1.29,
+        "network": "LeaseWeb",
+        "tags": [
+          "datacenter-network",
+          "u-su-haris"
+        ],
+        "resolvers": [
+          "8.8.8.8",
+          "8.8.4.4",
+          "2001:4860:4860::8888",
+          "2001:4860:4860::8844"
+        ]
+      },
+      "result": {
+        "status": "finished",
+        "resolvedAddress": "104.16.230.132",
+        "headers": {
+          "date": "Tue, 20 Oct 2026 10:23:27 GMT",
+          "content-type": "text/html; charset=utf-8",
+          "transfer-encoding": "chunked",
+          "connection": "close",
+          "cf-ray": "a4d74e9d0c87f9e6-SIN",
+          "cf-cache-status": "DYNAMIC",
+          "cache-control": "no-store",
+          "server": "cloudflare",
+          "x-robots-tag": [
+            "none",
+            "none"
+          ],
+          "content-security-policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY"
+        },
+        "rawHeaders": "Date: Tue, 20 Oct 2026 10:23:27 GMT\nContent-Type: text/html; charset=utf-8\nTransfer-Encoding: chunked\nConnection: close\nCF-Ray: a4d74e9d0c87f9e6-SIN\nCF-Cache-Status: DYNAMIC\nCache-Control: no-store\nServer: cloudflare\nX-Robots-Tag: none\nX-Robots-Tag: none\ncontent-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'\nreferrer-policy: strict-origin-when-cross-origin\nx-content-type-options: nosniff\nx-frame-options: DENY",
+        "rawBody": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>FinPilot · 队友体验</title><body style=\"font:18px system-ui;max-width:560px;margin:12vh auto;padding:24px;background:#f6faf7;color:#244d45\">\n<h1>FinPilot · 测试版本</h1><p>请输入邀请口令。进入后请注册自己的账户，保存记录相互隔离。</p>\n<p>仅用于金融教育体验。AI 为 Demo；请勿输入真实财务资料或复用常用密码。</p>\n<form action=\"/trial/enter\" method=\"post\"><label>邀请口令 <input type=\"password\" name=\"code\" required maxlength=\"150\" autocomplete=\"off\"></label>\n<button>进入体验</button></form></body></html>",
+        "rawOutput": "HTTP/1.1 401\nDate: Tue, 20 Oct 2026 10:23:27 GMT\nContent-Type: text/html; charset=utf-8\nTransfer-Encoding: chunked\nConnection: close\nCF-Ray: a4d74e9d0c87f9e6-SIN\nCF-Cache-Status: DYNAMIC\nCache-Control: no-store\nServer: cloudflare\nX-Robots-Tag: none\nX-Robots-Tag: none\ncontent-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'\nreferrer-policy: strict-origin-when-cross-origin\nx-content-type-options: nosniff\nx-frame-options: DENY\n\n<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>FinPilot · 队友体验</title><body style=\"font:18px system-ui;max-width:560px;margin:12vh auto;padding:24px;background:#f6faf7;color:#244d45\">\n<h1>FinPilot · 测试版本</h1><p>请输入邀请口令。进入后请注册自己的账户，保存记录相互隔离。</p>\n<p>仅用于金融教育体验。AI 为 Demo；请勿输入真实财务资料或复用常用密码。</p>\n<form action=\"/trial/enter\" method=\"post\"><label>邀请口令 <input type=\"password\" name=\"code\" required maxlength=\"150\" autocomplete=\"off\"></label>\n<button>进入体验</button></form></body></html>",
+        "truncated": false,
+        "statusCode": 401,
+        "statusCodeName": "Unauthorized",
+        "timings": {
+          "total": 1306,
+          "dns": 9,
+          "tcp": 1,
+          "tls": 8,
+          "firstByte": 1288,
+          "download": 0
+        },
+        "tls": {
+          "authorized": true,
+          "protocol": "TLSv1.3",
+          "cipherName": "TLS_AES_256_GCM_SHA384",
+          "createdAt": "2026-10-05T20:58:33Z",
+          "expiresAt": "2027-01-03T21:58:20Z",
+          "issuer": {
+            "C": "US",
+            "O": "Google Trust Services",
+            "CN": "WE1"
+          },
+          "subject": {
+            "CN": "trycloudflare.com",
+            "alt": "DNS:trycloudflare.com, DNS:*.trycloudflare.com"
+          },
+          "keyType": "EC",
+          "keyBits": 256,
+          "serialNumber": "3D:CF:DE:A8:F4:A0:C4:AD:13:97:CE:47:90:E2:AF:8F",
+          "fingerprint256": "33:85:C1:73:E2:89:6F:B8:09:E2:6A:CD:B5:1A:97:3E:5E:B4:F0:0B:0E:49:44:8B:0B:C8:7C:17:43:E3:31:25",
+          "publicKey": "04:8D:00:44:7C:C5:EA:E8:12:11:BB:80:CC:39:FD:98:10:4C:BF:38:9B:D4:B3:6B:C4:15:F4:05:96:F0:ED:13:91:7E:5B:43:7F:A4:2F:9F:1B:F6:7F:09:3E:81:4F:5E:43:6E:EE:4E:99:4B:C1:4D:83:E3:47:18:52:57:3E:4F:AB"
+        }
+      }
+    }
+  ]
+}

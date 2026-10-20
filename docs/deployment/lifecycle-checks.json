@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "actions": [
+    "restart",
+    "rollback",
+    "return to latest"
+  ],
+  "saved_records": 3,
+  "record_digest_unchanged": true,
+  "sqlite_integrity": "ok",
+  "backup_exists": true,
+  "tunnel_unchanged": true,
+  "note": "Code rollback only; database retained."
+}

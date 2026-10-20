@@ -1,0 +1,182 @@
+{
+  "id": "2peROTudE9vWbiPS100021LoR",
+  "type": "http",
+  "status": "finished",
+  "createdAt": "2026-10-20T10:11:01.864Z",
+  "updatedAt": "2026-10-20T10:11:03.552Z",
+  "target": "west-removal-entrance-yearly.trycloudflare.com",
+  "probesCount": 2,
+  "locations": [
+    {
+      "country": "US"
+    },
+    {
+      "country": "SG"
+    }
+  ],
+  "measurementOptions": {
+    "request": {
+      "method": "GET",
+      "path": "/trial/health"
+    }
+  },
+  "results": [
+    {
+      "probe": {
+        "continent": "NA",
+        "region": "Northern America",
+        "country": "US",
+        "state": "NY",
+        "city": "Buffalo",
+        "asn": 36352,
+        "longitude": -78.88,
+        "latitude": 42.89,
+        "network": "HostPapa",
+        "tags": [
+          "datacenter-network"
+        ],
+        "resolvers": [
+          "private",
+          "private"
+        ]
+      },
+      "result": {
+        "status": "finished",
+        "resolvedAddress": "104.16.230.132",
+        "headers": {
+          "date": "Tue, 20 Oct 2026 10:11:02 GMT",
+          "content-type": "application/json",
+          "transfer-encoding": "chunked",
+          "connection": "close",
+          "cf-ray": "a4d73c724a7eb26e-PIT",
+          "cf-cache-status": "DYNAMIC",
+          "cache-control": "no-store",
+          "server": "cloudflare",
+          "x-robots-tag": [
+            "none",
+            "none"
+          ],
+          "content-security-policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+          "referrer-policy": "no-referrer",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "content-encoding": "gzip"
+        },
+        "rawHeaders": "Date: Tue, 20 Oct 2026 10:11:02 GMT\nContent-Type: application/json\nTransfer-Encoding: chunked\nConnection: close\nCF-Ray: a4d73c724a7eb26e-PIT\nCF-Cache-Status: DYNAMIC\nCache-Control: no-store\nServer: cloudflare\nX-Robots-Tag: none\nX-Robots-Tag: none\ncontent-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'\nreferrer-policy: no-referrer\nx-content-type-options: nosniff\nx-frame-options: DENY\nContent-Encoding: gzip",
+        "rawBody": "{\"status\":\"ok\",\"release\":\"20261020-180708-23ac0dd94a01\",\"mode\":\"trial\"}",
+        "rawOutput": "HTTP/1.1 200\nDate: Tue, 20 Oct 2026 10:11:02 GMT\nContent-Type: application/json\nTransfer-Encoding: chunked\nConnection: close\nCF-Ray: a4d73c724a7eb26e-PIT\nCF-Cache-Status: DYNAMIC\nCache-Control: no-store\nServer: cloudflare\nX-Robots-Tag: none\nX-Robots-Tag: none\ncontent-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'\nreferrer-policy: no-referrer\nx-content-type-options: nosniff\nx-frame-options: DENY\nContent-Encoding: gzip\n\n{\"status\":\"ok\",\"release\":\"20261020-180708-23ac0dd94a01\",\"mode\":\"trial\"}",
+        "truncated": false,
+        "statusCode": 200,
+        "statusCodeName": "OK",
+        "timings": {
+          "total": 784,
+          "dns": 127,
+          "tcp": 16,
+          "tls": 31,
+          "firstByte": 603,
+          "download": 7
+        },
+        "tls": {
+          "authorized": true,
+          "protocol": "TLSv1.3",
+          "cipherName": "TLS_AES_256_GCM_SHA384",
+          "createdAt": "2026-10-05T20:58:33Z",
+          "expiresAt": "2027-01-03T21:58:20Z",
+          "issuer": {
+            "C": "US",
+            "O": "Google Trust Services",
+            "CN": "WE1"
+          },
+          "subject": {
+            "CN": "trycloudflare.com",
+            "alt": "DNS:trycloudflare.com, DNS:*.trycloudflare.com"
+          },
+          "keyType": "EC",
+          "keyBits": 256,
+          "serialNumber": "3D:CF:DE:A8:F4:A0:C4:AD:13:97:CE:47:90:E2:AF:8F",
+          "fingerprint256": "33:85:C1:73:E2:89:6F:B8:09:E2:6A:CD:B5:1A:97:3E:5E:B4:F0:0B:0E:49:44:8B:0B:C8:7C:17:43:E3:31:25",
+          "publicKey": "04:8D:00:44:7C:C5:EA:E8:12:11:BB:80:CC:39:FD:98:10:4C:BF:38:9B:D4:B3:6B:C4:15:F4:05:96:F0:ED:13:91:7E:5B:43:7F:A4:2F:9F:1B:F6:7F:09:3E:81:4F:5E:43:6E:EE:4E:99:4B:C1:4D:83:E3:47:18:52:57:3E:4F:AB"
+        }
+      }
+    },
+    {
+      "probe": {
+        "continent": "AS",
+        "region": "South-eastern Asia",
+        "country": "SG",
+        "state": null,
+        "city": "Singapore",
+        "asn": 31898,
+        "longitude": 103.75,
+        "latitude": 1.33,
+        "network": "Oracle",
+        "tags": [
+          "oci-ap-singapore-2",
+          "oci",
+          "eyeball-network"
+        ],
+        "resolvers": [
+          "private"
+        ]
+      },
+      "result": {
+        "status": "finished",
+        "resolvedAddress": "104.16.231.132",
+        "headers": {
+          "date": "Tue, 20 Oct 2026 10:11:03 GMT",
+          "content-type": "application/json",
+          "transfer-encoding": "chunked",
+          "connection": "close",
+          "cf-ray": "a4d73c7158f1fce2-SIN",
+          "cf-cache-status": "DYNAMIC",
+          "cache-control": "no-store",
+          "server": "cloudflare",
+          "x-robots-tag": [
+            "none",
+            "none"
+          ],
+          "content-security-policy": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+          "referrer-policy": "no-referrer",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "content-encoding": "gzip"
+        },
+        "rawHeaders": "Date: Tue, 20 Oct 2026 10:11:03 GMT\nContent-Type: application/json\nTransfer-Encoding: chunked\nConnection: close\nCF-Ray: a4d73c7158f1fce2-SIN\nCF-Cache-Status: DYNAMIC\nCache-Control: no-store\nServer: cloudflare\nX-Robots-Tag: none\nX-Robots-Tag: none\ncontent-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'\nreferrer-policy: no-referrer\nx-content-type-options: nosniff\nx-frame-options: DENY\nContent-Encoding: gzip",
+        "rawBody": "{\"status\":\"ok\",\"release\":\"20261020-180708-23ac0dd94a01\",\"mode\":\"trial\"}",
+        "rawOutput": "HTTP/1.1 200\nDate: Tue, 20 Oct 2026 10:11:03 GMT\nContent-Type: application/json\nTransfer-Encoding: chunked\nConnection: close\nCF-Ray: a4d73c7158f1fce2-SIN\nCF-Cache-Status: DYNAMIC\nCache-Control: no-store\nServer: cloudflare\nX-Robots-Tag: none\nX-Robots-Tag: none\ncontent-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'\nreferrer-policy: no-referrer\nx-content-type-options: nosniff\nx-frame-options: DENY\nContent-Encoding: gzip\n\n{\"status\":\"ok\",\"release\":\"20261020-180708-23ac0dd94a01\",\"mode\":\"trial\"}",
+        "truncated": false,
+        "statusCode": 200,
+        "statusCodeName": "OK",
+        "timings": {
+          "total": 1491,
+          "dns": 8,
+          "tcp": 1,
+          "tls": 8,
+          "firstByte": 1473,
+          "download": 1
+        },
+        "tls": {
+          "authorized": true,
+          "protocol": "TLSv1.3",
+          "cipherName": "TLS_AES_256_GCM_SHA384",
+          "createdAt": "2026-10-05T20:58:33Z",
+          "expiresAt": "2027-01-03T21:58:20Z",
+          "issuer": {
+            "C": "US",
+            "O": "Google Trust Services",
+            "CN": "WE1"
+          },
+          "subject": {
+            "CN": "trycloudflare.com",
+            "alt": "DNS:trycloudflare.com, DNS:*.trycloudflare.com"
+          },
+          "keyType": "EC",
+          "keyBits": 256,
+          "serialNumber": "3D:CF:DE:A8:F4:A0:C4:AD:13:97:CE:47:90:E2:AF:8F",
+          "fingerprint256": "33:85:C1:73:E2:89:6F:B8:09:E2:6A:CD:B5:1A:97:3E:5E:B4:F0:0B:0E:49:44:8B:0B:C8:7C:17:43:E3:31:25",
+          "publicKey": "04:8D:00:44:7C:C5:EA:E8:12:11:BB:80:CC:39:FD:98:10:4C:BF:38:9B:D4:B3:6B:C4:15:F4:05:96:F0:ED:13:91:7E:5B:43:7F:A4:2F:9F:1B:F6:7F:09:3E:81:4F:5E:43:6E:EE:4E:99:4B:C1:4D:83:E3:47:18:52:57:3E:4F:AB"
+        }
+      }
+    }
+  ]
+}

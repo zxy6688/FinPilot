@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "url": "https://west-removal-entrance-yearly.trycloudflare.com",
+  "network": "Local browser through public HTTPS tunnel (not independent external probe)",
+  "checks": [
+    "HTTPS invitation → browser registration → five stories/tools → six domains → save → My World restore → SPA refresh",
+    "Fin contextual Demo response works",
+    "375/390/430/768 responsive pages without overflow; zero page errors"
+  ],
+  "errors": []
+}

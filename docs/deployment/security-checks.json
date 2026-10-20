@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "checks": [
+    "Invitation enforced; Secure HttpOnly SameSite cookie; private paths blocked; body and origin limits; shared demo blocked",
+    "Independent accounts; owner read/delete isolation; idempotent save and restore; five tool APIs",
+    "Invitation brute-force throttled"
+  ]
+}

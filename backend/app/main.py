@@ -11,7 +11,8 @@ from .api.v2 import router as v2_router
 from .api.v3 import router as v3_router
 from .api.artifacts import router as artifacts_router
 
-LOG_DIR = ROOT / "logs"
+from pathlib import Path
+LOG_DIR = Path(os.getenv("FINPILOT_LOG_DIR", str(ROOT / "logs")))
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 logging.basicConfig(

@@ -1,0 +1,20 @@
+{
+  "preview.finpilot.cn": {
+    "status": 3,
+    "answers": null
+  },
+  "old4173": {
+    "status": 200
+  },
+  "finpilot.cn": {
+    "status": 0,
+    "answers": [
+      {
+        "name": "finpilot.cn.",
+        "type": 1,
+        "TTL": 600,
+        "data": "43.143.241.109"
+      }
+    ]
+  }
+}

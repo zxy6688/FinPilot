@@ -59,11 +59,21 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
   const results = [
     ...searchCatalog(query),
     ...groups.flatMap((g) =>
-      (data[g.key] || []).slice(0, 5).map((item) => ({
-        ...item,
-        group: g.label,
-        url: g.path + item.id,
-      })),
+      (data[g.key] || [])
+        .filter(
+          (item) =>
+            !searchCatalog(query).some(
+              (x) =>
+                x.url ===
+                (g.key === "topics" ? "/concept-studio/" : g.path) + item.id,
+            ),
+        )
+        .slice(0, 5)
+        .map((item) => ({
+          ...item,
+          group: g.label,
+          url: g.path + item.id,
+        })),
     ),
   ];
   function open(url: string) {

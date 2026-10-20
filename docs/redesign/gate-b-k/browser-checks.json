@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "checks": [
+    "All six domains reachable in two main clicks from Home; 36 real concept links",
+    "All 36 concept pages rendered and correct understanding feedback verified",
+    "24 old Topic URLs resolve to corresponding concepts; learn/knowledge/topics/lab retained",
+    "Global search includes concept/course/topic; center search finds new cashflow concept",
+    "budget: story glossary → concept → back → quiz → save → My World → reopen original note → financial tool",
+    "purchasing-power: story glossary → concept → back → quiz → save → My World → reopen original note → financial tool",
+    "etf: story glossary → concept → back → quiz → save → My World → reopen original note → financial tool",
+    "bonds: story glossary → concept → back → quiz → save → My World → reopen original note → financial tool",
+    "loan: story glossary → concept → back → quiz → save → My World → reopen original note → financial tool",
+    "Home/Discover/Learn/Concept/Money Lab/My World at desktop +375/390/430/768, no horizontal overflow"
+  ],
+  "errors": []
+}

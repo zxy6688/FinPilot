@@ -1,3 +1,4 @@
+import knowledge from "../../../content/knowledge.json" with { type: "json" };
 // Explicit content lookup, not intent recognition or an answer generator.
 export type Exploration = {
   id: string;
@@ -15,7 +16,7 @@ const content: Exploration[] = [
   {
     id: "concept",
     title: "ETF 和指数基金，是一回事吗？",
-    path: "/concept-studio",
+    path: "/concept-studio/7",
     scope: "辨别交易形式与投资策略；不评价具体基金。",
   },
   {
@@ -62,6 +63,19 @@ export function findExploration(question: string): ExplorationMatch {
   const exact = exactTopics.find((c) => normalize(c.title) === normalize(q));
   if (exact)
     return { kind: "exact", destination: exact.path, suggestions: [exact] };
+  const core = knowledge.concepts.map((c) => ({
+    id: "core-" + c.id,
+    title: c.title,
+    path: "/concept-studio/" + c.id,
+    scope: c.summary,
+  }));
+  const exactCore = core.find((c) => normalize(c.title) === normalize(q));
+  if (exactCore)
+    return {
+      kind: "exact",
+      destination: exactCore.path,
+      suggestions: [exactCore],
+    };
   const related: Record<string, boolean> = {
     purchasing: /通胀|购买力|物价/.test(q),
     concept: /ETF|指数|基金/i.test(q),
@@ -70,7 +84,10 @@ export function findExploration(question: string): ExplorationMatch {
     budget: /预算|生活费|支出/.test(q),
     loan: /贷款|借款|还款|月供|房贷/.test(q),
   };
-  const suggestions = content.filter((c) => related[c.id]);
+  const matches = content.filter((c) => related[c.id]);
+  const suggestions = matches.length
+    ? matches
+    : core.filter((c) => q.toLowerCase().includes(c.title.toLowerCase()));
   return {
     kind:
       suggestions.length > 1

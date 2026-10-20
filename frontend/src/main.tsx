@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import { AuthProvider } from "./services/auth";
 import { ErrorBoundary } from "./components/ui";
 import Layout from "./redesign/Layout";
@@ -16,6 +16,11 @@ import { BudgetStory } from "./redesign/Stories";
 import MoneyLab from "./redesign/MoneyLab";
 import Decoder from "./redesign/Decoder";
 import ConceptStudio from "./redesign/ConceptStudio";
+import {
+  KnowledgeCenter,
+  ConceptDetail,
+  TopicCompatibility,
+} from "./redesign/KnowledgeCenter";
 import { FinDesign } from "./redesign/Fin";
 const LearningRoutePage = lazy(() => import("./living/RouteExperience"));
 const Knowledge = lazy(() => import("./living/Knowledge"));
@@ -82,25 +87,43 @@ createRoot(document.getElementById("root")!).render(
               <Route path="money-lab/savings" element={<MoneyLab />} />
               <Route path="money-lab/budget" element={<BudgetWorkbench />} />
               <Route path="money-lab" element={<ToolDirectory />} />
-              <Route path="concept-studio" element={<ConceptStudio />} />
+              <Route path="concept-studio" element={<KnowledgeCenter />} />
+              <Route
+                path="concept-studio/etf-matrix"
+                element={<ConceptStudio />}
+              />
+              <Route path="concept-studio/:id" element={<ConceptDetail />} />
               <Route path="stories/:slug" element={<StoryPreview />} />
               <Route path="fin-design" element={<FinDesign />} />
               <Route path="methods" element={<Methods />} />
               <Route path="discover/library" element={<Discover />} />
               <Route path="profile/history" element={<ProfilePage />} />
-              <Route path="knowledge" element={<Knowledge />} />
+              <Route
+                path="knowledge"
+                element={<Navigate replace to="/concept-studio" />}
+              />
+              <Route
+                path="topics"
+                element={<Navigate replace to="/concept-studio" />}
+              />
               <Route path="articles/:id" element={<ArticleReader />} />
               <Route path="review" element={<Review />} />
               <Route path="compare" element={<Compare />} />
               <Route path="compare/:slug" element={<Compare />} />
               <Route path="discover" element={<Magazine />} />
-              <Route path="topics/:id" element={<TopicHub />} />
-              <Route path="learn" element={<Learn />} />
+              <Route path="topics/:id" element={<TopicCompatibility />} />
+              <Route
+                path="learn"
+                element={<Navigate replace to="/concept-studio#courses" />}
+              />
               <Route path="learn/routes/:id" element={<LearningRoutePage />} />
               <Route path="learn/:id" element={<PathPage />} />
               <Route path="lessons/:id" element={<LessonPage />} />
               <Route path="copilot" element={<Copilot />} />
-              <Route path="lab" element={<Labs />} />
+              <Route
+                path="lab"
+                element={<Navigate replace to="/money-lab#classic-labs" />}
+              />
               <Route path="lab/:id" element={<LabPage />} />
               <Route path="fintalk" element={<Community />} />
               <Route path="fintalk/:id" element={<PostPage />} />
@@ -135,3 +158,5 @@ createRoot(document.getElementById("root")!).render(
 import "./redesign/a1.css";
 
 import "./redesign/gate-b.css";
+
+import "./redesign/gate-b-k.css";

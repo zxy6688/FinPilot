@@ -1,3 +1,4 @@
+import { ConceptTerm } from "./KnowledgeInteractions";
 import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -162,6 +163,10 @@ export default function Decoder() {
           </div>
         </aside>
         <article className="rd-reader">
+          <div className="k-inline-glossary">
+            读到不熟悉的词，先展开看：
+            <ConceptTerm id={32}>{"实际购买力"}</ConceptTerm>
+          </div>
           <section id="start">
             <span className="rd-kicker">01 / 从生活开始</span>
             <h2>账户没少一分钱，不代表它能换到同样的东西。</h2>

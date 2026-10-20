@@ -1,4 +1,4 @@
-﻿# Internal helpers; all state stays in this project.
+# Internal helpers; all state stays in this project.
 . (Join-Path $PSScriptRoot 'Environment.ps1')
 $FinPilotStatePath = Join-Path $FinPilotRoot 'tmp/local-runtime.json'
 function Test-FinPilotPort([int]$Port) {
@@ -14,7 +14,7 @@ function Test-FinPilotProcess($Record) {
 }
 function Read-FinPilotState {
     if (-not (Test-Path -LiteralPath $FinPilotStatePath)) { return $null }
-    $state = Get-Content -LiteralPath $FinPilotStatePath -Raw | ConvertFrom-Json
+    $state = Get-Content -LiteralPath $FinPilotStatePath -Raw -Encoding UTF8 | ConvertFrom-Json
     if ([IO.Path]::GetFullPath([string]$state.root) -ne [IO.Path]::GetFullPath($FinPilotRoot)) { throw 'Runtime state belongs to a different project. No processes were stopped.' }
     return $state
 }

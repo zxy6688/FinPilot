@@ -1,3 +1,5 @@
+import { WorldShelf } from "./WorldShelf";
+import { LearningTrail } from "./KnowledgeCenter";
 import { EntryActions, entrySummary } from "./EntryActions";
 import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
@@ -175,27 +177,11 @@ export default function Home() {
       }
     }),
     [match, setMatch] = useState<ExplorationMatch | null>(null);
-  const [history, setHistory] = useState<HomeData | null>(null);
-  useEffect(() => {
-    let active = true;
-    if (user)
-      api<HomeData>("/v3/home")
-        .then((v) => {
-          if (active) setHistory(v);
-        })
-        .catch(() => {});
-    else setHistory(null);
-    return () => {
-      active = false;
-    };
-  }, [user?.id]);
   function routeQuestion() {
     const result = findExploration(question);
     if (result.destination) nav(result.destination);
     else setMatch(result);
   }
-  const returning =
-    notebook.entries.length > 0 || (history?.continue.length || 0) > 0;
   return (
     <div className="rd-page rd-home">
       <section className="rd-hero">
@@ -254,7 +240,7 @@ export default function Home() {
           <div className="rd-question-chips">
             <Link to="/stories/bonds">降息后，债券一定涨吗？</Link>
             <Link to="/money-lab">每月存 500 元，两年后呢？</Link>
-            <Link to="/concept-studio">ETF ≠ 指数基金？</Link>
+            <Link to="/concept-studio/7">ETF ≠ 指数基金？</Link>
           </div>
         </div>
         <div className="rd-hero-scene">
@@ -366,7 +352,7 @@ export default function Home() {
           <h2>
             弄懂一个概念 <ArrowUpRight />
           </h2>
-          <p>ETF 和指数基金，是一回事吗？</p>
+          <p>从六个领域，找到你想弄懂的概念。</p>
           <div className="a1-concept-preview">
             <span>交易形式 × 投资策略</span>
             <div className="a1-mini-matrix">
@@ -378,7 +364,7 @@ export default function Home() {
             <small>两条分类线，不是同义词</small>
           </div>
           <div className="rd-task-bottom">
-            <span>亲手切换案例，再做个判断</span>
+            <span>选一个概念，观察、练习并继续</span>
             <ArrowRight size={18} />
           </div>
         </Link>
@@ -393,7 +379,23 @@ export default function Home() {
             所有精选 <ArrowUpRight size={18} />
           </Link>
         </div>
-        <StoryGrid />
+        <div className="rd-story-grid k-feature-only">
+          <Link className="rd-feature-story" to="/stories/budget">
+            <div>
+              <span className="rd-kicker">本期精选 · 从大学生活费开始</span>
+              <h3>
+                给每一笔钱，
+                <br />
+                安排一个去处。
+              </h3>
+              <p>
+                一次突发支出，会怎样改变月底？从分类到比较，再留下自己的预算实验。
+              </p>
+              <span className="rd-text-link">进入大学生的第一份预算 →</span>
+            </div>
+            <StoryArt kind="budget" />
+          </Link>
+        </div>
       </section>
       <section className="rd-home-section">
         <div className="rd-section-head">
@@ -431,59 +433,7 @@ export default function Home() {
         </div>
         <ConceptPlay compact />
       </section>
-      <section className="rd-home-section rd-continue">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">
-              {returning ? "接上你自己的线索" : "第一站，从一个小问题开始"}
-            </span>
-            <h2>
-              {returning ? "继续我的探索。" : "不用全懂，先弄明白一件事。"}
-            </h2>
-          </div>
-        </div>
-        {returning ? (
-          <div className="rd-history-list">
-            {notebook.entries.slice(0, 2).map((e) => (
-              <Link key={e.id} to={e.url}>
-                <BookOpen size={22} />
-                <div>
-                  <b>{e.title}</b>
-                  <p>{e.detail}</p>
-                  <small>
-                    你主动保存于 {new Date(e.at).toLocaleDateString("zh-CN")}
-                  </small>
-                </div>
-                <ChevronRight size={20} />
-              </Link>
-            ))}
-            {history?.continue
-              .slice(0, Math.max(0, 2 - notebook.entries.length))
-              .map((t) => (
-                <Link to={t.url} key={t.url}>
-                  <Clock size={22} />
-                  <div>
-                    <b>{t.title}</b>
-                    <p>{t.detail}</p>
-                    <small>来自现有账户的真实记录</small>
-                  </div>
-                  <ChevronRight size={20} />
-                </Link>
-              ))}
-          </div>
-        ) : (
-          <div className="rd-start-strip">
-            <span className="rd-step-number">01</span>
-            <div>
-              <h3>从「钱没少，购买力却变了」开始。</h3>
-              <p>读一个生活例子 → 拖动一个滑块 → 保存你的一句发现。</p>
-            </div>
-            <Link className="rd-button" to="/decoder/purchasing-power">
-              开始这一站 <ArrowRight size={17} />
-            </Link>
-          </div>
-        )}
-      </section>
+      <LearningTrail compact />
       <section className="rd-notebook-banner">
         <div className="rd-book-visual">
           <FinButton size={146} />
@@ -692,6 +642,8 @@ export function Notebook() {
           </div>
         </div>
       )}
+      <LearningTrail />
+      <WorldShelf />
       <section className="rd-next-strip">
         <div>
           <h2>继续已有的学习</h2>

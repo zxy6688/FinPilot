@@ -1,3 +1,4 @@
+import { ConceptTerm } from "./KnowledgeInteractions";
 import { BackToReading } from "./ReadingNav";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -96,6 +97,9 @@ export function EtfStory() {
           ))}
         </nav>
         <article className="gb-article">
+          <div className="k-inline-glossary">
+            读到不熟悉的词，先展开看：<ConceptTerm id={7}>{"ETF"}</ConceptTerm>
+          </div>
           <section id="matrix">
             <BackToReading />
             <h2>一个名字，不能替代两个问题。</h2>

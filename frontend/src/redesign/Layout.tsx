@@ -15,6 +15,7 @@ import { ReadingMemory } from "./ReadingMemory";
 import { FinChat } from "./FinChat";
 import { RestoreNotice } from "./RestoreNotice";
 import { ReadingNav } from "./ReadingNav";
+import { KnowledgeConnections, LearningBreadcrumb } from "./KnowledgeCenter";
 import FinButton from "./Fin";
 export default function RedesignLayout() {
   const { user, loading } = useAuth();
@@ -60,7 +61,21 @@ export default function RedesignLayout() {
             ["/concept-studio", "学概念"],
             ["/profile", "我的世界"],
           ].map(([to, t]) => (
-            <NavLink key={to} to={to} end={to === "/"}>
+            <NavLink
+              key={to}
+              to={to}
+              end={to === "/"}
+              className={({ isActive }) =>
+                isActive ||
+                (to === "/concept-studio" &&
+                  /^\/(lessons|learn|topics|review|knowledge)(\/|$)/.test(
+                    location.pathname,
+                  )) ||
+                (to === "/money-lab" && location.pathname.startsWith("/lab"))
+                  ? "active"
+                  : undefined
+              }
+            >
               {t}
             </NavLink>
           ))}
@@ -111,7 +126,9 @@ export default function RedesignLayout() {
         <ReadingMemory />
         <RestoreNotice />
         <ReadingNav />
+        <LearningBreadcrumb />
         <Outlet />
+        <KnowledgeConnections />
         <FinChat />
       </main>
       <footer className="rd-footer">
@@ -142,7 +159,21 @@ export default function RedesignLayout() {
         ].map(([to, label, Icon]) => {
           const C = Icon as typeof House;
           return (
-            <NavLink key={String(to)} to={String(to)} end={to === "/"}>
+            <NavLink
+              key={String(to)}
+              to={String(to)}
+              end={to === "/"}
+              className={({ isActive }) =>
+                isActive ||
+                (to === "/concept-studio" &&
+                  /^\/(lessons|learn|topics|review|knowledge)(\/|$)/.test(
+                    location.pathname,
+                  )) ||
+                (to === "/money-lab" && location.pathname.startsWith("/lab"))
+                  ? "active"
+                  : undefined
+              }
+            >
               <C size={21} />
               {String(label)}
             </NavLink>

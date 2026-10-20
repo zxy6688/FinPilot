@@ -1,3 +1,4 @@
+import { ConceptTerm } from "./KnowledgeInteractions";
 import { BackToReading } from "./ReadingNav";
 import { NumberInput, FocusFieldError } from "./NumberInput";
 import { learningStorage } from "../services/learningStorage";
@@ -451,6 +452,10 @@ export function LoanStory() {
           ))}
         </nav>
         <article className="gb-article">
+          <div className="k-inline-glossary">
+            读到不熟悉的词，先展开看：
+            <ConceptTerm id={27}>{"贷款"}</ConceptTerm>
+          </div>
           <section id="case">
             <span className="gb-kicker">01 / 一份看似简单的借款</span>
             <h2>写着借 20000 元，拿到手可能不是 20000 元。</h2>

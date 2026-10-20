@@ -1,0 +1,554 @@
+[
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/home-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "7b231514d46ff202c38916b41f70aa034524a02de5be46409ed6b5261cc3cfa8"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/home-375.png",
+    "width": 375,
+    "height": 844,
+    "sha256": "315c7e00f2e17be565fc42b81eb9a609109591063e1f53a1696cce9496e340b1"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/home-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "72f26936511b2a859cbad72a1e1322d26c01783805a874388621bd61ad2a82d0"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/home-430.png",
+    "width": 430,
+    "height": 844,
+    "sha256": "58d7bddfdae8274ffbbebde191c8bd75c3319236e822a0fef6358521b7ceed8f"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/home-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "0c28453a34c194708327feb420d858f7800d1631d359c5a2ded797d0e9ad32a9"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-empty.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "274362ba33d8feb97e99981e49198627dc492fd2a3e80dd2b482fc88c937e5a6"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-exact-match.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "0d47b719a6cc47c3a0d5c97cc4cd9910e45db77f65bbe27a8938d24ae455f92b"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-loan-not-savings.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "b1c89937148836536dfb87cc5fedf51d75d28a6d8ae7d757b2b01966365d321f"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-mixed.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "ba316bdcae9501b78d6595ac1dcf7407f033d6d237848cf68eaf20296e2eaa0d"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-preserved-in-copilot.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "3df0ff6cb6d6ef51b3593be0d1edddab2af6a2cae7ba14275ba98b86a4aa555b"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-related.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "1441dcf074be7ed8ff64536d2cabc2ce642ea897a34f0affc64e982a8a51a251"
+  },
+  {
+    "file": "docs/redesign/gate-b-k/px-regression/routing/screenshots/question-unmatched.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "03fda34e9f1179d84df17c74395982bdbcdebe4399b00ecec671a60a36e1ad86"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/account-cross-browser-restore.png",
+    "width": 1280,
+    "height": 4431,
+    "sha256": "bca6c932403901962a6b59cf3c6d441757bd99474b2c12bf47c98e1a2e1f104d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/concept-1440.png",
+    "width": 1440,
+    "height": 3947,
+    "sha256": "631e687a75a7dc45748b499a3c101380a82bfbef7204c0eb05a2820d0566a119"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/concept-375.png",
+    "width": 375,
+    "height": 5684,
+    "sha256": "f77125a5c76d13e51c30f57c2b585d6e3037be98d32a52df4b1b80945f7bbb8d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/concept-390.png",
+    "width": 390,
+    "height": 5625,
+    "sha256": "11a1af8b711773d694a793702069f6b93d4d505bf2c995533247b94aab0b2180"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/concept-430.png",
+    "width": 430,
+    "height": 5414,
+    "sha256": "4d7f36c9e7e1779ab5c1cff7f5d479e8a967dd65f69ed6f13d17acacc925291e"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/concept-768.png",
+    "width": 768,
+    "height": 4189,
+    "sha256": "adb13eef32026459c63e973c9cd738813a54fc285532f308698a7276a9b1bce4"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/discover-1440.png",
+    "width": 1440,
+    "height": 2885,
+    "sha256": "8aa006f69f669fbcedfdc36f41d5bab1ff3524f85c9cc107f8162da0733c81a1"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/discover-375.png",
+    "width": 375,
+    "height": 4689,
+    "sha256": "fd1fa5432bb40f95c7d36d49c07cf4cbfb01369d9f00e42119eef4d1ad9a7cc0"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/discover-390.png",
+    "width": 390,
+    "height": 4656,
+    "sha256": "e809a3484304924bfc3f2944244aa0df0da5c4b28a9475bc551c23e5787cc45a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/discover-430.png",
+    "width": 430,
+    "height": 4526,
+    "sha256": "b9be430be70fb25ab4dcbb70ab5aa8122878447f0f3bf27a09b5cabda198f5bf"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/discover-768.png",
+    "width": 768,
+    "height": 2906,
+    "sha256": "9ff010ad074b4a88432633f755ba7a46c39a99086e920f9f7e3b925210de09f9"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/fin-concept-context.png",
+    "width": 1440,
+    "height": 1000,
+    "sha256": "61b9468fb8305967b65ae984a2094f343ea5a9762746f75c086d325bbe40bcde"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/guest-saved.png",
+    "width": 1440,
+    "height": 2181,
+    "sha256": "8060c7aaf127857c711cdfceeb948deb3a1f7d946fc7c81aca734af56d16322a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/home-1440.png",
+    "width": 1440,
+    "height": 4117,
+    "sha256": "0f89b7945aa790faa9acfb07343f824d144c33edbe608837d0b99ed44c38a13b"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/home-375.png",
+    "width": 375,
+    "height": 4713,
+    "sha256": "516ca7761a0c2e1574b2691b46636dabc6c2f29505cd93500e20e572a7069e2d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/home-390.png",
+    "width": 390,
+    "height": 4680,
+    "sha256": "b9d658ac3e594aaa9a79e41a9575e424bfadd17c244cc60e1af5d8f9fd2d697f"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/home-430.png",
+    "width": 430,
+    "height": 4531,
+    "sha256": "415619aea30237379c75690a2206c697b76d859840dbf4e1ada2e2d1a62cd3e3"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/home-768.png",
+    "width": 768,
+    "height": 3788,
+    "sha256": "fe82e32ed48c7f5408051f3fe65ee3b4c90133aefa8d56a614800a4535f48d5d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-bonds-concept.png",
+    "width": 1440,
+    "height": 4192,
+    "sha256": "f51b5ede2bee7814466b989c8e0d674b86aabc6d46a0e28223310849d2b20eeb"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-bonds-restored.png",
+    "width": 1440,
+    "height": 4190,
+    "sha256": "eb771679e923ee885d297e6afc835b138b3387e27f36643dc057ba403f83116d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-budget-concept.png",
+    "width": 1440,
+    "height": 4583,
+    "sha256": "c6a2ec21b910d157e54e93455ecdc6c4c66f0c5e92d5073aaa290b3d2cce6992"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-budget-restored.png",
+    "width": 1440,
+    "height": 4581,
+    "sha256": "e4618f9eb6d8e81590817bc5e8f3de4f3ef2d04f456660900796a188d5ed7204"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-etf-concept.png",
+    "width": 1440,
+    "height": 3983,
+    "sha256": "20b2a67aef772a6bf905fa5968b6cac9542c77b236e8c75b10bbd5c5a82eef53"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-etf-restored.png",
+    "width": 1440,
+    "height": 3982,
+    "sha256": "feed00b32eb4246afc45f9ff302fc578ab02ed3c49b25709551e1a0aec2e2773"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-loan-concept.png",
+    "width": 1440,
+    "height": 5070,
+    "sha256": "13cf9db0089da77e92a63cc27ece33647ae7e9f1a25b792b6e97d5d22b0b960a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-loan-restored.png",
+    "width": 1440,
+    "height": 5068,
+    "sha256": "4434aefcd6c71156a5c63b0ce2f107f2cba5344bcbd81c3d16537977913e23aa"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-purchasing-power-concept.png",
+    "width": 1440,
+    "height": 4242,
+    "sha256": "add0436daeca110e85e3ae8150a88011f06fc0ee051d22fc62e7de2b7370ec93"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/journey-purchasing-power-restored.png",
+    "width": 1440,
+    "height": 4240,
+    "sha256": "4228c2e4bf02b2d61931ded4f4b31e9fe1596548f13524679e3c4a3859cc6962"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/k1-center-desktop.png",
+    "width": 1440,
+    "height": 2971,
+    "sha256": "fdc8939bc15a5286e69206df6e834c9cc1fe509de78776bc8e956f816efb7568"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/k1-search-etf.png",
+    "width": 1440,
+    "height": 2811,
+    "sha256": "74fbbcf4e1a6a7ce2c43b606d2f1f960a28547f1eb81fe7e474b176b8dd1c00a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/learn-1440.png",
+    "width": 1440,
+    "height": 2971,
+    "sha256": "55ff36207c30127d6090f6127642fb237897899d7f52773968bcfcb6b00d7156"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/learn-375.png",
+    "width": 375,
+    "height": 4872,
+    "sha256": "3d9172abf6d42e09902e592607112b3210d90713a92bd87dcd91bf738d90aa86"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/learn-390.png",
+    "width": 390,
+    "height": 4820,
+    "sha256": "2ac5539ff115d589be474d2c1d37671f2b92bbf123abe47fed7045768206a6b2"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/learn-430.png",
+    "width": 430,
+    "height": 4620,
+    "sha256": "d8da4645dd394336a9d080a57cd1efda542d1e96590a6551af04d07e22b7c072"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/learn-768.png",
+    "width": 768,
+    "height": 3332,
+    "sha256": "09ec9467ff1a127d17a3a4d70e3776f313d8702580ae6206182a2efe768f70de"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/money-1440.png",
+    "width": 1440,
+    "height": 2673,
+    "sha256": "3c1d711da50e0d81daec3b9cbd3f168b24d76f9bea36acdffe59926efe490e5d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/money-375.png",
+    "width": 375,
+    "height": 4343,
+    "sha256": "d3280fec7b11e80be570b09a610dcffc88cff2df6591673853c2d060fddd70a6"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/money-390.png",
+    "width": 390,
+    "height": 4325,
+    "sha256": "d9337bb53820dd9557ff196bbf9ed5a07b8fdf771e42a8faa307940ec3a1dfd7"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/money-430.png",
+    "width": 430,
+    "height": 3970,
+    "sha256": "c37c00678f7663595ba5c3853d7b1c8f3156c6cd60efed50a4e3ab6791d51fe9"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/money-768.png",
+    "width": 768,
+    "height": 2764,
+    "sha256": "69494e49752b558e9fc85d82e79776b4ef9524b4e307b5f9d7bd31f1405ee3ec"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/bond-30-percent.png",
+    "width": 1440,
+    "height": 4634,
+    "sha256": "a9af9211ba2dd3dc4b1d3ba7d3ccb105fdaf76b9dfca59e14b44ddea3c805836"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/compare-reopened-record.png",
+    "width": 1440,
+    "height": 2295,
+    "sha256": "b456a965d418da7f068105bf280a015b6bf2340db495c0cb267e464f6c88fb2e"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/etf-owner-state.png",
+    "width": 1440,
+    "height": 4001,
+    "sha256": "889f7eb9ae434fd25a1b6fa05bb48d42515f85ca57a585b62d1f1f66e8df08a5"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/home-first-screen-375.png",
+    "width": 375,
+    "height": 900,
+    "sha256": "8377038b89e96468b82d2c9f3c53a650edd801d1459a483a4b49cd2bfd9fc429"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/home-first-screen-390.png",
+    "width": 390,
+    "height": 900,
+    "sha256": "c4942de9fc414ae2712484e26f3bbf6ebe25cf480c8b1296d1d321d4359526ce"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/home-first-screen-430.png",
+    "width": 430,
+    "height": 900,
+    "sha256": "abac7718da827a7cdcdfe47b9168f15bf9c91b4ff815331927180a489dbe1543"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/home-first-screen-768.png",
+    "width": 768,
+    "height": 900,
+    "sha256": "a3259c5b4631c0ce3fdbb8bbf4f786e29f745db4bde3863667b7d67def37bbd1"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/loan-240-months.png",
+    "width": 1440,
+    "height": 2625,
+    "sha256": "c895c8fba6ba94900efd2e63be766527119e1e9530f6d45db335c3dcc31348f7"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/loan-invalid-months.png",
+    "width": 1440,
+    "height": 1943,
+    "sha256": "70ec42dcdf5b24fc3ddeb65472c146666a20f5b3951cda11b7a00154a9207ba7"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/loan-invalid-upfront.png",
+    "width": 1440,
+    "height": 1943,
+    "sha256": "2409bbe838c92e708b8a659b59862692a3864c68f548abc158f883aecd5aa7fd"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/loan-three-amounts.png",
+    "width": 1440,
+    "height": 2625,
+    "sha256": "293d8f50d9dbe8b573c9320a733b88127450f79f0c7af51979bc8e0f7f9a4862"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/mobile-demo-warning.png",
+    "width": 390,
+    "height": 1411,
+    "sha256": "80b9d9c69d2b8a41541ce97611ef035651f99d9f91e1b5a87b34253d9fd7df98"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/mobile-question-suggestion.png",
+    "width": 390,
+    "height": 4756,
+    "sha256": "1272a69ab671fbb4fc872243c5919572666f1afac4e2676ee1a21c52af23ff52"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/mobile-reading-restored.png",
+    "width": 390,
+    "height": 7427,
+    "sha256": "4360eda9610e40f3609bb3559efb968aa5b55df2250b19247d8c29d8a59aed46"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/mobile-reading-return.png",
+    "width": 390,
+    "height": 7427,
+    "sha256": "6ab6a078e0b6a5d34b8d377550d21606b5b3fe2a850e6dc29e58ca250878f6ff"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/notebook-delete-confirm.png",
+    "width": 1440,
+    "height": 2500,
+    "sha256": "7e1a1fa0698e6452c8d30cad0c86964f356b87b691325abc5b848741d3646eff"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/notebook-renamed-search.png",
+    "width": 1440,
+    "height": 2367,
+    "sha256": "3f67be43ac141b2c2962f2ad3a8450afeac9102aa7c2bc9cfa122ee564746603"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-375--.png",
+    "width": 375,
+    "height": 4843,
+    "sha256": "2f47d26888f835a78bf669899746f54b0848571e0c4dffed634bcb4b9b1679ca"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-375--money-lab-loan.png",
+    "width": 375,
+    "height": 3947,
+    "sha256": "f0bbd1e7270b8a9cf1a2308e90684b80a3af84c51c89d01e8095c799a18c67b7"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-375--profile.png",
+    "width": 375,
+    "height": 12076,
+    "sha256": "c0f34793fa3a6d853495898617c10e1ccab4de3cf5ec9d20200caec1e2e4e75d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-375--stories-budget.png",
+    "width": 375,
+    "height": 7606,
+    "sha256": "5dbb0ba4789715dfa94ec3258d02dd4b0746eaa78684d35bab6416857487f88b"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-390--.png",
+    "width": 390,
+    "height": 4787,
+    "sha256": "011651351e918e4104583b35dd2c86ebf233bfacd5f1c0abf4613bca97962616"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-390--money-lab-loan.png",
+    "width": 390,
+    "height": 3888,
+    "sha256": "8835b06ef08d23854aeb9dc4a4ea0cf1e1815c9baba96768dffd7d2cc1d8ab69"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-390--profile.png",
+    "width": 390,
+    "height": 12025,
+    "sha256": "0dbbb01fb0ee6cf6d7821807f7d4389d4968864e35e2c4d662b698380e5d8ed0"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-390--stories-budget.png",
+    "width": 390,
+    "height": 7461,
+    "sha256": "e7835fe32e1b01a82459d912359d9db7e099dc7cb79a1d04652f880115a950db"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-430--.png",
+    "width": 430,
+    "height": 4639,
+    "sha256": "d7040597dc85a7f056add58b74ec46f2826b8d717c648acb658ef57b98105f5a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-430--money-lab-loan.png",
+    "width": 430,
+    "height": 3835,
+    "sha256": "e31189aa6c7a8839d5ffa5d061e21586dcdcc88c2e64cf22bbd22408cf326e38"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-430--profile.png",
+    "width": 430,
+    "height": 11105,
+    "sha256": "e1aee5c921c1ee52cd01c8342df921d1c40fa4bc211a05c60681ad100998927c"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-430--stories-budget.png",
+    "width": 430,
+    "height": 7259,
+    "sha256": "4ff2ff3358ad25bea25957833b89496b60bf435699761d524fcbbe9ddf09df7f"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-768--.png",
+    "width": 768,
+    "height": 3883,
+    "sha256": "dc93d4d989f0935020733bc8be7ce2519a336740090d1524f7e178d1b336be9a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-768--money-lab-loan.png",
+    "width": 768,
+    "height": 2715,
+    "sha256": "b9cce49f02d8ca1426cbd4c86acacb6942da8dc7d78654f24a154cc52e3da2c6"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-768--profile.png",
+    "width": 768,
+    "height": 7236,
+    "sha256": "be900de8209508f9650f1ecd42f11f8fecbd4128f1ca40f49f247ec7a0daa351"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/responsive-768--stories-budget.png",
+    "width": 768,
+    "height": 6323,
+    "sha256": "71e51197693783adb5aaf64ac2e963b8ed1d419689b88d19f2c58ac4cd85c1ad"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/px-regression/second-account-clean.png",
+    "width": 1440,
+    "height": 5723,
+    "sha256": "73b2975215e0247c791d02b5af1dbd072ec78a26f3282a0b4cf180f07a5089dd"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/risk-two-scenarios.png",
+    "width": 1440,
+    "height": 3730,
+    "sha256": "baeaff4cd7d0a68bf12413b852d30e5392c6c764aba95eb7bd3d343367a92926"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/world-1440.png",
+    "width": 1440,
+    "height": 2772,
+    "sha256": "1a456bd32535ba85f28c553fa9c056ef0d43ffd9e2868b37bc870a8b625a714a"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/world-375.png",
+    "width": 375,
+    "height": 4706,
+    "sha256": "34bd099191a837d3fedfcb9f945c08896c26dda1f137d49a54be629d9dfffb86"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/world-390.png",
+    "width": 390,
+    "height": 4701,
+    "sha256": "8188b95d1488fa5518a95b92885e9131215491f841fcb589ce0725d45ddff0c3"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/world-430.png",
+    "width": 430,
+    "height": 4537,
+    "sha256": "4b970fcbe84f89d5a0724e90bd8d72f75a86b37fad41e485a376d9b890ed79f5"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-k/world-768.png",
+    "width": 768,
+    "height": 3369,
+    "sha256": "ea86d4bd06e85c8a3c84aff2fc6cbaf27c8b1c5b568af6b091f5846b0301cf75"
+  }
+]

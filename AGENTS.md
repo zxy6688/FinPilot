@@ -7,3 +7,5 @@
 - 每阶段提供真实桌面/手机截图及与认可基线的对照。测试通过不等于视觉验收通过。
 
 - 当前执行 Gate B-PX 产品体验定向修复；Gate B 尚未人工批准，禁止进入 Gate C。本轮审查见 docs/redesign/GATE_B_PX_REVIEW.md，完成后暂停等待验收。
+
+- 2026-10-20 用户授权 Gate B-K，按 K1–K3 连续完成知识体系与全站整合后统一验收。B-PX 本地 checkpoint：50c2f58。允许 v3 本地 checkpoint 和交付提交；仍禁止推送、部署、修改 main/v2 或自动进入 Gate C。

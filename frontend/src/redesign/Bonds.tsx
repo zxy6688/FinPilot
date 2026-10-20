@@ -1,3 +1,4 @@
+import { ConceptTerm } from "./KnowledgeInteractions";
 import { BackToReading } from "./ReadingNav";
 import { NumberInput, FocusFieldError } from "./NumberInput";
 import { learningStorage } from "../services/learningStorage";
@@ -247,6 +248,10 @@ export function BondsStory() {
           ))}
         </nav>
         <article className="gb-article">
+          <div className="k-inline-glossary">
+            读到不熟悉的词，先展开看：
+            <ConceptTerm id={33}>{"市场收益率"}</ConceptTerm>
+          </div>
           <section id="case">
             <h2>如果大家早就知道它会降呢？</h2>
             <p>

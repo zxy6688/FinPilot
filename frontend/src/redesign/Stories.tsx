@@ -1,3 +1,4 @@
+import { ConceptTerm } from "./KnowledgeInteractions";
 import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -223,6 +224,10 @@ export function BudgetStory() {
           ))}
         </nav>
         <article className="gb-article">
+          <div className="k-inline-glossary">
+            读到不熟悉的词，先展开看：
+            <ConceptTerm id={17}>{"预算"}</ConceptTerm>
+          </div>
           <section id="case">
             <span className="gb-kicker">01 / 从一个有点熟悉的月末开始</span>
             <h2>2500 元够不够，先别急着回答。</h2>

@@ -1,3 +1,4 @@
+import { knowledgeIndex, labs } from "./knowledgeData";
 import { useState } from "react";
 import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { ArrowUpRight, Search, Calculator, BookOpen } from "lucide-react";
@@ -49,6 +50,7 @@ export const toolsCatalog = [
   },
 ];
 export const siteCatalog = [
+  ...knowledgeIndex,
   ...topics.map((t) => ({
     id: "story-" + t.id,
     title: t.title,
@@ -67,7 +69,7 @@ export const siteCatalog = [
     id: "concept-etf",
     title: "ETF 与指数基金：二维分类矩阵",
     summary: "概念 案例 交易策略 判断 复习",
-    url: "/concept-studio",
+    url: "/concept-studio/etf-matrix",
     group: "概念互动",
   },
 ];
@@ -127,9 +129,32 @@ export function ToolDirectory() {
           </p>
         </div>
       </div>
-      <Link className="rd-text-link" to="/lab">
-        继续旧版实验与反思记录 →
-      </Link>
+      <section id="classic-labs" className="k-classic-labs">
+        <div className="rd-section-head">
+          <div>
+            <span className="rd-kicker">原有八个实验 · 保留参数与反思</span>
+            <h2>再换一个角度，观察同一件事。</h2>
+            <p>
+              五套工具用于规划与比较；这些实验专门观察一个机制，历史记录仍可继续。
+            </p>
+          </div>
+        </div>
+        <div className="k-concept-index">
+          {labs.map((l) => (
+            <Link key={l.id} to={"/lab/" + l.id}>
+              <span className="k-index-number">
+                {String(l.id).padStart(2, "0")}
+              </span>
+              <div>
+                <h3>{l.title}</h3>
+                <p>{l.question}</p>
+                <small>{l.educational_notes.observe}</small>
+              </div>
+              <ArrowUpRight size={18} />
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

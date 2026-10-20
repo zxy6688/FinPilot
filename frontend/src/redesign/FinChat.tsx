@@ -1,3 +1,4 @@
+import { conceptById } from "./knowledgeData";
 import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -18,7 +19,7 @@ const map: Record<string, [number, string, string?]> = {
   "/money-lab/inflation": [103, "通胀购买力", "inflation"],
   "/money-lab/loan": [104, "贷款成本", "loan"],
   "/money-lab/budget": [105, "预算情景", "budget"],
-  "/concept-studio": [201, "ETF 二维矩阵"],
+  "/concept-studio/etf-matrix": [201, "ETF 二维矩阵"],
 };
 export function FinChat() {
   const { user } = useAuth(),
@@ -57,6 +58,34 @@ export function FinChat() {
           ...(tool_inputs ? { tool_inputs } : {}),
         };
       }
+      const concept = conceptById(Number(loc.pathname.split("/")[2]));
+      if (loc.pathname.startsWith("/concept-studio/") && concept)
+        c = {
+          source_type: "lesson",
+          source_id: concept.lesson_ids[0],
+          title: concept.title,
+          action: "explain",
+          selected_text:
+            window.getSelection()?.toString().slice(0, 1200) || concept.summary,
+        };
+      const legacy = loc.pathname.match(
+        /^\/(lessons|articles|lab|topics)\/(\d+)$/,
+      );
+      if (!c && legacy)
+        c = {
+          source_type: (
+            {
+              lessons: "lesson",
+              articles: "article",
+              lab: "lab",
+              topics: "topic",
+            } as Record<string, string>
+          )[legacy[1]],
+          source_id: Number(legacy[2]),
+          title: document.querySelector("h1")?.textContent || "当前内容",
+          action: "explain",
+          selected_text: window.getSelection()?.toString().slice(0, 1200) || "",
+        };
       setContext(c);
       setAnswer("");
       setError("");

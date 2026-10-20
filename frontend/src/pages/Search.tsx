@@ -86,26 +86,44 @@ export default function SearchPage() {
             Object.values(r.data).every((x) => !x.length) ? (
               <Empty text="没有找到相关内容，试试更简短的关键词。" />
             ) : (
-              Object.entries(r.data || {}).map(
-                ([key, items]) =>
-                  items.length > 0 && (
-                    <Section key={key} title={sections[key].label}>
-                      <div className="grid three">
-                        {items.map((x) => (
-                          <Link
-                            className="card search-result"
-                            key={x.id}
-                            to={sections[key].path + x.id}
-                          >
-                            <h3>{x.title}</h3>
-                            {x.summary && <p>{x.summary}</p>}
-                            <ArrowUpRight size={18} />
-                          </Link>
-                        ))}
-                      </div>
-                    </Section>
-                  ),
-              )
+              Object.entries(r.data || {})
+                .map(
+                  ([key, items]) =>
+                    [
+                      key,
+                      items.filter(
+                        (item) =>
+                          !searchCatalog(q).some(
+                            (x) =>
+                              x.url ===
+                              (key === "topics"
+                                ? "/concept-studio/"
+                                : sections[key].path) +
+                                item.id,
+                          ),
+                      ),
+                    ] as [string, Result[]],
+                )
+                .map(
+                  ([key, items]) =>
+                    items.length > 0 && (
+                      <Section key={key} title={sections[key].label}>
+                        <div className="grid three">
+                          {items.map((x) => (
+                            <Link
+                              className="card search-result"
+                              key={x.id}
+                              to={sections[key].path + x.id}
+                            >
+                              <h3>{x.title}</h3>
+                              {x.summary && <p>{x.summary}</p>}
+                              <ArrowUpRight size={18} />
+                            </Link>
+                          ))}
+                        </div>
+                      </Section>
+                    ),
+                )
             )}
           </State>
         </>

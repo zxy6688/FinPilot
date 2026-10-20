@@ -1,0 +1,45 @@
+# Gate B-K 修改清单
+
+以B-PX checkpoint 50c2f58为基线。前端学习目录、概念页、导航、搜索、学习继续与资料整合；无生产后端或数据库结构更改。Local-Runtime.ps1补充UTF-8读取，修复中文路径在Windows PowerShell中的解析。
+
+- `AGENTS.md`
+- `backend/tests/test_gate_b_k.py`
+- `content/knowledge.json`
+- `docs/redesign/GATE_B_K_REVIEW.md`
+- `docs/redesign/gate-b-k/COVERAGE.md`
+- `docs/redesign/gate-b-k/JOURNEYS.md`
+- `docs/redesign/gate-b-k/PAGE_MAP.md`
+- `docs/redesign/gate-b-k/SCREENSHOTS.md`
+- `docs/redesign/gate-b-k/browser-checks.json`
+- `docs/redesign/gate-b-k/compatibility-checks.json`
+- `docs/redesign/gate-b-k/px-regression/checks.json`
+- `docs/redesign/gate-b-k/px-regression/routing/checks.json`
+- `docs/redesign/gate-b-k/resource-audit.json`
+- `docs/redesign/gate-b-k/screenshots.json`
+- `docs/redesign/gate-b-k/validation.json`
+- `docs/redesign/gate-b-k/visual-comparison.html`
+- `frontend/src/components/SearchOverlay.tsx`
+- `frontend/src/main.tsx`
+- `frontend/src/pages/Search.tsx`
+- `frontend/src/redesign/Bonds.tsx`
+- `frontend/src/redesign/Catalog.tsx`
+- `frontend/src/redesign/Decoder.tsx`
+- `frontend/src/redesign/Etf.tsx`
+- `frontend/src/redesign/FinChat.tsx`
+- `frontend/src/redesign/Home.tsx`
+- `frontend/src/redesign/KnowledgeCenter.tsx`
+- `frontend/src/redesign/KnowledgeInteractions.tsx`
+- `frontend/src/redesign/Layout.tsx`
+- `frontend/src/redesign/Loan.tsx`
+- `frontend/src/redesign/Stories.tsx`
+- `frontend/src/redesign/WorldShelf.tsx`
+- `frontend/src/redesign/gate-b-k.css`
+- `frontend/src/redesign/knowledgeData.ts`
+- `frontend/src/redesign/questionRouting.ts`
+- `scripts/Local-Runtime.ps1`
+- `scripts/build-knowledge-content.py`
+- `scripts/package-gate-b-k-review.py`
+- `scripts/redesign-gate-b-k-check.mjs`
+- `scripts/redesign-gate-b-k-compatibility.mjs`
+- `scripts/redesign-gate-b-k-px-regression.mjs`
+- `scripts/redesign-gate-b-k-routing-regression.mjs`

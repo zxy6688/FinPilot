@@ -1,3 +1,5 @@
+> 2026-10-20：Gate B-K 知识体系与体验整合等待人工验收。入口与证据：[Gate B-K Review](docs/redesign/GATE_B_K_REVIEW.md)。未推送、未部署，不进入 Gate C。
+
 # FinPilot V3 Redesign · Gate B
 
 看懂金融，形成自己的判断。基于已认可的 Gate A1 主视觉与 Fin，完成五个互动专题、五套财务工具和账户发现手册。

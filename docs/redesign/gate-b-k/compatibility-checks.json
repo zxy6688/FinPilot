@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": [
+    "36 exact concept titles + related-question safety, no fake AI answers",
+    "28 original lesson pages, 8 original labs and 5 paths render with shared learning breadcrumb",
+    "Guest save stays browser-local and is not silently merged into an independent account",
+    "Existing course quiz genuinely submitted; account concept note restored in independent browser context",
+    "Diversification scenario arithmetic at 50% and zero weight verified",
+    "Global Fin receives current concept and verified related lesson context; Demo limitations visible"
+  ],
+  "errors": []
+}

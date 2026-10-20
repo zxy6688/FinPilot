@@ -13,3 +13,6 @@ $env:PYTHONPATH = Join-Path $FinPilotRoot 'backend'
 $env:PYTHONIOENCODING = 'utf-8'
 
 $env:BLACK_CACHE_DIR = Join-Path $FinPilotRoot '.cache\black'
+
+# Explicit opt-in for this loopback-only local preview; public deployments default to disabled.
+$env:FINPILOT_ALLOW_SHARED_DEMO = 'true'

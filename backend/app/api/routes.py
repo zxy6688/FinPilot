@@ -1,3 +1,4 @@
+from ..security import check_demo_access
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session, object_session
 from sqlalchemy.exc import IntegrityError
@@ -115,6 +116,7 @@ def login(data: Login, db: Session = Depends(get_db)):
     u = db.query(User).filter_by(email=data.email).first()
     if not u or not verify_password(data.password, u.password_hash):
         raise HTTPException(401, "邮箱或密码不正确")
+    check_demo_access(u)
     return {"token": token_for(u), "user": obj(u, ("password_hash",))}
 
 

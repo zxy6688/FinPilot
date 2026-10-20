@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": [
+    "0% / upfront200: receive19800, repay20000, extra cost200; no double counting",
+    "field-specific errors and focus; 240-month slider aligned",
+    "bond current point at 30% remains inside actual chart",
+    "A→B→A same-tab UI login: answers and 4321 income isolated and restored",
+    "ETF case and mini-exercise A→B→A isolation verified",
+    "two budgets: rename/search, compare from snapshot, confirm delete one, restore the other",
+    "actual deletion confirmed via API; different independent account gets404",
+    "mobile Home related question→budget→quick experiment→edit→return; automated 3.3 seconds (not a human usability study)",
+    "scroll without hash saves actual middle section; leaving/reopening restores it",
+    "shared Demo warning visible at login and throughout signed-in experience",
+    "375/390/430/768px: Home, budget story, loan tool, Notebook, no horizontal overflow; actual screenshots"
+  ],
+  "errors": []
+}

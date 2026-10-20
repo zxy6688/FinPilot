@@ -172,11 +172,14 @@ export function Magazine() {
     <div className="rd-page gb-magazine">
       <div className="gb-magazine-masthead">
         <span className="rd-kicker">Discover · FinPilot 编辑室</span>
-        <span>原创专题 / 官方资料 / 假设实验</span>
+        <span>
+          教育资料 · 非实时新闻{" "}
+          <Link to="/discover/library">浏览完整资料库 →</Link>
+        </span>
       </div>
       <header className="gb-magazine-lead">
         <div>
-          <span className="rd-kicker">这一期，从钱与时间开始</span>
+          <span className="rd-kicker">首批精选专题 · 更新于 2026-10-14</span>
           <h1>
             把听过的概念，
             <br />
@@ -260,7 +263,7 @@ export function Magazine() {
         <div className="rd-empty-notebook">
           <FinArt action="card" size={90} />
           <div>
-            <h2>这一期没有对应专题。</h2>
+            <h2>精选专题暂时没有对应内容。</h2>
             <p>可以换个更短的关键词，或在完整资料库继续找。</p>
             <button
               className="rd-secondary"

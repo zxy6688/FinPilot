@@ -1,0 +1,278 @@
+[
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/home-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "4407237e7700f20f0cfefec30670facf5c82d72e319604ef1f433a04bc3b7630"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/home-375.png",
+    "width": 375,
+    "height": 844,
+    "sha256": "59901bc4176e9255e05b90b106a23b76a12e422637db58dd59ebe7a6fb5dc532"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/home-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "dcb73d9eaca4ead046eb74f3bcc2b8d7151059091ba066faf51dc0d65d179567"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/home-430.png",
+    "width": 430,
+    "height": 844,
+    "sha256": "e03b009282ca4b25c02839c5255a9c2e890f3e2c9b3fe487f538ce8f5be22b3c"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/home-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "9119e430de6b774471c0fb2c8740883095aa58e7a02eaec11b2650c59c65e561"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-empty.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "453887c41256d5756d49a04556392840bb6a85370b53240ddbc76a1870ae5350"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-exact-match.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "8fa3499894fb2bad55690c28de126dec3731cf9c0ad08d2f47610a7b00f5d45e"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-loan-not-savings.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "b1c89937148836536dfb87cc5fedf51d75d28a6d8ae7d757b2b01966365d321f"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-mixed.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "ba316bdcae9501b78d6595ac1dcf7407f033d6d237848cf68eaf20296e2eaa0d"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-preserved-in-copilot.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "3df0ff6cb6d6ef51b3593be0d1edddab2af6a2cae7ba14275ba98b86a4aa555b"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-related.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "1441dcf074be7ed8ff64536d2cabc2ce642ea897a34f0affc64e982a8a51a251"
+  },
+  {
+    "file": "docs/redesign/gate-b-px/routing/screenshots/question-unmatched.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "03fda34e9f1179d84df17c74395982bdbcdebe4399b00ecec671a60a36e1ad86"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/bond-30-percent.png",
+    "width": 1440,
+    "height": 4421,
+    "sha256": "0b5a2db12377142586d50feebff63c85b547ad4c4e2021843e23cde29275cf97"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/compare-reopened-record.png",
+    "width": 1440,
+    "height": 2138,
+    "sha256": "5a0701a6ac745e2d04189ec62a8aa9a50c9a04922e8a4267c696cd78ec0f4662"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/etf-owner-state.png",
+    "width": 1440,
+    "height": 4157,
+    "sha256": "e3f04337890fcabeba7fa51a83dc3fe66c1db3b7660629d8956f7485c18036c4"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/home-first-screen-375.png",
+    "width": 375,
+    "height": 900,
+    "sha256": "f78240f4ef936bc47932c23719345429fb7e1e7d1cae0969cc6051c2daeb8a5b"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/home-first-screen-390.png",
+    "width": 390,
+    "height": 900,
+    "sha256": "9dc764c22ebad47305f13fd0f3514fadc1e5988f26d1a501bdc4fd967c40b010"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/home-first-screen-430.png",
+    "width": 430,
+    "height": 900,
+    "sha256": "5be9fed381b544612e502b360e62ab21ac152d7f98d187a0534bf53412ade09d"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/home-first-screen-768.png",
+    "width": 768,
+    "height": 900,
+    "sha256": "1de424995fb9a06248c2b43893f9f7fac4205564873abfcc36d617e008436594"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/loan-240-months.png",
+    "width": 1440,
+    "height": 2468,
+    "sha256": "ea93aa8d146ef8a80afaa5dc4176aa891d9e920a6594bda3c738574d08bedd91"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/loan-invalid-months.png",
+    "width": 1440,
+    "height": 1786,
+    "sha256": "3014288c4f93f78ef30d7164b474a16168886adf214af55bfb012c6973d50653"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/loan-invalid-upfront.png",
+    "width": 1440,
+    "height": 1786,
+    "sha256": "71094f03c8001da33a533eb622d113dc13fc604142f68bfd9eab4e200827f725"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/loan-three-amounts.png",
+    "width": 1440,
+    "height": 2468,
+    "sha256": "5fc2b9c71c3f824a31dddf91e2efea8c74539c5f45d7859eb16fcb7abb3d5b95"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/mobile-demo-warning.png",
+    "width": 390,
+    "height": 1411,
+    "sha256": "9ccf2d1b608af7b9f93d629904710cb6d54c9eb53009b5fdc8bb01f607852805"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/mobile-question-suggestion.png",
+    "width": 390,
+    "height": 5249,
+    "sha256": "d4dc1315aa8565a37ef987d45f537af56a5f571d03252a5ca7df7077dddff1f8"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/mobile-reading-restored.png",
+    "width": 390,
+    "height": 7172,
+    "sha256": "41e4b94a3d91ce08a1827268ece7493a8b4645250ee1cd892022b8bbe2f9229b"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/mobile-reading-return.png",
+    "width": 390,
+    "height": 7172,
+    "sha256": "a974e99c12a7ead1031985e40f9b8696a6bf2a1dd17e446a0c15d00330257db7"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/notebook-delete-confirm.png",
+    "width": 1440,
+    "height": 2029,
+    "sha256": "b9b3dfb7ab0cedf6c7964a12e9429a7f0bacc907214fabde60ce20bfd3f6fef8"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/notebook-renamed-search.png",
+    "width": 1440,
+    "height": 1870,
+    "sha256": "a011108c0292e352ff36533e8c562095a195fb181d563423a9aeae4c2bdc9bb1"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-375--.png",
+    "width": 375,
+    "height": 5327,
+    "sha256": "1ab5b7c79e3082a44cad24d0274e92e075694da1799660a57113ca9bcfd94999"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-375--money-lab-loan.png",
+    "width": 375,
+    "height": 3748,
+    "sha256": "45490b02282b32a4cab9818dc66668e468f88598382426876513e329f0dab93e"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-375--profile.png",
+    "width": 375,
+    "height": 11099,
+    "sha256": "3214806949a1462de7cd684f3db9c5fd5b139bae9642eaa9897749c5945d3e3c"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-375--stories-budget.png",
+    "width": 375,
+    "height": 7351,
+    "sha256": "5fbc8acc0003079a0fbe8908a7422c07ff59f7ee2ff9e58f158becd08df4f1eb"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-390--.png",
+    "width": 390,
+    "height": 5271,
+    "sha256": "d46043dc0af1334257548d8de9209881116bf2d904cbd1e05ed09f2bdf3fce91"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-390--money-lab-loan.png",
+    "width": 390,
+    "height": 3690,
+    "sha256": "5b476ec3b5b3d73c86bbe0379c1d1cc28b84ec8dc58b2f3b7d0497c7f1763b9b"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-390--profile.png",
+    "width": 390,
+    "height": 11049,
+    "sha256": "3186f0ee3e265603eb564e7d3a3f8314cc3b85de67fad77dc1dac56cbaae9003"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-390--stories-budget.png",
+    "width": 390,
+    "height": 7206,
+    "sha256": "591c1af74f9d17068212c9e0f5e046edc1ddb0c5454d934e87ea6552fbc2559c"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-430--.png",
+    "width": 430,
+    "height": 5142,
+    "sha256": "93633e143c2c469d098af8850f238e31578dfdcc6b6e942bfb16955b2046c9b9"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-430--money-lab-loan.png",
+    "width": 430,
+    "height": 3636,
+    "sha256": "11a3c121cde6fa53d061c742b0daa1900101a37c94c7ca61e43a384bd728a937"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-430--profile.png",
+    "width": 430,
+    "height": 10246,
+    "sha256": "f106b7da5ab69411a95f01f01e8b79ae34aff8bdcd65c98223a75444ec3468e4"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-430--stories-budget.png",
+    "width": 430,
+    "height": 7004,
+    "sha256": "8e52124f874f5ad1dfb5e72f807a27f0f768351b6d5ed72b71472129a924c44b"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-768--.png",
+    "width": 768,
+    "height": 4374,
+    "sha256": "1caa85e2780d7718ab309e628926e7294ad159f6dd9c1627b2edb556baccc205"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-768--money-lab-loan.png",
+    "width": 768,
+    "height": 2534,
+    "sha256": "6b1ff47dcca81b1bcee299e17cd0ab4e3acc2c78a701c8e46c2cb609c208b5e2"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-768--profile.png",
+    "width": 768,
+    "height": 6653,
+    "sha256": "4d13d79672aa570e5649a7ff2abcaabd9c446b923948b3726ffa58ebafd95220"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/responsive-768--stories-budget.png",
+    "width": 768,
+    "height": 6087,
+    "sha256": "ca6a7915b573ef02482e4ddc45a5cf437898dd6ff8446158a1924465cab15fe0"
+  },
+  {
+    "file": "docs/redesign/screenshots/gate-b-px/second-account-clean.png",
+    "width": 1440,
+    "height": 5510,
+    "sha256": "fad5b633867a3ac5d59290db4c36e9ab6a481bb862045b5fe4afd6831502e916"
+  }
+]

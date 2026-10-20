@@ -20,6 +20,7 @@ export function useNotebook() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const identity = useRef(key);
+  const token = localStorage.getItem("finpilot_token");
   identity.current = key;
   useEffect(() => {
     let live = true;
@@ -69,7 +70,8 @@ export function useNotebook() {
     };
   }, [key, authLoading]);
   async function save(entry: Omit<Entry, "at" | "version">) {
-    if (authLoading) return false;
+    if (authLoading || localStorage.getItem("finpilot_token") !== token)
+      return false;
     const owner = key;
     try {
       const record = {
@@ -102,11 +104,53 @@ export function useNotebook() {
       return false;
     }
   }
+  async function manage(
+    entry: Entry,
+    action: "rename" | "delete",
+    title?: string,
+  ) {
+    if (authLoading || localStorage.getItem("finpilot_token") !== token)
+      return false;
+    const owner = key;
+    try {
+      if (entry.storage === "account")
+        await api(
+          `/v3/artifacts/${encodeURIComponent(entry.id)}`,
+          action === "delete" ? "DELETE" : "PATCH",
+          action === "rename" ? { title } : undefined,
+        );
+      const local: Entry[] = JSON.parse(localStorage.getItem(key) || "[]");
+      localStorage.setItem(
+        key,
+        JSON.stringify(
+          action === "delete"
+            ? local.filter((e) => e.id !== entry.id)
+            : local.map((e) =>
+                e.id === entry.id ? { ...e, title: title! } : e,
+              ),
+        ),
+      );
+      if (identity.current !== owner) return false;
+      window.dispatchEvent(new Event("redesign-save"));
+      setError("");
+      return true;
+    } catch (e) {
+      if (identity.current === owner)
+        setError(e instanceof Error ? e.message : "修改未完成，请重试");
+      return false;
+    }
+  }
   return {
     entries: authLoading || loadedOwner !== key ? [] : entries,
     save,
+    manage,
     error,
-    scope: user ? "账户保存 · 可跨浏览器恢复" : "访客 · 仅此浏览器",
+    scope:
+      user?.email === "demo@finpilot.app"
+        ? "共享演示记录 · 其他体验者可见"
+        : user
+          ? "保存到我的账户"
+          : "访客 · 仅此浏览器",
     loading: authLoading || loading,
   };
 }

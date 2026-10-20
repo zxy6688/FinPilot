@@ -1,3 +1,6 @@
+import { BackToReading } from "./ReadingNav";
+import { NumberInput, FocusFieldError } from "./NumberInput";
+import { learningStorage } from "../services/learningStorage";
 import { useStoryInputs } from "./StoryInputs";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -23,7 +26,7 @@ type BondResult = {
 export function BondExperiment() {
   const [params] = useSearchParams();
   const [inputs, setInputs] = useState<BondInput>(() =>
-    readDraft(params.get("inputs") || sessionStorage.getItem("bond-draft"), {
+    readDraft(params.get("inputs") || learningStorage.getItem("bond-draft"), {
       face: 1000,
       coupon: 3,
       years: 5,
@@ -34,7 +37,7 @@ export function BondExperiment() {
     [error, setError] = useState(""),
     [busy, setBusy] = useState(true);
   useEffect(() => {
-    sessionStorage.setItem("bond-draft", JSON.stringify(inputs));
+    learningStorage.setItem("bond-draft", JSON.stringify(inputs));
     let live = true;
     setBusy(true);
     const t = setTimeout(
@@ -44,7 +47,7 @@ export function BondExperiment() {
             if (live) {
               setResult(r);
               setError("");
-              sessionStorage.setItem("bond-result", JSON.stringify(r));
+              learningStorage.setItem("bond-result", JSON.stringify(r));
             }
           })
           .catch((e) => {
@@ -69,6 +72,7 @@ export function BondExperiment() {
     <div className="gb-embedded">
       <div className="gb-workbench">
         <div className="gb-controls">
+          <BackToReading />
           <h3>把市场收益率单独拎出来</h3>
           {(
             [
@@ -79,7 +83,8 @@ export function BondExperiment() {
           ).map(([k, l, min, max, step]) => (
             <label key={k}>
               {l}
-              <input
+              <NumberInput
+                aria-label={l}
                 type="number"
                 min={min}
                 max={max}
@@ -114,7 +119,11 @@ export function BondExperiment() {
           <strong className="gb-big-number">
             {result ? "¥ " + money(result.price) : "—"}
           </strong>
-          {error && <p role="alert">{error}</p>}
+          {error && (
+            <p role="alert">
+              {error} <FocusFieldError />
+            </p>
+          )}
           {result && (
             <>
               <svg
@@ -128,13 +137,28 @@ export function BondExperiment() {
                   d={result.points
                     .map(
                       (p, i) =>
-                        `${i ? "L" : "M"}${45 + ((p.yield + 5) / 20) * 415},${200 - (p.price / max) * 165}`,
+                        `${i ? "L" : "M"}${45 + ((p.yield + 5) / 35) * 415},${200 - (p.price / max) * 165}`,
                     )
                     .join(" ")}
                   fill="none"
                   stroke="#267b78"
                   strokeWidth="3"
                 />
+                <circle
+                  cx={45 + ((result.inputs.yield_rate + 5) / 35) * 415}
+                  cy={200 - (result.price / max) * 165}
+                  r="6"
+                  fill="#d98766"
+                />
+                <text
+                  x="250"
+                  y="43"
+                  textAnchor="middle"
+                  fill="#48675b"
+                  fontSize="15"
+                >
+                  当前 {result.inputs.yield_rate}% · ¥{money(result.price)}
+                </text>
                 <text x="45" y="225" fill="#48675b" fontSize="15">
                   −5%
                 </text>
@@ -145,7 +169,7 @@ export function BondExperiment() {
                   fill="#48675b"
                   fontSize="15"
                 >
-                  15% 市场收益率
+                  30% 市场收益率
                 </text>
                 <text x="45" y="20" fill="#48675b" fontSize="15">
                   价格（元） · 最高 ¥{money(max)}

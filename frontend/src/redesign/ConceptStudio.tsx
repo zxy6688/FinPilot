@@ -1,3 +1,4 @@
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowRight, Check, Bookmark } from "lucide-react";
@@ -29,18 +30,18 @@ const cases = [
 ];
 export function ConceptPlay({ compact = false }: { compact?: boolean }) {
   const [current, setCurrent] = useState(() =>
-      Number(sessionStorage.getItem("etf-case") || 0),
+      Number(learningStorage.getItem("etf-case") || 0),
     ),
     [answer, setAnswer] = useState<number | null>(() => {
-      const a = sessionStorage.getItem("etf-mini");
+      const a = learningStorage.getItem("etf-mini");
       return a === null ? null : Number(a);
     });
   useEffect(() => {
-    sessionStorage.setItem("etf-case", String(current));
+    learningStorage.setItem("etf-case", String(current));
   }, [current]);
   useEffect(() => {
     const restore = () =>
-      setCurrent(Number(sessionStorage.getItem("etf-case") || 0));
+      setCurrent(Number(learningStorage.getItem("etf-case") || 0));
     window.addEventListener("etf-restore", restore);
     return () => window.removeEventListener("etf-restore", restore);
   }, []);
@@ -131,7 +132,7 @@ export function ConceptPlay({ compact = false }: { compact?: boolean }) {
               aria-pressed={answer === 0}
               onClick={() => {
                 setAnswer(0);
-                sessionStorage.setItem("etf-mini", "0");
+                learningStorage.setItem("etf-mini", "0");
               }}
             >
               是的
@@ -141,7 +142,7 @@ export function ConceptPlay({ compact = false }: { compact?: boolean }) {
               aria-pressed={answer === 1}
               onClick={() => {
                 setAnswer(1);
-                sessionStorage.setItem("etf-mini", "1");
+                learningStorage.setItem("etf-mini", "1");
               }}
             >
               不一定
@@ -168,6 +169,9 @@ export default function ConceptStudio() {
     [correct, setCorrect] = useState(false),
     [saved, setSaved] = useState(false);
   const [params] = useSearchParams();
+  const [reviewRecorded, setReviewRecorded] = useState(false),
+    [hadWrong, setHadWrong] = useState(false),
+    [corrected, setCorrected] = useState(false);
   useEffect(() => {
     const entry = notebook.entries.find((e) => e.id === params.get("concept"));
     if (entry) {
@@ -176,19 +180,25 @@ export default function ConceptStudio() {
       setCorrect(p.choice === 2);
       setFeedback("已恢复这张概念卡的判断：交易形式与投资策略是两个维度。");
       if (p.case !== undefined) {
-        sessionStorage.setItem("etf-case", String(p.case));
+        learningStorage.setItem("etf-case", String(p.case));
         window.dispatchEvent(new Event("etf-restore"));
       }
     }
   }, [params, notebook.entries]);
   async function check(i: number) {
+    setReviewRecorded(false);
+    setCorrected(false);
     setAnswer(i);
     setCorrect(false);
     setSaved(false);
     setBusy(true);
     try {
-      if (user)
+      if (user) {
         await api("/v3/compare/etf-index-fund/check", "POST", { answer: i });
+        setReviewRecorded(true);
+      }
+      if (i !== 2) setHadWrong(true);
+      else if (hadWrong) setCorrected(true);
       setCorrect(i === 2);
       setFeedback(
         [
@@ -268,12 +278,22 @@ export default function ConceptStudio() {
             >
               <b>{correct ? "分清了，两条线。" : "看看这个条件。"}</b>
               <p>{feedback}</p>
+              {corrected && (
+                <div className="rd-row">
+                  <FinArt mood="bright" size={64} />
+                  <span>
+                    这次你修正了刚才的混淆：形式与策略要分开看。之后再练一次，看看能否自己解释。
+                  </span>
+                </div>
+              )}
             </div>
           )}
           <small>
-            {user
-              ? "判断通过已有后端记录，纳入当前账户的概念复习。"
-              : "访客练习仅展示反馈；登录后才写入既有概念复习记录。"}
+            {reviewRecorded
+              ? "本次判断已加入账户复习。答对一次不代表已经掌握。"
+              : user
+                ? "提交判断后才会加入账户复习；当前尚未提交。"
+                : "访客练习仅展示反馈；登录后才写入既有概念复习记录。"}
           </small>
         </section>
         <aside className="rd-concept-note">
@@ -293,7 +313,7 @@ export default function ConceptStudio() {
               const payload = {
                 comparison: "etf-index-fund",
                 choice: 2,
-                case: Number(sessionStorage.getItem("etf-case") || 0),
+                case: Number(learningStorage.getItem("etf-case") || 0),
               };
               const id = await snapshotId("concept", payload);
               if (

@@ -1,3 +1,6 @@
+import { BackToReading } from "./ReadingNav";
+import { NumberInput, FocusFieldError } from "./NumberInput";
+import { learningStorage } from "../services/learningStorage";
 import { useStoryInputs } from "./StoryInputs";
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -22,6 +25,7 @@ type LoanResult = {
   total_fees: number;
   total_cost: number;
   total_paid: number;
+  repayment_total: number;
   effective_annual_cost: number;
   first_payment: number;
   last_payment: number;
@@ -48,7 +52,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
     n = useNotebook();
   const [inputs, setInputs] = useState<LoanInputs>(() =>
     readDraft(
-      params.get("inputs") || sessionStorage.getItem("loan-draft"),
+      params.get("inputs") || learningStorage.getItem("loan-draft"),
       defaults,
     ),
   );
@@ -58,7 +62,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
     [month, setMonth] = useState(1);
   const once = useRef("");
   useEffect(() => {
-    sessionStorage.setItem("loan-draft", JSON.stringify(inputs));
+    learningStorage.setItem("loan-draft", JSON.stringify(inputs));
   }, [inputs]);
   useEffect(() => {
     const id = params.get("receipt");
@@ -68,7 +72,9 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
       | undefined;
     if (p?.experiment?.current) {
       setInputs(p.experiment.current.inputs);
-      setFixed(p.experiment.fixed);
+      setFixed(
+        params.has("compare") ? p.experiment.current : p.experiment.fixed,
+      );
       setHistorical(p.experiment.current);
       once.current = id;
     }
@@ -88,7 +94,9 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
                 Money Lab / 04 · 每一笔现金流都算数
               </span>
               <h1>借到的钱，和要还的钱。</h1>
-              <p>把费用、时间与还款方式摆到一起，再比较两份计划。</p>
+              <p>
+                输入借款、期限和费用，看每月还多少、总共支付多少，再比较两份计划。
+              </p>
             </div>
             <FinArt action="card" size={110} />
           </header>
@@ -102,6 +110,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
       )}
       <div className="gb-workbench">
         <div className="gb-controls">
+          <BackToReading />
           <span className="rd-kicker">明确假设 · 不推荐借贷产品</span>
           <h2>先把费用写全</h2>
           <div className="gb-time-fields">
@@ -116,7 +125,13 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
             ).map(([key, label, min, max, step]) => (
               <label key={key}>
                 {label}
-                <input
+                <NumberInput
+                  aria-label={label}
+                  error={
+                    key === "upfront" && inputs.upfront >= inputs.principal
+                      ? "期初费用不能达到或超过借款面额"
+                      : undefined
+                  }
                   type="number"
                   min={min}
                   max={max}
@@ -134,7 +149,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
                     aria-label="期限滑块"
                     type="range"
                     min="1"
-                    max="120"
+                    max="600"
                     value={inputs.months}
                     onChange={(e) =>
                       setInputs({ ...inputs, months: +e.target.value })
@@ -165,25 +180,43 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
         </div>
         <div className="gb-results" aria-busy={busy}>
           <span className="rd-kicker">
-            {busy ? "正在核算现金流…" : "借款的总成本 = 利息 + 明确费用"}
+            {busy
+              ? "正在核算…"
+              : `${inputs.months} 个月里，需要支付的本金、利息和月费用`}
           </span>
-          <h2>总成本</h2>
+          <h2>还款期内总共要支付</h2>
           <strong className="gb-big-number">
-            {result ? `¥ ${money(result.total_cost)}` : "—"}
+            {result
+              ? `¥ ${money(result.repayment_total ?? result.total_paid - result.inputs.upfront)}`
+              : "—"}
           </strong>
-          {error && <p role="alert">{error} 净到账须大于零，期限须为整月。</p>}
+          {error && (
+            <p role="alert">
+              {error} 净到账须大于零，期限须为整月。
+              <FocusFieldError />
+            </p>
+          )}
           {result && (
             <>
               <div className="gb-result-strip">
                 <div>
-                  <span>净到账</span>
+                  <span>今天实际到账</span>
                   <b>¥{money(result.net_received)}</b>
                 </div>
                 <div>
-                  <span>有效年成本（非监管 APR）</span>
-                  <b>{result.effective_annual_cost.toFixed(3)}%</b>
+                  <span>额外借款成本（利息＋全部费用）</span>
+                  <b>¥{money(result.total_cost)}</b>
                 </div>
               </div>
+              <p className="gb-insight">
+                期初费用 ¥{money(result.inputs.upfront)}{" "}
+                已从放款中扣除，不再加到每月还款里。还款期支付减去实际到账，就是额外借款成本。
+              </p>
+              <p>
+                按模型现金流计算的年化成本：
+                {result.effective_annual_cost.toFixed(3)}%。
+                <a href="#loan-methods">查看怎么算与适用范围</a>
+              </p>
               <div className="gb-cashflow">
                 <div className="gb-cash-in">
                   <small>今天 / 收到</small>
@@ -286,6 +319,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
         </div>
       </div>
       <div className="gb-comparison">
+        {fixed && <FinArt mood="thinking" size={56} />}
         <div>
           <h3>每月压力小，不一定总成本低。</h3>
           <p>
@@ -299,7 +333,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
           disabled={!result || busy}
           onClick={() => setFixed(result)}
         >
-          固定当前为 A
+          保留此方案为 A
         </button>
         {fixed && (
           <button
@@ -312,11 +346,12 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
       </div>
       {result && (
         <>
-          <details className="gb-methods">
+          <details className="gb-methods" id="loan-methods">
             <summary>完整还款表、公式口径与不适用情形</summary>
             <p>{result.assumptions}</p>
             <p>
-              本金及全部利息费用合计 ¥{money(result.total_paid)}
+              旧口径“本金加利息与全部费用” ¥{money(result.total_paid)}
+              （包含已扣期初费用，不是还款期总支付）
               ，其中期初费用已从面额扣除，不能再重复加入逐月现金流。有效成本使各期付款折现合计等于净到账，再以
               (1+月 IRR)^12−1 年化。
             </p>

@@ -7,6 +7,7 @@ os.environ["DATABASE_URL"] = (
     "sqlite:///" + (ROOT / "tmp" / "test-finpilot.db").as_posix()
 )
 os.environ["JWT_SECRET"] = "test-only-secret-never-used-by-local-demo-123456789"
+os.environ["FINPILOT_ALLOW_SHARED_DEMO"] = "true"
 os.environ["LLM_API_KEY"] = ""
 os.environ["LLM_MODEL"] = ""
 import pytest

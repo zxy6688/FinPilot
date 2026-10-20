@@ -1,0 +1,226 @@
+{
+  "checked_at": "2026-10-14T12:37:15.919Z",
+  "status": "passed",
+  "cases": [
+    {
+      "question": "存钱为什么不等于购买力不变？",
+      "kind": "exact",
+      "destination": "/decoder/purchasing-power",
+      "passed": true
+    },
+    {
+      "question": "  存钱，为什么不等于购买力不变?  ",
+      "kind": "exact",
+      "destination": "/decoder/purchasing-power",
+      "passed": true
+    },
+    {
+      "question": "ETF 和指数基金，是一回事吗？",
+      "kind": "exact",
+      "destination": "/concept-studio",
+      "passed": true
+    },
+    {
+      "question": "ｅｔｆ 和指数基金，是一回事吗？",
+      "kind": "exact",
+      "destination": "/concept-studio",
+      "passed": true
+    },
+    {
+      "question": "从一次降息，读懂债券",
+      "kind": "exact",
+      "destination": "/stories/bonds",
+      "passed": true
+    },
+    {
+      "question": "大学生的第一份预算",
+      "kind": "exact",
+      "destination": "/stories/budget",
+      "passed": true
+    },
+    {
+      "question": "一笔贷款，到底要还多少钱？",
+      "kind": "exact",
+      "destination": "/stories/loan",
+      "passed": true
+    },
+    {
+      "question": "",
+      "kind": "empty",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "   ",
+      "kind": "empty",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "明天适合出去旅行吗",
+      "kind": "unknown",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "每月花500元喝咖啡",
+      "kind": "unknown",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "我有3000元，存哪家银行最好",
+      "kind": "unknown",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "明年通胀率是多少",
+      "kind": "related",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "ETF怎么买，哪只最好",
+      "kind": "related",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "ETF和指数基金是一回事吗？哪个适合我",
+      "kind": "related",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "每月存1000元三年后有多少",
+      "kind": "related",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "复利怎么算",
+      "kind": "related",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "每月还款1000元",
+      "kind": "related",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "存钱为什么等于购买力不变",
+      "kind": "mixed",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "每月存钱还是买ETF",
+      "kind": "mixed",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "通胀与指数基金",
+      "kind": "mixed",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "通胀会影响我的储蓄吗",
+      "kind": "mixed",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "存钱为什么不等于购买力不变？还有贷款月供呢",
+      "kind": "mixed",
+      "destination": null,
+      "passed": true
+    },
+    {
+      "question": "降息后基金和债券都会涨吗",
+      "kind": "mixed",
+      "destination": null,
+      "passed": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 375,
+      "fontSize": 29,
+      "titleRight": 227,
+      "finHitLeft": 239.25,
+      "titleFinGap": 12.25,
+      "titleBottom": 201.125,
+      "heroBottom": 374,
+      "imageLoaded": true,
+      "overflow": false,
+      "tasksBottom": 764,
+      "bottomNavTop": 779
+    },
+    {
+      "width": 390,
+      "fontSize": 29,
+      "titleRight": 227,
+      "finHitLeft": 249,
+      "titleFinGap": 22,
+      "titleBottom": 201.125,
+      "heroBottom": 374,
+      "imageLoaded": true,
+      "overflow": false,
+      "tasksBottom": 764,
+      "bottomNavTop": 779
+    },
+    {
+      "width": 430,
+      "fontSize": 29,
+      "titleRight": 227,
+      "finHitLeft": 275,
+      "titleFinGap": 48,
+      "titleBottom": 201.125,
+      "heroBottom": 374,
+      "imageLoaded": true,
+      "overflow": false,
+      "tasksBottom": 764,
+      "bottomNavTop": 779
+    },
+    {
+      "width": 768,
+      "fontSize": 36,
+      "titleRight": 313.609375,
+      "finHitLeft": 450.953125,
+      "titleFinGap": 137.34375,
+      "titleBottom": 245.390625,
+      "heroBottom": 496,
+      "imageLoaded": true,
+      "overflow": false,
+      "tasksBottom": 848.5,
+      "bottomNavTop": null
+    },
+    {
+      "width": 1440,
+      "fontSize": 43,
+      "titleRight": 483.609375,
+      "finHitLeft": 828.71875,
+      "titleFinGap": 345.109375,
+      "titleBottom": 274.890625,
+      "heroBottom": 504,
+      "imageLoaded": true,
+      "overflow": false,
+      "tasksBottom": 849.71875,
+      "bottomNavTop": null
+    }
+  ],
+  "checks": [
+    "375/390/430/768/1440: title stays >=29px, Fin visible and clickable, no horizontal overflow; phone tasks above bottom nav",
+    "All 24 classifier cases exercised through real browser navigation; wrong keyword routes prevented",
+    "Exact navigation/back, chosen suggestion/back, reload, and Copilot prefill preserve raw question including whitespace; no automatic chat POST",
+    "Unknown shows generic entrances, empty clears draft, loan repayment suggests loan guide rather than savings calculator"
+  ],
+  "errors": [],
+  "failed": [],
+  "chatPosts": 0
+}

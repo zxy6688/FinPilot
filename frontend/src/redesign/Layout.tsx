@@ -14,9 +14,10 @@ import SearchOverlay from "../components/SearchOverlay";
 import { ReadingMemory } from "./ReadingMemory";
 import { FinChat } from "./FinChat";
 import { RestoreNotice } from "./RestoreNotice";
+import { ReadingNav } from "./ReadingNav";
 import FinButton from "./Fin";
 export default function RedesignLayout() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
   const [search, setSearch] = useState(false);
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function RedesignLayout() {
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
   }, []);
+  if (loading) return <p role="status">正在读取账户…</p>;
   return (
     <div className="rd-shell">
       <a href="#main-content" className="skip-link">
@@ -94,9 +96,21 @@ export default function RedesignLayout() {
           </span>
         </div>
       </header>
-      <main id="main-content" className="rd-main" tabIndex={-1}>
+      <main
+        id="main-content"
+        className="rd-main"
+        tabIndex={-1}
+        key={user?.id ?? "guest"}
+      >
+        {user?.email === "demo@finpilot.app" && (
+          <p className="rd-notice" role="note">
+            这是共享演示账户，所有使用此账号的人都能看到保存的内容。不要输入个人收支或私人信息。
+            <Link to="/login">使用独立账户 →</Link>
+          </p>
+        )}
         <ReadingMemory />
         <RestoreNotice />
+        <ReadingNav />
         <Outlet />
         <FinChat />
       </main>

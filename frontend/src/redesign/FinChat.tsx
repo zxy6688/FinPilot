@@ -1,3 +1,4 @@
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
@@ -41,7 +42,7 @@ export function FinChat() {
       let c: Context = undefined;
       if (source) {
         const raw = source[2]
-          ? sessionStorage.getItem(source[2] + "-draft")
+          ? learningStorage.getItem(source[2] + "-draft")
           : null;
         let tool_inputs;
         try {
@@ -66,7 +67,7 @@ export function FinChat() {
   }, [loc.pathname]);
   const key = "fin-chat:" + String(user?.id ?? "guest");
   const full = () => {
-    sessionStorage.setItem(key, JSON.stringify({ context, session, prompt }));
+    learningStorage.setItem(key, JSON.stringify({ context, session, prompt }));
     setOpen(false);
   };
   return open ? (
@@ -112,6 +113,7 @@ export function FinChat() {
           className="rd-button"
           disabled={!user || busy || !prompt.trim()}
           onClick={async () => {
+            const requestToken = localStorage.getItem("finpilot_token");
             setBusy(true);
             setError("");
             try {
@@ -125,11 +127,13 @@ export function FinChat() {
                 session_id: session,
                 context,
               });
+              if (localStorage.getItem("finpilot_token") !== requestToken)
+                return;
               setSession(r.session_id);
               setContext(r.context || context);
               setAnswer(r.content);
               setPrompt("");
-              sessionStorage.setItem(
+              learningStorage.setItem(
                 key,
                 JSON.stringify({
                   context: r.context || context,

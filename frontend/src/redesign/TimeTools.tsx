@@ -1,3 +1,6 @@
+import { BackToReading } from "./ReadingNav";
+import { NumberInput, FocusFieldError } from "./NumberInput";
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { FinArt } from "./Fin";
@@ -157,7 +160,7 @@ export function TimeWorkbench({
     n = useNotebook();
   const [inputs, setInputs] = useState<TimeInputs>(() =>
     readDraft(
-      params.get("inputs") || sessionStorage.getItem(`${tool}-draft`),
+      params.get("inputs") || learningStorage.getItem(`${tool}-draft`),
       timeDefaults[tool],
     ),
   );
@@ -166,12 +169,12 @@ export function TimeWorkbench({
     [historical, setHistorical] = useState<TimeResult | null>(null);
   const restored = useRef("");
   useEffect(() => {
-    sessionStorage.setItem(`${tool}-draft`, JSON.stringify(inputs));
+    learningStorage.setItem(`${tool}-draft`, JSON.stringify(inputs));
   }, [inputs, tool]);
   useEffect(() => {
     if (result) {
       onResult?.(result);
-      sessionStorage.setItem(`${tool}-result`, JSON.stringify(result));
+      learningStorage.setItem(`${tool}-result`, JSON.stringify(result));
     }
   }, [result]);
   useEffect(() => {
@@ -182,7 +185,9 @@ export function TimeWorkbench({
       | undefined;
     if (p?.experiment?.current) {
       setInputs(p.experiment.current.inputs);
-      setFixed(p.experiment.fixed);
+      setFixed(
+        params.has("compare") ? p.experiment.current : p.experiment.fixed,
+      );
       setHistorical(p.experiment.current);
       restored.current = id;
     }
@@ -199,7 +204,8 @@ export function TimeWorkbench({
   ) => (
     <label>
       {label}
-      <input
+      <NumberInput
+        aria-label={label}
         type="number"
         min={min}
         max={max}
@@ -213,7 +219,7 @@ export function TimeWorkbench({
         aria-label={label + "滑块"}
         type="range"
         min={min}
-        max={Math.min(max, key === "principal" ? 100000 : max)}
+        max={max}
         step={step}
         value={Number(inputs[key]) || 0}
         onChange={(e) => update(key, +e.target.value)}
@@ -237,7 +243,7 @@ export function TimeWorkbench({
               </h1>
               <p>
                 {tool === "compound"
-                  ? "改变时间和利率口径，分清投入本金与假设增长。"
+                  ? "输入一笔本金、年限和假设利率，看看期末多少钱，再比较两种方案。"
                   : "让账户金额与今天能买到的东西，出现在同一张图上。"}
               </p>
             </div>
@@ -253,6 +259,7 @@ export function TimeWorkbench({
       )}
       <div className="gb-workbench">
         <div className="gb-controls">
+          <BackToReading />
           <span className="rd-kicker">
             {fixed ? "当前情景 B" : "教学假设 · 不是收益预测"}
           </span>
@@ -314,7 +321,12 @@ export function TimeWorkbench({
           <strong className="gb-big-number">
             {result ? "¥ " + money(result.balance) : "—"}
           </strong>
-          {error && <p role="alert">{error} 请检查空值与输入范围。</p>}
+          {error && (
+            <p role="alert">
+              {error} 请按字段提示修改。
+              <FocusFieldError />
+            </p>
+          )}
           {result && (
             <>
               <div className="gb-result-strip">
@@ -347,8 +359,11 @@ export function TimeWorkbench({
         </div>
       </div>
       <div className="gb-comparison">
+        {fixed && <FinArt mood="thinking" size={56} />}
         <div>
-          <h3>{fixed ? "比较同一问题的两个情景" : "固定 A，再改一个条件"}</h3>
+          <h3>
+            {fixed ? "比较同一问题的两个情景" : "先保留方案 A，再改参数比较 B"}
+          </h3>
           <p>
             {fixed && result
               ? `A：初始 ¥${money(fixed.inputs.principal)}、${fixed.inputs.years} 年、${tool === "compound" ? "利率 " + fixed.inputs.rate + "%（" + (fixed.inputs.basis === "effective" ? "年有效" : "年名义") + "）" : "通胀 " + fixed.inputs.inflation + "%、名义增长 " + fixed.inputs.growth + "%"}；当前期末金额比 A 变化 ¥${money(result.balance - fixed.balance)}。`
@@ -360,7 +375,7 @@ export function TimeWorkbench({
           disabled={!result || busy}
           onClick={() => setFixed(result)}
         >
-          固定当前为 A
+          保留此方案为 A
         </button>
         {fixed && (
           <button

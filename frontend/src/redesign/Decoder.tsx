@@ -1,3 +1,4 @@
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
@@ -271,6 +272,7 @@ export default function Decoder() {
             </p>
             <InflationLab />
             <div className="rd-reader-check">
+              <p>即时练习 · 不计入复习；保存专题时可保留这次选择。</p>
               <b>
                 小判断：默认教学情景（1万元、3年、通胀3%、名义增长0%）中的“¥9,151.42”，代表什么？
               </b>
@@ -341,7 +343,7 @@ export default function Decoder() {
               className="rd-button"
               onClick={async () => {
                 const experiment = JSON.parse(
-                  sessionStorage.getItem("inflation-result") || "null",
+                  learningStorage.getItem("inflation-result") || "null",
                 );
                 const id = await snapshotId("purchasing", {
                   note,

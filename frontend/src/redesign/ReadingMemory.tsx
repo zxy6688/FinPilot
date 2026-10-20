@@ -46,48 +46,72 @@ export function ReadingMemory() {
       }
     };
     read();
-    const write = async () => {
+    const token = localStorage.getItem("finpilot_token");
+    let latest: Reading | null = null;
+    let lastSent = "";
+    const persist = async () => {
+      if (!latest || !user || !token) return;
+      const encoded = JSON.stringify(latest);
+      if (encoded === lastSent) return;
+      lastSent = encoded;
+      try {
+        const response = await fetch(`/api/v3/reading/story/${id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: encoded,
+          keepalive: true,
+        });
+        if (!response.ok) throw new Error();
+        if (active) setError("");
+      } catch {
+        lastSent = "";
+        if (active)
+          setError(
+            "阅读位置尚未同步到账户，继续滚动会重试；笔记仍需主动保存。",
+          );
+      }
+    };
+    const scroll = () => {
       if (!ready || !active) return;
-      const height = document.documentElement.scrollHeight - innerHeight;
-      const position = Math.max(
-        0,
-        Math.min(0.99, height > 0 ? scrollY / height : 0),
-      );
       const sections = Array.from(
-        document.querySelectorAll<HTMLElement>(
-          "article section[id],.rd-reader-body section[id]",
-        ),
+        document.querySelectorAll<HTMLElement>("article section[id]"),
       );
       const last = sections
-        .filter((s) => s.getBoundingClientRect().top < innerHeight * 0.5)
+        .filter((s) => s.getBoundingClientRect().top < innerHeight * 0.45)
         .at(-1);
-      if (!last || position < 0.02) return;
-      const data: Reading = {
+      if (!last) return;
+      const position = Math.max(
+        0,
+        Math.min(
+          0.99,
+          scrollY /
+            Math.max(1, document.documentElement.scrollHeight - innerHeight),
+        ),
+      );
+      latest = {
         progress: position,
         position,
         last_section: last.id,
         completed: false,
       };
-      localStorage.setItem(key, JSON.stringify(data));
-      if (user) {
-        try {
-          await api(`/v3/reading/story/${id}`, "POST", data);
-          if (active) setError("");
-        } catch {
-          if (active)
-            setError("阅读位置尚未同步到账户；可继续阅读，稍后滚动会重试。");
-        }
-      }
-    };
-    const scroll = () => {
+      localStorage.setItem(key, JSON.stringify(latest));
       clearTimeout(timer);
-      timer = setTimeout(write, 800);
+      timer = setTimeout(persist, 250);
+    };
+    const leave = () => {
+      void persist();
     };
     window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("pagehide", leave);
     return () => {
       active = false;
       clearTimeout(timer);
+      void persist();
       window.removeEventListener("scroll", scroll);
+      window.removeEventListener("pagehide", leave);
     };
   }, [location.pathname, user?.id, loading]);
   return error ? (

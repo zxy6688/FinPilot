@@ -1,3 +1,6 @@
+import { BackToReading } from "./ReadingNav";
+import { NumberInput, FocusFieldError } from "./NumberInput";
+import { learningStorage } from "../services/learningStorage";
 import { useStoryInputs } from "./StoryInputs";
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -266,12 +269,12 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
     n = useNotebook();
   const [inputs, setInputs] = useState<BudgetInputs>(() =>
     readDraft(
-      params.get("inputs") || sessionStorage.getItem("budget-draft"),
+      params.get("inputs") || learningStorage.getItem("budget-draft"),
       budgetDefaults,
     ),
   );
   useEffect(() => {
-    sessionStorage.setItem("budget-draft", JSON.stringify(inputs));
+    learningStorage.setItem("budget-draft", JSON.stringify(inputs));
   }, [inputs]);
   const { result, error, busy } = useCalculation<BudgetResult>(
     "budget",
@@ -290,7 +293,9 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
       };
       if (p?.experiment?.current?.inputs) {
         setInputs(p.experiment.current.inputs);
-        setFixed(p.experiment.fixed);
+        setFixed(
+          params.has("compare") ? p.experiment.current : p.experiment.fixed,
+        );
         setHistorical(p.experiment.current);
         restored.current = id;
       }
@@ -327,6 +332,7 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
       )}
       <div className="gb-workbench">
         <div className="gb-controls">
+          <BackToReading />
           <span className="rd-kicker">
             {fixed ? "当前情景 B" : "教学示例 · 可以改成你的数字"}
           </span>
@@ -334,7 +340,8 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
           <div className="gb-field-pair">
             <label>
               可用收入（元）
-              <input
+              <NumberInput
+                aria-label="可用收入（元）"
                 type="number"
                 min="0"
                 max="10000000"
@@ -349,7 +356,8 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
             </label>
             <label>
               计划储备（元）
-              <input
+              <NumberInput
+                aria-label="计划储备（元）"
                 type="number"
                 min="0"
                 max="10000000"
@@ -386,7 +394,7 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
                   <option value="flexible">弹性</option>
                   <option value="once">一次性</option>
                 </select>
-                <input
+                <NumberInput
                   aria-label={`${e.name}金额`}
                   type="number"
                   min="0"
@@ -464,7 +472,10 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
             {result ? `¥ ${money(result.remaining)}` : "—"}
           </strong>
           {error && (
-            <p role="alert">{error} 请检查空值、负数、重复名称和金额范围。</p>
+            <div role="alert">
+              {error} 请检查空值、负数、重复名称和金额范围。
+              <FocusFieldError />
+            </div>
           )}
           {result && (
             <>
@@ -491,6 +502,7 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
         </div>
       </div>
       <div className="gb-comparison">
+        {fixed && <FinArt mood="thinking" size={56} />}
         <div>
           <h3>{fixed ? "固定 A，试算 B" : "先保留一个参照"}</h3>
           <p>
@@ -504,7 +516,7 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
           disabled={!result || busy}
           onClick={() => setFixed(result)}
         >
-          固定当前为 A
+          保留此方案为 A
         </button>
         {fixed && (
           <button

@@ -1,3 +1,4 @@
+import { setLearningScope } from "./learningStorage";
 import {
   createContext,
   useContext,
@@ -20,18 +21,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [loading, setLoading] = useState(true);
   async function refresh() {
     if (!localStorage.getItem("finpilot_token")) {
+      setLearningScope();
       setUser(null);
       return;
     }
-    setUser(await api<Profile>("/users/me"));
+    const token = localStorage.getItem("finpilot_token");
+    const profile = await api<Profile>("/users/me");
+    if (token !== localStorage.getItem("finpilot_token")) return;
+    setLearningScope(profile.id);
+    setUser(profile);
   }
   useEffect(() => {
     refresh()
-      .catch(() => setUser(null))
+      .catch(() => {
+        setLearningScope();
+        setUser(null);
+      })
       .finally(() => setLoading(false));
-    const expire = () => setUser(null);
+    const expire = () => {
+      setLearningScope();
+      setUser(null);
+    };
+    const changed = (event: StorageEvent) => {
+      if (event.key !== "finpilot_token") return;
+      setLoading(true);
+      refresh()
+        .catch(expire)
+        .finally(() => setLoading(false));
+    };
     window.addEventListener("auth-expired", expire);
-    return () => window.removeEventListener("auth-expired", expire);
+    window.addEventListener("storage", changed);
+    return () => {
+      window.removeEventListener("auth-expired", expire);
+      window.removeEventListener("storage", changed);
+    };
   }, []);
   async function login(email: string, password: string, name?: string) {
     const r = await api<{ token: string }>(
@@ -47,6 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await api("/auth/logout", "POST");
     } finally {
       localStorage.removeItem("finpilot_token");
+      setLearningScope();
       setUser(null);
     }
   }

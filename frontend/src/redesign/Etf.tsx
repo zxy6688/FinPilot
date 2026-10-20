@@ -1,3 +1,4 @@
+import { BackToReading } from "./ReadingNav";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ConceptPlay } from "./ConceptStudio";
@@ -96,6 +97,7 @@ export function EtfStory() {
         </nav>
         <article className="gb-article">
           <section id="matrix">
+            <BackToReading />
             <h2>一个名字，不能替代两个问题。</h2>
             <p>
               听到“ETF”和“指数基金”时，很容易以为只是两个不同叫法。实际上 ETF

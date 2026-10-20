@@ -1,3 +1,4 @@
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
@@ -100,7 +101,7 @@ export default function Copilot() {
   useEffect(() => {
     try {
       const carried = JSON.parse(
-        sessionStorage.getItem("fin-chat:" + String(user?.id ?? "guest")) ||
+        learningStorage.getItem("fin-chat:" + String(user?.id ?? "guest")) ||
           "null",
       );
       setCarriedContext(undefined);

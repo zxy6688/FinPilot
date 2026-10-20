@@ -1,3 +1,4 @@
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { BudgetWorkbench, snapshotId } from "./Experiments";
@@ -28,7 +29,7 @@ export function CheckUnderstanding({
       ? Number(value)
       : null;
   const [answer, setAnswer] = useState<number | null>(() =>
-    valid(sessionStorage.getItem("question:" + id)),
+    valid(learningStorage.getItem("question:" + id)),
   );
   useEffect(() => {
     const entry = n.entries.find((e) => e.id === params.get("reading"));
@@ -43,12 +44,12 @@ export function CheckUnderstanding({
     const restored = valid(value);
     if (restored !== null) {
       setAnswer(restored);
-      sessionStorage.setItem("question:" + id, String(restored));
+      learningStorage.setItem("question:" + id, String(restored));
     }
   }, [params, n.entries, id]);
   return (
     <div className="gb-quiz">
-      <span className="rd-kicker">停一下，检查你的理解</span>
+      <span className="rd-kicker">即时练习 · 不计入复习</span>
       <h3>{question}</h3>
       {options.map((o, i) => (
         <button
@@ -56,7 +57,7 @@ export function CheckUnderstanding({
           aria-pressed={answer === i}
           onClick={() => {
             setAnswer(i);
-            sessionStorage.setItem("question:" + id, String(i));
+            learningStorage.setItem("question:" + id, String(i));
           }}
         >
           {o}
@@ -102,8 +103,11 @@ export function StorySave({
     <section className="gb-save">
       <FinArt action="notebook" size={80} />
       <div>
-        <h3>把这一点，记成自己的发现。</h3>
-        <p>{n.scope} · 连同专题、来源与当前位置保存。</p>
+        <h3>保存这次专题和你的笔记。</h3>
+        <p>
+          {n.scope} ·
+          保存问题、参数和来源。阅读位置自动记住；这张笔记将打开到“我的发现”。
+        </p>
         <label>
           我的理解
           <textarea
@@ -127,23 +131,24 @@ export function StorySave({
                 topic: slug,
                 note,
                 sources,
-                section: location.hash.slice(1) || "takeaway",
-                editorial_version: "gate-b-2",
+                section: "takeaway",
+                editorial_version: "gate-b-px-1",
                 experiment: JSON.parse(
-                  sessionStorage.getItem(
+                  learningStorage.getItem(
                     ({ budget: "budget", loan: "loan", bonds: "bond" }[slug] ||
                       slug) + "-draft",
                   ) || "null",
                 ),
-                question: sessionStorage.getItem("question:" + slug),
+                question: learningStorage.getItem("question:" + slug),
                 questions: Object.fromEntries(
-                  Object.keys(sessionStorage)
+                  learningStorage
+                    .keys()
                     .filter(
                       (k) =>
                         k === "question:" + slug ||
                         k.startsWith("question:" + slug + "-"),
                     )
-                    .map((k) => [k.slice(9), sessionStorage.getItem(k)]),
+                    .map((k) => [k.slice(9), learningStorage.getItem(k)]),
                 ),
               };
               const id = await snapshotId("reading", payload);

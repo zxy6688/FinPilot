@@ -143,7 +143,8 @@ def loan(p: LoanInput):
     irr=cashflow_rate(float(net),flows)
     return {"model_version":"loan-monthly-v1","inputs":p.model_dump(),"net_received":cents(net),
             "total_interest":cents(total_interest),"total_fees":cents(fees),
-            "total_cost":cents(total_interest+fees),"total_paid":cents(principal+total_interest+fees),
+            "total_cost":cents(total_interest+fees),"repayment_total":cents(principal+total_interest+D(p.monthly_fee)*p.months),
+            "upfront_deducted":cents(D(p.upfront)),"total_paid":cents(principal+total_interest+fees),
             "monthly_irr":irr,"effective_annual_cost":((1+irr)**12-1)*100,
             "first_payment":schedule[0]["payment"],"last_payment":schedule[-1]["payment"],"schedule":schedule,
             "assumptions":"期初放款并扣除一次性费用；首期在一个月后，随后等间隔月末还款。年名义利率除以 12；每月费用另付。有效年成本由净到账与还款现金流 IRR 复合年化，不是监管 APR。未模拟提前还款、罚息、浮动利率、日计息、保险或非等间隔还款。内部不逐期舍入，展示到分，银行逐期舍入账单可能存在分位差异。"}
@@ -162,6 +163,6 @@ def bond(p: BondInput):
     value=price(p.yield_rate)
     duration=sum(t*cf/(1+p.yield_rate/100)**t for t,cf in enumerate(cashflows,1))/value/(1+p.yield_rate/100)
     return {"model_version":"bond-annual-v1","inputs":p.model_dump(),"price":cents(value),"modified_duration":duration,
-            "points":[{"yield":y,"price":cents(price(y))} for y in range(-5,16)],
+            "points":[{"yield":y,"price":cents(price(y))} for y in range(-5,31)],
             "scenarios":[{"yield":y,"price":cents(price(y))} for y in [p.yield_rate-0.5,p.yield_rate,p.yield_rate+0.5]],
             "assumptions":"年付固定票息、整年到期、到期归还面值，所有现金流按同一市场年有效收益率折现；不含信用违约、税费、赎回条款及应计利息。久期是小幅收益率变化下的局部敏感性，不是精确预测。政策利率不是定价输入。"}

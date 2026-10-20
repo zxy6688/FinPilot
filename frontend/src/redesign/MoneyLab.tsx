@@ -1,3 +1,5 @@
+import { NumberInput, FocusFieldError } from "./NumberInput";
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
@@ -224,7 +226,11 @@ export function MiniLab() {
         </strong>
         {result && <GrowthChart result={result} />}
         <small>假设不变时的计算结果，不是收益承诺。</small>
-        {error && <p role="alert">{error}</p>}
+        {error && (
+          <p role="alert">
+            {error} <FocusFieldError />
+          </p>
+        )}
       </div>
     </div>
   );
@@ -237,7 +243,7 @@ export default function MoneyLab() {
     monthly: Number(params.get("monthly") || 500),
   }));
   useEffect(() => {
-    sessionStorage.setItem("savings-draft", JSON.stringify(input));
+    learningStorage.setItem("savings-draft", JSON.stringify(input));
   }, [input]);
   const { result, error, busy } = useSavings(input);
   const [compare, setCompare] = useState<Result | null>(null);
@@ -254,7 +260,7 @@ export default function MoneyLab() {
           fixed?: Result;
         };
         const r = raw.current || raw;
-        setCompare(raw.fixed || null);
+        setCompare(params.has("compare") ? r : raw.fixed || null);
         setInput(r.inputs);
         setRestored(
           r.model_version === "savings-monthly-v1"
@@ -304,7 +310,9 @@ export default function MoneyLab() {
             <br className="rd-mobile-only" />
             算一条可走的路。
           </h1>
-          <p>调整金额与时间，比一比两种方案。看清假设，再决定自己的下一步。</p>
+          <p>
+            输入储蓄目标、每月存款和期限，看看期末金额、目标差额，以及每月需要存多少。
+          </p>
         </div>
         <FinArt action={saved ? "receipt" : "tilt"} size={108} />
       </div>
@@ -351,7 +359,7 @@ export default function MoneyLab() {
             <label className="rd-field" key={key}>
               <span>{label}</span>
               <div>
-                <input
+                <NumberInput
                   type="number"
                   aria-label={label}
                   min={min}
@@ -503,7 +511,7 @@ export default function MoneyLab() {
               className="rd-button"
             >
               <Bookmark size={16} />
-              {saved ? "已收进发现手册" : "保存 Money Receipt"}
+              {saved ? "已收进发现手册" : "保存实验小票"}
             </button>
           </div>
           {saved && (
@@ -528,6 +536,15 @@ export default function MoneyLab() {
             </button>
           </div>
           <p>已固定方案 A。继续调整左侧参数，当前方案 B 会实时更新。</p>
+          <div className="rd-row">
+            <FinArt mood="thinking" size={64} />
+            <p>
+              按这两组实际参数计算，B 的期末金额比 A{" "}
+              {result.balance >= compare.balance ? "多" : "少"} ¥
+              {money(Math.abs(result.balance - compare.balance))}
+              。若同时改变了多个条件，这不是某一个参数的单独影响。
+            </p>
+          </div>
           <div className="rd-table-scroll">
             <table>
               <thead>

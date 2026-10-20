@@ -21,6 +21,12 @@ if not SECRET:
 bearer = HTTPBearer(auto_error=False)
 
 
+def check_demo_access(user):
+    # Deployments must explicitly opt in to the shared local demo. Existing data stays intact.
+    if user and user.email.lower() == "demo@finpilot.app" and os.getenv("FINPILOT_ALLOW_SHARED_DEMO", "false").lower() != "true":
+        raise HTTPException(403, "共享演示账户已禁用，请注册或登录独立账户")
+
+
 def hash_password(password):
     salt = secrets.token_hex(16)
     digest = hashlib.scrypt(
@@ -70,6 +76,7 @@ def optional_user(
     user = db.get(User, int(payload["sub"]))
     if not user:
         raise HTTPException(401, "用户不存在")
+    check_demo_access(user)
     return user
 
 

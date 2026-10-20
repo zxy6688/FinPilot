@@ -1,3 +1,5 @@
+import { EntryActions, entrySummary } from "./EntryActions";
+import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import {
@@ -167,7 +169,7 @@ export default function Home() {
   const { user } = useAuth();
   const [question, setQuestion] = useState(() => {
       try {
-        return sessionStorage.getItem("finpilot:exploration-question") || "";
+        return learningStorage.getItem("finpilot:exploration-question") || "";
       } catch {
         return "";
       }
@@ -215,7 +217,7 @@ export default function Home() {
             className="a1-exploration-label"
             htmlFor="exploration-question"
           >
-            寻找相关探索内容
+            搜索站内专题和工具
           </label>
           <form
             className="rd-question"
@@ -234,7 +236,7 @@ export default function Home() {
                 setQuestion(e.target.value);
                 setMatch(null);
                 try {
-                  sessionStorage.setItem(
+                  learningStorage.setItem(
                     "finpilot:exploration-question",
                     e.target.value,
                   );
@@ -247,7 +249,7 @@ export default function Home() {
             <button type="submit">找内容</button>
           </form>
           <small id="exploration-help" className="a1-exploration-help">
-            这是内容导航，不会直接生成问题答案。仅完整匹配专题标题时直接打开。
+            输入你的困惑，选择相关专题或工具；这里不会直接生成答案。
           </small>
           <div className="rd-question-chips">
             <Link to="/stories/bonds">降息后，债券一定涨吗？</Link>
@@ -289,13 +291,22 @@ export default function Home() {
             </p>
           </div>
           <div className="a1-suggestion-links">
-            {match.suggestions.map((item) => (
+            {match.suggestions.map((item, index) => (
               <Link key={item.id} to={item.path}>
                 <b>
                   {item.title}
                   <ArrowUpRight size={16} />
                 </b>
-                <small>{item.scope}</small>
+                <small>
+                  {match.kind === "unknown" ? "通用起点" : "与你提到的主题相关"}{" "}
+                  ·{" "}
+                  {item.path.includes("money-lab")
+                    ? "财务工具"
+                    : item.path.includes("concept")
+                      ? "概念互动"
+                      : "互动专题"}{" "}
+                  · {index === 0 ? "建议先试" : "也可以探索"}：{item.scope}
+                </small>
               </Link>
             ))}
           </div>
@@ -548,9 +559,17 @@ export function Notebook() {
   const n = useNotebook();
   const { user, logout } = useAuth();
   const [filter, setFilter] = useState("all");
-  const entries = n.entries.filter(
-    (e) => filter === "all" || e.kind === filter,
-  );
+  const [search, setSearch] = useState(""),
+    [order, setOrder] = useState("newest");
+  const entries = n.entries
+    .filter(
+      (e) =>
+        (filter === "all" || e.kind === filter) &&
+        (e.title + entrySummary(e) + JSON.stringify(e.payload || {}))
+          .toLowerCase()
+          .includes(search.toLowerCase()),
+    )
+    .sort((a, b) => (order === "newest" ? -1 : 1) * a.at.localeCompare(b.at));
   return (
     <div className="rd-page">
       <div className="rd-heading rd-heading-row">
@@ -597,6 +616,28 @@ export function Notebook() {
           </button>
         ))}
       </div>
+      <div className="rd-actions">
+        <label>
+          查找我的记录
+          <input
+            aria-label="查找我的记录"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="名称、参数或笔记"
+          />
+        </label>
+        <label>
+          排序
+          <select
+            aria-label="记录排序"
+            value={order}
+            onChange={(e) => setOrder(e.target.value)}
+          >
+            <option value="newest">最新在前</option>
+            <option value="oldest">最早在前</option>
+          </select>
+        </label>
+      </div>
       {entries.length ? (
         <div className="rd-notebook-grid">
           {entries.map((e) => (
@@ -604,7 +645,7 @@ export function Notebook() {
               <div className="rd-row">
                 <span className="rd-kicker">
                   {e.kind === "receipt"
-                    ? "Money Receipt"
+                    ? "实验小票"
                     : e.kind === "reading"
                       ? "一次阅读发现"
                       : "一张概念卡"}
@@ -613,6 +654,7 @@ export function Notebook() {
               </div>
               <h2>{e.title}</h2>
               <p>{e.detail}</p>
+              <p className="gb-help">{entrySummary(e)}</p>
               {e.kind === "receipt" &&
                 typeof (e.payload as { note?: unknown })?.note === "string" &&
                 (e.payload as { note: string }).note && (
@@ -628,9 +670,7 @@ export function Notebook() {
                 {e.kind === "receipt" ? "恢复参数并重新计算" : "回到这次探索"}{" "}
                 <ArrowUpRight size={17} />
               </Link>
-              {e.kind === "receipt" && (
-                <small>包含原始参数、结果与公式版本</small>
-              )}
+              <EntryActions entry={e} manage={n.manage} />
             </article>
           ))}
         </div>
@@ -643,7 +683,9 @@ export function Notebook() {
                 ? "第一张发现，等你来写。"
                 : "这一页，暂时还没有记录。"}
             </h2>
-            <p>这里不会自动填入别人的故事。算一次小目标，再把结果收进来。</p>
+            <p>
+              没有符合当前筛选的记录。可以换个关键词，或先做一次实验并保存。
+            </p>
             <Link className="rd-button" to="/money-lab">
               做一次储蓄实验 <ArrowRight size={17} />
             </Link>

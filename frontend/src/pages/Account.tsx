@@ -129,7 +129,9 @@ export function LoginPage() {
         </button>
         <div className="demo-account">
           <b>先体验一下？</b>
-          <p>体验课程、实验和学习足迹。填入后点击上方“登录”。</p>
+          <p>
+            这是共享演示账户，其他体验者也能看到保存的内容。不要输入个人收支或私人信息。保存自己的内容请注册独立账户；这里只用于教学数据体验。
+          </p>
           <button
             type="button"
             className="secondary full-width"

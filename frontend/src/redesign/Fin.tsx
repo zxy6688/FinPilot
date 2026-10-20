@@ -1,3 +1,4 @@
+import { learningStorage } from "../services/learningStorage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
@@ -92,7 +93,7 @@ export default function FinButton({
 }) {
   const [open, setOpen] = useState(false);
   const [quiet, setQuiet] = useState(
-    () => sessionStorage.getItem("fin-quiet") === "yes",
+    () => learningStorage.getItem("fin-quiet") === "yes",
   );
   return (
     <>
@@ -137,7 +138,7 @@ export default function FinButton({
               onClick={() => {
                 const next = !quiet;
                 setQuiet(next);
-                sessionStorage.setItem("fin-quiet", next ? "yes" : "no");
+                learningStorage.setItem("fin-quiet", next ? "yes" : "no");
                 setOpen(false);
               }}
             >

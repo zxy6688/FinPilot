@@ -1,0 +1,218 @@
+{
+  "capturedAt": "2026-11-10T07:04:40.459Z",
+  "sourceCommit": "ab4a29c2e6902e2cbd8736d53d8005fbc313c4e5",
+  "source": "live production; no personal/account data; guest UI operations only",
+  "floatingPet": "hidden using existing preference; actual 3D shown on dedicated Fin page",
+  "errors": [],
+  "shots": [
+    {
+      "name": "home-desktop",
+      "description": "真实生产首页，访客初始状态",
+      "url": "https://finpilot.cn/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "bdc56a2e379da3af6cf509bc6911976499207987f8a419f8c5672081c4e3421f",
+      "file": "home-desktop.webp",
+      "width": 1280,
+      "height": 889,
+      "bytes": 114394,
+      "assetSha256": "aa1be54e41234533a18c36acdb5e039d574d41b7e2ad044a9d39b249b630d71c",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "home-search",
+      "description": "真实站内候选，提交后仍留在首页",
+      "url": "https://finpilot.cn/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": ".rd-question-choice",
+      "sha256": "a5518b29ca3f25d2afe0da450703db7792a4b7432437907c966250ebc824be44",
+      "file": "home-search.webp",
+      "width": 1200,
+      "height": 343,
+      "bytes": 12036,
+      "assetSha256": "2dc0dc1514d3fac76e24fdc24e088b9a9dd14bde69c9bbd7b4e24bc2a03858e9",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "discover-desktop",
+      "description": "五篇原创专题目录",
+      "url": "https://finpilot.cn/discover",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "0d9ea465b307c482c548cbc0a01fb39f6f0f8e2ca7bb434cee0d99b41b9fe035",
+      "file": "discover-desktop.webp",
+      "width": 1280,
+      "height": 889,
+      "bytes": 93694,
+      "assetSha256": "4bad141287437f13abd43afc4f9bb24c2125dfab1923ac1a8074f3840fdc4a7e",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "money-lab-desktop",
+      "description": "五套财务工具目录",
+      "url": "https://finpilot.cn/money-lab",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "ab94dcb768947607603f5e894c1fbff97412acb1b7e140f2e5be253c0b0c9ee8",
+      "file": "money-lab-desktop.webp",
+      "width": 1280,
+      "height": 889,
+      "bytes": 87064,
+      "assetSha256": "1a94f6c25df4b0b88d7d3b67addaed256f28f206ec70feb25a8fce958e29dace",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "budget-comparison",
+      "description": "教学假设：2500 与 3100 收入的真实预算对比",
+      "url": "https://finpilot.cn/money-lab/budget",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "045eff57b5cedacb27f30a1f80c34739536f68c5041433df1f412cd199315359",
+      "file": "budget-comparison.webp",
+      "width": 1280,
+      "height": 911,
+      "bytes": 51870,
+      "assetSha256": "eb22aaa89af068aef621990e4b4edc3cac72f68ddf3fcfb03db818a81af7f705",
+      "processing": "Crop to actual budget panel, then WebP compression"
+    },
+    {
+      "name": "concept-studio-desktop",
+      "description": "知识索引：领域与精选概念",
+      "url": "https://finpilot.cn/concept-studio",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "49599ee21b0c54875f90c13f9de9966a81d21c24adc8cc5fd85f51a8a1d0cf56",
+      "file": "concept-studio-desktop.webp",
+      "width": 1280,
+      "height": 889,
+      "bytes": 79350,
+      "assetSha256": "6bcc84121ec6488d83f9436a9620e1fe7b6c191cc765689b5e29367501be44d5",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "etf-matrix",
+      "description": "交易形式与策略二维矩阵：已选主动 ETF",
+      "url": "https://finpilot.cn/concept-studio/7",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": "#etf-matrix",
+      "sha256": "ddb74173589f1d65eb9a84026c8b9e569201d672b47b05086983c3bbbf570034",
+      "file": "etf-matrix.webp",
+      "width": 1280,
+      "height": 1114,
+      "bytes": 80962,
+      "assetSha256": "9d628fc1a13afeafd6bcf9a25beb126ca0955e548a8f3de2e31de4e7c09c2df7",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "my-world-desktop",
+      "description": "真实访客笔记与预算小票，仅保存在本截图会话",
+      "url": "https://finpilot.cn/profile",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "6ad599b5906ebd7c3826ebcc56d32db3f789a4aa8fbc79002563818e5685a38b",
+      "file": "my-world-desktop.webp",
+      "width": 1280,
+      "height": 889,
+      "bytes": 44364,
+      "assetSha256": "7047ade3cec569ec96239b53203d81d277e7fb5fca4c5612f5fceb1b253bc7d1",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "my-world-receipt",
+      "description": "预算小票实际预览，教学输入",
+      "url": "https://finpilot.cn/profile",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": ".mw-record:has(.mw-metrics)",
+      "sha256": "5f326bb4d9e0771e6ea1a259bf9a583c94fe8ca7153b2c1d01f1d5795c5403bf",
+      "file": "my-world-receipt.webp",
+      "width": 1280,
+      "height": 701,
+      "bytes": 29766,
+      "assetSha256": "f45eb97698690ed13889f5b099a8cfd45feb7181915b4e3517b8a77815be0617",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "fin-room",
+      "description": "实际 Three.js / GLB 小窝与围巾，不是原画",
+      "url": "https://finpilot.cn/fin-pet",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "selector": null,
+      "sha256": "e961e33bcf1e0c1d2744947a735234d3b95cbdc735ba6b935957d5600e7c6b12",
+      "file": "fin-room.webp",
+      "width": 1280,
+      "height": 889,
+      "bytes": 45216,
+      "assetSha256": "4dec500d14e1f893fadcae67d689076e5094edb99bf51e1289c349c9900d409d",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "home-mobile",
+      "description": "390px 首页，已有本会话保存结果",
+      "url": "https://finpilot.cn/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "selector": null,
+      "sha256": "ea54205af2bb44eac2cf7fab21b0698c35ec55a33dd31ce18ee850aa384387e6",
+      "file": "home-mobile.webp",
+      "width": 390,
+      "height": 844,
+      "bytes": 40790,
+      "assetSha256": "81fdc352585b76c9430e4a90072579f7e5973bdc0c6da0c0d0830c87cfa5e457",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    },
+    {
+      "name": "my-world-mobile",
+      "description": "390px 访客发现手册",
+      "url": "https://finpilot.cn/profile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "selector": null,
+      "sha256": "fb6935b7346819f55c1d741f581f261b5b723ecebbddc73febbe5067b098ffdd",
+      "file": "my-world-mobile.webp",
+      "width": 390,
+      "height": 844,
+      "bytes": 36688,
+      "assetSha256": "35527eac9e32bb4e8d638b561d42937bdd5afde084a9f532383993ab4c60602c",
+      "processing": "Proportional resize and WebP compression; no UI alterations"
+    }
+  ],
+  "artwork": {
+    "hero": "Original SVG editorial composition; original project illustration + real UI crops, embedded data images; not a live UI screenshot",
+    "closing": "Original SVG typography and compass motif"
+  },
+  "publicData": "Only guest, synthetic teaching examples; no account credentials or production records"
+}

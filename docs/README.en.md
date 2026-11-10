@@ -1,46 +1,48 @@
 # FinPilot V3
 
-FinPilot helps students and financial beginners understand money through interactive reading, deterministic calculations and connected learning records. It is an educational application, not personalized investment advice.
+[Live website](https://finpilot.cn) · [Visual product tour](../README.md) · [Documentation](INDEX.md) · [v3.0.0 release](https://github.com/zxy6688/FinPilot/releases/tag/v3.0.0)
 
-## Product
+FinPilot is a financial education and experimentation platform for university students and beginners. Start with a practical question, read an explanation, change model inputs, check understanding, and save a result to revisit.
 
-- Home: search existing content and continue a task.
-- Discover: five interactive stories covering budgets, purchasing power, bonds, ETFs and loan costs.
-- Money Lab: savings, compounding, inflation, loans and budget scenarios, with comparison and saved parameters.
-- Concept Studio: 36 concepts in six domains, 28 lessons, 64 questions and five learning paths; ETF matrix and concept experiments.
-- My World: personal records, notes, experiments, favorites and review links.
-- Fin Pet: a real rigged GLB companion, 120 deterministic scripts, opt-in mood interaction, focus timer, room, accessories, toys and explicitly saved memories.
+## Five product spaces
 
-The character remains a procedural art candidate. Facial integration, shoulders, leaf shapes and accessory fitting still need professional art review. No claim of final art approval or physical-phone thermal certification is made. Without configured AI credentials, chat uses a labelled demo mode. Basic pet interactions require no paid AI service.
+- **Home:** find relevant existing content and resume a real task. Search suggestions are not generated AI answers.
+- **Discover:** five original interactive stories about budgets, purchasing power, bonds, ETFs and loans; teaching assumptions and sources are distinguished from current events.
+- **Money Lab:** five deterministic workbenches for budgeting, savings, inflation, loan costs and compound growth, with A/B comparisons and restorable parameter snapshots. Eight earlier teaching experiments remain accessible.
+- **Concept Studio:** six domains, 36 concepts, 28 lessons, 64 original questions and five learning paths. ETF classification is interactive. Only 27 concept checks link to original question IDs; nine are instant practice, not formal review records.
+- **My World:** find, preview, rename, delete and reopen saved work. Guest records remain in the current browser; explicitly saved account records are isolated by user on the backend.
 
-## Stack and setup
+Fin is a secondary 3D companion with optional visibility, animations, rule-based scripts, mood interactions, focus timing, room items, accessories and memories. Its GLB is still a procedural art candidate, not professionally approved character art. Toys are not full rigid-body simulations. FinChat runs in explicitly labelled AI Demo mode; no paid AI service is required for basic pet behaviour. Physical-phone thermal and battery testing has not been completed.
 
-React 19 / TypeScript / Vite, FastAPI / SQLAlchemy / SQLite, Three.js / React Three Fiber. Tested locally with Node 24.18.0 and Python 3.13.2. Dependencies are locked in `frontend/package-lock.json` and `backend/requirements.lock.txt`.
+## Local setup
 
-```bash
+Verified development environment: Windows, Node 24.18.0, Python 3.13.2. Production runs Python 3.12.3 on Ubuntu 24.04.4 LTS. Use the committed npm and Python lockfiles.
+
+```powershell
 git clone https://github.com/zxy6688/FinPilot.git
 cd FinPilot
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -r backend/requirements.lock.txt
-mkdir -p data logs tmp
-cp .env.example .env
-PYTHONPATH=backend python -m app.seed
-PYTHONPATH=backend uvicorn app.main:app --host 127.0.0.1 --port 8004
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/Setup-FinPilot.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/Start-FinPilot.ps1
 ```
 
-In another terminal: `cd frontend && npm ci && npm run dev`. Open `http://127.0.0.1:5176`. On Windows, use `scripts/Setup-FinPilot.ps1` and `scripts/Start-FinPilot.ps1` instead.
+The launcher opens localhost:5176; FastAPI health is localhost:8004/api/health. Occupied ports produce an explicit error rather than terminating another process. Stop with `scripts/Stop-FinPilot.ps1`; run checks with `scripts/Check.ps1`. Frontend commands: `npm run typecheck`, `npm run build`. Backend: `python -m pytest backend/tests -q` using the project virtual environment. The release passed 165 backend tests, a clean-clone installation/build and Linux CI; [evidence and limits](release/VALIDATION.md).
 
-Tests: `python -m pytest backend/tests -q`; frontend: `npm run typecheck` and `npm run build`; pet checks: `node scripts/test-pet-director.mjs` and `node scripts/test-fin-scripts.mjs` from the repository root.
+`.env.example` contains configuration names, not credentials. Production requires a random JWT secret and disables shared Demo accounts. Never commit `.env`, databases, API keys or SSH keys. [Chinese README](../README.md#run-locally) includes manual Linux/macOS commands.
 
-## Data and production
+## Architecture and operations
 
-Guest data stays in the current browser. Account data is persisted by the backend. Production disables the shared demo account and requires an explicit random JWT secret. Never commit environment files, databases or access credentials.
+React / Vite / TypeScript → Caddy HTTPS → FastAPI / SQLAlchemy → persistent SQLite. Three.js and React Three Fiber render the companion. Static builds are prepared locally for a 2-core / 2GB Hong Kong Lighthouse server.
 
-The intended production domain is `https://finpilot.cn` on Hong Kong Lighthouse. **See [actual deployment status](deployment/PRODUCTION_STATUS.md); the domain alone is not evidence of a completed V3 deployment.** Caddy terminates HTTPS and serves static assets. FastAPI listens on loopback. Application releases and the SQLite database live in separate directories.
+https://finpilot.cn is live. Production source is tag **v3.0.0**, commit `ab4a29c2e6902e2cbd8736d53d8005fbc313c4e5`; documentation commits may put main ahead without deploying them. CI does not deploy. Updates follow local tests → reviewed main push → CI → explicit human deployment approval.
 
-Pushes run CI only. Deployment requires a separate manual approval using `scripts/Release-Production.ps1`. SQLite online backups are verified before use; application rollback does not roll back user data. See [operations](deployment/PRODUCTION.md).
+Program releases, database and secrets live in separate server paths. Backup restore was tested in an isolated server instance; application rollback to the previous compatible V3 and back was also tested. **Backups currently remain on the same server; there is no offsite disaster recovery.** [Production status](deployment/PRODUCTION_STATUS.md) · [Operations](deployment/PRODUCTION.md).
 
-Editable Blender files and recordings are distributed separately from daily source checkouts; the runtime GLB remains in the repository. See [asset policy](release/ASSETS.md).
+The maintainer's Windows wrapper at `D:\finpilot开发\Publish-FinPilot.ps1` is outside Git and is not included in a clone. Other maintainers configure their own authorized SSH environment and use `scripts/Release-Production.ps1`; production builds must hide the shared Demo login entry.
 
-No new open-source license is asserted by this README. Check project rights and third-party licenses before redistribution.
+## Assets, history and scope
+
+Fresh README screenshots come from the real HTTPS production site, isolated guest data and teaching inputs: [capture manifest](readme/CAPTURE_MANIFEST.json). Blender projects and recordings are in the authorized public release asset; runtime GLB files remain in source control. [Asset details](release/ASSETS.md).
+
+V1 history, the v2 branch and the old-main backup are preserved. The remote v3 branch is an earlier candidate, so use main or v3.0.0 for the released product. [Version history](repository/VERSION_HISTORY.md) · [repository audit](repository/REPO_AUDIT_2026-11-10.md).
+
+No project-level LICENSE file was found; this README does not grant a new license. Check code, artwork and dependency rights separately. FinPilot is for financial education, **not personalized investment advice**. Model outputs are conditional examples, not promised returns or product recommendations.

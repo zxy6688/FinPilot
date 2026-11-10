@@ -55,3 +55,7 @@ frontend/public/fin-3d/fin-p0.glb
 frontend/public/fin-3d/fin-p05.glb
 docs/fin-pet/*
 !docs/fin-pet/reference/
+
+# Curated README artwork and real product captures.
+!docs/readme/assets/
+!docs/readme/assets/**

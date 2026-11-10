@@ -24,10 +24,14 @@ def test_each_concept_is_substantive_and_connected(concept):
     assert len(q['explanation'])>=16
     assert concept['reference']['url'].startswith('https://')
 
-def test_all_original_material_is_preserved_byte_for_byte():
+def test_all_original_material_is_preserved_except_checkout_line_endings():
     audit=json.loads((ROOT/'docs/redesign/gate-b-k/resource-audit.json').read_text(encoding='utf-8'))
     for path,digest in audit['preserved_files'].items():
-        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,path
+        # The original audit was produced on Windows; Git normalizes text on Linux.
+        data=(ROOT/Path(path.replace('\\', '/'))).read_bytes()
+        lf=data.replace(b'\r\n',b'\n')
+        variants=(data,lf,lf.replace(b'\n',b'\r\n'))
+        assert digest in {hashlib.sha256(value).hexdigest() for value in variants},path
     assert len(json.loads((CONTENT/'lessons.json').read_text(encoding='utf-8')))==28
     assert len(json.loads((CONTENT/'quizzes.json').read_text(encoding='utf-8')))==64
 

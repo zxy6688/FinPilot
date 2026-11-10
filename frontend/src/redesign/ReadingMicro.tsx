@@ -1,0 +1,11 @@
+import {useState,useEffect} from "react";
+import {useSearchParams,Link} from "react-router-dom";
+import {useNotebook} from "./state";
+import {learningStorage as store} from "../services/learningStorage";
+export function ReadingMicro({kind}:{kind:"budget"|"loan"|"inflation"}){
+ const [p]=useSearchParams(),n=useNotebook(),key="reading-micro:"+kind,initial=kind==="inflation"?3:kind==="loan"?200:0;
+ const [v,set]=useState(Number(store.getItem(key)??initial));const entry=n.entries.find(e=>e.id===p.get("reading"));
+ useEffect(()=>{const data=entry?.payload as {micro?:number;experiment?:{inputs?:{inflation?:number};upfront_fee?:number}}|undefined;const value=data?.micro??(kind==="inflation"?data?.experiment?.inputs?.inflation:kind==="loan"?data?.experiment?.upfront_fee:undefined);if(typeof value==="number"&&Number.isFinite(value)){set(value);store.setItem(key,String(value))}},[entry?.id,key]);
+ const change=(x:number)=>{set(x);store.setItem(key,String(x));window.dispatchEvent(new Event("reading-edit"))};
+ return <div className="story-micro"><strong>教学假设 · 改变一个条件</strong><p>{kind==="budget"?"月度资金 2,500 元，原计划支出 1,750 元，预留目标 300 元。":kind==="loan"?"面额 20,000 元，假设零利息、期末一次还本金，仅比较期初扣费。":"名义金额固定 10,000 元，期限三年，无利息；假设每年价格以相同比率变化。"}</p><label>{kind==="inflation"?"假设年通胀率（%）":kind==="budget"?"一次性维修费（元）":"期初扣费（元）"} <input type="range" min="0" max={kind==="inflation"?10:1000} step={kind==="inflation"?0.5:50} value={v} onChange={e=>change(+e.target.value)}/>{v}</label>{kind==="budget"&&<button onClick={()=>change(v===600?0:600)}>{v===600?"移除维修费":"加入临时维修费 600"}</button>}<output>{kind==="budget"?<>{[["计划支出",1750,1750+v],["预计结余",750,750-v],["可另安排",450,Math.max(0,450-v)],["预留缺口",0,Math.max(0,v-450)]].map(([l,a,b])=><div key={l}>{l}：{a} → {b} 元</div>)}</>:kind==="loan"?<>现在到账 {20000-v} 元 → 期末偿还 20,000 元；额外成本 {v} 元。</>:<>三年后名义金额仍为 10,000 元，折合今天 {(10000/(1+v/100)**3).toFixed(2)} 元。</>}</output>{entry && (entry.payload as {micro?:number}).micro===undefined && <details><summary>查看原记录的实验条件（历史快照）</summary><pre style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere"}}>{JSON.stringify((entry.payload as {experiment?:unknown}).experiment??{},null,2)}</pre></details>}<Link to={"/money-lab/"+kind}>自定义完整方案 ↗</Link></div>
+}

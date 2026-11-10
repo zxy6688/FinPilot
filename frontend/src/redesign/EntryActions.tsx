@@ -35,8 +35,10 @@ export function entrySummary(entry: Entry) {
 export function EntryActions({
   entry,
   manage,
+  allowCompare = true,
 }: {
   entry: Entry;
+  allowCompare?: boolean;
   manage: (
     entry: Entry,
     action: "rename" | "delete",
@@ -61,7 +63,7 @@ export function EntryActions({
         <button className="rd-secondary" onClick={() => setMode("delete")}>
           删除
         </button>
-        {entry.kind === "receipt" && (
+        {entry.kind === "receipt" && allowCompare && (
           <Link
             className="rd-text-link"
             to={entry.url + (entry.url.includes("?") ? "&" : "?") + "compare=1"}

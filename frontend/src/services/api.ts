@@ -1,3 +1,4 @@
+import {reportPetResult} from '../fin-pet/PetBusinessEvents';
 export class ApiError extends Error {
   constructor(
     public status: number,
@@ -75,12 +76,14 @@ export async function api<T>(
       ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
     });
   } catch {
+    if(token===localStorage.getItem('finpilot_token'))reportPetResult(path,method,null,false);
     throw new ApiError(0, "暂时没有连接到 FinPilot 服务。请稍后重试。");
   }
   const data = await response
     .json()
     .catch(() => ({ detail: "服务器返回了无法读取的响应。" }));
   if (!response.ok) {
+    if(token===localStorage.getItem('finpilot_token'))reportPetResult(path,method,data,false);
     if (
       response.status === 401 &&
       token &&
@@ -91,5 +94,6 @@ export async function api<T>(
     }
     throw new ApiError(response.status, validationMessage(data.detail));
   }
+  if(token===localStorage.getItem('finpilot_token'))reportPetResult(path,method,data,true);
   return data as T;
 }

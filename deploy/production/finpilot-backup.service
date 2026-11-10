@@ -1,0 +1,6 @@
+[Unit]
+Description=Verified FinPilot SQLite backup
+[Service]
+Type=oneshot
+UMask=0077
+ExecStart=/usr/bin/python3 /opt/finpilot/current/deploy/production/backup.py

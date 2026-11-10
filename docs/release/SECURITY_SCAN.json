@@ -1,0 +1,5 @@
+{
+  "uniqueHistoricalTextBlobs": 577,
+  "findings": [],
+  "scope": "All locally available Git refs and tracked/untracked nonignored workspace text. Pattern audit, not proof against unknown secret formats or secrets embedded in images."
+}

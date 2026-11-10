@@ -1,3 +1,4 @@
+import {ReadingMicro} from "./ReadingMicro";
 import { ConceptTerm } from "./KnowledgeInteractions";
 import { BackToReading } from "./ReadingNav";
 import { NumberInput, FocusFieldError } from "./NumberInput";
@@ -332,7 +333,7 @@ export function LoanWorkbench({ embedded = false }: { embedded?: boolean }) {
         <button
           className="rd-secondary"
           disabled={!result || busy}
-          onClick={() => setFixed(result)}
+          onClick={() => (setFixed(result), window.dispatchEvent(new CustomEvent("finpilot:pet-confirmed",{detail:{trigger:"COMPARE_READY",url:location.pathname,key:"compare"}})))}
         >
           保留此方案为 A
         </button>
@@ -419,13 +420,9 @@ export function LoanStory() {
       <header className="gb-story-hero">
         <div>
           <span className="rd-kicker">
-            生活实验 05 · 原创互动专题 · 约 12 分钟
+            生活实验 05 · 原创互动专题
           </span>
-          <h1>
-            一笔贷款，
-            <br />
-            到底要还多少钱？
-          </h1>
+          <h1>借款 20,000 元，实际能到账多少？</h1>
           <p>
             不要只盯着一个利率。把今天拿到的、每个月付出的，以及费用发生的时点，放到同一条时间线上。
           </p>
@@ -498,13 +495,8 @@ export function LoanStory() {
           </section>
           <section id="experiment">
             <span className="gb-kicker">03 / 先保持其他条件不变</span>
-            <h2>改一次期限，再改一次费用。</h2>
-            <p>
-              先固定默认方案为 A，把 24 个月改为 48
-              个月；看每期支付下降了多少，总成本又增加了多少。再试一次 0%
-              名义利率、保留费用的情景：没有合同利息，并不等于借款没有成本。你可以逐期查看本金、利息、费用和剩余本金。
-            </p>
-            <LoanWorkbench embedded />
+            <h2>面额不变，期初扣费改变了什么？</h2><p>拖动费用滑块，对比到账与到期偿还的金额。期限与利率的比较可在完整工具中进行。</p>
+            <ReadingMicro kind="loan"/>
           </section>
           <section id="check">
             <h2>年化口径，不是可以随意互换的名字。</h2>
@@ -546,7 +538,7 @@ export function LoanStory() {
                 </a>
                 <p>
                   官方教育资料，解释费用为何影响整体借款成本；美国按揭背景，不直接套作本地法规。核对
-                  2026-10-14。本站现金流模型与中文案例为原创教学。
+                  2026-11-04。本站现金流模型与中文案例为原创教学。
                 </p>
               </li>
             </ul>

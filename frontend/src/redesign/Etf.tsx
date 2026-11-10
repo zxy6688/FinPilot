@@ -2,7 +2,7 @@ import { ConceptTerm } from "./KnowledgeInteractions";
 import { BackToReading } from "./ReadingNav";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ConceptPlay } from "./ConceptStudio";
+
 import { CheckUnderstanding, StorySave } from "./Stories";
 export function EtfMechanism() {
   const [layer, setLayer] = useState<"trade" | "create">("trade");
@@ -69,8 +69,8 @@ export function EtfStory() {
       </div>
       <header className="gb-etf-hero">
         <div>
-          <span className="rd-kicker">概念深读 04 · 原创专题 · 约 10 分钟</span>
-          <h1>ETF 究竟是什么？</h1>
+          <span className="rd-kicker">概念深读 04 · 原创专题</span>
+          <h1>ETF：交易形式、费用与投资风险</h1>
           <p>
             给“怎么买”和“买什么”各留一条坐标轴。一次拆开交易结构、投资策略和你真正承担的风险。
           </p>
@@ -107,7 +107,7 @@ export function EtfStory() {
               听到“ETF”和“指数基金”时，很容易以为只是两个不同叫法。实际上 ETF
               首先描述一种在交易所买卖基金份额的形式；指数基金描述以跟踪某个市场指数为目标的策略。形式与策略可以相交，不能相互替代。下方每个案例都对应一种可能的组合，而不是某只推荐产品。
             </p>
-            <ConceptPlay />
+            <div className="story-micro"><h3>虚构资料卡 · 示例指数 ETF</h3><p>追踪对象：教学股票指数。管理费：每年 0.30%。假设每份净值 1.00 元，卖方报价 1.02 元；场内按成交价交易。股票下跌可能造成本金损失。</p><CheckUnderstanding id="etf-price" question="以 1.02 元买入，是否等于按净值买入？" options={["是","否"]} correct={1} feedback={["成交价比每份净值高 0.02 元。","正确，报价相对净值溢价 2%，这不是管理费。"]}/></div>
             <p>
               指数 ETF 同时处在两个集合内。主动管理 ETF
               可以在交易所交易，但持仓选择不必机械跟踪指数。场外指数共同基金则以指数为参照，却不通过交易所盘中买卖份额。“基金”一词本身不能帮你确定交易方式、策略或风险，需要查看具体文件。
@@ -178,7 +178,7 @@ export function EtfStory() {
                 "交易形式不保证成交深度或零价差。流动性仍要单独检查。",
               ]}
             />
-            <Link className="rd-button" to="/concept-studio">
+            <Link className="rd-button" to="/concept-studio/7">
               回到矩阵：完成判断并保存概念卡 →
             </Link>
           </section>
@@ -195,7 +195,7 @@ export function EtfStory() {
                 </a>
                 <p>
                   交易、授权参与者、净值与折溢价的官方教育说明。核对
-                  2026-10-14。
+                  2026-11-04。
                 </p>
               </li>
               <li>
@@ -222,7 +222,7 @@ export function EtfStory() {
               ]}
             />
             <div className="gb-next">
-              <Link to="/concept-studio">继续练习并加入复习 →</Link>
+              <Link to="/concept-studio/7">继续练习并加入复习 →</Link>
               <Link to="/stories/bonds">延伸：基金里的债券怎样定价</Link>
             </div>
           </section>

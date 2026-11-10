@@ -498,7 +498,7 @@ export default function MoneyLab() {
             <button
               disabled={busy || !result || !!error}
               onClick={() => {
-                setCompare(result);
+                setCompare(result); window.dispatchEvent(new CustomEvent("finpilot:pet-confirmed",{detail:{trigger:"COMPARE_READY",url:location.pathname,key:"compare"}}));
                 setSaved(false);
               }}
               className="rd-secondary"

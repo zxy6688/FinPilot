@@ -1,0 +1,12 @@
+import {chromium,expect} from '../frontend/node_modules/@playwright/test/index.mjs';import fs from 'node:fs/promises';
+const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}),report=[];
+try {for(const mobile of [false,true]){const c=await b.newContext({viewport:{width:mobile?390:1440,height:900},isMobile:mobile,hasTouch:mobile}),p=await c.newPage(),cdp=await c.newCDPSession(p);await cdp.send('Performance.enable');
+ await p.goto('http://127.0.0.1:5176/');await p.waitForSelector('.pet-render[data-ready="true"]');await p.waitForTimeout(1000);
+ const metric=async()=>Object.fromEntries((await cdp.send('Performance.getMetrics')).metrics.map(m=>[m.name,m.value]));
+ for(const hidden of [false,true]){await p.evaluate(h=>window.dispatchEvent(new Event('fin-pet-settings')),hidden);const box=p.getByRole('checkbox',{name:'隐藏宠物',exact:true});await box.setChecked(hidden);await p.getByRole('button',{name:'关闭宠物面板',exact:true}).click();await p.waitForTimeout(500);const before=await metric(),t=Date.now(),frames=await p.evaluate(()=>Number(document.querySelector('canvas')?.dataset.frames||0));await p.waitForTimeout(4000);const after=await metric(),data=await p.evaluate(()=>({...document.querySelector('canvas')?.dataset}));report.push({mobile,hidden,seconds:(Date.now()-t)/1000,mainThreadTaskMs:(after.TaskDuration-before.TaskDuration)*1000,JSHeap:after.JSHeapUsedSize,fps:(Number(data.frames)-frames)/4,renderer:data});}
+ await p.getByRole('button',{name:'Fin 宠物设置',exact:true}).click();await p.getByRole('checkbox',{name:'隐藏宠物',exact:true}).uncheck();await p.getByRole('button',{name:'关闭宠物面板',exact:true}).click();
+ await p.waitForTimeout(1500);const canvas=await p.locator('canvas').first().elementHandle();
+ for(const route of ['/discover','/money-lab','/concept-studio','/profile']){const link=p.locator(`a[href="${route}"]`).filter({visible:true}).first();await link.click();await p.waitForTimeout(600);report.push({mobile,route,sameCanvas:await canvas.evaluate(e=>e.isConnected),canvases:await p.locator('canvas').count(),recoverIcon:await p.locator('.pet-recover').count(),visible:await p.locator('.pet-overlay').getAttribute('data-visible')});}
+ await c.close();}
+ await fs.writeFile('docs/fin-pet-full/performance-report.json',JSON.stringify({measurements:report,limits:'CDP TaskDuration is browser main-thread CPU time; GPU utilization, physical phone temperature and energy were not measured.'},null,2));
+}finally{await b.close()}

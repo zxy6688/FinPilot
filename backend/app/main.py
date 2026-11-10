@@ -10,6 +10,8 @@ from .api.routes import router
 from .api.v2 import router as v2_router
 from .api.v3 import router as v3_router
 from .api.artifacts import router as artifacts_router
+from .api.pet import router as pet_router
+from .production_guard import ProductionGuard
 
 from pathlib import Path
 LOG_DIR = Path(os.getenv("FINPILOT_LOG_DIR", str(ROOT / "logs")))
@@ -31,6 +33,7 @@ async def lifespan(app):
 
 
 app = FastAPI(title="FinPilot API", version="3.0.0", lifespan=lifespan)
+app.add_middleware(ProductionGuard)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.getenv(
@@ -43,6 +46,7 @@ app.include_router(router)
 app.include_router(v2_router)
 app.include_router(v3_router)
 app.include_router(artifacts_router)
+app.include_router(pet_router)
 
 
 @app.get("/api/health")

@@ -1,3 +1,4 @@
+import {ReadingMicro} from "./ReadingMicro";
 import { ConceptTerm } from "./KnowledgeInteractions";
 import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
@@ -12,7 +13,7 @@ import {
 import { api } from "../services/api";
 import { useNotebook, money } from "./state";
 import { snapshotId } from "./Experiments";
-import { TimeWorkbench } from "./TimeTools";
+
 import { FinArt } from "./Fin";
 export function PurchasingArt() {
   return (
@@ -79,13 +80,14 @@ export function PurchasingArt() {
   );
 }
 export function InflationLab() {
-  return <TimeWorkbench tool="inflation" embedded />;
+  return <ReadingMicro kind="inflation"/>;
 }
 export default function Decoder() {
   const notebook = useNotebook();
   const [layer, setLayer] = useState("fact"),
     [answer, setAnswer] = useState<number | null>(null),
     [saved, setSaved] = useState(false);
+  const [busy,setBusy]=useState(false);useEffect(()=>{const edit=()=>setSaved(false);window.addEventListener("reading-edit",edit);return ()=>window.removeEventListener("reading-edit",edit)},[]);
   const [note, setNote] = useState("");
   const [params] = useSearchParams();
   useEffect(() => {
@@ -95,7 +97,7 @@ export default function Decoder() {
       setNote(p.note || "");
       if (p.answer === 0 || p.answer === 1) setAnswer(p.answer);
     }
-  }, [notebook.entries, params]);
+  }, [notebook.entries.find(e=>e.id===params.get("reading"))?.id, params]);
   return (
     <div className="rd-page rd-decoder">
       <div className="rd-breadcrumb">
@@ -105,13 +107,9 @@ export default function Decoder() {
         <div>
           <div className="rd-row">
             <span className="rd-tag">编辑精选 01</span>
-            <span className="rd-kicker">原创教学专题 · 约 8 分钟</span>
+            <span className="rd-kicker">原创教学专题</span>
           </div>
-          <h1>
-            存钱，为什么不等于
-            <br />
-            购买力不变？
-          </h1>
+          <h1>同样的 10,000 元，购买力会怎样变化？</h1>
           <p>
             钱还在账户里，为什么熟悉的一篮子东西，却越来越难装满？先分清数字，再讨论生活。
           </p>
@@ -273,7 +271,7 @@ export default function Decoder() {
             <h2>如果只改一个条件，结果会怎样？</h2>
             <p>
               先把通胀率拉到 0%，再调到
-              3%；保持利率不变，延长时间。观察的是同一万元的购买力，而不是某个投资产品的收益曲线。
+              3%；期限始终为三年。观察的是同一万元的购买力，而不是某个投资产品的收益曲线。
             </p>
             <InflationLab />
             <div className="rd-reader-check">
@@ -288,7 +286,7 @@ export default function Decoder() {
                 <button
                   key={t}
                   className={"rd-answer " + (answer === i ? "chosen" : "")}
-                  onClick={() => setAnswer(i)}
+                  onClick={() => {setAnswer(i);setSaved(false)}}
                 >
                   {t}
                 </button>
@@ -346,10 +344,8 @@ export default function Decoder() {
             </label>
             <button
               className="rd-button"
-              onClick={async () => {
-                const experiment = JSON.parse(
-                  learningStorage.getItem("inflation-result") || "null",
-                );
+              disabled={busy} onClick={async () => {setBusy(true);try{
+                const micro=Number(learningStorage.getItem("reading-micro:inflation")??3); const experiment={inputs:{principal:10000,years:3,inflation:micro,growth:0}};
                 const id = await snapshotId("purchasing", {
                   note,
                   experiment,
@@ -364,7 +360,7 @@ export default function Decoder() {
                     detail:
                       note || "名义金额与实际购买力，需要不同的衡量尺度。",
                     payload: {
-                      article_id: "purchasing-power",
+                      article_id: "purchasing-power", micro,
                       source: "ECB · What is inflation?",
                       editorial_version: "gate-b-1",
                       experiment,
@@ -374,10 +370,10 @@ export default function Decoder() {
                   })
                 )
                   setSaved(true);
-              }}
+              }finally{setBusy(false)}}}
             >
               <Bookmark size={17} />
-              {saved ? "已保存这次发现" : "保存这次发现"}
+              {busy ? "保存中…" : saved ? "已保存这次发现" : "保存这次发现"}
             </button>
             {saved && (
               <p className="rd-success" role="status">
@@ -393,7 +389,7 @@ export default function Decoder() {
           <section className="rd-sources" id="sources">
             <h3>资料与编辑说明</h3>
             <p>
-              原创教学内容；参考以下官方机制说明，不转载原文。2026-10-13
+              原创教学内容；参考以下官方机制说明，不转载原文。2026-11-04
               核对链接。资料用于解释概念，不作为当期通胀数据。
             </p>
             <a

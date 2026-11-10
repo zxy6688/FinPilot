@@ -1,5 +1,10 @@
 # FinPilot V3 · 队友 HTTPS 体验环境
 
+> 2026-10-26 更新：根据用户明确要求，当前试用环境已取消邀请口令。
+> `trial-runtime/private.json` 中 `invite_required: false` 允许直接访客访问，
+> 注册、账户归属校验、共享 Demo 禁用与请求限制继续生效。
+> 下文邀请门禁说明与原地址为初次发布记录；当前临时地址以隧道日志最新记录为准。
+
 这是 Gate B-K 的隔离试用发布，不是 Gate C，也不是固定域名正式上线。
 生产 React build、FastAPI、SQLite 通过同一个 HTTPS 入口工作。
 

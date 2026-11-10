@@ -15,7 +15,7 @@ const content: Exploration[] = [
   },
   {
     id: "concept",
-    title: "ETF 和指数基金，是一回事吗？",
+    title: "ETF",
     path: "/concept-studio/7",
     scope: "辨别交易形式与投资策略；不评价具体基金。",
   },
@@ -27,7 +27,7 @@ const content: Exploration[] = [
   },
   {
     id: "bonds",
-    title: "从一次降息，读懂债券",
+    title: "降息与债券价格",
     path: "/stories/bonds",
     scope: "完整机制专题与债券定价实验；不判断具体债券涨跌。",
   },
@@ -84,7 +84,13 @@ export function findExploration(question: string): ExplorationMatch {
     budget: /预算|生活费|支出/.test(q),
     loan: /贷款|借款|还款|月供|房贷/.test(q),
   };
-  const matches = content.filter((c) => related[c.id]);
+  const matches = content.filter((c) => related[c.id]).map(item => {
+    if (item.id === "budget") return /预算是什么|什么是预算/.test(q)
+      ? { ...item, title: "预算", path: "/concept-studio/17", scope: "认识预算如何安排收入与支出。" }
+      : { ...item, title: "预算规划", scope:"输入可用资金与各项计划支出，计算预计结余，比较不同安排。", path: "/money-lab/budget" };
+    if (item.id === "loan") return { ...item, title: "贷款比较工具", path: "/money-lab/loan" };
+    return item;
+  });
   const suggestions = matches.length
     ? matches
     : core.filter((c) => q.toLowerCase().includes(c.title.toLowerCase()));
@@ -96,7 +102,7 @@ export function findExploration(question: string): ExplorationMatch {
           ? "related"
           : "unknown",
     destination: null,
-    suggestions: suggestions.length ? suggestions : content.slice(0, 3),
+    suggestions: suggestions.length ? [...suggestions, ...(matches.some(m=>m.path==="/money-lab/budget") ? [{...content[4],title:"大学生生活费预算",scope:"介绍支出分类和临时费用对预算结果的影响。"}] : [])].slice(0, 3) : [{id:"directory",title:"专题目录",path:"/discover",scope:"浏览金融专题"},{id:"tools",title:"工具目录",path:"/money-lab",scope:"选择财务工具"},{id:"concepts",title:"概念目录",path:"/concept-studio",scope:"按领域学习概念"}],
   };
 }
 export const questionDestination = (question: string) =>

@@ -1,11 +1,12 @@
+import "./discover-br.css";
 import { knowledgeIndex, labs } from "./knowledgeData";
 import { useState } from "react";
 import { Link, Navigate, useSearchParams } from "react-router-dom";
-import { ArrowUpRight, Search, Calculator, BookOpen } from "lucide-react";
-import { MiniLab } from "./MoneyLab";
+import { ArrowUpRight, Search, BookOpen, PiggyBank, TrendingDown, ReceiptText, ChartNoAxesCombined, ChevronDown } from "lucide-react";
 import { FinArt } from "./Fin";
 import { PurchasingArt } from "./Decoder";
 import { topics } from "./state";
+import "./money-lab-directory.css";
 
 export const toolsCatalog = [
   {
@@ -82,78 +83,106 @@ export function searchCatalog(q: string) {
     : [];
 }
 
+const moneyDirectoryItems = [
+  {
+    id: "savings", number: "02", title: "储蓄规划", category: "目标与期限",
+    summary: "根据储蓄目标反推每月存入金额，或估算固定月存额下的期末金额。",
+    input: "已有资金、月存额、期限、假设利率",
+    output: "目标差额、预计余额、所需月存额",
+    Icon: PiggyBank,
+  },
+  {
+    id: "inflation", number: "03", title: "购买力计算", category: "通胀与实际价值",
+    summary: "比较未来名义金额与折合今天的购买力，观察通胀假设的影响。",
+    input: "金额、期限、通胀率、金额增长率",
+    output: "名义金额、实际购买力、实际收益率",
+    Icon: TrendingDown,
+  },
+  {
+    id: "loan", number: "04", title: "贷款成本", category: "借款与费用",
+    summary: "核算实际到账、各期还款及费用，比较不同贷款方案的成本。",
+    input: "面额、利率、期限、相关费用",
+    output: "净到账、总支付、额外成本",
+    Icon: ReceiptText,
+  },
+  {
+    id: "compound", number: "05", title: "复利计算", category: "本金与时间",
+    summary: "比较本金、年限、利率和计息频率对期末金额的影响。",
+    input: "本金、期限、利率、计息频率",
+    output: "期末金额、本金、假设增长",
+    Icon: ChartNoAxesCombined,
+  },
+];
+
 export function ToolDirectory() {
   const [params] = useSearchParams();
   if (params.has("receipt") || params.has("monthly"))
     return <Navigate replace to={"/money-lab/savings?" + params.toString()} />;
   return (
-    <div className="rd-page">
-      <header className="gb-tool-heading">
-        <div>
-          <span className="rd-kicker">Money Lab · 五个生活里的实验</span>
-          <h1>先选一个，想算清的问题。</h1>
-          <p>
-            不用填完一张复杂的表。每套工具都从可修改的示例开始，再比较、保存和继续。
-          </p>
+    <div className="rd-page money-directory">
+      <header className="money-directory-head">
+        <div className="money-directory-title">
+          <div className="money-directory-overline"><span>MONEY LAB</span><span>5 项计算工具</span></div>
+          <h1>财务工具</h1>
+          <p>选择一项计算，填写条件、查看结果，并比较不同方案。</p>
         </div>
-        <FinArt action="receipt" size={130} />
+        <div className="money-directory-mascot"><FinArt action="receipt" size={100} /></div>
       </header>
-      <MiniLab />
-      <div className="gb-tool-directory">
-        {toolsCatalog.map((t, i) => (
-          <Link
-            to={"/money-lab/" + t.id}
-            className={"gb-tool-entry tool-" + t.id}
-            key={t.id}
-          >
-            <div className="gb-tool-index">
-              <span>0{i + 1}</span>
-              <Calculator size={24} />
-            </div>
-            <div>
-              <small>{t.tag} · 确定性计算</small>
-              <h2>{t.title}</h2>
-              <p>{t.question}</p>
-              <span>{t.description}</span>
-            </div>
-            <ArrowUpRight size={25} />
-          </Link>
-        ))}
-      </div>
-      <div className="gb-editor-note">
-        <BookOpen size={24} />
-        <div>
-          <b>模型帮助看清条件，不替你作选择。</b>
-          <p>
-            所有示例为教学假设；记录保存具体参数和公式口径，重新打开时保留历史结果供核对。
-          </p>
-        </div>
-      </div>
-      <section id="classic-labs" className="k-classic-labs">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">原有八个实验 · 保留参数与反思</span>
-            <h2>再换一个角度，观察同一件事。</h2>
-            <p>
-              五套工具用于规划与比较；这些实验专门观察一个机制，历史记录仍可继续。
-            </p>
+
+      <section className="money-directory-work" aria-label="五项财务计算工具">
+        <Link to="/money-lab/budget" className="money-directory-feature">
+          <div className="money-directory-feature-copy">
+            <span className="money-directory-order">01 / 日常收支</span>
+            <h2>个人预算</h2>
+            <p>输入月度可用资金与计划支出，计算预计结余，比较不同预算方案。</p>
+            <dl className="money-directory-facts">
+              <div><dt>输入</dt><dd>资金、计划支出、储备目标</dd></div>
+              <div><dt>结果</dt><dd>预计结余、目标缺口、支出结构</dd></div>
+            </dl>
+            <span className="money-directory-action">打开预算工具 <ArrowUpRight size={19} aria-hidden="true" /></span>
           </div>
-        </div>
-        <div className="k-concept-index">
-          {labs.map((l) => (
-            <Link key={l.id} to={"/lab/" + l.id}>
-              <span className="k-index-number">
-                {String(l.id).padStart(2, "0")}
-              </span>
-              <div>
-                <h3>{l.title}</h3>
-                <p>{l.question}</p>
-                <small>{l.educational_notes.observe}</small>
+          <div className="money-directory-feature-art">
+            <img src="/redesign/gate-b/budget-studio.png" alt="" loading="eager" />
+          </div>
+        </Link>
+        <div className="money-directory-grid">
+          {moneyDirectoryItems.map(({ id, number, title, category, summary, input, output, Icon }) => (
+            <Link to={"/money-lab/" + id} className={"money-directory-card money-directory-" + id} key={id}>
+              <div className="money-directory-card-top">
+                <span className="money-directory-order">{number} / {category}</span>
+                <span className="money-directory-symbol"><Icon size={22} strokeWidth={1.8} aria-hidden="true" /></span>
               </div>
-              <ArrowUpRight size={18} />
+              <h2>{title}</h2>
+              <p className="money-directory-card-summary">{summary}</p>
+              <div className="money-directory-card-facts">
+                <div><span>输入</span>{input}</div>
+                <div><span>查看</span>{output}</div>
+              </div>
+              <div className="money-directory-card-link">进入工具 <ArrowUpRight size={17} aria-hidden="true" /></div>
             </Link>
           ))}
         </div>
+      </section>
+
+      <div className="money-directory-method">
+        <BookOpen size={21} strokeWidth={1.8} aria-hidden="true" />
+        <div><b>关于计算结果</b><p>工具采用明确的公式与输入假设。结果用于学习和情景比较，并非对实际收益或费用的保证。</p></div>
+        <Link to="/methods">计算方法 <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      </div>
+
+      <section id="classic-labs" className="money-directory-legacy" aria-label="教学实验">
+        <details>
+          <summary><span><b>教学实验</b><small>原有 8 项机制实验，保留原入口及历史记录</small></span><ChevronDown size={21} aria-hidden="true" /></summary>
+          <div className="money-directory-legacy-grid">
+            {labs.map((l) => (
+              <Link key={l.id} to={"/lab/" + l.id}>
+                <span className="money-directory-legacy-num">{String(l.id).padStart(2, "0")}</span>
+                <div><b>{l.title}</b><small>{l.question}</small></div>
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </details>
       </section>
     </div>
   );
@@ -178,171 +207,16 @@ function Cover({ id }: { id: string }) {
     </div>
   );
 }
-export function Magazine() {
-  const [filter, setFilter] = useState("全部"),
-    [q, setQ] = useState("");
-  const category = (id: string) =>
-    id === "loan"
-      ? "借贷"
-      : id === "etf" || id === "bonds"
-        ? "市场与投资"
-        : "钱与生活";
-  const matches = topics.filter(
-    (t) =>
-      (filter === "全部" || category(t.id) === filter) &&
-      (!q.trim() ||
-        (t.title + t.summary).toLowerCase().includes(q.toLowerCase())),
-  );
-  return (
-    <div className="rd-page gb-magazine">
-      <div className="gb-magazine-masthead">
-        <span className="rd-kicker">Discover · FinPilot 编辑室</span>
-        <span>
-          教育资料 · 非实时新闻{" "}
-          <Link to="/discover/library">浏览完整资料库 →</Link>
-        </span>
-      </div>
-      <header className="gb-magazine-lead">
-        <div>
-          <span className="rd-kicker">首批精选专题 · 更新于 2026-10-14</span>
-          <h1>
-            把听过的概念，
-            <br />
-            变成自己的理解。
-          </h1>
-          <p>
-            五个具体问题，五条可以亲手走完的路径。阅读不是终点，你可以改数字、看结果，再留下发现。
-          </p>
-          <Link to="/decoder/purchasing-power" className="rd-button">
-            本期深读：钱与购买力 <ArrowUpRight size={18} />
-          </Link>
-        </div>
-        <div className="gb-magazine-feature">
-          <PurchasingArt />
-          <b>账户里的 ¥10000，和篮子里的生活</b>
-          <span>8 分钟 · 可调通胀 / 名义与实际曲线</span>
-        </div>
-      </header>
-      <div className="gb-magazine-filter">
-        <div className="rd-filter">
-          {["全部", "钱与生活", "市场与投资", "借贷"].map((t) => (
-            <button
-              key={t}
-              aria-pressed={filter === t}
-              onClick={() => setFilter(t)}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
-        <label>
-          <Search size={18} />
-          <input
-            aria-label="筛选专题"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="在五个专题中找一个问题"
-          />
-        </label>
-      </div>
-      <div className="gb-editorial-list">
-        {matches.map((t, i) => (
-          <article key={t.id}>
-            <Link className="gb-story-cover" to={t.path}>
-              <Cover id={t.id} />
-            </Link>
-            <div>
-              <span className="rd-kicker">{category(t.id)} / 原创互动专题</span>
-              <h2>
-                <Link to={t.path}>{t.title}</Link>
-              </h2>
-              <p>{t.summary}</p>
-              <div className="gb-story-meta">
-                <span>{t.id === "purchasing-power" ? "8" : "10–12"} 分钟</span>
-                <span>
-                  {
-                    (
-                      {
-                        budget: "预算分类与情景比较",
-                        bonds: "定价与收益率实验",
-                        loan: "还款现金流对照",
-                        etf: "矩阵、案例与判断",
-                        "purchasing-power": "名义与实际金额对照",
-                      } as Record<string, string>
-                    )[t.id]
-                  }
-                </span>
-              </div>
-              <small>
-                官方概念资料 + 原创解释；数值为教学假设。资料核对 2026-10-14。
-              </small>
-              <Link className="rd-text-link" to={t.path}>
-                读懂，再动手 <ArrowUpRight size={17} />
-              </Link>
-            </div>
-            <span className="gb-editorial-number">0{i + 1}</span>
-          </article>
-        ))}
-      </div>
-      {!matches.length && (
-        <div className="rd-empty-notebook">
-          <FinArt action="card" size={90} />
-          <div>
-            <h2>精选专题暂时没有对应内容。</h2>
-            <p>可以换个更短的关键词，或在完整资料库继续找。</p>
-            <button
-              className="rd-secondary"
-              onClick={() => {
-                setQ("");
-                setFilter("全部");
-              }}
-            >
-              显示全部五个专题
-            </button>
-            <Link className="rd-text-link" to="/discover/library">
-              打开资料库 →
-            </Link>
-          </div>
-        </div>
-      )}
-      <section className="gb-source-shelf">
-        <div>
-          <span className="rd-kicker">从现实资料继续核对</span>
-          <h2>打开出处，看看原本怎么说。</h2>
-          <p>
-            以下是机构教育资料，不是实时新闻。它们提供定义与机制，站内专题提供中文解释和互动。
-          </p>
-        </div>
-        <div>
-          {[
-            [
-              "ECB",
-              "物价与通胀的定义",
-              "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_inflation.en.html",
-            ],
-            [
-              "CFPB",
-              "收入、账单与现金流工具",
-              "https://www.consumerfinance.gov/consumer-tools/educator-tools/your-money-your-goals/toolkit/",
-            ],
-            [
-              "Investor.gov",
-              "基金、ETF 与投资风险",
-              "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-4",
-            ],
-          ].map(([a, b, c]) => (
-            <a key={a} href={c} target="_blank" rel="noreferrer">
-              <small>{a} · 官方教育资料</small>
-              <b>{b}</b>
-              <ArrowUpRight size={20} />
-            </a>
-          ))}
-        </div>
-      </section>
-      <div className="gb-next">
-        <Link to="/discover/library">查看既有资讯、来源与课程关联 →</Link>
-        <Link to="/fintalk">到 FinTalk 讨论你的理解</Link>
-      </div>
-    </div>
-  );
+const issues=[
+ ["purchasing-power","同样的 10,000 元，购买力会怎样变化？","账户金额与实际购买力是两个不同的量。根据设定的通胀率和期限，查看固定金额折合今天的购买力。","案例 · 互动图表"],
+ ["budget","大学生预算：临时支出会影响什么？","以 2,500 元的假设生活费为例，区分支出、预计结余与预留资金。","预算案例 · 情景判断"],
+ ["bonds","降息之后，债券价格一定会上涨吗？","从政策利率、市场收益率到债券现金流，区分影响价格的不同因素。","定价实验 · 机制解释"],
+ ["etf","ETF：交易形式、费用与投资风险","阅读基金资料，核对交易价格、费用与所持资产的风险。","结构图解 · 风险判断"],
+ ["loan","借款 20,000 元，实际能到账多少？","以期初扣费的假设案例，区分借款面额、净到账与还款现金流。","现金流示例 · 成本辨析"]
+];
+export function Magazine(){
+ const [group,setGroup]=useState(0),[query,setQuery]=useState("");
+ const visible=issues.filter(([id,...text])=>(!group||group===(["bonds","etf"].includes(id)?2:1))&&text.join("").toLowerCase().includes(query.trim().toLowerCase()));
+ const card=([id,title,desc,tag]:string[])=><Link className={"issue "+(id==="purchasing-power"?"lead":"")} key={id} to={id==="purchasing-power"?"/decoder/purchasing-power":"/stories/"+id}><div><small>{tag}</small><h2>{title}</h2><p>{desc}</p>{id==="purchasing-power"&&<p>教学假设：¥10,000 · 3 年 · 年通胀 3% → 折合今天约 ¥9,151.42</p>}<b>阅读专题 ↗</b></div><Cover id={id}/></Link>;
+ return <main className="rd-page discover-br"><header><Link to="/discover/library">完整资料库 ↗</Link><h1>发现</h1><p>五篇金融专题，涵盖个人预算、购买力、债券、ETF 和借款成本。每篇均包含案例、解释与互动练习。</p></header>{visible.filter(x=>x[0]==="purchasing-power").map(card)}<section className="issue-filter">{["全部（5）","生活与财务（3）","市场与投资（2）"].map((l,i)=><button key={l} aria-pressed={i===group} onClick={()=>setGroup(i)}>{l}</button>)}<label>搜索五篇精选专题 <input value={query} onChange={e=>setQuery(e.target.value)}/></label></section><div className="issues">{visible.filter(x=>x[0]!=="purchasing-power").map(card)}</div>{!visible.length&&<p role="status">没有找到匹配专题。<button onClick={()=>{setQuery("");setGroup(0)}}>清除筛选</button></p>}<aside><h2>资料与来源</h2><p>外部教育资料</p><a href="https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_inflation.en.html">ECB · 通胀</a>　<a href="https://www.consumerfinance.gov/consumer-tools/educator-tools/your-money-your-goals/toolkit/">CFPB · 预算与现金流</a>　<a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products">Investor.gov · 投资产品</a><p><Link to="/discover/library">浏览资料库</Link>　<Link to="/fintalk">FinTalk 讨论</Link></p></aside></main>
 }

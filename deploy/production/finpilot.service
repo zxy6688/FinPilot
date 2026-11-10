@@ -1,0 +1,26 @@
+[Unit]
+Description=FinPilot V3 API
+After=network.target
+
+[Service]
+Type=simple
+User=finpilot
+Group=finpilot
+WorkingDirectory=/opt/finpilot/current
+EnvironmentFile=/etc/finpilot/production.env
+Environment=PYTHONPATH=/opt/finpilot/current/backend
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/finpilot/current/.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8004 --workers 1 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/finpilot /var/log/finpilot
+MemoryMax=850M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

@@ -16,7 +16,7 @@ import { FinChat } from "./FinChat";
 import { RestoreNotice } from "./RestoreNotice";
 import { ReadingNav } from "./ReadingNav";
 import { KnowledgeConnections, LearningBreadcrumb } from "./KnowledgeCenter";
-import FinButton from "./Fin";
+import FinButton, {FinArt} from "./Fin";
 export default function RedesignLayout() {
   const { user, loading } = useAuth();
   const location = useLocation();
@@ -67,6 +67,7 @@ export default function RedesignLayout() {
               end={to === "/"}
               className={({ isActive }) =>
                 isActive ||
+                (to === "/discover" && /^\/(stories|decoder)\//.test(location.pathname)) ||
                 (to === "/concept-studio" &&
                   /^\/(lessons|learn|topics|review|knowledge)(\/|$)/.test(
                     location.pathname,
@@ -81,6 +82,7 @@ export default function RedesignLayout() {
           ))}
         </nav>
         <div className="rd-header-actions">
+          <button className="rd-icon" aria-label="Fin 宠物设置" onClick={() => window.dispatchEvent(new Event("fin-pet-settings"))}><span className="pet-recover"><FinArt size={30} action="calm" /></span></button>
           <button
             className="rd-icon"
             aria-label="全站搜索"
@@ -131,7 +133,7 @@ export default function RedesignLayout() {
         <KnowledgeConnections />
         <FinChat />
       </main>
-      <footer className="rd-footer">
+      {location.pathname === "/" ? <footer className="rd-footer"><Link className="rd-logo" to="/">FinPilot.</Link><div><Link to="/discover/library">内容来源</Link><Link to="/methods">计算方法</Link><Link to="/fin-design">关于 Fin</Link></div><small>本站提供金融教育内容及情景计算，结果依据输入条件和模型假设，不构成投资建议。</small></footer> : <footer className="rd-footer">
         <div>
           <Link className="rd-logo" to="/">
             FinPilot.
@@ -149,13 +151,14 @@ export default function RedesignLayout() {
           <br />
           V3 · 金融探索工作室 · AI Demo 能力有限 · 账户保存 / 访客仅本机
         </small>
-      </footer>
+      </footer>}
       <nav className="rd-bottom-nav" aria-label="手机导航">
         {[
           ["/", "首页", House],
           ["/discover", "发现", Compass],
           ["/money-lab", "工具", Calculator],
-          ["/profile", "我的", BookOpen],
+          ["/concept-studio", "学概念", BookOpen],
+          ["/profile", "我的", UserRound],
         ].map(([to, label, Icon]) => {
           const C = Icon as typeof House;
           return (
@@ -165,6 +168,7 @@ export default function RedesignLayout() {
               end={to === "/"}
               className={({ isActive }) =>
                 isActive ||
+                (to === "/discover" && /^\/(stories|decoder)\//.test(location.pathname)) ||
                 (to === "/concept-studio" &&
                   /^\/(lessons|learn|topics|review|knowledge)(\/|$)/.test(
                     location.pathname,

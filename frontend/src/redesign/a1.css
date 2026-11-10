@@ -121,7 +121,7 @@
   gap: 7px;
   flex-wrap: wrap;
 }
-.rd-question-chips a {
+.rd-question-chips :is(a, button) {
   font-size: 11px;
   background: #ffffffb8;
   border-radius: 6px;
@@ -683,11 +683,11 @@
     margin-top: 8px;
     gap: 5px;
   }
-  .rd-question-chips a {
+  .rd-question-chips :is(a, button) {
     font-size: 10px;
     padding: 3px 5px;
   }
-  .rd-question-chips a:first-child {
+  .rd-question-chips :is(a, button):first-child {
     display: none;
   }
   .rd-question-choice {
@@ -1007,3 +1007,5 @@
     transform: none !important;
   }
 }
+.rd-home .rd-hero h1{font-size:clamp(40px,4vw,58px)}.home-portals{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.home-portals a,.home-budget{border:1px solid #ceded6;border-radius:20px;background:#f7f2df;padding:22px;color:#244d48}.home-portals a:nth-child(2){background:#e6f2eb}.home-portals a:nth-child(3){background:#e7eff4}.home-portals svg{width:100%;height:86px}.home-portals h2,.home-budget h3{font-size:24px;margin:10px 0}.home-portals p,.home-budget p{font-size:15px;line-height:1.7}.home-budget{display:grid;grid-template-columns:46% 54%;align-items:center;background:#e9f0e4;padding:0;overflow:hidden}.home-budget>div{padding:clamp(20px,4vw,58px)}.home-budget img.gb-home-story-art{display:block;width:100%;height:auto;position:static;max-height:400px;object-fit:contain}.rd-home a:focus-visible{outline:3px solid #237c76;outline-offset:2px}@media(max-width:768px){.home-portals{grid-template-columns:1fr}.home-portals a{padding:16px}.home-portals svg{float:right;width:25%;height:78px}.home-portals h2{font-size:21px}.home-budget{grid-template-columns:1fr}.rd-home .rd-question-chips button{font-size:12px}.rd-home .rd-hero-copy>strong{display:block;max-width:58%;font-size:15px}}
+.rd-home .rd-hero .rd-question-chips{display:flex;position:relative;gap:6px;flex-wrap:wrap;height:auto;opacity:1}.rd-home .rd-hero .rd-question-chips button{display:inline-flex;font-size:12px;white-space:nowrap}.rd-home .rd-hero-copy>strong{word-break:keep-all;text-wrap:balance}@media(max-width:768px){.rd-home .rd-hero{height:auto;max-height:none}.rd-home .rd-hero-copy>p{font-size:14px}.rd-home .rd-hero-copy>strong{max-width:65%}.rd-home .rd-hero .rd-question-chips{flex-wrap:nowrap;max-width:100%;overflow-x:auto}.rd-home .rd-question-chips button{flex:none}}

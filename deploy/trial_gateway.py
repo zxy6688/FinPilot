@@ -35,6 +35,9 @@ def signature(value):
 
 
 def admitted(request):
+    # Public trial browsing is explicitly configurable; account ownership still applies.
+    if CONFIG.get("invite_required", True) is False:
+        return True
     try:
         expires, sig = request.cookies.get("finpilot_trial", "").split(".")
         return int(expires) > time.time() and hmac.compare_digest(sig, signature(expires))

@@ -514,7 +514,7 @@ export function BudgetWorkbench({ embedded = false }: { embedded?: boolean }) {
         <button
           className="rd-secondary"
           disabled={!result || busy}
-          onClick={() => setFixed(result)}
+          onClick={() => {setFixed(result);window.dispatchEvent(new CustomEvent("finpilot:pet-confirmed",{detail:{trigger:"COMPARE_READY",url:location.pathname,key:"compare"}}));}}
         >
           保留此方案为 A
         </button>

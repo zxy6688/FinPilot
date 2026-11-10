@@ -38,9 +38,9 @@ export function BondExperiment() {
     [error, setError] = useState(""),
     [busy, setBusy] = useState(true);
   useEffect(() => {
-    learningStorage.setItem("bond-draft", JSON.stringify(inputs));
+    window.dispatchEvent(new Event("reading-edit"));learningStorage.setItem("bond-draft", JSON.stringify(inputs));
     let live = true;
-    setBusy(true);
+    setBusy(true);setResult(null);
     const t = setTimeout(
       () =>
         api<BondResult>("/v3/experiments/bond", "POST", inputs)
@@ -74,7 +74,7 @@ export function BondExperiment() {
       <div className="gb-workbench">
         <div className="gb-controls">
           <BackToReading />
-          <h3>把市场收益率单独拎出来</h3>
+          <h3>把市场收益率单独拎出来</h3>{[2,3,5].map(r=><button key={r} aria-pressed={inputs.yield_rate===r} onClick={()=>setInputs({...inputs,yield_rate:r})}>市场年收益率 {r}%</button>)}<details><summary>自定义收益率、票息与期限</summary>
           {(
             [
               ["yield_rate", "市场年收益率（%）", -5, 30, 0.1],
@@ -109,7 +109,7 @@ export function BondExperiment() {
               />
             </label>
           ))}
-          <p className="gb-help">
+          </details><p className="gb-help">
             面值固定 ¥1000。默认票息 3% 表示每年承诺付息
             ¥30，不会因市场报价变化而自动改写。
           </p>
@@ -216,12 +216,8 @@ export function BondsStory() {
       </div>
       <header className="gb-story-hero">
         <div>
-          <span className="rd-kicker">机制实验 03 · 教学假设 · 约 12 分钟</span>
-          <h1>
-            从一次降息，
-            <br />
-            读懂债券。
-          </h1>
+          <span className="rd-kicker">机制实验 03 · 教学假设</span>
+          <h1>降息之后，债券价格一定会上涨吗？</h1>
           <p>
             同一条消息，为什么不一定带来同一个价格方向？先把四个经常混用的词拆开。
           </p>
@@ -338,7 +334,7 @@ export function BondsStory() {
                 </a>
                 <p>
                   政策、预期、市场利率与资产价格之间的传导解释。官方教育资料，核对
-                  2026-10-14。
+                  2026-11-04。
                 </p>
               </li>
               <li>

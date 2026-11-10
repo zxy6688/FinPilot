@@ -139,3 +139,11 @@ class CompanionState(Base):
     companion_form = Column(String, default="seed")
     recent_event = Column(String, nullable=True)
     updated_at = Column(String, default=now)
+
+
+class PetProfile(Base):
+    __tablename__ = "fin_pet_profiles"
+    user_id = Column(Integer, ForeignKey("users.id"), primary_key=True)
+    snapshot = Column(JSON, nullable=False, default=dict)
+    revision = Column(Integer, nullable=False, default=0)
+    updated_at = Column(String, default=now)

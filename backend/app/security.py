@@ -13,6 +13,8 @@ from .models import User, RevokedToken
 
 secret_file = ROOT / "data" / ".jwt-secret"
 SECRET = os.getenv("JWT_SECRET")
+if os.getenv("FINPILOT_ENV") == "production" and (not SECRET or len(SECRET) < 32):
+    raise RuntimeError("Production requires an explicit JWT_SECRET of at least 32 characters")
 if not SECRET:
     secret_file.parent.mkdir(parents=True, exist_ok=True)
     if not secret_file.exists():

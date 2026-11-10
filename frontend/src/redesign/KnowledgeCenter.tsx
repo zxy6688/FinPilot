@@ -1,5 +1,12 @@
+import references from "../../../content/concept-references.json";
+import { ConceptMicroLab } from "./ConceptMicroLabs";
+import { MicroState, useMicroValue, type MicroValues } from "./MicroState";
+import { diagramNotes, optionFeedback } from "./conceptReview";
+import { ConceptEvidencePanel } from "./ConceptEvidencePanel";
+import ConceptDirectory from "./ConceptDirectory";
+import EtfConcept from "./EtfConcept";
 import { RiskExperiment, BehaviorExperiment } from "./KnowledgeInteractions";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Link,
   Navigate,
@@ -8,14 +15,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import {
-  ArrowUpRight,
-  ArrowRight,
-  BookOpen,
-  Search,
-  Check,
-  Compass,
-} from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import {
   knowledge,
   lessons,
@@ -29,11 +29,7 @@ import { useAuth } from "../services/auth";
 import { useLoad } from "../components/ui";
 import { api } from "../services/api";
 import type { LearningPath } from "../types";
-import { ConceptPlay } from "./ConceptStudio";
-import { BudgetWorkbench, snapshotId } from "./Experiments";
-import { TimeWorkbench } from "./TimeTools";
-import { LoanWorkbench } from "./Loan";
-import { BondExperiment } from "./Bonds";
+import { snapshotId } from "./Experiments";
 import { learningStorage } from "../services/learningStorage";
 
 type Recent = { id: number; at: string };
@@ -121,211 +117,10 @@ export function LearningTrail({ compact = false }: { compact?: boolean }) {
   );
 }
 export function KnowledgeCenter() {
-  const { user } = useAuth();
-  const [params, setParams] = useSearchParams(),
-    q = params.get("q") || "",
-    domain = params.get("domain") || "",
-    p = useLoad<LearningPath[]>("/learning-paths"),
-    n = useNotebook();
-  const all = params.get("all") === "1";
-  const concepts = knowledge.concepts
-    .filter(
-      (c) =>
-        (!domain || c.domain === domain) &&
-        (!q || (c.title + c.summary).toLowerCase().includes(q.toLowerCase())),
-    )
-    .filter((c) => domain || q || all || [1, 17, 7, 2, 30, 13].includes(c.id));
-  const status = (id: number) =>
-    n.entries.some(
-      (e) => (e.payload as { concept_id?: number })?.concept_id === id,
-    )
-      ? "已练习 · 已保存"
-      : learningStorage.getItem("concept-answer:" + id) !== null
-        ? "已练习 · 未保存"
-        : recentRead(user?.id).some((r) => r.id === id)
-          ? "看过 · 未练习"
-          : "待探索";
-  return (
-    <div className="rd-page k-center">
-      <section className="k-cover">
-        <div>
-          <span className="rd-kicker">Concept Studio · 学概念</span>
-          <h1>
-            把零散的知道，
-            <br />
-            连成自己的理解。
-          </h1>
-          <p>
-            从六个领域找到问题：读懂一个概念，亲手验证，再把发现留下来。课程、路线与复习都在这里。
-          </p>
-          <div className="rd-actions">
-            <a className="rd-button" href="#knowledge-domains">
-              找一个领域 <Compass size={18} />
-            </a>
-            <a className="rd-secondary" href="#courses">
-              按路线学
-            </a>
-            <Link className="rd-text-link" to="/review">
-              复习已有练习 →
-            </Link>
-          </div>
-        </div>
-        <div className="k-cover-scene">
-          <img
-            src="/redesign/gate-b/budget-studio.png"
-            alt="Fin 的知识工作台，书本、生活账本与探索笔记"
-          />
-          <span>
-            36 个概念 · 28 节原有课程
-            <br />
-            先理解，再作判断
-          </span>
-        </div>
-      </section>
-      <LearningTrail compact />
-      <section id="knowledge-domains">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">六个方向，一张知识地图</span>
-            <h2>你想先弄懂哪一部分？</h2>
-          </div>
-          <button className="rd-text-link" onClick={() => setParams({})}>
-            查看全部领域
-          </button>
-        </div>
-        <div className="k-domains">
-          {knowledge.domains.map((d, i) => (
-            <button
-              key={d.id}
-              className={"k-domain domain-" + d.id}
-              aria-pressed={domain === d.id}
-              onClick={() => {
-                setParams({ domain: d.id });
-                setTimeout(
-                  () =>
-                    document
-                      .getElementById("concept-list")
-                      ?.scrollIntoView({ behavior: "smooth" }),
-                  0,
-                );
-              }}
-            >
-              <span className="k-domain-number">0{i + 1}</span>
-              <div>
-                <h3>{d.title}</h3>
-                <p>{d.description}</p>
-                <small>{d.concept_ids.length} 个概念 · 从基础到进阶</small>
-              </div>
-              <ArrowUpRight size={20} />
-            </button>
-          ))}
-        </div>
-      </section>
-      <section id="concept-list" className="k-index">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">选择 → 理解 → 练习 → 留下发现</span>
-            <h2>
-              {knowledge.domains.find((d) => d.id === domain)?.title ||
-                (all || q ? "核心概念目录" : "六个入门问题，各选一站")}
-            </h2>
-          </div>
-          <label className="k-search">
-            <Search size={18} />
-            <input
-              aria-label="查找概念"
-              placeholder="输入概念，如 ETF、流动性…"
-              value={q}
-              onChange={(e) =>
-                setParams({ ...Object.fromEntries(params), q: e.target.value })
-              }
-            />
-          </label>
-        </div>
-        {!concepts.length && (
-          <p role="status">
-            暂未找到。试试更短的词，或清除领域筛选。
-            <Link to={"/search?q=" + encodeURIComponent(q)}>
-              搜索课程与全部资料 →
-            </Link>
-          </p>
-        )}
-        <div className="k-concept-index">
-          {concepts.map((c) => (
-            <Link key={c.id} to={conceptUrl(c.id)}>
-              <span className="k-index-number">
-                {String(c.id).padStart(2, "0")}
-              </span>
-              <div>
-                <small>
-                  {c.level} · {status(c.id)}
-                </small>
-                <h3>{c.title}</h3>
-                <p>{c.summary}</p>
-              </div>
-              <ArrowUpRight size={18} />
-            </Link>
-          ))}
-        </div>
-        {!domain && !q && (
-          <button
-            className="rd-secondary"
-            onClick={() => setParams(all ? {} : { all: "1" })}
-          >
-            {all ? "收起完整目录" : "展开全部 36 个核心概念"}
-          </button>
-        )}
-      </section>
-      <section id="courses" className="k-course-shelf">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">不重复开课，把已有知识接起来</span>
-            <h2>想系统学，就沿一条路线走。</h2>
-            <p>28 节课程、64 道原题保留；课程完成与答题结果按实际记录展示。</p>
-          </div>
-          <FinArt size={100} action="notebook" />
-        </div>
-        {p.error && (
-          <p role="alert">
-            课程进度暂时不可用。<button onClick={p.reload}>重试</button>
-          </p>
-        )}
-        <div className="k-routes">
-          {p.data?.map((route, i) => (
-            <details key={route.id}>
-              <summary>
-                <span>0{i + 1}</span>
-                <div>
-                  <h3>{route.title}</h3>
-                  <p>{route.summary}</p>
-                  <small>
-                    {route.lessons.filter((l) => l.completed).length} /{" "}
-                    {route.lessons.length} 节已完成 · 展开课程目录
-                  </small>
-                </div>
-              </summary>
-              <ol>
-                {route.lessons.map((l) => (
-                  <li key={l.id}>
-                    <Link to={"/lessons/" + l.id}>
-                      {l.completed ? "已完成" : "未完成"} · {l.title}
-                    </Link>
-                    <small>{l.minutes} 分钟</small>
-                  </li>
-                ))}
-              </ol>
-              <Link className="rd-text-link" to={"/learn/" + route.id}>
-                打开整条学习路线 →
-              </Link>
-            </details>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
+  return <ConceptDirectory />;
 }
 function Diagram({ c }: { c: (typeof knowledge.concepts)[number] }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useMicroValue<number>("diagram", 0);
   return (
     <div className="k-mechanism">
       <span className="rd-kicker">理解一条关系 · 点击逐步拆解</span>
@@ -340,13 +135,7 @@ function Diagram({ c }: { c: (typeof knowledge.concepts)[number] }) {
       </div>
       <div className="k-step" role="status">
         <FinArt size={76} mood="thinking" />
-        <p>
-          {
-            [c.summary, c.explain.split("\n\n")[0], c.example.split("\n\n")[0]][
-              step % 3
-            ]
-          }
-        </p>
+        <p>{diagramNotes[c.id][step % 3]}</p>
       </div>
     </div>
   );
@@ -354,32 +143,37 @@ function Diagram({ c }: { c: (typeof knowledge.concepts)[number] }) {
 function DeepExperiment({ id }: { id: number }) {
   if (id === 8 || id === 21 || id === 22) return <RiskExperiment />;
   if ([13, 14, 15, 16, 24].includes(id)) return <BehaviorExperiment />;
-  if (id === 7 || id === 19 || id === 20 || id === 35)
-    return (
-      <>
-        <ConceptPlay />
-        <Link className="rd-text-link" to="/concept-studio/etf-matrix">
-          进入完整 ETF 分类课堂与正式练习 →
-        </Link>
-      </>
-    );
-  if (id === 17 || id === 25) return <BudgetWorkbench embedded />;
-  if (id === 27) return <LoanWorkbench embedded />;
-  if (id === 1 || id === 2 || id === 32)
-    return <TimeWorkbench embedded tool="inflation" />;
-  if (id === 3 || id === 28) return <TimeWorkbench embedded tool="compound" />;
-  if (id === 6 || id === 9 || id === 33 || id === 34) return <BondExperiment />;
-  return null;
+  return <ConceptMicroLab conceptId={id} />;
 }
 export function ConceptDetail() {
   const { id } = useParams();
-  return <ConceptContent key={id} id={Number(id)} />;
+  return Number(id) === 7 ? (
+    <EtfConcept />
+  ) : (
+    <ConceptContentWrapper id={Number(id)} />
+  );
+}
+function ConceptContentWrapper({ id }: { id: number }) {
+  const [params] = useSearchParams();
+  const { user } = useAuth();
+  return (
+    <ConceptContent
+      key={`${user?.id ?? "guest"}:${id}:${params.get("entry") || "new"}`}
+      id={id}
+    />
+  );
 }
 function ConceptContent({ id }: { id: number }) {
   const c = conceptById(id),
     { user } = useAuth(),
     n = useNotebook(),
     [params] = useSearchParams();
+  const [micro, setMicro] = useState<MicroValues>({}),
+    [microErrors, setMicroErrors] = useState<Record<string, string>>({});
+  const restored = useRef(false);
+  const [savedUrl, setSavedUrl] = useState("");
+  const [loadMessage, setLoadMessage] = useState("");
+  const [recorded, setRecorded] = useState(0);
   const key = "concept-answer:" + id,
     [answer, setAnswer] = useState<number | null>(() => {
       const a = learningStorage.getItem(key);
@@ -389,6 +183,8 @@ function ConceptContent({ id }: { id: number }) {
     [saved, setSaved] = useState(false),
     [review, setReview] = useState(""),
     [busy, setBusy] = useState(false);
+  const reference =
+    references[String(id) as keyof typeof references] || c?.reference;
   const domain = knowledge.domains.find((d) => d.id === c?.domain);
   const back = params.get("from");
   const safeBack = back && Object.keys(journeyMap).includes(back) ? back : null;
@@ -403,18 +199,27 @@ function ConceptContent({ id }: { id: number }) {
     );
   }, [id, user?.id]);
   useEffect(() => {
+    if (restored.current || n.loading) return;
     const record = n.entries.find((e) => e.id === params.get("entry"));
     const payload = record?.payload as {
       concept_id?: number;
       answer?: number;
       note?: string;
+      micro?: MicroValues;
     };
     if (payload?.concept_id === id) {
       setAnswer(payload.answer ?? null);
       setNote(payload.note || "");
       setSaved(true);
+      setMicro(payload.micro || {});
+      setSavedUrl(record!.url);
+      restored.current = true;
+    } else if (params.get("entry") && !n.error) {
+      setLoadMessage(
+        "未找到当前账户或浏览器中的这条概念记录；原记录未被修改。",
+      );
     }
-  }, [n.entries, params.get("entry")]);
+  }, [n.entries, n.loading, params.get("entry")]);
   if (!c)
     return (
       <div className="rd-page">
@@ -472,204 +277,249 @@ function ConceptContent({ id }: { id: number }) {
         </div>
         <FinArt size={170} action="notebook" />
       </header>
-      <article>
-        <Diagram c={c} />
-        <div className="k-reading-columns">
-          <section>
-            <span className="rd-kicker">01 / 先把意思说清楚</span>
-            <h2>它到底在说什么？</h2>
-            <ReactMarkdown>{c.explain}</ReactMarkdown>
-            <h3>为什么与你有关</h3>
-            <ReactMarkdown>{c.life}</ReactMarkdown>
-          </section>
-          <aside className="k-case">
-            <span className="rd-kicker">02 / 把概念放进生活</span>
-            <h2>一个可检查的例子</h2>
-            <small>原创教学场景，不是市场报价或个人建议</small>
-            <ReactMarkdown>{c.example}</ReactMarkdown>
-          </aside>
-        </div>
-        <section className="k-misconception">
-          <span className="rd-kicker">03 / 多问一句，少走弯路</span>
-          <h2>容易混淆的地方</h2>
-          <ReactMarkdown>{c.misunderstanding}</ReactMarkdown>
-          <details>
-            <summary>适用边界与假设</summary>
-            <ReactMarkdown>{c.boundary}</ReactMarkdown>
-          </details>
-        </section>
-        <section id="concept-practice">
-          <div className="rd-section-head">
-            <div>
-              <span className="rd-kicker">
-                04 / 换一个条件，看理解是否站得住
-              </span>
-              <h2>{deep ? "现在，自己试一试。" : "现在，检验一个判断。"}</h2>
-            </div>
+      <ConceptEvidencePanel
+        key={recorded}
+        answer={answer !== null}
+        noteSaved={saved}
+        quizId={"id" in c.quiz ? c.quiz.id : undefined}
+        lessonIds={c.lesson_ids}
+      />
+      {loadMessage && <p role="status">{loadMessage}</p>}
+      <MicroState.Provider
+        value={{
+          values: micro,
+          change: (key, value) => {
+            setMicro((v) => ({ ...v, [key]: value }));
+            setSaved(false);
+          },
+          errors: microErrors,
+          validate: (key, error) =>
+            setMicroErrors((v) =>
+              v[key] === error ? v : { ...v, [key]: error },
+            ),
+        }}
+      >
+        <article>
+          <Diagram c={c} />
+          <div className="k-reading-columns">
+            <section>
+              <span className="rd-kicker">01 / 先把意思说清楚</span>
+              <h2>它到底在说什么？</h2>
+              <ReactMarkdown>{c.explain}</ReactMarkdown>
+              <h3>为什么与你有关</h3>
+              <ReactMarkdown>{c.life}</ReactMarkdown>
+            </section>
+            <aside className="k-case">
+              <span className="rd-kicker">02 / 把概念放进生活</span>
+              <h2>一个可检查的例子</h2>
+              <small>原创教学场景，不是市场报价或个人建议</small>
+              <ReactMarkdown>{c.example}</ReactMarkdown>
+            </aside>
           </div>
-          {deep && <DeepExperiment id={id} />}
-          <div className="k-quiz">
-            <FinArt
-              size={96}
-              mood={answer === c.quiz.correct_answer ? "bright" : "curious"}
-            />
-            <div>
-              <span className="rd-kicker">理解检查 · 一次答对不代表掌握</span>
-              <h3>{c.quiz.question}</h3>
-              <div className="k-answers">
-                {c.quiz.options.map((option, i) => (
+          <section className="k-misconception">
+            <span className="rd-kicker">03 / 多问一句，少走弯路</span>
+            <h2>容易混淆的地方</h2>
+            <ReactMarkdown>{c.misunderstanding}</ReactMarkdown>
+            <details>
+              <summary>适用边界与假设</summary>
+              <ReactMarkdown>{c.boundary}</ReactMarkdown>
+            </details>
+          </section>
+          <section id="concept-practice">
+            <div className="rd-section-head">
+              <div>
+                <span className="rd-kicker">
+                  04 / 换一个条件，看理解是否站得住
+                </span>
+                <h2>{deep ? "现在，自己试一试。" : "现在，检验一个判断。"}</h2>
+              </div>
+            </div>
+            {deep && <DeepExperiment id={id} />}
+            <div className="k-quiz">
+              <FinArt
+                size={96}
+                mood={answer === c.quiz.correct_answer ? "bright" : "curious"}
+              />
+              <div>
+                <span className="rd-kicker">理解检查 · 一次答对不代表掌握</span>
+                <h3>{c.quiz.question}</h3>
+                <div className="k-answers">
+                  {c.quiz.options.map((option, i) => (
+                    <button
+                      key={option}
+                      className="rd-secondary"
+                      aria-pressed={answer === i}
+                      onClick={() => {
+                        setAnswer(i);
+                        learningStorage.setItem(key, String(i));
+                        setSaved(false);
+                        setReview("");
+                      }}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+                {answer !== null && (
+                  <p className="k-feedback" role="status">
+                    {answer === c.quiz.correct_answer
+                      ? "判断正确。"
+                      : "再看一下条件。"}
+                    {optionFeedback[id]?.[answer] || c.quiz.explanation}
+                  </p>
+                )}
+                {answer !== null && user && "id" in c.quiz && (
                   <button
-                    key={option}
-                    className="rd-secondary"
-                    aria-pressed={answer === i}
-                    onClick={() => {
-                      setAnswer(i);
-                      learningStorage.setItem(key, String(i));
-                      setSaved(false);
-                      setReview("");
+                    className="rd-text-link"
+                    disabled={busy}
+                    onClick={async () => {
+                      setBusy(true);
+                      try {
+                        await api("/quizzes/" + c.quiz.id + "/answer", "POST", {
+                          answer,
+                        });
+                        setReview("本次作答已记录，并进入原有复习系统。");
+                        setRecorded((v) => v + 1);
+                      } catch (e) {
+                        setReview((e as Error).message);
+                      } finally {
+                        setBusy(false);
+                      }
                     }}
                   >
-                    {option}
+                    记录这次作答，加入复习
                   </button>
-                ))}
-              </div>
-              {answer !== null && (
-                <p className="k-feedback" role="status">
-                  {answer === c.quiz.correct_answer
-                    ? "判断正确。"
-                    : "再看一下条件。"}
-                  {c.quiz.explanation}
+                )}
+                <p role="status">
+                  {review ||
+                    ("id" in c.quiz
+                      ? "即时反馈尚未提交到课程；登录后可主动记录作答。"
+                      : "这道新情景题为即时理解检查；保存发现后可重开回顾，不计入课程复习队列。")}
                 </p>
-              )}
-              {answer !== null && user && "id" in c.quiz && (
-                <button
-                  className="rd-text-link"
-                  disabled={busy}
-                  onClick={async () => {
-                    setBusy(true);
-                    try {
-                      await api("/quizzes/" + c.quiz.id + "/answer", "POST", {
-                        answer,
-                      });
-                      setReview("本次作答已记录，并进入原有复习系统。");
-                    } catch (e) {
-                      setReview((e as Error).message);
-                    } finally {
-                      setBusy(false);
-                    }
-                  }}
-                >
-                  记录这次作答，加入复习
-                </button>
-              )}
-              <p role="status">
-                {review ||
-                  ("id" in c.quiz
-                    ? "即时反馈尚未提交到课程；登录后可主动记录作答。"
-                    : "这道新情景题为即时理解检查；保存发现后可重开回顾，不计入课程复习队列。")}
+              </div>
+            </div>
+          </section>
+          <section className="k-save">
+            <div>
+              <span className="rd-kicker">留下自己的解释，而不只是一个勾</span>
+              <h2>这次，你分清了什么？</h2>
+              <p>
+                {n.scope}。保存题目、答案和笔记；可以在我的世界重新打开或删除。
               </p>
             </div>
-          </div>
-        </section>
-        <section className="k-save">
-          <div>
-            <span className="rd-kicker">留下自己的解释，而不只是一个勾</span>
-            <h2>这次，你分清了什么？</h2>
-            <p>
-              {n.scope}。保存题目、答案和笔记；可以在我的世界重新打开或删除。
-            </p>
-          </div>
-          <div>
-            <label>
-              我的理解
-              <textarea
-                aria-label="我的理解"
-                maxLength={2000}
-                value={note}
-                onChange={(e) => {
-                  setNote(e.target.value);
-                  setSaved(false);
-                }}
-                placeholder="用自己的话说一个变化、一个条件或一个误区…"
-              />
-            </label>
-            <button
-              className="rd-button"
-              disabled={answer === null || busy || saved || n.loading}
-              onClick={async () => {
-                setBusy(true);
-                try {
-                  const entryId = await snapshotId("knowledge-" + id, {
-                    answer,
-                    note,
-                  });
-                  const ok = await n.save({
-                    id: entryId,
-                    kind: "concept",
-                    title: c.title + " · 我的理解",
-                    url: conceptUrl(id) + "?entry=" + entryId,
-                    detail:
-                      answer === c.quiz.correct_answer
-                        ? "已练习：本题答对；尚不代表掌握"
-                        : "已练习：需要回顾本题解释",
-                    payload: {
-                      concept_id: id,
+            <div>
+              <label>
+                我的理解
+                <textarea
+                  aria-label="我的理解"
+                  disabled={n.loading || busy}
+                  maxLength={2000}
+                  value={note}
+                  onChange={(e) => {
+                    setNote(e.target.value);
+                    setSaved(false);
+                  }}
+                  placeholder="用自己的话说一个变化、一个条件或一个误区…"
+                />
+              </label>
+              <button
+                className="rd-button"
+                disabled={
+                  busy ||
+                  saved ||
+                  n.loading ||
+                  Object.values(microErrors).some(Boolean)
+                }
+                onClick={async () => {
+                  setBusy(true);
+                  try {
+                    const entryId = await snapshotId("knowledge-c4-" + id, {
                       answer,
                       note,
-                      question: c.quiz.question,
-                      correct: answer === c.quiz.correct_answer,
-                    },
-                  });
-                  setSaved(ok);
-                } finally {
-                  setBusy(false);
-                }
-              }}
-            >
-              {saved ? "发现已保存" : "保存这次理解"}
-            </button>
-            {saved && (
-              <Link className="rd-text-link" to="/profile">
-                去我的世界重新打开 →
+                      micro,
+                    });
+                    const ok = await n.save({
+                      id: entryId,
+                      kind: "concept",
+                      title: c.title + " · 我的理解",
+                      url: conceptUrl(id) + "?entry=" + entryId,
+                      detail:
+                        answer === null
+                          ? "仅保存笔记，尚未作答"
+                          : answer === c.quiz.correct_answer
+                            ? "已练习：本题答对；尚不代表掌握"
+                            : "已练习：需要回顾本题解释",
+                      payload: {
+                        concept_id: id,
+                        micro,
+                        revision: "concept-c4-v1",
+                        answer,
+                        note,
+                        question: c.quiz.question,
+                        correct: answer === c.quiz.correct_answer,
+                      },
+                    });
+                    setSaved(ok);
+                    if (ok) setSavedUrl(conceptUrl(id) + "?entry=" + entryId);
+                  } finally {
+                    setBusy(false);
+                  }
+                }}
+              >
+                {saved ? "发现已保存" : "保存这次理解"}
+              </button>
+              {saved && (
+                <Link className="rd-text-link" to={savedUrl}>
+                  重新打开这次保存 →
+                </Link>
+              )}
+              <p role="status">
+                {saved
+                  ? "笔记、答案与互动参数已保存；正式作答单独记录。"
+                  : "编辑后请保存，未保存修改不会进入发现手册。"}
+              </p>
+              {n.error && (
+                <p role="alert">
+                  {n.error}。草稿仍在，请重试；如记录冲突请修改后另存新记录。
+                </p>
+              )}
+            </div>
+          </section>
+          <section className="k-next">
+            <span className="rd-kicker">05 / 下一步有方向</span>
+            <h2>把这一点，接到更大的问题。</h2>
+            <div className="k-next-links">
+              {nextAction && (
+                <Link to={nextAction[0]}>
+                  继续动手：{nextAction[1]} <ArrowRight />
+                </Link>
+              )}
+              <Link to={c.story}>
+                回到相关专题，看看完整情景 <ArrowRight />
               </Link>
-            )}
-            {n.error && <p role="alert">{n.error}</p>}
-          </div>
-        </section>
-        <section className="k-next">
-          <span className="rd-kicker">05 / 下一步有方向</span>
-          <h2>把这一点，接到更大的问题。</h2>
-          <div className="k-next-links">
-            {nextAction && (
-              <Link to={nextAction[0]}>
-                继续动手：{nextAction[1]} <ArrowRight />
+              <Link to={"/lessons/" + c.lesson_ids[0]}>
+                进入课程：{lessons.find((l) => l.id === c.lesson_ids[0])?.title}
+                <ArrowRight />
               </Link>
-            )}
-            <Link to={c.story}>
-              回到相关专题，看看完整情景 <ArrowRight />
-            </Link>
-            <Link to={"/lessons/" + c.lesson_ids[0]}>
-              进入课程：{lessons.find((l) => l.id === c.lesson_ids[0])?.title}
-              <ArrowRight />
-            </Link>
-            {c.related.map((id) => (
-              <Link key={id} to={conceptUrl(id)}>
-                接着理解：{conceptById(id)?.title}
-                <ArrowUpRight />
-              </Link>
-            ))}
-          </div>
-          <details>
-            <summary>内容来源与延伸阅读</summary>
-            <p>{c.source_note}</p>
-            <p>内容原稿：{c.origin}</p>
-            <a href={c.reference.url} target="_blank" rel="noreferrer">
-              {c.reference.title}
-            </a>
-            <p>{c.reference.role}</p>
-          </details>
-        </section>
-      </article>
+              {c.related.map((id) => (
+                <Link key={id} to={conceptUrl(id)}>
+                  接着理解：{conceptById(id)?.title}
+                  <ArrowUpRight />
+                </Link>
+              ))}
+            </div>
+            <details>
+              <summary>内容来源与延伸阅读</summary>
+              <p>{c.source_note}</p>
+              <p>内容原稿：{c.origin}</p>
+              <a href={reference.url} target="_blank" rel="noreferrer">
+                {reference.title}
+              </a>
+              <p>{reference.role}</p>
+            </details>
+          </section>
+        </article>
+      </MicroState.Provider>
     </div>
   );
 }

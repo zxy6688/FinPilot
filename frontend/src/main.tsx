@@ -1,3 +1,6 @@
+import { PetProvider } from "./fin-pet/PetProvider";
+import PetOverlay from "./fin-pet/PetOverlay";
+import MyWorldV2 from "./redesign/MyWorldV2";
 import { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
@@ -15,13 +18,14 @@ import { BudgetWorkbench } from "./redesign/Experiments";
 import { BudgetStory } from "./redesign/Stories";
 import MoneyLab from "./redesign/MoneyLab";
 import Decoder from "./redesign/Decoder";
-import ConceptStudio from "./redesign/ConceptStudio";
+import { EtfCompatibility } from "./redesign/EtfConcept";
 import {
   KnowledgeCenter,
   ConceptDetail,
   TopicCompatibility,
 } from "./redesign/KnowledgeCenter";
 import { FinDesign } from "./redesign/Fin";
+const PetDemo = lazy(() => import("./fin-pet/PetDemo"));
 const LearningRoutePage = lazy(() => import("./living/RouteExperience"));
 const Knowledge = lazy(() => import("./living/Knowledge"));
 const ArticleReader = lazy(() => import("./living/ArticleReader"));
@@ -66,10 +70,12 @@ createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>
     <BrowserRouter>
       <AuthProvider>
+        <PetProvider>
         <Suspense fallback={<div className="state">正在打开学习空间…</div>}>
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<RedesignHome />} />
+              <Route path="fin-pet" element={<PetDemo />} />
               <Route path="decoder/purchasing-power" element={<Decoder />} />
               <Route path="stories/bonds" element={<BondsStory />} />
               <Route path="stories/etf" element={<EtfStory />} />
@@ -90,7 +96,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="concept-studio" element={<KnowledgeCenter />} />
               <Route
                 path="concept-studio/etf-matrix"
-                element={<ConceptStudio />}
+                element={<EtfCompatibility />}
               />
               <Route path="concept-studio/:id" element={<ConceptDetail />} />
               <Route path="stories/:slug" element={<StoryPreview />} />
@@ -127,7 +133,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="lab/:id" element={<LabPage />} />
               <Route path="fintalk" element={<Community />} />
               <Route path="fintalk/:id" element={<PostPage />} />
-              <Route path="profile" element={<Notebook />} />
+              <Route path="profile" element={<MyWorldV2 />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="search" element={<SearchPage />} />
               <Route
@@ -150,6 +156,8 @@ createRoot(document.getElementById("root")!).render(
             </Route>
           </Routes>
         </Suspense>
+              <PetOverlay />
+        </PetProvider>
       </AuthProvider>
     </BrowserRouter>
   </ErrorBoundary>,

@@ -423,7 +423,7 @@ body {
   gap: 9px;
   margin-top: 12px;
 }
-.rd-question-chips a {
+.rd-question-chips :is(a, button) {
   font-size: 12px;
   color: #49675b;
   background: #eaf0e5;
@@ -432,7 +432,7 @@ body {
   padding: 5px 9px;
   white-space: nowrap;
 }
-.rd-question-chips a:hover {
+.rd-question-chips :is(a, button):hover {
   background: #dce9dc;
 }
 .rd-mobile-hero-fin {
@@ -2052,7 +2052,7 @@ body {
   .rd-hero {
     min-height: 365px;
   }
-  .rd-question-chips a {
+  .rd-question-chips :is(a, button) {
     font-size: 12px;
   }
   .rd-scene-note {
@@ -2305,7 +2305,7 @@ body {
     padding-bottom: 5px;
     gap: 7px;
   }
-  .rd-question-chips a {
+  .rd-question-chips :is(a, button) {
     font-size: 12px;
     padding: 5px 9px;
   }
@@ -3108,7 +3108,7 @@ body {
     right: 0;
     z-index: 20;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     background: #ffffffed;
     backdrop-filter: blur(16px);
     border-top: 1px solid #dce4d7;

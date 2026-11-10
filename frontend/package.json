@@ -11,17 +11,20 @@
     "format": "prettier --write src vite.config.ts"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.8.2",
     "lucide-react": "^0.468.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.0",
     "react-router-dom": "^7.0.0",
-    "recharts": "^2.15.0"
+    "recharts": "^2.15.0",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.51.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.187.0",
     "@vitejs/plugin-react": "^4.3.0",
     "prettier": "^3.9.9",
     "typescript": "~5.7.0",

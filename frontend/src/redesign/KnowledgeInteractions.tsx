@@ -1,3 +1,4 @@
+import { useMicroValue } from "./MicroState";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { conceptById, conceptUrl } from "./knowledgeData";
@@ -23,8 +24,8 @@ export function ConceptTerm({
   );
 }
 export function RiskExperiment() {
-  const [together, setTogether] = useState(true),
-    [weight, setWeight] = useState(50);
+  const [together, setTogether] = useMicroValue<boolean>("risk-together", true),
+    [weight, setWeight] = useMicroValue<number>("risk-weight", 50);
   const a = -20,
     b = together ? -20 : 10,
     result = (a * weight) / 100 + b * (1 - weight / 100);
@@ -79,7 +80,7 @@ export function RiskExperiment() {
   );
 }
 export function BehaviorExperiment() {
-  const [choice, setChoice] = useState<number | null>(null);
+  const [choice, setChoice] = useMicroValue<number>("behavior-choice", -1);
   return (
     <section className="k-scenario">
       <h3>五个人赞同，是五份证据吗？</h3>
@@ -100,7 +101,7 @@ export function BehaviorExperiment() {
           </button>
         ))}
       </div>
-      {choice !== null && (
+      {choice >= 0 && (
         <p role="status">
           {
             [

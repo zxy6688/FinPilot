@@ -1,15 +1,14 @@
 import { WorldShelf } from "./WorldShelf";
 import { LearningTrail } from "./KnowledgeCenter";
 import { EntryActions, entrySummary } from "./EntryActions";
-import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
   Search,
-  BookOpen,
-  Calculator,
+
+
   Compass,
   Bookmark,
   Clock,
@@ -20,9 +19,6 @@ import { useAuth } from "../services/auth";
 import type { HomeData } from "../living/types";
 import FinButton, { FinArt } from "./Fin";
 import { findExploration, type ExplorationMatch } from "./questionRouting";
-import { SavingsPreview } from "./TaskPreviews";
-import { MiniLab } from "./MoneyLab";
-import { ConceptPlay } from "./ConceptStudio";
 import { PurchasingArt } from "./Decoder";
 import { topics, useNotebook } from "./state";
 export function StoryArt({ kind = "budget" }: { kind?: string }) {
@@ -166,44 +162,29 @@ export function StoryGrid() {
   );
 }
 export default function Home() {
-  const nav = useNavigate();
   const notebook = useNotebook();
   const { user } = useAuth();
-  const [question, setQuestion] = useState(() => {
-      try {
-        return learningStorage.getItem("finpilot:exploration-question") || "";
-      } catch {
-        return "";
-      }
-    }),
-    [match, setMatch] = useState<ExplorationMatch | null>(null);
-  function routeQuestion() {
-    const result = findExploration(question);
-    if (result.destination) nav(result.destination);
-    else setMatch(result);
+  const recent = user?.email !== "demo@finpilot.app" && [...notebook.entries]
+    .sort((a,b) => b.at.localeCompare(a.at))
+    .find(e => /^\/(money-lab\/(savings|loan|inflation|compound|budget)|stories\/(budget|bonds|etf|loan)|decoder\/purchasing-power|concept-studio\/([1-9]|[12]\d|3[0-6]))([?#]|$)/.test(e.url));
+  const [question, setQuestion] = useState("");
+  const [match, setMatch] = useState<ExplorationMatch | null>(null);
+  function routeQuestion(value = question) {
+    setQuestion(value);
+    setMatch(findExploration(value));
   }
   return (
     <div className="rd-page rd-home">
       <section className="rd-hero">
         <div className="rd-hero-copy">
-          <span className="rd-kicker">
-            <i className="rd-sun" /> 给好奇心，一个有依据的答案
-          </span>
-          <h1>
-            看懂金融，
-            <br />
-            形成自己的判断<span>。</span>
-          </h1>
-          <p>
-            财经信息看得懂，生活里的数字算得清，
-            <br className="rd-desktop-only" />
-            抽象概念也能自己试一试。
-          </p>
+          <h1>FinPilot</h1>
+          <strong>金融专题 · 交互计算 · 基础课程</strong>
+          <p>涵盖个人预算、储蓄、购买力、债券、基金及基础金融概念。</p>
           <label
             className="a1-exploration-label"
             htmlFor="exploration-question"
           >
-            搜索站内专题和工具
+            查找内容
           </label>
           <form
             className="rd-question"
@@ -221,26 +202,18 @@ export default function Home() {
               onChange={(e) => {
                 setQuestion(e.target.value);
                 setMatch(null);
-                try {
-                  learningStorage.setItem(
-                    "finpilot:exploration-question",
-                    e.target.value,
-                  );
-                } catch {
-                  /* In-memory draft remains available. */
-                }
               }}
-              placeholder="输入问题或专题名称，找相关内容"
+              placeholder="搜索专题、概念或工具"
             />
-            <button type="submit">找内容</button>
+            <button type="submit">查找</button>
           </form>
           <small id="exploration-help" className="a1-exploration-help">
-            输入你的困惑，选择相关专题或工具；这里不会直接生成答案。
+            仅检索站内内容。
           </small>
           <div className="rd-question-chips">
-            <Link to="/stories/bonds">降息后，债券一定涨吗？</Link>
-            <Link to="/money-lab">每月存 500 元，两年后呢？</Link>
-            <Link to="/concept-studio/7">ETF ≠ 指数基金？</Link>
+            {["每月生活费如何安排？", "通胀如何影响购买力？", "ETF 与指数基金有什么区别？"].map(example =>
+              <button key={example} onClick={() => routeQuestion(example)}>{example}</button>
+            )}
           </div>
         </div>
         <div className="rd-hero-scene">
@@ -249,14 +222,12 @@ export default function Home() {
             alt="Fin 的金融探索桌：学习手册、增长图、信息剪报和计算器"
           />
           <FinButton scene />
-          <span className="rd-scene-note">
-            <i /> 小小好奇，慢慢看懂。
-          </span>
+
         </div>
       </section>
       {match?.kind === "empty" && (
         <p className="a1-exploration-empty" role="status">
-          请先输入问题或专题名称，也可以选择下面的入口。
+          请输入关键词，或选择一个示例问题。
         </p>
       )}
       {match && match.kind !== "empty" && (
@@ -267,203 +238,48 @@ export default function Home() {
           <div role="status">
             <b>
               {match.kind === "mixed"
-                ? "涉及多个主题，请选择这次想探索的内容。"
+                ? "找到多个相关主题"
                 : match.kind === "unknown"
-                  ? "还没有找到对应专题，可以从这些通用入口开始。"
-                  : "有相关内容，但不一定能回答你的具体问题。"}
+                  ? "没有找到直接对应的内容"
+                  : "相关内容"}
             </b>
             <p>
-              你的原问题：<q>{question}</q>
+              {match.kind === "mixed" ? "请选择这次要查看的内容。" : match.kind === "unknown" ? "可更换关键词，或进入专题、工具和概念目录查看。" : null}
             </p>
           </div>
           <div className="a1-suggestion-links">
-            {match.suggestions.map((item, index) => (
+            {match.suggestions.map((item) => (
               <Link key={item.id} to={item.path}>
                 <b>
                   {item.title}
                   <ArrowUpRight size={16} />
                 </b>
                 <small>
-                  {match.kind === "unknown" ? "通用起点" : "与你提到的主题相关"}{" "}
-                  ·{" "}
-                  {item.path.includes("money-lab")
-                    ? "财务工具"
-                    : item.path.includes("concept")
-                      ? "概念互动"
-                      : "互动专题"}{" "}
-                  · {index === 0 ? "建议先试" : "也可以探索"}：{item.scope}
+                  {item.scope} · {item.path.startsWith("/money-lab") ? (item.id==="budget" ? "打开预算工具" : "打开工具") : item.path.startsWith("/concept") ? (item.id==="concept" ? "学习 ETF" : "查看概念") : "阅读专题"}
                 </small>
               </Link>
             ))}
           </div>
-          <div className="a1-question-followup">
-            <Link to={"/copilot?q=" + encodeURIComponent(question)}>
-              带着原问题去问 Fin <ArrowUpRight size={15} />
-            </Link>
-            <small>
-              保留原文，不自动发送。当前本地为 Demo 演示，不能保证解答任意问题。
-            </small>
-          </div>
+          {/\d[\d,.]*\s*元/.test(question) && <p>识别到“{question.match(/(?:每月\s*)?\d[\d,.]*\s*元/)?.[0]}”。当前版本不会自动填入工具。</p>}
         </section>
       )}
-      <section className="rd-tasks" aria-label="三大任务入口">
-        <Link className="rd-task rd-task-read" to="/decoder/purchasing-power">
-          <div className="rd-task-icon">
-            <BookOpen size={25} />
-          </div>
-          <span className="rd-kicker">Decoder · 金融解读室</span>
-          <h2>
-            看懂一件事 <ArrowUpRight />
-          </h2>
-          <p>钱没少，为什么能买到的变少了？</p>
-          <div className="a1-read-preview">
-            <span className="a1-paper-label">正在解读 / 01</span>
-            <b>金额没变 ≠ 购买力没变</b>
-            <span className="a1-reading-line">
-              同一篮子商品 · 价格是比较的尺
-            </span>
-            <small>ECB 概念说明 → 生活例子 → 亲手验证</small>
-          </div>
-          <div className="rd-task-bottom">
-            <span>官方概念来源 · 原创解读</span>
-            <ArrowRight size={18} />
-          </div>
-        </Link>
-        <Link className="rd-task rd-task-calc" to="/money-lab">
-          <div className="rd-task-icon">
-            <Calculator size={25} />
-          </div>
-          <span className="rd-kicker">Money Lab · 财务实验室</span>
-          <h2>
-            算清一个问题 <ArrowUpRight />
-          </h2>
-          <p>每月存一点，离目标还有多远？</p>
-          <SavingsPreview />
-          <div className="rd-task-bottom">
-            <span>调参数，比方案，留一张小票</span>
-            <ArrowRight size={18} />
-          </div>
-        </Link>
-        <Link className="rd-task rd-task-concept" to="/concept-studio">
-          <div className="rd-task-icon">
-            <Compass size={25} />
-          </div>
-          <span className="rd-kicker">Concept Studio · 概念工作室</span>
-          <h2>
-            弄懂一个概念 <ArrowUpRight />
-          </h2>
-          <p>从六个领域，找到你想弄懂的概念。</p>
-          <div className="a1-concept-preview">
-            <span>交易形式 × 投资策略</span>
-            <div className="a1-mini-matrix">
-              <b>指数 ETF</b>
-              <span>主动 ETF</span>
-              <span>场外指数</span>
-              <span>场外主动</span>
-            </div>
-            <small>两条分类线，不是同义词</small>
-          </div>
-          <div className="rd-task-bottom">
-            <span>选一个概念，观察、练习并继续</span>
-            <ArrowRight size={18} />
-          </div>
-        </Link>
+      <section className="home-portals" aria-label="三项内容入口">
+        {[
+          ["专题阅读","通胀、债券、ETF 与个人财务","查看专题","/discover"],
+          ["财务工具","预算、储蓄目标、购买力与贷款成本","选择工具","/money-lab"],
+          ["概念学习","基础解释、实例与理解检查","查看概念","/concept-studio"]
+        ].map(([title,desc,cta,path],i)=><Link key={path} to={path}><svg viewBox="0 0 180 85" aria-hidden="true">{i===0?<g transform="rotate(-8 90 42)"><rect x="41" y="13" width="95" height="66" rx="5" fill="#dbc993"/><rect x="48" y="7" width="95" height="66" rx="4" fill="#fffbed"/><path d="M60 22h60M60 39h40M60 51h54" stroke="#69948c" strokeWidth="5"/></g>:i===1?<g fill="none" strokeWidth="4"><path d="M24 65 Q80 68 150 14" stroke="#237e78"/><path d="M24 65 Q85 52 150 44" stroke="#d39b47"/></g>:<g>{["#539f97","#b2d5d0","#ecc983","#d6e4ec"].map((c,j)=><rect key={c} x={48+j%2*44} y={7+Math.floor(j/2)*37} width="40" height="33" rx="6" fill={c}/>)}</g>}</svg><h2>{title}</h2><p>{desc}</p><b>{cta} ↗</b></Link>)}
       </section>
+      {recent && <section className="rd-next-strip"><div><span className="rd-kicker">继续上次 · {recent.kind==="receipt"?"工具":recent.kind==="concept"?"概念":"专题"} · {notebook.scope}</span><h2>{recent.title}</h2></div><Link className="rd-button" to={recent.url}>继续 →</Link><Link to="/profile">查看全部</Link></section>}
+      {notebook.error && <p role="status">这条记录暂时无法打开，请在“我的世界”中查看。<Link to="/profile">打开我的世界</Link></p>}
       <section className="rd-home-section">
         <div className="rd-section-head">
           <div>
-            <span className="rd-kicker">从现实问题出发</span>
-            <h2>这一期，值得弄明白的事。</h2>
-          </div>
-          <Link className="rd-text-link" to="/discover">
-            所有精选 <ArrowUpRight size={18} />
-          </Link>
-        </div>
-        <div className="rd-story-grid k-feature-only">
-          <Link className="rd-feature-story" to="/stories/budget">
-            <div>
-              <span className="rd-kicker">本期精选 · 从大学生活费开始</span>
-              <h3>
-                给每一笔钱，
-                <br />
-                安排一个去处。
-              </h3>
-              <p>
-                一次突发支出，会怎样改变月底？从分类到比较，再留下自己的预算实验。
-              </p>
-              <span className="rd-text-link">进入大学生的第一份预算 →</span>
-            </div>
-            <StoryArt kind="budget" />
-          </Link>
+            <h2>专题精选</h2></div><Link to="/discover">全部专题 ↗</Link></div>
+        <div className="home-budget"><div><small>个人财务 / 预算</small><h3>大学生生活费预算</h3><p>以一个月的生活费为例，区分固定支出、弹性支出和一次性支出，观察临时费用如何影响预计结余。</p><Link to="/stories/budget">阅读专题 ↗</Link></div><StoryArt kind="budget"/>
         </div>
       </section>
-      <section className="rd-home-section">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">不止看看，也动手试试</span>
-            <h2>数字一变，理解就近了一点。</h2>
-          </div>
-          <Link className="rd-text-link" to="/money-lab">
-            进入财务工具 <ArrowUpRight size={18} />
-          </Link>
-        </div>
-        <MiniLab />
-        <div className="rd-tool-shortcuts">
-          <Link to="/money-lab/compound">
-            <span>01 / 复利与时间</span>
-            <b>早开始一年，会有什么不同？</b>
-            <ArrowUpRight size={20} />
-          </Link>
-          <Link to="/decoder/purchasing-power#experiment">
-            <span>02 / 通胀购买力</span>
-            <b>同样的钱，还能买到多少？</b>
-            <ArrowUpRight size={20} />
-          </Link>
-        </div>
-      </section>
-      <section className="rd-home-section rd-home-concept">
-        <div className="rd-section-head">
-          <div>
-            <span className="rd-kicker">一分钟弄懂</span>
-            <h2>看起来相似，不代表是一回事。</h2>
-          </div>
-          <Link className="rd-text-link" to="/concept-studio">
-            走进概念工作室 <ArrowUpRight size={18} />
-          </Link>
-        </div>
-        <ConceptPlay compact />
-      </section>
-      <LearningTrail compact />
-      <section className="rd-notebook-banner">
-        <div className="rd-book-visual">
-          <FinButton size={146} />
-          <span className="rd-book-tag">我的发现手册</span>
-        </div>
-        <div>
-          <span className="rd-kicker">
-            My World · 每一次想明白，都可以留下来
-          </span>
-          <h2>
-            把“我懂了”，
-            <br />
-            变成下次找得到的发现。
-          </h2>
-          <p>
-            {notebook.entries.length
-              ? `这本发现手册里，已经有 ${notebook.entries.length} 张你亲手保存的记录。`
-              : "一段解读、一张计算小票、一个分清的概念。从第一张开始，慢慢积累。"}
-          </p>
-          {notebook.entries.slice(0, 2).map((e) => (
-            <Link key={e.id} className="gb-home-discovery" to={e.url}>
-              <b>{e.title}</b>
-              <span>{e.detail}</span>
-            </Link>
-          ))}
-          <Link className="rd-button" to="/profile">
-            打开我的发现手册 <ArrowRight size={17} />
-          </Link>
-        </div>
-      </section>
+
     </div>
   );
 }

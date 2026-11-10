@@ -1,8 +1,9 @@
+import {ReadingMicro} from "./ReadingMicro";
 import { ConceptTerm } from "./KnowledgeInteractions";
 import { learningStorage } from "../services/learningStorage";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { BudgetWorkbench, snapshotId } from "./Experiments";
+import { snapshotId } from "./Experiments";
 import { FinArt } from "./Fin";
 import { useNotebook } from "./state";
 
@@ -57,7 +58,7 @@ export function CheckUnderstanding({
           key={o}
           aria-pressed={answer === i}
           onClick={() => {
-            setAnswer(i);
+            setAnswer(i);window.dispatchEvent(new Event("reading-edit"));
             learningStorage.setItem("question:" + id, String(i));
           }}
         >
@@ -92,6 +93,7 @@ export function StorySave({
   const [note, setNote] = useState(""),
     [saved, setSaved] = useState(false),
     [busy, setBusy] = useState(false);
+  useEffect(()=>{const edit=()=>setSaved(false);window.addEventListener("reading-edit",edit);return ()=>window.removeEventListener("reading-edit",edit)},[]);
   useEffect(() => {
     const id = params.get("reading");
     const entry = n.entries.find((e) => e.id === id);
@@ -99,7 +101,7 @@ export function StorySave({
       const p = entry.payload as { note?: string; section?: string };
       setNote(p.note || "");
     }
-  }, [params, n.entries]);
+  }, [params, n.entries.find(e=>e.id===params.get("reading"))?.id]);
   return (
     <section className="gb-save">
       <FinArt action="notebook" size={80} />
@@ -123,23 +125,19 @@ export function StorySave({
           />
         </label>
         <button
-          disabled={saved || busy}
+          disabled={busy}
           className="rd-button"
           onClick={async () => {
             setBusy(true);
             try {
               const payload = {
                 topic: slug,
+                micro: Number(learningStorage.getItem("reading-micro:"+slug)??(slug==="loan"?200:0)),
                 note,
                 sources,
                 section: "takeaway",
                 editorial_version: "gate-b-px-1",
-                experiment: JSON.parse(
-                  learningStorage.getItem(
-                    ({ budget: "budget", loan: "loan", bonds: "bond" }[slug] ||
-                      slug) + "-draft",
-                  ) || "null",
-                ),
+                experiment: slug==="bonds" ? JSON.parse(learningStorage.getItem("bond-draft")||"null") : null,
                 question: learningStorage.getItem("question:" + slug),
                 questions: Object.fromEntries(
                   learningStorage
@@ -173,7 +171,7 @@ export function StorySave({
         </button>
         {saved && (
           <Link to="/profile" className="rd-text-link">
-            去手册查看 →
+            已保存：{title} · {n.scope}。查看手册 →
           </Link>
         )}
         {n.error && <p role="alert">{n.error}</p>}
@@ -191,13 +189,9 @@ export function BudgetStory() {
       <header className="gb-story-hero">
         <div>
           <span className="rd-kicker">
-            生活实验 01 · 原创互动专题 · 约 10 分钟
+            生活实验 01 · 原创互动专题
           </span>
-          <h1>
-            大学生的
-            <br />
-            第一份预算。
-          </h1>
+          <h1>大学生预算：临时支出会影响什么？</h1>
           <p>
             不是把喜欢的东西全部划掉，而是在下一次意外之前，知道自己还有多少选择。
           </p>
@@ -297,9 +291,9 @@ export function BudgetStory() {
               下面的默认数字就是小林的计划。先看结余，再点击加入 600
               元维修：结余从 750 元变成 150 元，虽然没有花超收入，但离 300
               元储备目标还差 150
-              元。你可以调整弹性支出、收入或储备目标，比较不同选择，而不是把某个方案标成唯一正确答案。
+              元。这里仅改变临时费用，其他条件保持不变。
             </p>
-            <BudgetWorkbench embedded />
+            <ReadingMicro kind="budget"/>
           </section>
           <section id="check">
             <span className="gb-kicker">04 / 数字之后，做一次判断</span>
@@ -341,7 +335,7 @@ export function BudgetStory() {
                 </a>
                 <p>
                   预算、账单和现金流教育工具。资料类型：官方教育；本页核对日期
-                  2026-10-14，非实时统计。
+                  2026-11-04，非实时统计。
                 </p>
               </li>
               <li>

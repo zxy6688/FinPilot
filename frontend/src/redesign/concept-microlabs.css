@@ -1,0 +1,232 @@
+.cm-experiment {
+  max-width: 860px;
+  margin: 22px auto;
+  padding: clamp(18px, 3vw, 32px);
+  border: 1px solid #dceae2;
+  border-radius: 22px;
+  background: #fafdf9;
+  color: #1f3f35;
+}
+.cm-intro h3 {
+  font-size: clamp(22px, 2.4vw, 28px);
+  margin: 7px 0 8px;
+  line-height: 1.35;
+}
+.cm-intro p,
+.cm-note {
+  line-height: 1.75;
+  color: #52685f;
+}
+.cm-kicker {
+  font-size: 13px;
+  font-weight: 700;
+  color: #39796c;
+}
+.cm-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 550px;
+  margin: 18px 0;
+  font-size: 15px;
+}
+.cm-slider input {
+  accent-color: #267b78;
+  width: 100%;
+  min-height: 32px;
+}
+.cm-experiment-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #e3ece6;
+  border-radius: 16px;
+  background: white;
+}
+.cm-experiment-controls p {
+  margin: 5px 0 0;
+}
+.cm-prediction {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.cm-prediction span {
+  margin-right: 8px;
+}
+.cm-prediction button {
+  color: #1f3f35;
+  min-height: 42px;
+  padding: 8px 13px;
+  border: 1px solid #a7bdb4;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+}
+.cm-prediction button[aria-pressed="true"] {
+  color: #0d5b4c;
+  background: #e5f3eb;
+  border-color: #267b78;
+  font-weight: 700;
+}
+.cm-primary {
+  border: 0;
+  color: white;
+  background: #247b6f;
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 18px;
+  min-height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: fit-content;
+}
+.cm-primary:disabled {
+  opacity: 0.6;
+}
+.cm-error,
+.cm-warning {
+  padding: 12px 15px;
+  border-radius: 11px;
+  background: #fff6ee;
+  color: #8c4a22;
+}
+.cm-results {
+  margin-top: 18px;
+  overflow: auto;
+}
+.cm-results table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.cm-results caption {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+.cm-results th,
+.cm-results td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #e0e8e2;
+  vertical-align: top;
+}
+.cm-results th {
+  font-weight: 600;
+}
+.cm-results td {
+  white-space: nowrap;
+}
+.cm-results details {
+  margin: 15px 0;
+}
+.cm-results summary {
+  cursor: pointer;
+}
+.cm-small,
+.cm-note {
+  font-size: 14px;
+}
+.cm-external {
+  font-weight: 650;
+  color: #216d60;
+  text-underline-offset: 3px;
+}
+.cm-experiment button:focus-visible,
+.cm-experiment a:focus-visible,
+.cm-experiment input:focus-visible {
+  outline: 3px solid #f1b84c;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .cm-experiment {
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .cm-results {
+    font-size: 14px;
+  }
+  .cm-results th,
+  .cm-results td {
+    padding: 11px 5px;
+  }
+  .cm-prediction span {
+    flex-basis: 100%;
+  }
+  .cm-primary {
+    width: 100%;
+  }
+}
+.cm-cash-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.cm-cash-summary p {
+  background: #edf6ef;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 14px;
+}
+.cm-cash-summary strong {
+  display: block;
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 680px) {
+  .cm-cash-summary {
+    grid-template-columns: 1fr;
+  }
+}
+.concept-evidence {
+  padding: 18px 24px;
+  margin: 20px 0;
+  background: #edf5ec;
+  border-radius: 16px;
+  border: 1px solid #d8e7dc;
+}
+.concept-evidence p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+.concept-evidence small {
+  font-size: 14px;
+}
+.cm-slider input[type="number"] {
+  padding: 10px;
+  background: #fffefa;
+  border: 1px solid #b9cfc2;
+  border-radius: 9px;
+  font-size: 16px;
+}
+.cm-slider [role="alert"] {
+  color: #883f32;
+}
+.k-risk-bars > div {
+  min-width: 0;
+  overflow: hidden;
+}
+.k-concept .k-next-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 600px) {
+  .k-concept .k-next-links {
+    grid-template-columns: 1fr;
+  }
+  .cm-results td {
+    white-space: normal;
+  }
+  .cm-results table {
+    table-layout: fixed;
+  }
+  .cm-results td,
+  .cm-results th {
+    overflow-wrap: anywhere;
+  }
+}
